@@ -1,0 +1,124 @@
+{
+    "HOME": {
+        "signup": "Sign Up",
+        "login": "Log In"
+    },
+    "POS": {
+        "coin": "Coin",
+        "total": "Total",
+        "method": "Pay Method"
+    },
+    "ITEMS": {
+        "title": "Add New Item",
+        "price_label": "Enter Price 0.00",
+        "name_label": "Description (optional)",
+        "add_btn": " Add Item",
+        "cancel": "Cancel",
+        "save": "Save Item",
+        "search": "Search Defined Items",
+        "delete": "DELETE"
+    },
+    "COIN": {
+        "title": "Select Coin",
+        "select": "Select",
+        "close": "Close"
+    },
+    "TRANSACT": {
+       "title": "Payment",
+       "subtotal": "Subtotal",
+       "tax": "Tax",
+       "total": "Total",
+       "market": "Market Rate",
+       "due": "Due",
+       "checking": "Checking for Payment",
+       "btc_note": "Bitcoin transactions can take more than 10 minutes.",
+       "ltc_note": "Litecoin transactions can take more than 3 minutes.",
+       "check_btn": "Check Blockchain Manually"
+    },
+    "SETTINGS": {
+        "title": "Settings",
+        "name": "Business Name",
+        "name_label": "Tap to enter business name.",
+        "email": "Business Email",
+        "email_label": "Tap to enter business email.",
+        "address": "Address",
+        "stellar_label": "Tap to enter Stellar address.",
+        "digibyte_label": "Tap to enter DigiByte address.",
+        "dai_label": "Tap to enter Dai address.",
+        "litecoin_label": "Tap to enter Litecoin address.",
+        "bitcoin_label": "Tap to enter Bitcoin address.",
+        "alternate": "Alternate",
+        "alt_active": "Alternate Active",
+        "currency": "Currency Selection",
+        "tax": "Optional Tax Rate",
+        "local_tax": "Local Tax Rate",
+        "transact": "Transact",
+        "help": "Help"
+    },
+    "REPORTS": {
+        "title": "Records",
+        "rates": "Current Rates",
+        "connected": "Connected Wallets",
+        "transactions": "Transactions",
+        "revenue": "Revenue",
+        "revenue_note": "Based on current transactions.",
+        "search": "Coin Search",
+        "search_holder": "Search By Coin",
+        "coin": "Coin",
+        "date": "Date",
+        "rate": "Rate",
+        "fiat": "Fiat",
+        "items": "Items",
+        "download": "Download CSV File"
+    },
+    "LOGIN": {
+        "title": "Sign In",
+        "email": "Email",
+        "email_valid": "Please enter a valid email address.",
+        "password": "Password",
+        "password_valid": "Your password needs more than 6 characters.",
+        "password_forgot": "I forgot my password"
+    },
+    "RESET": {
+        "title": "Reset Password",
+        "email": "Email",
+        "email_note": "Your email address",
+        "reset": "Reset your Password"
+    },
+    "REGISTER": {
+        "title": "Sign Up",
+        "heading": "Create Your Account",
+        "email": "Email",
+        "email_note": "Your email address",
+        "email_warn": "Please enter a valid email.",
+        "password": "Password",
+        "password_note": "Your password",
+        "password_check": "Type password again",
+        "password_verify": "Your password needs more than 6 characters.",
+        "create_account": "Create Account"
+    },
+    "CREATE": {
+
+    },
+    "PAY": {
+
+    },
+    "TIP": {
+
+    },
+    "SUCCESS": {
+
+    },
+    "WALLET": {
+
+    },
+    "WALLET_E": {
+
+    },
+    "WALLET_SEND": {
+
+    },
+    "WALLET_REC": {
+
+    }
+}

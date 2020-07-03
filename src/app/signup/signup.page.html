@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <h3>Create Your Account</h3>
+  <ion-card class="card ion-padding" color="medium">
+    <img class="logo" src="../../assets/merchant.png">
+    <form [formGroup]="signupForm">
+      <ion-item color="medium" lines="none">
+        <!-- <ion-label position="stacked">Email</ion-label> -->
+        <ion-input
+        formControlName="email"
+        type="email"
+        placeholder="Your Email Address" [class.invalid]="!signupForm.controls['email'].valid &&
+        signupForm.controls['email'].touched"
+        ></ion-input> 
+      </ion-item> 
+      <ion-item
+        color="medium"
+        class="error-message"
+        *ngIf="!signupForm.controls['email'].valid
+        && signupForm.controls['email'].touched"
+        >
+        <ion-label>Please enter a valid email.</ion-label>
+      </ion-item>
+      <ion-item color="medium" lines="none">
+        <!-- <ion-label position="stacked">Password</ion-label> -->
+       <ion-input
+        formControlName="password"
+        type="password"
+        placeholder="Your Password" [class.invalid]="!signupForm.controls['password'].valid &&
+        signupForm.controls['password'].touched"
+        ></ion-input> 
+      </ion-item> 
+      <ion-item
+        color="medium"
+        class="error-message"
+        *ngIf="!signupForm.controls['password'].valid &&
+        signupForm.controls['password'].touched"
+        >
+        <ion-label >Your password needs more than 6 characters.</ion-label>
+      </ion-item>
+      <ion-item color="medium" lines="none" *ngIf="signupForm.controls['password'].valid">
+        <!-- <ion-label position="stacked">Re-Enter Password</ion-label>  -->
+        <ion-input
+        formControlName="passwordCheck"
+        type="password"
+        placeholder="Type password again" [class.invalid]="!signupForm.controls['password'].valid &&
+        signupForm.controls['passwordCheck'].touched"
+        >
+        </ion-input> 
+      </ion-item> 
+      <ion-item
+        color="medium"
+        class="error-message"
+        *ngIf="!signupForm.controls['passwordCheck'].valid &&
+        signupForm.controls['passwordCheck'].touched"
+        >
+        <ion-label>Your password needs more than 6 characters.</ion-label>
+      </ion-item>
+      <ion-button class="ion-padding"
+      expand="block" shape="round" color="light" (click)="signupUser(signupForm)" [disabled]="signupForm.value.password != signupForm.value.passwordCheck"
+      >
+      Create Account
+      </ion-button>
+    </form>
+  </ion-card> 
+</ion-content>

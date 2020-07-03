@@ -1,0 +1,24 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Payroll & Tips</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar color="light" debounce="700" placeholder="Filter Employees" [(ngModel)]="searchTerm" (ionChange)="getPerson()" (ionClear)="clearSearch()"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let b of employees" [routerLink]='"/home"' color="medium" detail>
+      <ion-avatar>
+        <img src={{this.b.image}}>
+      </ion-avatar>
+      <ion-label>
+        <p class="ion-text-wrap">Employee Name: {{this.b.name}}</p>
+        <p class="ion-text-wrap">Hourly: {{this.b.hourly}}</p>
+        <p class="ion-text-wrap">Current Tip Balance: {{this.b.amount}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

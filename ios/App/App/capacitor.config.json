@@ -1,0 +1,7 @@
+{
+  "appId": "com.humbl-merchant",
+  "appName": "HUMBL Merchant",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

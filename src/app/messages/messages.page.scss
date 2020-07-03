@@ -1,0 +1,75 @@
+a {
+    color: dodgerblue;
+    font-size: 10px;
+}
+
+.alert {
+    text-align: center;
+}
+
+h2, h3{
+    text-transform: capitalize;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+ion-button{
+    text-transform: inherit;
+}
+
+ion-title {
+    padding: 0;
+    text-transform: capitalize;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+ion-list {
+    margin: 0px;
+    padding: 0px;
+}
+
+ion-text {
+    font-size: 0.8em;
+}
+
+.title{ 
+    margin: 0px;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 0.8em;
+}
+
+.list-p {
+    margin:0px;
+    color: #ffffff;
+}
+.list-c {
+    margin:0px;
+    color: #ffffff;
+    text-transform: capitalize;
+}
+.center {
+    margin-left: 50px;
+    margin: auto;
+}
+
+ion-searchbar{
+    border-radius: 20px;
+    max-width: 400px;
+}
+
+.graph{
+    padding-top: 0px;
+    padding-bottom: 40px;
+}
+
+ion-label{
+   margin-top: 10px;
+   margin-left: 10px;
+   margin: auto;
+}

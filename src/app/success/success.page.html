@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-title>Connect</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="this.success" color="medium" class="ion-padding">
+    <img class="logo" src='../../assets/humbl-white.png'>
+    <ion-avatar>
+      <img src='assets/stripe.png'>
+    </ion-avatar>
+    <h1 class="it">Connect Success!</h1>
+    <p>Now you can start accepting credit cards with HUMBL.</p> 
+    <div padding>
+      <ion-button expand="block" fill="outline" shape="round" (click)="close()" color="light">Close Page</ion-button>
+    </div>
+  </ion-card>
+  <ion-card *ngIf="this.success == false" color="medium" class="ion-padding">
+    <img class="logo" src='../../assets/humbl-white.png'>
+    <ion-avatar>
+      <img src='assets/stripe.png'>
+    </ion-avatar>
+    <h1 class="it">Connect Failed!</h1>
+    <p>Something went wrong. Your account could not be connected.</p> 
+    <div class="ion-padding">
+      <ion-button expand="block" fill="outline" shape="round" (click)="close()" color="light">Close Page</ion-button>
+    </div>
+  </ion-card>
+</ion-content>

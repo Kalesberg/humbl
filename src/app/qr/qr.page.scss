@@ -1,0 +1,50 @@
+.card{
+    margin: auto;
+    padding: 10px;
+    max-width: 220px;
+    max-height: 220px;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: none !important;
+    border: solid 1px #d8d8d8;
+}
+
+ion-button{
+    max-width: 40px;
+    --box-shadow:none;
+    margin-right: 10px;
+}
+
+.qr{
+    display: block;
+    margin: 10px;
+}
+
+.logo{
+    margin: auto;
+    max-width: 150px;
+    margin-top: 40px;
+}
+
+.logo2{
+    margin: auto;
+    max-width: 80px;
+    margin-top: 30px;
+}
+
+img{
+    display: block;
+    margin: auto;
+}
+
+.div2{
+   max-width: 250px;
+   display: flex;
+   justify-content: space-around;
+   margin: auto;
+   margin-bottom: 80px;
+}
+
+.pad{
+    margin-bottom: 80px;
+}

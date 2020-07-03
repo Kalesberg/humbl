@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title>Select Coin</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item (click)="selectCoin('cash')" text-wrap>
+      <ion-label>Cash</ion-label>
+      <ion-icon slot="start" color="medium" name="cash"></ion-icon>
+      <p slot="end">Select</p>
+    </ion-item>
+    <ion-item (click)="selectCoin('card')" text-wrap>
+      <ion-label>Card</ion-label>
+      <ion-icon slot="start" color="medium" name="card"></ion-icon>
+      <p slot="end">Select</p>
+    </ion-item>
+  </ion-list>
+  <div class="ion-padding space">  
+    <ion-button fill="outline" shape="round" color="medium" expand="block" (click)="close()">
+      Close
+    </ion-button>
+  </div> 
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Reviews & Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar *ngIf="this.reviews" debounce="700" placeholder="Search By Transaction ID" [(ngModel)]="searchTerm" (ionClear)="getList()" (ionChange)="setFilteredItems()"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let review of reviews" color="medium">
+      <ion-label>
+        <p class="ion-text-wrap"><span>Date:</span> {{this.review.date.toDate() | date: 'MM/dd/yy'}}</p>
+        <p class="ion-text-wrap"><span>Rating:</span> {{this.review.rating}}</p>
+        <div class="range">
+          <ion-icon *ngIf="this.review.rating > 0" class="stars" color="light" slot="end" name="star"></ion-icon>
+          <ion-icon *ngIf="this.review.rating > 1" class="stars" color="light" slot="end" name="star"></ion-icon>
+          <ion-icon *ngIf="this.review.rating > 2" class="stars" color="light" slot="end" name="star"></ion-icon>
+          <ion-icon *ngIf="this.review.rating > 3" class="stars" color="light" slot="end" name="star"></ion-icon>
+          <ion-icon *ngIf="this.review.rating > 4" class="stars" color="light" slot="end" name="star"></ion-icon>
+        </div>
+        <p class="ion-text-wrap"><span>Feedback:</span> {{this.review.message}}</p>
+        <p class="ion-text-wrap"><span>Transaction:</span> {{this.review.txid}}</p>
+        <p class="ion-text-wrap"><span>Total:</span> {{this.review.total | currency}}</p>
+        <!-- <ion-button color="light" shape="round" [routerLink]='"/payroll"'>Respond</ion-button> -->
+      </ion-label>
+      <ion-button slot="end" fill="outline" size="small" color="light" (click)="confirmDelete(review.sid, review.id)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

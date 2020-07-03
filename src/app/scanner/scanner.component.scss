@@ -1,0 +1,33 @@
+::ng-deep {
+    .qr-scan-area {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;//calc(100% - 50px);
+      top: 0;
+      width: 100%;
+      zxing-scanner {
+        max-width: 100%;
+      }
+  
+      .qr-area {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;//calc(100% - 50px);
+        top: 0;
+        width: 100%;
+        .area {
+          height: 150px;
+          width: 150px;
+          border: 2px solid var(--ion-color-medium);
+        }
+      }
+    }
+}
+
+ion-button{
+  margin-bottom: 50px;
+}

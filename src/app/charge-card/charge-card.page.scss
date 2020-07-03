@@ -1,0 +1,110 @@
+ion-button{
+    margin: auto;
+    max-width: 400px;
+}
+
+.biz-logo{
+    max-width: 50px;
+}
+
+.business-logo{
+    float: right;
+    max-width: 100px;
+}
+
+.qrcode {
+    display: flex;
+    justify-content: center;
+}
+
+.symbol {
+    font-size: 1.0em;
+    text-align: center;
+    font-weight: 700;
+    color: var(--ion-color-medium); 
+}
+
+th{
+    float:left;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+td{
+    float: right;
+    margin-left: 7px;
+}
+
+.tips{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.gratuity{
+    text-align: center;
+    font-weight: 500;
+}
+
+.alt-symbol {
+    // margin-left: 95px;
+    margin-top: 12px;
+    font-size: 1em;
+    font-size: 0.9em;
+    text-align: center;
+    font-weight: 700;
+    color: var(--ion-color-medium); 
+}
+
+.light{
+    color: var(--ion-color-medium);
+    font-weight: 700; 
+}
+
+p{
+    margin-left: 10px;
+}
+
+.details{
+    text-align: left;
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 7px;
+    color: #999999;
+}
+
+.details1{
+    text-align: left;
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 7px;
+    color: #666666;
+    font-weight: 600;
+}
+
+h2{
+    margin-top: 5px;
+}
+
+.cardP{
+    font-size: 0.9em;
+    color: #333333;
+}
+
+.cardTip{
+    font-size: 0.9em;
+    color: #333333;
+    font-weight: 600;
+}
+
+.input-item2{
+    width: 300px;
+    background-color: #999999;
+    margin: auto
+}
+
+.input-item{
+    width: 400px;
+    margin: auto;
+}

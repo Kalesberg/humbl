@@ -1,0 +1,102 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sign In</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-card class="card ion-padding" color="medium">
+      <!-- <img *ngIf="this.merchant" class="logo" src="../assets/merchant.png"> -->
+      <img class="logo" src="../../assets/merchant.png">
+      <!-- <ion-avatar>
+        <img src="../assets/employee.png">
+      </ion-avatar> -->
+      <!-- <ion-segment (ionChange)="segmentChanged($event)" color="medium" value="agent">
+        <ion-segment-button value="agent">
+          <ion-label>Agent</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="merchant">
+          <ion-label>Merchant</ion-label>
+        </ion-segment-button>
+      </ion-segment> -->
+      <form [formGroup]="loginForm">
+        <ion-item class="padding" color="medium" lines="none">
+          <!-- <ion-label position="stacked">Email</ion-label> -->
+          <ion-input
+            formControlName="email"
+            type="email"
+            placeholder="Your email address"
+            [class.invalid]="!loginForm.controls['email'].valid &&
+            loginForm.controls['email'].touched"
+          >
+          </ion-input>
+        </ion-item>
+        <ion-item
+          color="medium"
+          class="error-message"
+          *ngIf="!loginForm.controls['email'].valid &&
+              loginForm.controls['email'].touched"
+        >
+          <ion-label color="light">Please enter a valid email address.</ion-label>
+        </ion-item>
+      
+        <ion-item class="padding" color="medium" lines="none">
+          <!-- <ion-label position="stacked">Password</ion-label> -->
+          <ion-input
+            formControlName="password"
+            type="password"
+            placeholder="Your password"
+            [class.invalid]="!loginForm.controls['password'].valid&& loginForm.controls['password'].touched"
+          >
+          </ion-input>
+        </ion-item>
+        <ion-item
+          color="medium"
+          class="error-message"
+          *ngIf="!loginForm.controls['password'].valid
+            && loginForm.controls['password'].touched"
+        >
+          <ion-label color="light">Your password needs more than 6 characters.</ion-label>
+        </ion-item>
+
+        <ion-button class="ion-padding" color="light" shape="round" (click)="loginUser(loginForm)" expand="block" [disabled]="!loginForm.valid">Sign In</ion-button>
+        <!-- <ion-button *ngIf="this.merchant" color="light" class="btn" [href]="'/home'" expand="block" [disabled]="!loginForm.valid">
+          Sign In
+        </ion-button> -->
+        
+      </form>
+      <div class="space"> 
+        <!-- <ion-button expand="block" (click)="signInWithGoogle()" class="button btn-social btn-google"
+          *ngIf="!authService.currentUser">
+        <i class="fa fa-google-plus fa-lg"></i><ion-icon slot="start" name="logo-google"></ion-icon>Connect Google
+        </ion-button> -->
+        <ion-row>
+          <ion-col>
+            <ion-button color="medium" expand="block" routerLink="/signup">
+              Create a new account
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="medium" expand="block" routerLink="/reset-password">
+              I forgot my password 🙁
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>  
+    </ion-card>
+  <!-- <ion-col size="12" size-sm>
+    <p>Digi-ID is built into your DigiByte mobile wallet app.</p>
+    <ion-card class="card" padding>
+      <div class="qr">
+        <qrcode [qrdata]="jwt" [size]="256" [level]="'M'" [usesvg]="true" [colordark]="'#182650'"></qrcode>
+      </div>
+      <div class="logo">
+        <img src="../../assets/logo.svg">
+      </div>
+    </ion-card>
+  </ion-col> -->
+</ion-content>
+

@@ -1,0 +1,65 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Charge Card</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="this.businessEmail != null">
+    <img class="business-logo" src="{{this.logo}}"/>
+  </div>
+  <div class="line"></div>
+  <div class="input-item">
+    <div>
+      <table>
+        <tr>
+          <th>Subtotal</th>
+          <td>{{this.symbol}} {{this.subtotal | number : '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th>HUMBL Fee</th>
+          <td>{{this.symbol}} {{this.fee / 100 | number : '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th>Tax</th>
+          <td>{{this.symbol}} {{this.tax | number : '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th>Tip</th>
+          <td>{{this.symbol}} {{this.tipDisplay | number : '1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th>TOTAL</th>
+          <td>{{this.symbol}} {{this.total | number : '1.2-2'}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="this.subtotal">
+    <!-- Tip Selection -->
+    <p class="gratuity">Gratuity</p>
+    <div class="tips">
+      <ion-chip (click)="selectTip('.10')">
+        <ion-label value=".10">10%</ion-label>
+      </ion-chip>
+      <ion-chip (click)="selectTip('.15')">
+        <ion-label value=".15">15%</ion-label>
+      </ion-chip>
+      <ion-chip (click)="selectTip('.20')">
+        <ion-label>20%</ion-label>
+      </ion-chip>
+      <ion-chip (click)="customTip()">
+        <ion-label>Custom</ion-label>
+      </ion-chip>
+    </div>
+  </div>
+  <div>
+    <ion-button expand="block" shape="round" color="medium" (click)="scanQR()">Scan Customer's Card QR<ion-icon slot="start" color="light" name="qr-code"></ion-icon></ion-button>
+  </div>  
+</ion-content>

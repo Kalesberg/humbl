@@ -1,0 +1,29 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settings"></ion-back-button>
+    </ion-buttons>
+    <ion-button slot="end" color="medium" size="small" shape="round" (click)="print()"><ion-icon color="light" name="print-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="logo-div">
+    <img class="logo" src="{{this.logo}}">
+  </div>
+  <div (click)="presentEmailPrompt()">
+    <ion-card class="card" color="light" *ngIf="this.username">
+      <div class="qr">
+          <qrcode [qrdata]="this.username" [size]="256" [level]="'M'" colorlight="#ffffff" colordark="#333333"></qrcode>
+      </div> 
+    </ion-card>
+  </div>
+  <div class="logo-div2">
+    <img class="logo2" src="../../assets/humbl-blue.png">
+  </div>
+  <div class="div2">
+    <img class="logo" src="../../assets/visa-logo.png">
+    <img class="logo" src="../../assets/mc.png">
+    <img class="logo" src="../../assets/discover.png">
+    <img class="logo" src="../../assets/amex.png">
+  </div>
+</ion-content>

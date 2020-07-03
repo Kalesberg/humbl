@@ -1,0 +1,75 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Charge Cash</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item *ngIf="this.currency === 'USD'" >
+          <ion-label>
+            <p>Subtotal: {{this.subtotal | number: '1.2-2'}}</p>
+            <p>Tax: {{this.tax | number: '1.2-2'}}</p>
+            <h2 class="light">Total: <ion-icon name="logo-usd"></ion-icon>{{this.amount | number: '1.2-2'}}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="this.currency === 'EUR'">
+          <ion-label>
+            <p>Subtotal: {{this.subtotal | number: '1.2-2'}}</p>
+            <p>Tax: {{this.tax | number: '1.2-2'}}</p>
+            <h2 class="light">Total: <ion-icon name="logo-euro"></ion-icon>{{this.amount | number: '1.2-2'}}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="this.currency !== 'USD' && this.currency !== 'EUR'">
+          <ion-label>
+            <p>Subtotal: {{this.subtotal | number: '1.2-2'}}</p>
+            <p>Tax: {{this.tax | number: '1.2-2'}}</p>
+            <h2 class="light">Total: {{this.currency}} {{this.amount | number: '1.2-2'}}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <div *ngIf="this.businessEmail != null">
+          <img class="business-logo" src="{{this.logo}}"/>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="line"></div>
+  <div class="banner">
+    <p class="center">Enter Amount Received</p> 
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <!-- <ion-input class="input" placeholder="Enter Amount 0.00" [(ngModel)]="this.received" type="number" (ionChange)="getChange()"></ion-input> -->
+          <ion-input class="input" type="text" [ngModel]="this.received | number:'1.2-2'" (ngModelChange)="this.received=$event" (click)="mbscNumpad.instance.show()" (ionChange)="getChange()" placeholder="Enter Amount 0.00" color="medium" readonly></ion-input>
+          <mbsc-form-group inset>
+            <!-- <div>
+                <input type="number" data-role="stepper" [(ngModel)]="amount" min="0" max="2000" step="10" (click)="mbscNumpad.instance.show()" readonly />
+            </div> -->
+          </mbsc-form-group>
+          <div class="md-numpad" mbsc-numpad [mbsc-options]="numpadSettings" [(ngModel)]="received" #mbscNumpad="mobiscroll"></div>
+          <div class="mbsc-btn-group-block"></div> 
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <p *ngIf="this.received" class="center">Change Due</p>
+    <ion-row>    
+      <ion-col>
+        <p class="input2" color="light" type="number">{{this.change | number: '1.2-2'}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="ion-padding space">
+    <ion-button expand="block" shape="round" color="medium" (click)="presentConfirmSuccess()">Mark Completed<ion-icon slot="end" name="checkmark-circle-outline"></ion-icon></ion-button>
+  </div>
+  <!-- {{this.decoded1.cardNumber}} -->
+</ion-content>

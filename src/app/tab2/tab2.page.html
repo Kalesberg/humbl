@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- <div slot="end">
+      <ion-item color="medium" lines="none">
+        <ion-button fill="outline" size="small" color="light" (click)="this.selectCoin()">Method</ion-button>
+      </ion-item>
+    </div> -->
+    <ion-title>Terminal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">  
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <div slot="end">
+        <ion-item lines="none">
+          <ion-button size="small" color="medium" (click)="saveItem(item)"><ion-icon name="add"></ion-icon></ion-button>
+          <ion-button size="small" color="medium" fill="outline" (click)="deleteItem(item)"><ion-icon name="remove"></ion-icon></ion-button>
+        </ion-item>
+      </div>
+      <ion-text>
+        <h3 class="item-desc" *ngIf="this.currency === 'USD'">{{ item.price | currency: 0}}</h3>
+        <h3 class="item-desc" *ngIf="this.currency != 'USD'">{{ item.price | number: '1.2-2'}}</h3>
+      </ion-text>
+      <ion-label class="item-desc-desc" text-wrap>{{ item.description }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>  
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <div class="ion-padding">
+      <h2 class="item-total" *ngIf="this.currency === 'USD'">Total: {{ this.sum | currency: 0 }}</h2>
+      <h2 class="item-total" *ngIf="this.currency != 'USD'">Total: <span>{{ this.currency }}</span> {{ this.sum | number: '1.2-2' }}</h2>
+      <p *ngIf="this.coin" class="current-coin">Pay Method: {{this.coin}}</p>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button id="add" fill="outline" shape="round" expand="block" color="medium" (click)="addItem()">Add Item</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="medium" expand="block" shape="round" [disabled]="this.sum <= 0" class="total" (click)="this.selectCoin()">TOTAL</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-footer>
