@@ -45,20 +45,20 @@ export class Tab3Page {
   public businessAddress: string;
   public coordinates: any;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, 
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,
     public storage: Storage, public toast: ToastController, private router: Router,
-    private settingsService: SettingsService, 
+    private settingsService: SettingsService,
     private afStorage: AngularFireStorage,
     public changeRef: ChangeDetectorRef,
     public crypto: CryptoService) {
-        
+
     this.storage.get('myTax').then((data) => {
         this.taxRate = data;
       });
 
     this.storage.get('myOptionalTax').then((data) => {
         this.optionalTax = !data ? false : data;
-      }); 
+      });
 
   }
 
@@ -66,7 +66,7 @@ export class Tab3Page {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.currentUser = user.uid;
-      } 
+      }
       this.settingsService
       .getBusinessProfile()
       .get()
@@ -119,8 +119,8 @@ export class Tab3Page {
         }
       ],
       buttons: [
-        { 
-          text: 'Cancel', 
+        {
+          text: 'Cancel',
           role: 'cancel'
         }, {
           text: 'Save',
@@ -148,8 +148,8 @@ export class Tab3Page {
         }
       ],
       buttons: [
-        { 
-          text: 'Cancel', 
+        {
+          text: 'Cancel',
           role: 'cancel'
         }, {
           text: 'Save',
@@ -188,8 +188,8 @@ export class Tab3Page {
       subHeader: 'Special Characters',
       message: "Please remove special characters like: '# or .' from your address",
       buttons: [
-        { 
-          text: 'Dismiss', 
+        {
+          text: 'Dismiss',
           role: 'cancel'
         }
       ],
@@ -204,7 +204,7 @@ export class Tab3Page {
   editOptionalTax(){
     this.storage.set('myOptionalTax', this.optionalTax);
   }
-  
+
   editTaxRate(){
     this.storage.set('myTax', this.taxRate);
   }
@@ -228,8 +228,8 @@ export class Tab3Page {
 }
 
   goToHelp(): void {
-      location.href = `mailto:support@humbl.io`;  
-  } 
+      location.href = `mailto:support@humbl.io`;
+  }
 
   stripe(){
     location.href = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${environment.stripe_client}&scope=read_write`;
@@ -272,13 +272,13 @@ export class Tab3Page {
       subHeader: 'Disconnect Stripe',
       message: 'This will disconnect Stripe from your app. You must also disconnect manually in the Stripe dashboard.',
       buttons: [
-        { 
-          text: 'Cancel', 
+        {
+          text: 'Cancel',
           role: 'cancel'
         }, {
           text: 'Disconnect',
           handler: () => {
-            this.stripeId = null; 
+            this.stripeId = null;
             this.settingsService.updateStripeId(this.stripeId);
             this.presentToast();
           },

@@ -1,0 +1,8 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target" : {
+        "namespace": "android_app",
+        "package_name": "com.humblmerchant",
+        "sha256_cert_fingerprints": ["56:70:65:EC:8A:FB:9E:CB:3A:9E:7D:C9:6A:4F:94:B8:12:D8:47:F1:62:05:D5:12:7B:EF:2E:FA:E0:71:DE:06"]
+    }
+  }]

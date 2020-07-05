@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController, AlertController, ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { ItemsService } from '../services/items.service';
-import { mobiscroll,  MbscNumpadDecimalOptions } from '@mobiscroll/angular';
+import { mobiscroll, MbscNumpadDecimalOptions } from '@mobiscroll/angular';
 mobiscroll.settings = {
   theme: 'ios',
   themeVariant: 'light'

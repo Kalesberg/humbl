@@ -23,7 +23,7 @@ export class SettingsService {
   getBusinessProfile(): firebase.firestore.DocumentReference {
     return this.businessProfile;
   }
-  
+
   updateLogo(logoUrl: string): Promise<any> {
     return this.businessProfile.update({ logoUrl });
   }
@@ -62,7 +62,7 @@ export class SettingsService {
       this.currentUser.email,
       password
     );
-  
+
     return this.currentUser
       .reauthenticateAndRetrieveDataWithCredential(credential)
       .then(() => {
@@ -80,7 +80,7 @@ export class SettingsService {
       this.currentUser.email,
       oldPassword
     );
-  
+
     return this.currentUser
       .reauthenticateAndRetrieveDataWithCredential(credential)
       .then(() => {

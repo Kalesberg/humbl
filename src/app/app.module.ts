@@ -15,10 +15,10 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { Network } from '@ionic-native/network/ngx';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore'; 
-import { AngularFireAuthModule } from '@angular/fire/auth'; 
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireMessagingModule } from '@angular/fire/messaging'; 
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {Stripe} from '@ionic-native/stripe/ngx';
 import {environment} from '../environments/environment';
@@ -41,13 +41,13 @@ firebase.initializeApp(environment.firebaseConfig);
     MbscModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule, 
+    AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireMessagingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),
-    BrowserModule, 
+    BrowserModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,

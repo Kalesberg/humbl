@@ -30,6 +30,11 @@
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
               },
+              {
+                "glob": "**/*",
+                "input": "src/.well-known",
+                "output": ".well-known/"
+              },
               "src/manifest.webmanifest",
               "src/firebase-messaging-sw.js"
             ],
@@ -191,7 +196,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@ionic/angular-toolkit"
+    "defaultCollection": "@ionic/angular-toolkit",
+    "analytics": "7eb2afa7-22e0-4b0a-8718-e33bc723d85a"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

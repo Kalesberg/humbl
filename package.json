@@ -30,8 +30,11 @@
         "@capacitor/ios": "^2.2.0",
         "@ionic-native/barcode-scanner": "^5.27.0",
         "@ionic-native/core": "^5.23.0",
+        "@ionic-native/deeplinks": "^5.27.0",
         "@ionic-native/email-composer": "^5.6.0",
         "@ionic-native/network": "^5.6.0",
+        "@ionic-native/splash-screen": "^5.27.0",
+        "@ionic-native/status-bar": "^5.27.0",
         "@ionic-native/stripe": "^5.22.0",
         "@ionic/angular": "5.0.5",
         "@ionic/storage": "^2.2.0",
@@ -49,6 +52,7 @@
         "core-js": "^3.6.5",
         "crypto-js": "^4.0.0",
         "firebase": "^7.15.0",
+        "ionic-plugin-deeplinks": "^1.0.20",
         "jwt-simple": "^0.5.6",
         "md5-typescript": "^1.0.5",
         "ngx-clipboard": "^12.2.1",
@@ -99,7 +103,13 @@
             "cordova-plugin-stripe": {},
             "cordova-plugin-whitelist": {},
             "cordova-plugin-ionic-keyboard": {},
-            "cordova-clipboard": {}
+            "cordova-clipboard": {},
+            "ionic-plugin-deeplinks": {
+                "URL_SCHEME": "humblmerchant",
+                "DEEPLINK_SCHEME": "https",
+                "DEEPLINK_HOST": "merchantportal.humbl.io",
+                "ANDROID_PATH_PREFIX": "/"
+            }
         }
     },
     "main": "index.html",

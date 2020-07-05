@@ -8,15 +8,15 @@ import { SettingsService } from './services/settings.service';
 import * as CryptoJs from 'crypto-js';
 import { SwUpdate } from '@angular/service-worker';
 import { PushService } from './services/push.service';
-import {
-  Plugins,
+import { 
+  Plugins, 
+  AppState,
   PushNotification,
   PushNotificationToken,
   PushNotificationActionPerformed } from '@capacitor/core';
-
 const { PushNotifications } = Plugins;
 const { SplashScreen } = Plugins;
-
+const { App } = Plugins;
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -75,14 +75,48 @@ export class AppComponent {
     private settingsService: SettingsService,
     public ngZone: NgZone,
     private swUpdate: SwUpdate,
-    private pushService: PushService) {
+    private pushService: PushService
+    ) {
+
     this.initializeApp();
     this.authCheck();
   }
 
-  initializeApp(){
+  // ionViewWillEnter(){
+  //   this.authCheck();
+  // }
+
+  initializeApp() {
+
     this.platform.ready().then(() => {
       SplashScreen.hide();
+      // this.deeplinks.route({
+      //   '/success/:slug': 'success',
+      // }).subscribe((match) => {
+      //   console.log("----------Succeefully matched route--------");
+      //   const internalPath = `/${match.$route}/${match.$args['slug']}`;
+      //   this.ngZone.run(() => {
+      //     this.router.navigateByUrl(internalPath);
+      //   });
+      // }, (noMatch) => {
+      //     console.log("not mathching!!!!");
+      // })
+
+      App.addListener('appStateChange', (state: AppState) => {
+        console.log('App state changed. Is active?', state.isActive);
+      });
+
+      App.addListener('appUrlOpen', (data: any) => {
+        console.log("----Opening New Url----", data.url);
+        this.ngZone.run(() => {
+          const slug = data.url.split(".io").pop();
+          console.log("----Url Link----", slug);
+          if (slug) {
+            this.router.navigateByUrl(slug);
+          }
+        })
+      })
+
       this.listenDisconnect();
       if(!this.platform.is('ios') && !this.platform.is('android')){
         this.pushService.receiveMessage();
