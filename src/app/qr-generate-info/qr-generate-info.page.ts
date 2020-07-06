@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -10,12 +10,23 @@ import { NavController } from '@ionic/angular';
 export class QrGenerateInfoPage implements OnInit {
 
   public qrForOptions:any =null;
-  public selectedColor = "#22ade4";
+  public selectedColor: string = "#22ade4";
+  public iamgeUrl: any = "";
+  public pickerWidth = 338;
+
   constructor(private route: ActivatedRoute,
     public nav: NavController) { 
     let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
     this.qrForOptions = JSON.parse(newqrForOptions)
-    console.log(this.qrForOptions)}
+    console.log(this.qrForOptions)
+    console.log(window.innerWidth)
+    if(window.innerWidth<340){
+      this.pickerWidth = 180;
+    }
+    else {
+      this.pickerWidth = 338;
+    }
+  }
 
   ngOnInit() {
   }
@@ -77,7 +88,7 @@ export class QrGenerateInfoPage implements OnInit {
       // m.innerHTML = msg;
     }
   
-  parseFile(file) {
+  async parseFile(file) {
   
       console.log(file.name);
       this.output(
@@ -95,7 +106,8 @@ export class QrGenerateInfoPage implements OnInit {
         document.getElementById('notimage').classList.add("hidden");
         // Thumbnail Preview
         document.getElementById('file-image').classList.remove("hidden");
-       (<any>document.getElementById('file-image')).src = URL.createObjectURL(file);
+        this.iamgeUrl = await this.toBase64(file);
+       (<any>document.getElementById('file-image')).src = this.iamgeUrl;
       }
       else {
         document.getElementById('file-image').classList.add("hidden");
@@ -162,12 +174,27 @@ export class QrGenerateInfoPage implements OnInit {
       this.selectedColor = ev.color.hex;
     }
 
-    next(){
-      this.qrForOptions.qrcolor = this.selectedColor.replace('#','');
+    async next(status){
+      this.qrForOptions.qrcolor = status? this.selectedColor.replace('#',''): '';
       let url = '/qr/'+ JSON.stringify(this.qrForOptions);
       console.log(url)
-      this.nav.navigateForward(url);
+      let navigationExtras: NavigationExtras = {
+        state: {
+          imgSrc: status? this.iamgeUrl: ''
+        }
+      };
+      this.nav.navigateForward(url, navigationExtras);
     }
+
+  toBase64(file) {
+   return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  }
+
     back(){
       this.nav.back();
     }

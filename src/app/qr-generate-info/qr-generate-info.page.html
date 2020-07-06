@@ -37,14 +37,15 @@
         </form>
       </div>
       <div class="color-picker">
-        <color-sketch [color]="selectedColor" width="338" height="205"
+        <color-sketch [color]="selectedColor" [width]="pickerWidth" height="205"
         (onChangeComplete)="handleChangeComplete($event)"></color-sketch>
         <!-- <color-sketch [color]="state" (onChangeComplete)="changeComplete($event)"></color-sketch> -->
       </div>
     </div>
     <div class="btn-wrapper next-btn-wrapper">
+      <p class="makenew-title" (click)="next(false)">I don't have logo or brand color</p>
       <ion-button class="btn-main btn-next" shape="round" 
-      color="medium" fill="outline" (click)="next()">
+      color="medium" fill="outline" (click)="next(true)">
         Next
       <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
       </ion-button>

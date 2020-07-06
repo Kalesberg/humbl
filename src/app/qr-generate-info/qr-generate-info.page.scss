@@ -18,7 +18,7 @@ p {
 .uploader {
     display: block;
     clear: both;
-    margin: 0px 10% 0px 0px;
+    margin: 0px 5% 0px 0px;
     width: 338px;
     height: 205px;
 //   width: 100%;
@@ -172,4 +172,54 @@ p {
 }
 .next-btn-wrapper {
     margin-top: 190px;
+}
+.makenew-title{
+    color: var(--ion-color-medium);
+    font-size: 16px;
+    margin: 0px;
+    font-weight: bold;
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 725px){
+  .uploader{
+    margin: 0px 3% 0px 0px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .uploader{
+    margin: 0px 2% 0px 0px;
+  }
+}
+@media screen and (max-width: 690px){
+  .uploader{
+    margin: 0px 0px 0px 1%;
+  }
+  .color-picker{
+    margin: 20px 0px 0px 2%;
+  }
+}
+@media screen and (max-width: 420px){
+  .uploader{
+    margin: 0px 0px 0px 0px;
+  }
+  .color-picker{
+    margin: 20px 0px 0px 0px;
+  }
+}
+@media screen and (max-width: 340px){
+  .uploader{
+    margin: 0px 0px 0px 6%;
+  }
+  .uploader label{
+    max-width: 338px;
+    height: 205px;
+    width: 80%;
+  }
+  .color-picker{
+    margin: 20px 0px 0px 0px;
+    padding: 16px;
+  }
 }

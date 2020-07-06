@@ -1,9 +1,9 @@
 import { Component, ɵPlayerFactory} from '@angular/core';
 import * as firebase from 'firebase/app';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { SettingsService } from '../services/settings.service';
 import * as CryptoJs from 'crypto-js';
-import { AlertController, Platform } from '@ionic/angular';
+import { AlertController, Platform, NavController } from '@ionic/angular';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @Component({
@@ -23,8 +23,9 @@ export class QrPage {
   public emailURL: string;
   
   public qrForOptions:any =null;
-  public selectedColor = "#22ade4";
-  public lightcolor = "#ffffff";
+  public selectedColor: string = "#22ade4";
+  public lightcolor: string = "#ffffff";
+  public imgSrc: string = ""
 
   constructor(
     public router: Router,
@@ -32,12 +33,17 @@ export class QrPage {
     public alertCtrl: AlertController,
     public platform: Platform,
     public emailComposer: EmailComposer,
-    private route: ActivatedRoute,) {
+    private route: ActivatedRoute,
+    public nav: NavController) {
       let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
-      console.log("newqrForOptions", newqrForOptions)
       this.qrForOptions = JSON.parse(newqrForOptions);
       this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? '#'+ this.qrForOptions.qrcolor: "#22ade4";
-      console.log("this.selectedColor ", this.selectedColor )
+
+    this.route.queryParams.subscribe(async (params) => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.imgSrc = this.router.getCurrentNavigation().extras.state.imgSrc;
+      }
+    })
   }
 
   ionViewWillEnter(){
@@ -138,4 +144,19 @@ export class QrPage {
     window.location.href = `mailto:${email.to}?subject=${email.subject}&body=${email.body}`;
   }
 
+  next(){
+    this.qrForOptions.qrcolor = this.selectedColor.replace('#','');
+      let url = '/qr-standee/'+ JSON.stringify(this.qrForOptions);
+      console.log(url)
+      let navigationExtras: NavigationExtras = {
+        state: {
+          imgSrc: this.imgSrc,
+          qrData: this.username
+        }
+      };
+      this.nav.navigateForward(url, navigationExtras);
+  }
+  back(){
+    this.nav.back();
+  }
 }

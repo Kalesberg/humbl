@@ -3,30 +3,44 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-button slot="end" color="medium" size="small" shape="round" (click)="print()"><ion-icon color="light" name="print-outline"></ion-icon></ion-button>
+    <!-- <ion-button slot="end" color="medium" size="small" shape="round" (click)="print()"><ion-icon color="light" name="print-outline"></ion-icon></ion-button> -->
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="logo-div">
+  <!-- <div class="logo-div">
     <img class="logo" src="{{this.logo}}">
+  </div> -->
+  <div class="content-wrapper">
+    <div class="title-wrapper">
+      <h3 class="title-text">Your code.</h3>
+    </div>
+
+  <div class="barcode-wrapper">
+    <div class="barcode-content" #barcode3>
+      <div class="barcode-data data3" (click)="presentEmailPrompt()">
+        <ion-card class="card" color="light" *ngIf="this.username">
+              <qrcode [qrdata]="this.username" [width]="250" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
+              [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+          <!-- </div>  -->
+        </ion-card>
+        <div class="logo-div2" *ngIf="imgSrc">
+          <img class="logo2" [src]="imgSrc">
+        </div>
+      </div>
+      <span class="share-text" (click)="printBarcode(barcode3)">Download and print share</span> 
+    </div>
   </div>
-  <div (click)="presentEmailPrompt()">
-    <ion-card class="card" color="light" *ngIf="this.username">
-      <!-- <div class="qr"> -->
-          <!-- <qrcode [qrdata]="this.username" [size]="256" [level]="'M'" [usesvg]="true" 
-          [colorlight]="lightcolor" [colordark]="selectedColor"></qrcode> -->
-          <qrcode [qrdata]="this.username" [width]="220" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
-          [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
-      <!-- </div>  -->
-    </ion-card>
+  <div class="btn-wrapper next-btn-wrapper">
+    <ion-button class="btn-main btn-next " shape="round" 
+      color="medium" fill="outline" (click)="next()">
+      Generate Standees
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+      <ion-button class="btn-main" shape="round" 
+      color="medium" fill="outline" (click)="back()">
+      <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+        Back
+      </ion-button>
   </div>
-  <div class="logo-div2">
-    <img class="logo2" src="../../assets/humbl-blue.png">
-  </div>
-  <div class="div2">
-    <img class="logo" src="../../assets/visa-logo.png">
-    <img class="logo" src="../../assets/mc.png">
-    <img class="logo" src="../../assets/discover.png">
-    <img class="logo" src="../../assets/amex.png">
-  </div>
+</div>
 </ion-content>

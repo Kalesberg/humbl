@@ -44,6 +44,10 @@ const routes: Routes = [
     path: 'qr-generate-info/:qroptions',
     loadChildren: () => import('./qr-generate-info/qr-generate-info.module').then( m => m.QrGenerateInfoPageModule)
   },
+  {
+    path: 'qr-standee/:qroptions',
+    loadChildren: () => import('./qr-standee/qr-standee.module').then( m => m.QrStandeePageModule)
+  },
 ];
 @NgModule({
   imports: [

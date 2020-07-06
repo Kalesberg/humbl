@@ -8,6 +8,13 @@
     box-shadow: none !important;
     // border: solid 1px #d8d8d8;
 }
+
+// ion-button{
+//     max-width: 40px;
+//     --box-shadow:none;
+//     margin-right: 10px;
+// }
+
 .qr{
     display: block;
     margin: 10px;
@@ -19,9 +26,11 @@
 }
 
 .logo2{
+    // margin: auto;
+    // max-width: 80px;
+    // margin-top: 30px;
     width: 90%;
     height: 70px;
-    margin-bottom: 10px;
 }
 
 img{
@@ -54,8 +63,8 @@ img{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    // border: 2px solid #9A9B9B;
-    // height: 406px;
+    border: 2px solid #9A9B9B;
+    height: 406px;
     width: 270px;
 }
 
@@ -95,7 +104,17 @@ img{
 }
 .next-btn-wrapper {
     margin-top: 30px;
+    padding-bottom: 20px;
 }
-.btn-next {
-    width: 250px;
+
+.content-wrapper{
+    justify-content: start;
+}
+.title-wrapper {
+    margin-top: 20px;
+}
+@media screen and (max-width: 420px){
+    .share-text{
+        font-size: 16px;
+    }
 }

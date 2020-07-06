@@ -1,0 +1,111 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-button slot="end" color="medium" size="small" shape="round" (click)="print()"><ion-icon color="light" name="print-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <div class="logo-div">
+    <img class="logo" src="{{this.logo}}">
+  </div> -->
+  <div class="content-wrapper">
+    <div class="title-wrapper">
+      <h3 class="title-text">Your standee.</h3>
+    </div>
+
+  <div class="barcode-wrapper">
+    <div class="barcode-content">
+      <span class="size-text">4 x 6</span> 
+      <div class="barcode-data data1">
+        <div class="tag-wrapper">
+          <span *ngIf="qrForOptions.scan">Scan.</span> 
+          <span *ngIf="qrForOptions.pay">Pay.</span>
+          <span *ngIf="qrForOptions.tip">Tip.</span>
+          <span *ngIf="qrForOptions.review">Review.</span>
+        </div>
+        <div #barcode1>
+          <ion-card class="card" color="light" *ngIf="this.qrData">
+                <qrcode [qrdata]="this.qrData" [width]="150" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
+                [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+          </ion-card>
+        </div>
+        <div class="logo-div2" *ngIf="imgSrc">
+          <img class="logo2" [src]="imgSrc">
+        </div>
+        <div class="div2">
+          <img class="logo" [src]="visaImg">
+          <img class="logo" [src]="mcImg">
+          <img class="logo" [src]="discoverImg">
+          <img class="logo" [src]="amexImg">
+        </div>
+      </div>
+      <span class="share-text" (click)="printBarcode(barcode1)">Download and print share</span> 
+    </div>
+
+    <div class="barcode-content">
+      <span class="size-text">5 x 7</span> 
+      <div class="barcode-data data2" (click)="presentEmailPrompt()">
+        <div class="tag-wrapper">
+          <span *ngIf="qrForOptions.scan">Scan.</span> 
+          <span *ngIf="qrForOptions.pay">Pay.</span>
+          <span *ngIf="qrForOptions.tip">Tip.</span>
+          <span *ngIf="qrForOptions.review">Review.</span>
+        </div>
+        <div #barcode2>
+          <ion-card class="card" color="light" *ngIf="this.qrData">
+                <qrcode [qrdata]="this.qrData" [width]="200" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
+                [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+          </ion-card>
+        </div>
+        <div *ngIf="imgSrc">
+          <img class="logo2" [src]="imgSrc">
+        </div>
+        <div class="div2">
+          <img class="logo" [src]="visaImg">
+          <img class="logo" [src]="mcImg">
+          <img class="logo" [src]="discoverImg">
+          <img class="logo" [src]="amexImg">
+        </div>
+      </div>
+    <span class="share-text" (click)="printBarcode(barcode2)">Download and print share</span> 
+  </div>
+
+  <div class="barcode-content">
+    <span class="size-text">8.5 x 11</span> 
+    <div class="barcode-data data3" (click)="presentEmailPrompt()">
+      <div class="tag-wrapper">
+        <span *ngIf="qrForOptions.scan">Scan.</span> 
+        <span *ngIf="qrForOptions.pay">Pay.</span>
+        <span *ngIf="qrForOptions.tip">Tip.</span>
+        <span *ngIf="qrForOptions.review">Review.</span>
+      </div>
+      <div #barcode3>
+        <ion-card class="card" color="light" *ngIf="this.qrData">
+              <qrcode [qrdata]="this.qrData" [width]="250" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
+              [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+        </ion-card>
+      </div>
+      <div class="logo-div2" *ngIf="imgSrc">
+        <img class="logo2" [src]="imgSrc">
+      </div>
+      <div class="div2">
+        <img class="logo" [src]="visaImg">
+        <img class="logo" [src]="mcImg">
+        <img class="logo" [src]="discoverImg">
+        <img class="logo" [src]="amexImg">
+      </div>
+    </div>
+    <span class="share-text" (click)="printBarcode(barcode3)">Download and print share</span> 
+  </div>
+  </div>
+  <div class="btn-wrapper next-btn-wrapper">
+    <ion-button class="btn-main btn-next" shape="round" 
+    color="medium" fill="outline" (click)="finish(false)">
+      Finish
+    </ion-button>
+    <p class="makenew-title" (click)="finish(true)">Make a new standee</p>
+  </div>
+</div>
+</ion-content>
