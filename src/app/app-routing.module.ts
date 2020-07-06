@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'reset-password', loadChildren: ()=>import('./reset-password/reset-password.module').then(m => m.ResetPasswordPageModule)},
   { path: 'success', loadChildren: ()=> import('./success/success.module').then(m => m.SuccessPageModule)},
   { path: 'account', loadChildren: ()=> import('./account/account.module').then(m => m.AccountPageModule), canActivate: [AuthGuard]},
-  {path: 'qr', loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule), canActivate: [AuthGuard]},
+  {path: 'qr/:qroptions', loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule), canActivate: [AuthGuard]},
   { path: 'charge-card', 
   loadChildren: ()=>import('./charge-card/charge-card.module').then(m => m.ChargeCardPageModule), canActivate: [AuthGuard]
   },
@@ -35,6 +35,14 @@ const routes: Routes = [
   {
     path: 'tx-detail/:id/:ext',
     loadChildren: () => import('./tx-detail/tx-detail.module').then( m => m.TxDetailPageModule), canActivate: [AuthGuard]
+  },
+  {
+    path: 'qr-dashboard',
+    loadChildren: () => import('./qr-dashboard/qr-dashboard.module').then( m => m.QrDashboardPageModule)
+  },
+  {
+    path: 'qr-generate-info/:qroptions',
+    loadChildren: () => import('./qr-generate-info/qr-generate-info.module').then( m => m.QrGenerateInfoPageModule)
   },
 ];
 @NgModule({

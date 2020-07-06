@@ -55,7 +55,7 @@ export class AppComponent {
     },
     {
       title: 'POS QR',
-      url: '/qr',
+      url: '/qr-dashboard',
       icon: 'qr-code'
     },
     {

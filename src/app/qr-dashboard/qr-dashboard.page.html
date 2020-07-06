@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/settings"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div class="content-wrapper">
+  <div class="title-wrapper">
+    <h3 class="title-text">What will you be using your QR code for?</h3>
+    <h3 class="title-text">(Choose as many as you need)</h3>
+  </div>
+  <div class="btn-wrapper">
+    <ion-button class="btn-main" shape="round" color="medium" 
+    [fill]="qrForOptions.scan?'solid':'outline'" (click)="qrForOptions.scan= !qrForOptions.scan">
+      Scan
+    </ion-button>
+    <ion-button class="btn-main" shape="round" color="medium" 
+    [fill]="qrForOptions.pay?'solid':'outline'" (click)="qrForOptions.pay= !qrForOptions.pay">
+      Pay
+    </ion-button>
+    <ion-button class="btn-main" shape="round" color="medium" 
+    [fill]="qrForOptions.tip?'solid':'outline'" (click)="qrForOptions.tip= !qrForOptions.tip">
+      Tip
+    </ion-button>
+    <ion-button class="btn-main" shape="round" color="medium" 
+    [fill]="qrForOptions.review?'solid':'outline'" (click)="qrForOptions.review= !qrForOptions.review">
+      Review
+    </ion-button>
+  </div>
+  <div class="btn-wrapper next-btn-wrapper">
+    <ion-button class="btn-main btn-next" shape="round" 
+    color="medium" fill="outline" (click)="next()">
+      Next
+    <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-button>
+  </div>
+</div>
+</ion-content>

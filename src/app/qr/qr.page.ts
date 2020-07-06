@@ -1,6 +1,6 @@
 import { Component, ɵPlayerFactory} from '@angular/core';
 import * as firebase from 'firebase/app';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SettingsService } from '../services/settings.service';
 import * as CryptoJs from 'crypto-js';
 import { AlertController, Platform } from '@ionic/angular';
@@ -21,12 +21,23 @@ export class QrPage {
   public user: boolean = false;
   public qrAPI: string = 'https://api.qrserver.com/v1/create-qr-code/%3Fsize=250x250%26color=22ade4%26data=';
   public emailURL: string;
+  
+  public qrForOptions:any =null;
+  public selectedColor = "#22ade4";
+  public lightcolor = "#ffffff";
+
   constructor(
     public router: Router,
     private settingsService: SettingsService,
     public alertCtrl: AlertController,
     public platform: Platform,
-    public emailComposer: EmailComposer) {
+    public emailComposer: EmailComposer,
+    private route: ActivatedRoute,) {
+      let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
+      console.log("newqrForOptions", newqrForOptions)
+      this.qrForOptions = JSON.parse(newqrForOptions);
+      this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? '#'+ this.qrForOptions.qrcolor: "#22ade4";
+      console.log("this.selectedColor ", this.selectedColor )
   }
 
   ionViewWillEnter(){
