@@ -171,7 +171,7 @@ p {
     margin-top: 50px;
 }
 .next-btn-wrapper {
-    margin-top: 190px;
+    margin-top: 200px;
 }
 .makenew-title{
     color: var(--ion-color-medium);
@@ -208,6 +208,17 @@ p {
   .color-picker{
     margin: 20px 0px 0px 0px;
   }
+  .upload-wrapper{
+    // flex-wrap: unset;
+    flex-direction: column;
+  }
+  .content-wrapper{
+    display: unset;
+  }
+  // .ios .next-btn-wrapper {
+  //   margin-top: 300px;
+  //   padding-bottom: calc(env(safe-area-inset-bottom) + 30px);
+  // }
 }
 @media screen and (max-width: 340px){
   .uploader{

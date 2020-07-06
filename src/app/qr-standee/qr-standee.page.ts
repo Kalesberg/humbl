@@ -123,4 +123,9 @@ export class QrStandeePage implements OnInit {
     mywindow.print();
     mywindow.close();
   }
+
+  print(){
+    window.print();
+   }
+   
 }

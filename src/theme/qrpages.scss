@@ -48,6 +48,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: unset;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 30px);
 }
 .btn-next{
     margin: 0px;
