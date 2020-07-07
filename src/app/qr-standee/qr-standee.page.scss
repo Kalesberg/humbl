@@ -22,15 +22,28 @@
 
 .logo{
     margin-top: 10px;
-    width: 22%;
+    // width: 22%;
+    width: 100%;
 }
 
 .logo2{
     // margin: auto;
     // max-width: 80px;
     // margin-top: 30px;
-    width: 90%;
-    height: 70px;
+    // width: 90%;
+    // height: 70px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.qrlogo1{
+    width: 150px;
+}
+.qrlogo2{
+    width: 200px;
+}
+.qrlogo3{
+    width: 250px;
 }
 
 img{
@@ -44,7 +57,7 @@ img{
    display: flex;
    justify-content: space-around;
 //    margin: auto;
-   margin-bottom: 10px;
+//    margin-bottom: 10px;
 }
 
 .pad{
@@ -60,16 +73,17 @@ img{
 }
 .barcode-data{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     border: 2px solid #9A9B9B;
-    height: 406px;
+    // height: 406px;
+    min-height: 350px;
     width: 270px;
 }
 
 .tag-wrapper {
-    padding: 10px 10px 0px;
+    padding: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -77,6 +91,7 @@ img{
     line-height: 20px;
     span{
         margin: 0px 5px;
+        color: #ffffff;
     }
 }
 .size-text{

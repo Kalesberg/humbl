@@ -14,10 +14,12 @@ export class QrStandeePage implements OnInit {
   public lightcolor: string = "#ffffff";
   public imgSrc: string = "";
   public qrData: string;
-  public visaImg: any;// = "../../assets/visa-logo.png";
-  public mcImg: any;
-  public discoverImg: any;
-  public amexImg: any;
+  // public visaImg: any;// = "../../assets/visa-logo.png";
+  // public mcImg: any;
+  // public discoverImg: any;
+  // public amexImg: any;
+  public cardsImg: any;
+
   constructor(public router: Router,
     private route: ActivatedRoute,
     public nav: NavController
@@ -38,10 +40,11 @@ export class QrStandeePage implements OnInit {
   }
 
   async setSource(){
-    this.visaImg = await this.imageToBase64('../../assets/visa-logo.png');    
-    this.mcImg = await this.imageToBase64('../../assets/mc.png');
-    this.discoverImg = await this.imageToBase64('../../assets/discover.png');
-    this.amexImg = await this.imageToBase64('../../assets/amex.png');
+    // this.visaImg = await this.imageToBase64('../../assets/visa-logo.png');    
+    // this.mcImg = await this.imageToBase64('../../assets/mc.png');
+    // this.discoverImg = await this.imageToBase64('../../assets/discover.png');
+    // this.amexImg = await this.imageToBase64('../../assets/amex.png');
+    this.cardsImg = await this.imageToBase64('../../assets/cards-logo.png');
   }
 
   imageToBase64(imgPath) {   
@@ -82,22 +85,22 @@ export class QrStandeePage implements OnInit {
     }
   }
 
-  printBarcode(barcodeElement){
+  printBarcode(barcodeElement, width){
       // window.print();
       console.log(barcodeElement)
-    let mywindow = window.open('', 'PRINT', 'height=400,width=600');
+    let mywindow = window.open('', 'PRINT');
     mywindow.document.write('<html><head><title></title>');
     mywindow.document.write('</head><body> <div style="display:flex; height:100%; width: 100%; justify-content: center; align-items: center; flex-direction: column;"> ');
-    mywindow.document.write('<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; border: 2px solid #9A9B9B; height: 406px; width: 270px;">');
-    mywindow.document.write('<div style="padding: 10px 10px 0px; width: 100%; display: flex; justify-content: center; align-items: center; line-height: 20px;">');
+    mywindow.document.write('<div style="display: flex; justify-content: space-between; align-items: center; flex-direction: column; border: 2px solid #9A9B9B; height: auto; min-height: 350px; width: 270px; background-color: ' + this.selectedColor + '; -webkit-print-color-adjust: exact; ">');
+    mywindow.document.write('<div style="padding: 10px; width: 100%; display: flex; justify-content: center; align-items: center; line-height: 20px;">');
     if(this.qrForOptions.scan)
-      mywindow.document.write('<span style="margin: 0px 5px;">Scan.</span>');
+      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Scan.</span>');
     if(this.qrForOptions.pay)
-      mywindow.document.write('<span style="margin: 0px 5px;">Pay.</span>');
+      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Pay.</span>');
     if(this.qrForOptions.tip)
-      mywindow.document.write('<span style="margin: 0px 5px;">Tip.</span>');
+      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Tip.</span>');
     if(this.qrForOptions.review)
-      mywindow.document.write('<span style="margin: 0px 5px;">Review.</span>');
+      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Review.</span>');
     mywindow.document.write('</div>');
     mywindow.document.write(barcodeElement.innerHTML);
     // mywindow.document.write('<ion-card style="margin: auto; box-shadow: none !important;">');
@@ -105,14 +108,14 @@ export class QrStandeePage implements OnInit {
     // mywindow.document.write('</ion-card>');
     if(this.imgSrc){
       mywindow.document.write('<div>');
-      mywindow.document.write('<img style=" width: 100%; height: 70px;" src="'+this.imgSrc+'">');
+      mywindow.document.write('<img style=" margin-top: 10px; width: '+width+'px; height: auto;" src="'+this.imgSrc+'">');
       mywindow.document.write('</div>');
     }    
     mywindow.document.write('<div style="width: 100%; display: flex; justify-content: space-around;">');
-    mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.visaImg+'">');
-    mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.mcImg+'">');
-    mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.discoverImg+'">');
-    mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.amexImg+'">');
+    // mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.visaImg+'">');
+    // mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.mcImg+'">');
+    // mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.discoverImg+'">');
+    mywindow.document.write('<img style="margin-top: 10px; width: 100%;" src="'+this.cardsImg+'">');
     mywindow.document.write('</div>');
     mywindow.document.write('</div>');
     // mywindow.document.write(barcodeElement.innerHTML);

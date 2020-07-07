@@ -18,7 +18,7 @@
   <div class="barcode-wrapper">
     <div class="barcode-content">
       <span class="size-text">4 x 6</span> 
-      <div class="barcode-data data1">
+      <div class="barcode-data data1" [style.background]="selectedColor">
         <div class="tag-wrapper">
           <span *ngIf="qrForOptions.scan">Scan.</span> 
           <span *ngIf="qrForOptions.pay">Pay.</span>
@@ -32,21 +32,22 @@
           </ion-card>
         </div>
         <div class="logo-div2" *ngIf="imgSrc">
-          <img class="logo2" [src]="imgSrc">
+          <img class="logo2 qrlogo1" [src]="imgSrc">
         </div>
         <div class="div2">
-          <img class="logo" [src]="visaImg">
+          <!-- <img class="logo" [src]="visaImg">
           <img class="logo" [src]="mcImg">
           <img class="logo" [src]="discoverImg">
-          <img class="logo" [src]="amexImg">
+          <img class="logo" [src]="amexImg"> -->
+          <img class="logo" [src]="cardsImg">
         </div>
       </div>
-      <span class="share-text" (click)="printBarcode(barcode1)">Download and print share</span> 
+      <span class="share-text" (click)="printBarcode(barcode1,150)">Download and print share</span> 
     </div>
 
     <div class="barcode-content">
       <span class="size-text">5 x 7</span> 
-      <div class="barcode-data data2">
+      <div class="barcode-data data2" [style.background]="selectedColor">
         <div class="tag-wrapper">
           <span *ngIf="qrForOptions.scan">Scan.</span> 
           <span *ngIf="qrForOptions.pay">Pay.</span>
@@ -60,21 +61,22 @@
           </ion-card>
         </div>
         <div *ngIf="imgSrc">
-          <img class="logo2" [src]="imgSrc">
+          <img class="logo2 qrlogo2" [src]="imgSrc">
         </div>
         <div class="div2">
-          <img class="logo" [src]="visaImg">
+          <!-- <img class="logo" [src]="visaImg">
           <img class="logo" [src]="mcImg">
           <img class="logo" [src]="discoverImg">
-          <img class="logo" [src]="amexImg">
+          <img class="logo" [src]="amexImg"> -->
+          <img class="logo" [src]="cardsImg">
         </div>
       </div>
-    <span class="share-text" (click)="printBarcode(barcode2)">Download and print share</span> 
+    <span class="share-text" (click)="printBarcode(barcode2,200)">Download and print share</span> 
   </div>
 
   <div class="barcode-content">
     <span class="size-text">8.5 x 11</span> 
-    <div class="barcode-data data3">
+    <div class="barcode-data data3" [style.background]="selectedColor">
       <div class="tag-wrapper">
         <span *ngIf="qrForOptions.scan">Scan.</span> 
         <span *ngIf="qrForOptions.pay">Pay.</span>
@@ -88,16 +90,17 @@
         </ion-card>
       </div>
       <div class="logo-div2" *ngIf="imgSrc">
-        <img class="logo2" [src]="imgSrc">
+        <img class="logo2 qrlogo3" [src]="imgSrc">
       </div>
       <div class="div2">
-        <img class="logo" [src]="visaImg">
+        <!-- <img class="logo" [src]="visaImg">
         <img class="logo" [src]="mcImg">
         <img class="logo" [src]="discoverImg">
-        <img class="logo" [src]="amexImg">
+        <img class="logo" [src]="amexImg"> -->
+        <img class="logo" [src]="cardsImg">
       </div>
     </div>
-    <span class="share-text" (click)="printBarcode(barcode3)">Download and print share</span> 
+    <span class="share-text" (click)="printBarcode(barcode3,250)">Download and print share</span> 
   </div>
   </div>
   <div class="btn-wrapper next-btn-wrapper">
