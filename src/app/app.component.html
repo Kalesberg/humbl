@@ -25,7 +25,13 @@
         </div>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" color="medium">
+            <ion-item *ngIf="!p.isQrMenu" [routerDirection]="'root'" [routerLink]="[p.url]" color="medium">
+              <ion-icon slot="start" color="light" [name]="p.icon"></ion-icon>
+              <ion-label color="light">
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+            <ion-item class="qritem" *ngIf="p.isQrMenu" (click)="posRedirect()" color="medium">
               <ion-icon slot="start" color="light" [name]="p.icon"></ion-icon>
               <ion-label color="light">
                 {{p.title}}

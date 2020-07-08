@@ -5,6 +5,8 @@ import { SettingsService } from '../services/settings.service';
 import * as CryptoJs from 'crypto-js';
 import { AlertController, Platform, NavController } from '@ionic/angular';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 
 @Component({
   selector: 'app-qr',
@@ -35,15 +37,24 @@ export class QrPage {
     public emailComposer: EmailComposer,
     private route: ActivatedRoute,
     public nav: NavController) {
-      let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
-      this.qrForOptions = JSON.parse(newqrForOptions);
-      this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? '#'+ this.qrForOptions.qrcolor: "#22ade4";
+      // let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
+      // this.qrForOptions = JSON.parse(newqrForOptions);
+      // this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? '#'+ this.qrForOptions.qrcolor: "#22ade4";
 
-    this.route.queryParams.subscribe(async (params) => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        this.imgSrc = this.router.getCurrentNavigation().extras.state.imgSrc;
-      }
-    })
+    // this.route.queryParams.subscribe(async (params) => {
+    //   if (this.router.getCurrentNavigation().extras.state) {
+    //     this.imgSrc = this.router.getCurrentNavigation().extras.state.imgSrc;
+    //   }
+    // })
+    this.getLocalData();
+  }
+
+  async getLocalData(){
+    let qrLocalData= await Storage.get({key: 'barcodestandee'});
+    let qrdata = JSON.parse(qrLocalData.value)
+    this.imgSrc = qrdata.imgSrc;
+    this.qrForOptions = qrdata.qroptions;
+    this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? this.qrForOptions.qrcolor: "#22ade4";
   }
 
   ionViewWillEnter(){
@@ -144,17 +155,14 @@ export class QrPage {
     window.location.href = `mailto:${email.to}?subject=${email.subject}&body=${email.body}`;
   }
 
-  next(){
-    this.qrForOptions.qrcolor = this.selectedColor.replace('#','');
-      let url = '/qr-standee/'+ JSON.stringify(this.qrForOptions);
-      console.log(url)
-      let navigationExtras: NavigationExtras = {
-        state: {
-          imgSrc: this.imgSrc,
-          qrData: this.username
-        }
-      };
-      this.nav.navigateForward(url, navigationExtras);
+  async next(){
+    let barcodeData = {
+      imgSrc: this.imgSrc,
+      qrData: this.username,
+      qroptions: this.qrForOptions
+    }
+    await Storage.set({key: 'barcodestandee',value:JSON.stringify(barcodeData) });
+    this.nav.navigateForward('/qr-standee');    
   }
   back(){
     this.nav.back();

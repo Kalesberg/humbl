@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 
 @Component({
   selector: 'app-qr-generate-info',
@@ -18,8 +20,6 @@ export class QrGenerateInfoPage implements OnInit {
     public nav: NavController) { 
     let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
     this.qrForOptions = JSON.parse(newqrForOptions)
-    console.log(this.qrForOptions)
-    console.log(window.innerWidth)
     if(window.innerWidth<340){
       this.pickerWidth = 180;
     }
@@ -80,29 +80,14 @@ export class QrGenerateInfoPage implements OnInit {
         this.uploadFile(f);
       }
     }
-  
-    // Output
-  output(msg) {
-      // Response
-      // var m = document.getElementById('messages');
-      // m.innerHTML = msg;
-    }
-  
+    
   async parseFile(file) {
-  
-      console.log(file.name);
-      this.output(
-        '<strong>' + encodeURI(file.name) + '</strong>'
-      );
-      
-      // var fileType = file.type;
-      // console.log(fileType);
+
       var imageName = file.name;
   
       var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
       if (isGood) {
         document.getElementById('start').classList.add("hidden");
-        // document.getElementById('response').classList.remove("hidden");
         document.getElementById('notimage').classList.add("hidden");
         // Thumbnail Preview
         document.getElementById('file-image').classList.remove("hidden");
@@ -113,60 +98,24 @@ export class QrGenerateInfoPage implements OnInit {
         document.getElementById('file-image').classList.add("hidden");
         document.getElementById('notimage').classList.remove("hidden");
         document.getElementById('start').classList.remove("hidden");
-        // document.getElementById('response').classList.add("hidden");
         (<any>document.getElementById("file-upload-form")).reset();
       }
-    }
-  
-  setProgressMaxValue(e) {
-      // let pBar:any = document.getElementById('file-progress');
-  
-      // if (e.lengthComputable) {
-      //   pBar.max = e.total;
-      // }
-    }
-  
-  updateFileProgress(e) {
-      // let pBar:any = document.getElementById('file-progress');
-  
-      // if (e.lengthComputable) {
-      //   pBar.value = e.loaded;
-      // }
     }
   
   uploadFile(file) {
   
       var xhr = new XMLHttpRequest(),
-        fileInput = document.getElementById('class-roster-file'),
-        // pBar = document.getElementById('file-progress'),
         fileSizeLimit = 1024; // In MB
       if (xhr.upload) {
         // Check if file is less than x MB
-        if (file.size <= fileSizeLimit * 1024 * 1024) {
-          // Progress bar
-          // pBar.style.display = 'inline';
-          xhr.upload.addEventListener('loadstart', this.setProgressMaxValue, false);
-          xhr.upload.addEventListener('progress', this.updateFileProgress, false);
-  
-          // File received / failed
-          xhr.onreadystatechange = function(e) {
-            if (xhr.readyState == 4) {
-              // Everything is good!
-  
-              // progress.className = (xhr.status == 200 ? "success" : "failure");
-              // document.location.reload(true);
-            }
-          };
-  
+        // if (file.size <= fileSizeLimit * 1024 * 1024) {  
           // Start upload
           xhr.open('POST', (<any>document.getElementById('file-upload-form')).action, true);
           xhr.setRequestHeader('X-File-Name', file.name);
           xhr.setRequestHeader('X-File-Size', file.size);
           xhr.setRequestHeader('Content-Type', 'multipart/form-data');
           xhr.send(file);
-        } else {
-          this.output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
-        }
+        // } 
       }
     } 
 
@@ -175,15 +124,13 @@ export class QrGenerateInfoPage implements OnInit {
     }
 
     async next(status){
-      this.qrForOptions.qrcolor = status? this.selectedColor.replace('#',''): '';
-      let url = '/qr/'+ JSON.stringify(this.qrForOptions);
-      console.log(url)
-      let navigationExtras: NavigationExtras = {
-        state: {
-          imgSrc: status? this.iamgeUrl: ''
-        }
-      };
-      this.nav.navigateForward(url, navigationExtras);
+      this.qrForOptions.qrcolor = status? this.selectedColor: '';
+      let barcodeData = {
+        imgSrc: status? this.iamgeUrl: '',
+        qroptions: this.qrForOptions
+      }
+      await Storage.set({key: 'barcodestandee',value:JSON.stringify(barcodeData) });
+      this.nav.navigateForward('/qr');
     }
 
   toBase64(file) {

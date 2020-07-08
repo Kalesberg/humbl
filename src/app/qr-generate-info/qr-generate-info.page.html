@@ -12,8 +12,6 @@
     </div>
     <div class="upload-wrapper">
       <div class="uploader">
-        <!-- <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
-        <ion-icon name="add"></ion-icon> -->
         <form id="file-upload-form" class="uploader">
           <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
         
@@ -21,25 +19,17 @@
             <img id="file-image" src="#" alt="Preview" class="hidden">
             <div id="start">
               <i class="fa fa-download" aria-hidden="true"></i>
-              <!-- <div>Select a file or drag here</div> -->
               <div id="notimage" class="hidden">Please select an image</div>
               <span id="file-upload-btn" class="btn btn-primary">
                 <ion-icon class="plus-icon" color="medium" name="add"></ion-icon>
               </span>
             </div>
-            <!-- <div id="response" class="hidden">
-              <div id="messages"></div>
-              <progress class="progress" id="file-progress" value="0">
-                <span>0</span>%
-              </progress>
-            </div> -->
           </label>
         </form>
       </div>
       <div class="color-picker">
         <color-sketch [color]="selectedColor" [width]="pickerWidth" height="205"
         (onChangeComplete)="handleChangeComplete($event)"></color-sketch>
-        <!-- <color-sketch [color]="state" (onChangeComplete)="changeComplete($event)"></color-sketch> -->
       </div>
     </div>
     <div class="btn-wrapper next-btn-wrapper">

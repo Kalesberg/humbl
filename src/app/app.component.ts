@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { Platform, AlertController, MenuController  } from '@ionic/angular';
+import { Platform, AlertController, MenuController, NavController  } from '@ionic/angular';
 import { Network } from '@ionic-native/network/ngx';
 import * as firebase from 'firebase/app';
 import { AuthService } from './services/auth.service';
@@ -16,7 +16,7 @@ import {
   PushNotificationActionPerformed } from '@capacitor/core';
 const { PushNotifications } = Plugins;
 const { SplashScreen } = Plugins;
-const { App } = Plugins;
+const { Storage, App } = Plugins;
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -56,7 +56,8 @@ export class AppComponent {
     {
       title: 'POS QR',
       url: '/qr-dashboard',
-      icon: 'qr-code'
+      icon: 'qr-code',
+      isQrMenu: true
     },
     {
       title: 'Settings',
@@ -75,7 +76,8 @@ export class AppComponent {
     private settingsService: SettingsService,
     public ngZone: NgZone,
     private swUpdate: SwUpdate,
-    private pushService: PushService
+    private pushService: PushService,
+    public nav: NavController
     ) {
 
     this.initializeApp();
@@ -256,5 +258,17 @@ export class AppComponent {
         }
       }
     });
+  }
+
+  async posRedirect() {
+    let qrLocalData= await Storage.get({key: 'barcodestandee'});
+    let isQrExist = false;
+    if(qrLocalData && qrLocalData.value){
+      let qrLocalinfo = JSON.parse(qrLocalData.value)
+      if(qrLocalinfo.qrData){
+        isQrExist =true;
+      }
+    }
+    this.nav.navigateRoot(isQrExist? '/qr-standee': '/qr-dashboard');
   }
 }

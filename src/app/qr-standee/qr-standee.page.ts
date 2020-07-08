@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 
 @Component({
   selector: 'app-qr-standee',
@@ -21,18 +23,27 @@ export class QrStandeePage implements OnInit {
     public nav: NavController
     ) {
     this.setSource();
-    let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
-    this.qrForOptions = JSON.parse(newqrForOptions);
-    this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? '#'+ this.qrForOptions.qrcolor: "#22ade4";
-    this.route.queryParams.subscribe(async (params) => {
-      if (this.router.getCurrentNavigation().extras.state) {
-          this.imgSrc = this.router.getCurrentNavigation().extras.state.imgSrc;
-          this.qrData = this.router.getCurrentNavigation().extras.state.qrData;
-        }
-      })
+    this.getLocalData();
+    // let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
+    // this.qrForOptions = JSON.parse(newqrForOptions);
+    // this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? '#'+ this.qrForOptions.qrcolor: "#22ade4";
+    // this.route.queryParams.subscribe(async (params) => {
+    //   if (this.router.getCurrentNavigation().extras.state) {
+    //       this.imgSrc = this.router.getCurrentNavigation().extras.state.imgSrc;
+    //       this.qrData = this.router.getCurrentNavigation().extras.state.qrData;
+    //     }
+    //   })
    }
 
   ngOnInit() {
+  }
+  async getLocalData(){
+    let qrLocalData= await Storage.get({key: 'barcodestandee'});
+    let qrLocalinfo = JSON.parse(qrLocalData.value)
+    this.imgSrc = qrLocalinfo.imgSrc;
+    this.qrData = qrLocalinfo.qrData;
+    this.qrForOptions = qrLocalinfo.qroptions;
+    this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? this.qrForOptions.qrcolor: "#22ade4";
   }
 
   async setSource(){
@@ -59,8 +70,9 @@ export class QrStandeePage implements OnInit {
     })
   }
 
-  finish(isNew){
+  async finish(isNew){
     if(isNew){
+      await Storage.set({key: 'barcodestandee',value:"" });
       this.nav.navigateRoot('qr-dashboard');
     }
     else {
@@ -83,12 +95,12 @@ export class QrStandeePage implements OnInit {
     if(this.qrForOptions.review)
       mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Review.</span>');
     mywindow.document.write('</div>');
-    mywindow.document.write(barcodeElement.innerHTML);
     if(this.imgSrc){
       mywindow.document.write('<div>');
-      mywindow.document.write('<img style=" margin-top: 10px; width: '+width+'px; height: auto;" src="'+this.imgSrc+'">');
+      mywindow.document.write('<img style=" margin-bottom: 10px; width: '+width+'px; height: auto;" src="'+this.imgSrc+'">');
       mywindow.document.write('</div>');
     }    
+    mywindow.document.write(barcodeElement.innerHTML);
     mywindow.document.write('<div style="width: 100%; display: flex; justify-content: space-around;">');
     mywindow.document.write('<img style="margin-top: 10px; width: 100%;" src="'+this.cardsImg+'">');
     mywindow.document.write('</div>');

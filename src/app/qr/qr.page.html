@@ -3,13 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <!-- <ion-button slot="end" color="medium" size="small" shape="round" (click)="print()"><ion-icon color="light" name="print-outline"></ion-icon></ion-button> -->
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <!-- <div class="logo-div">
-    <img class="logo" src="{{this.logo}}">
-  </div> -->
   <div class="content-wrapper">
     <div class="title-wrapper">
       <h3 class="title-text">Your code.</h3>
@@ -21,7 +17,6 @@
         <ion-card class="card" color="light" *ngIf="this.username">
               <qrcode [qrdata]="this.username" [width]="250" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
               [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
-          <!-- </div>  -->
         </ion-card>
         <div class="logo-div2" *ngIf="imgSrc">
           <img class="logo2" [src]="imgSrc">

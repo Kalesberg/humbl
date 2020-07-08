@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'reset-password', loadChildren: ()=>import('./reset-password/reset-password.module').then(m => m.ResetPasswordPageModule)},
   { path: 'success', loadChildren: ()=> import('./success/success.module').then(m => m.SuccessPageModule)},
   { path: 'account', loadChildren: ()=> import('./account/account.module').then(m => m.AccountPageModule), canActivate: [AuthGuard]},
-  {path: 'qr/:qroptions', loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule), canActivate: [AuthGuard]},
+  {path: 'qr', loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule), canActivate: [AuthGuard]},
   { path: 'charge-card', 
   loadChildren: ()=>import('./charge-card/charge-card.module').then(m => m.ChargeCardPageModule), canActivate: [AuthGuard]
   },
@@ -45,7 +45,7 @@ const routes: Routes = [
     loadChildren: () => import('./qr-generate-info/qr-generate-info.module').then( m => m.QrGenerateInfoPageModule)
   },
   {
-    path: 'qr-standee/:qroptions',
+    path: 'qr-standee',
     loadChildren: () => import('./qr-standee/qr-standee.module').then( m => m.QrStandeePageModule)
   },
 ];
