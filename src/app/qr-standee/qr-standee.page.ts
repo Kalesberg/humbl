@@ -14,10 +14,6 @@ export class QrStandeePage implements OnInit {
   public lightcolor: string = "#ffffff";
   public imgSrc: string = "";
   public qrData: string;
-  // public visaImg: any;// = "../../assets/visa-logo.png";
-  // public mcImg: any;
-  // public discoverImg: any;
-  // public amexImg: any;
   public cardsImg: any;
 
   constructor(public router: Router,
@@ -40,10 +36,6 @@ export class QrStandeePage implements OnInit {
   }
 
   async setSource(){
-    // this.visaImg = await this.imageToBase64('../../assets/visa-logo.png');    
-    // this.mcImg = await this.imageToBase64('../../assets/mc.png');
-    // this.discoverImg = await this.imageToBase64('../../assets/discover.png');
-    // this.amexImg = await this.imageToBase64('../../assets/amex.png');
     this.cardsImg = await this.imageToBase64('../../assets/cards-logo.png');
   }
 
@@ -65,15 +57,6 @@ export class QrStandeePage implements OnInit {
       };
       img.onerror = ((err)=>{ resolve("") });
     })
-      // var canvas, ctx, dataURL, base64;
-      // canvas = document.createElement("canvas");
-      // ctx = canvas.getContext("2d");
-      // canvas.width = img.width;
-      // canvas.height = img.height;
-      // ctx.drawImage(img, 0, 0);
-      // dataURL = canvas.toDataURL("image/png");
-      // base64 = dataURL.replace(/^data:image\/png;base64,/, "");
-      // return base64;
   }
 
   finish(isNew){
@@ -86,8 +69,6 @@ export class QrStandeePage implements OnInit {
   }
 
   printBarcode(barcodeElement, width){
-      // window.print();
-      console.log(barcodeElement)
     let mywindow = window.open('', 'PRINT');
     mywindow.document.write('<html><head><title></title>');
     mywindow.document.write('</head><body> <div style="display:flex; height:100%; width: 100%; justify-content: center; align-items: center; flex-direction: column;"> ');
@@ -103,23 +84,17 @@ export class QrStandeePage implements OnInit {
       mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Review.</span>');
     mywindow.document.write('</div>');
     mywindow.document.write(barcodeElement.innerHTML);
-    // mywindow.document.write('<ion-card style="margin: auto; box-shadow: none !important;">');
-    // mywindow.document.write('<qrcode [qrdata]="this.qrData" [width]="150" [errorCorrectionLevel]="'+'M'+'" [elementType]="'+'svg'+'" [colorLight]="'+this.lightcolor+'" [colorDark]="'+this.selectedColor+'"></qrcode>');
-    // mywindow.document.write('</ion-card>');
     if(this.imgSrc){
       mywindow.document.write('<div>');
       mywindow.document.write('<img style=" margin-top: 10px; width: '+width+'px; height: auto;" src="'+this.imgSrc+'">');
       mywindow.document.write('</div>');
     }    
     mywindow.document.write('<div style="width: 100%; display: flex; justify-content: space-around;">');
-    // mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.visaImg+'">');
-    // mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.mcImg+'">');
-    // mywindow.document.write('<img style="margin-top: 10px; width: 22%;" src="'+this.discoverImg+'">');
     mywindow.document.write('<img style="margin-top: 10px; width: 100%;" src="'+this.cardsImg+'">');
     mywindow.document.write('</div>');
     mywindow.document.write('</div>');
-    // mywindow.document.write(barcodeElement.innerHTML);
     mywindow.document.write('</div></body></html>');
+    mywindow.document.body.setAttribute('style', 'font-family:"Roboto", "Helvetica Neue", sans-serif !important');
 
     mywindow.document.close(); // necessary for IE >= 10
     mywindow.focus(); // necessary for IE >= 10*/
