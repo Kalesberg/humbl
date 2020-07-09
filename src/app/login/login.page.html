@@ -42,7 +42,7 @@
         >
           <ion-label color="light">Please enter a valid email address.</ion-label>
         </ion-item>
-      
+
         <ion-item class="padding" color="medium" lines="none">
           <!-- <ion-label position="stacked">Password</ion-label> -->
           <ion-input
@@ -61,14 +61,17 @@
         >
           <ion-label color="light">Your password needs more than 6 characters.</ion-label>
         </ion-item>
-
         <ion-button class="ion-padding" color="light" shape="round" (click)="loginUser(loginForm)" expand="block" [disabled]="!loginForm.valid">Sign In</ion-button>
+        <br>
+        <ion-button class="ion-padding" fill="outline" color="light" shape="round" (click)="googleUserSignin()" expand="block" >Google<ion-icon slot="start" color="light" name="logo-google"></ion-icon></ion-button>
+        <ion-button class="ion-padding" fill="outline" color="light" shape="round" (click)="facebookUserSignin()" expand="block" >Facebook<ion-icon slot="start" color="light" name="logo-facebook"></ion-icon></ion-button>
+        <ion-button *ngIf="ios" class="ion-padding" fill="outline" color="light" shape="round" (click)="appleUserSignin()" expand="block" >Apple<ion-icon slot="start" color="light" name="logo-apple"></ion-icon></ion-button>
         <!-- <ion-button *ngIf="this.merchant" color="light" class="btn" [href]="'/home'" expand="block" [disabled]="!loginForm.valid">
           Sign In
         </ion-button> -->
-        
+
       </form>
-      <div class="space"> 
+      <div class="space">
         <!-- <ion-button expand="block" (click)="signInWithGoogle()" class="button btn-social btn-google"
           *ngIf="!authService.currentUser">
         <i class="fa fa-google-plus fa-lg"></i><ion-icon slot="start" name="logo-google"></ion-icon>Connect Google
@@ -85,7 +88,7 @@
             </ion-button>
           </ion-col>
         </ion-row>
-      </div>  
+      </div>
     </ion-card>
   <!-- <ion-col size="12" size-sm>
     <p>Digi-ID is built into your DigiByte mobile wallet app.</p>

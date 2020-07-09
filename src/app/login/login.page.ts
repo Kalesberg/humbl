@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, Platform } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -14,12 +14,13 @@ export class LoginPage implements OnInit {
   //public jwt: string = null;
   public loginForm: FormGroup;
   public loading: HTMLIonLoadingElement;
-
-  constructor(private authService: AuthService, 
+  public ios: boolean = false;
+  constructor(private authService: AuthService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     private router: Router,
-    private formBuilder: FormBuilder) { 
+    private formBuilder: FormBuilder,
+    public platform: Platform) {
     //this.jwt = this.authService.digiQR().toString();
     this.loginForm = this.formBuilder.group({
       email: ['',
@@ -32,6 +33,9 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    if(this.platform.is('ios')){
+      this.ios = true;
+    }
   }
 
   async loginUser(loginForm: FormGroup): Promise<void> {
@@ -40,10 +44,10 @@ export class LoginPage implements OnInit {
     } else {
       this.loading = await this.loadingCtrl.create({});
       await this.loading.present();
-  
+
       const email = loginForm.value.email;
       const password = loginForm.value.password;
-  
+
       this.authService.loginUser(email, password).then(
         () => {
           this.loading.dismiss().then(() => {
@@ -62,4 +66,65 @@ export class LoginPage implements OnInit {
       );
     }
   }
+
+  async googleUserSignin(): Promise<void> {
+      this.authService.googleUser().then(
+        () => {
+          this.loading.dismiss().then(() => {
+            this.router.navigateByUrl('/pos');
+          });
+        },
+        error => {
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }],
+            });
+            await alert.present();
+          });
+        }
+      );
+  }
+
+  async appleUserSignin(): Promise<void> {
+
+    this.authService.appleUser().then(
+      () => {
+        this.loading.dismiss().then(() => {
+          this.router.navigateByUrl('/pos');
+        });
+      },
+      error => {
+        this.loading.dismiss().then(async () => {
+          const alert = await this.alertCtrl.create({
+            message: error.message,
+            buttons: [{ text: 'Ok', role: 'cancel' }],
+          });
+          await alert.present();
+        });
+      }
+    );
+  }
+
+  async facebookUserSignin(): Promise<void> {
+
+    this.authService.facebookUser().then(
+      () => {
+        this.loading.dismiss().then(() => {
+          this.router.navigateByUrl('/pos');
+        });
+      },
+      error => {
+        this.loading.dismiss().then(async () => {
+          const alert = await this.alertCtrl.create({
+            message: error.message,
+            buttons: [{ text: 'Ok', role: 'cancel' }],
+          });
+          await alert.present();
+        });
+      }
+    );
+
+}
+
 }

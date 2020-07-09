@@ -8,8 +8,8 @@ import { SettingsService } from './services/settings.service';
 import * as CryptoJs from 'crypto-js';
 import { SwUpdate } from '@angular/service-worker';
 import { PushService } from './services/push.service';
-import { 
-  Plugins, 
+import {
+  Plugins,
   AppState,
   PushNotification,
   PushNotificationToken,
@@ -92,17 +92,6 @@ export class AppComponent {
 
     this.platform.ready().then(() => {
       SplashScreen.hide();
-      // this.deeplinks.route({
-      //   '/success/:slug': 'success',
-      // }).subscribe((match) => {
-      //   console.log("----------Succeefully matched route--------");
-      //   const internalPath = `/${match.$route}/${match.$args['slug']}`;
-      //   this.ngZone.run(() => {
-      //     this.router.navigateByUrl(internalPath);
-      //   });
-      // }, (noMatch) => {
-      //     console.log("not mathching!!!!");
-      // })
 
       App.addListener('appStateChange', (state: AppState) => {
         console.log('App state changed. Is active?', state.isActive);
