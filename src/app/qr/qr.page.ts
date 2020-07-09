@@ -37,15 +37,6 @@ export class QrPage {
     public emailComposer: EmailComposer,
     private route: ActivatedRoute,
     public nav: NavController) {
-      // let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
-      // this.qrForOptions = JSON.parse(newqrForOptions);
-      // this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? '#'+ this.qrForOptions.qrcolor: "#22ade4";
-
-    // this.route.queryParams.subscribe(async (params) => {
-    //   if (this.router.getCurrentNavigation().extras.state) {
-    //     this.imgSrc = this.router.getCurrentNavigation().extras.state.imgSrc;
-    //   }
-    // })
     this.getLocalData();
   }
 

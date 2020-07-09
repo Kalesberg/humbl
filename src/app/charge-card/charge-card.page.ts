@@ -137,10 +137,10 @@ export class ChargeCardPage {
   }
 
   ionViewWillLeave(){
-    this.tip = false;
-    this.tipAmount = null;
-    this.tipDisplay = 0;
-    this.total = 0;
+    // this.tip = false;
+    // this.tipAmount = null;
+    // this.tipDisplay = 0;
+    // this.total = 0;
   }
 
   // makePayment(token) {
@@ -421,6 +421,10 @@ export class ChargeCardPage {
     console.log(this.tipDisplay)
     this.total = this.total + this.tipDisplay + this.tax
     this.hideTip();
+  }
+
+  paymentQr(){
+    this.navCtrl.navigateForward("/qr-payment/"+ this.total)
   }
 
 }

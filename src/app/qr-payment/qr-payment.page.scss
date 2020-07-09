@@ -1,0 +1,40 @@
+.barcode-wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.barcode-content{
+    display: flex;
+    justify-content: center;
+    width: 270px;
+    flex-direction: column;
+}
+.barcode-data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #9A9B9B;
+    // min-height: 350px;
+    // width: 270px;
+    min-height: 450px;
+    width: 350px;
+}
+.card{
+    margin: auto;
+    box-shadow: none !important;
+    border-radius: 0px;
+}
+.logo {
+    margin-top: 10px;
+    // width: 22%;
+    width: 100%;
+}
+
+@media screen and (max-width: 370px) {
+    .barcode-data{
+        width: 35270px0px;
+    }
+}

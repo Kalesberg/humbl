@@ -48,6 +48,10 @@ const routes: Routes = [
     path: 'qr-standee',
     loadChildren: () => import('./qr-standee/qr-standee.module').then( m => m.QrStandeePageModule)
   },
+  {
+    path: 'qr-payment/:totalamount',
+    loadChildren: () => import('./qr-payment/qr-payment.module').then( m => m.QrPaymentPageModule)
+  },
 ];
 @NgModule({
   imports: [
