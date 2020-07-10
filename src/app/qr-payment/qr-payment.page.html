@@ -1,16 +1,14 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="medium">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/pos"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
-    <!-- <div class="title-wrapper">
-      <h3 class="title-text">Your payment code.</h3>
-    </div> -->
-
+    <h3 class="title">Scan to make payment.</h3>
+    <img class="businessLogo" src="{{this.userProfile?.logoUrl}}">
   <div class="barcode-wrapper">
     <div class="barcode-content" #barcode3>
       <div class="barcode-data data3">

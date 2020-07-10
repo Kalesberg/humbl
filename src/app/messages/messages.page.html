@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="medium">
-    <ion-title>Messages</ion-title>
+    <ion-title translate>messages.title</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -14,7 +14,7 @@
   <ion-list *ngIf="received_messages || sent_messages">
     <ion-item-sliding *ngFor="let message of received_messages" color="white">
       <ion-item-options side="start">
-        <ion-item-option color="danger" (click)="delete_message(message)">Delete</ion-item-option>
+        <ion-item-option color="danger" (click)="delete_message(message)"  translate>items.delete</ion-item-option>
       </ion-item-options>
       <ion-item>
         <ion-row class="ion-align-items-center fullwidth">
@@ -23,13 +23,13 @@
             <h2>{{ message.sender_name }}</h2>
             <ion-text>{{ message.message }}</ion-text>
           </ion-grid>
-          <ion-button size="small" color="medium" shape="round" (click)="reply_message(message)">Reply</ion-button>
+          <ion-button size="small" color="medium" shape="round" (click)="reply_message(message)" translate>messages.reply</ion-button>
         </ion-row>  
       </ion-item>
     </ion-item-sliding>
     <ion-item-sliding *ngFor="let sent_message of sent_messages" color="white">
       <ion-item-options side="start">
-        <ion-item-option color="danger" (click)="delete_message(sent_message)">Delete</ion-item-option>
+        <ion-item-option color="danger" (click)="delete_message(sent_message)"  translate>items.delete</ion-item-option>
       </ion-item-options>
       <ion-item>
         <ion-row class="ion-align-items-center fullwidth">

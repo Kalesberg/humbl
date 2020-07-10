@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { SettingsService } from '../services/settings.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -9,22 +10,23 @@ import { SettingsService } from '../services/settings.service';
 export class AccountPage implements OnInit {
 
   constructor( public toast: ToastController, private alertCtrl: AlertController,
-    public settingsService: SettingsService) { }
+    public settingsService: SettingsService,
+    private translate : TranslateService) { }
 
   ngOnInit() {
   }
 
   async updateEmail(): Promise<void> {
     const alert = await this.alertCtrl.create({
-      subHeader: 'Change Account Email',
+      subHeader: this.translate.instant("account.change"),
       inputs: [
-        { type: 'text', name: 'newEmail', placeholder: 'New Account Email' },
-        { name: 'password', placeholder: 'Enter Password', type: 'password' },
+        { type: 'text', name: 'newEmail', placeholder: this.translate.instant("account.new") },
+        { name: 'password', placeholder: this.translate.instant("account.enter"), type: 'password' },
       ],
       buttons: [
-        { text: 'Cancel' },
+        { text: this.translate.instant("items.cancel") },
         {
-          text: 'Save',
+          text: this.translate.instant("settings.save"),
           handler: data => {
             this.settingsService
               .updateEmail(data.newEmail, data.password)
@@ -44,15 +46,15 @@ export class AccountPage implements OnInit {
   
   async updatePassword(): Promise<void> {
     const alert = await this.alertCtrl.create({
-      subHeader: 'Change Account Password',
+      subHeader: this.translate.instant("account.update"),
       inputs: [
-        { name: 'oldPassword', placeholder: 'Old password', type: 'password' },
-        { name: 'newPassword', placeholder: 'New password', type: 'password' },
+        { name: 'oldPassword', placeholder: this.translate.instant("account.oldpass"), type: 'password' },
+        { name: 'newPassword', placeholder: this.translate.instant("account.newpass"), type: 'password' },
       ],
       buttons: [
-        { text: 'Cancel' },
+        { text: this.translate.instant("items.cancel") },
         {
-          text: 'Save',
+          text: this.translate.instant("settings.save"),
           handler: data => {
             this.settingsService.updatePassword(
               data.newPassword,
@@ -68,7 +70,7 @@ export class AccountPage implements OnInit {
 
   async presentToast() {
     const toast = await this.toast.create({
-      message: 'Data Saved',
+      message: this.translate.instant("settings.saved"),
       position: 'middle',
       duration: 1000,
       color: 'dark',

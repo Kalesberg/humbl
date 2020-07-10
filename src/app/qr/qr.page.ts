@@ -1,12 +1,12 @@
 import { Component, ɵPlayerFactory} from '@angular/core';
 import * as firebase from 'firebase/app';
-import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SettingsService } from '../services/settings.service';
 import * as CryptoJs from 'crypto-js';
 import { AlertController, Platform, NavController } from '@ionic/angular';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
-import { Plugins } from '@capacitor/core';
-const { Storage } = Plugins;
+import { TranslateService } from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-qr',
@@ -23,7 +23,6 @@ export class QrPage {
   public user: boolean = false;
   public qrAPI: string = 'https://api.qrserver.com/v1/create-qr-code/%3Fsize=250x250%26color=22ade4%26data=';
   public emailURL: string;
-  
   public qrForOptions:any =null;
   public selectedColor: string = "#22ade4";
   public lightcolor: string = "#ffffff";
@@ -35,17 +34,25 @@ export class QrPage {
     public alertCtrl: AlertController,
     public platform: Platform,
     public emailComposer: EmailComposer,
+    private translate : TranslateService,
     private route: ActivatedRoute,
-    public nav: NavController) {
+    public nav: NavController,
+    public storage: Storage) {
+    //this.getLocalData();
+  }
+
+  ionViewDidEnter(){
     this.getLocalData();
   }
 
   async getLocalData(){
-    let qrLocalData= await Storage.get({key: 'barcodestandee'});
-    let qrdata = JSON.parse(qrLocalData.value)
+    let qrLocalData = await this.storage.get('barcodestandee');
+    console.log(qrLocalData);
+    let qrdata = await JSON.parse(qrLocalData)
+    console.log(qrdata)
     this.imgSrc = qrdata.imgSrc;
     this.qrForOptions = qrdata.qroptions;
-    this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? this.qrForOptions.qrcolor: "#22ade4";
+    this.selectedColor =  (this.qrForOptions && this.qrForOptions.qrcolor) ? this.qrForOptions.qrcolor : "#22ade4";
   }
 
   ionViewWillEnter(){
@@ -98,25 +105,25 @@ export class QrPage {
 
   async presentEmailPrompt() {
     let alert = await this.alertCtrl.create({
-      header: 'Send QR Email',
-      message: 'Email QR Code?',
+      header: this.translate.instant("qr.header"),
+      message: this.translate.instant("qr.message"),
       inputs: [
         {
           name: 'email',
-          placeholder: 'Send to Email',
+          placeholder: this.translate.instant("qr.email"),
           type: 'email'
         }
       ],
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
            
           }
         },
         {
-          text: 'Send Email',
+          text: this.translate.instant("qr.send"),
           handler: (data: any) => {
             this.emailReceipt(data.email);
           } 
@@ -132,7 +139,7 @@ export class QrPage {
     let email = {
       to: data,
       subject: `${this.business} QR`,
-      body: `Use the raw data to generate a QR code from any QR code generator. Raw QR Data: ${this.username}. Or visit the web QR: ${this.emailURL}`,
+      body: `${this.translate.instant("qr.body")} ${this.username}. ${this.translate.instant("qr.or")} ${this.emailURL}`,
       isHtml: false
     }
     if(this.platform.is('ios') || this.platform.is('android')){
@@ -152,7 +159,7 @@ export class QrPage {
       qrData: this.username,
       qroptions: this.qrForOptions
     }
-    await Storage.set({key: 'barcodestandee',value:JSON.stringify(barcodeData) });
+    this.storage.set('barcodestandee',JSON.stringify(barcodeData));
     this.nav.navigateForward('/qr-standee');    
   }
   back(){

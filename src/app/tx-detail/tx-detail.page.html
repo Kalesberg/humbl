@@ -3,22 +3,22 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/reports"></ion-back-button>
     </ion-buttons>
-    <ion-title>Transaction Detail</ion-title>
+    <ion-title translate>txdail.title</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>Date: {{transaction.date?.seconds * 1000 | date:'yyyy/MM/dd h:mm:ss a'}}</p>
-  <p>Total: {{transaction?.usdTotal | number : '1.2-2'}}</p>
-  <p>Tip: {{transaction?.tip | number : '1.2-2'}}</p>
-  <p>Transaction ID: {{transaction?.txId}}</p>
+  <p translate>reports.date: {{transaction.date?.seconds * 1000 | date:'yyyy/MM/dd h:mm:ss a'}}</p>
+  <p translate>pos.toal: {{transaction?.usdTotal | number : '1.2-2'}}</p>
+  <p translate>reports.tip: {{transaction?.tip | number : '1.2-2'}}</p>
+  <p translate>txdail.id: {{transaction?.txId}}</p>
   <div class="btns">
-    <ion-button *ngIf="this.id.substring(0,2) === 'ch'" size="medium" color="light" (click)="confirmRefund()">Issue Refund</ion-button>
+    <ion-button *ngIf="this.id.substring(0,2) === 'ch'" size="medium" color="light" (click)="confirmRefund()" translate>txdail.refund</ion-button>
     <div *ngIf="this.ext === 'true'">
-      <ion-button color="light" size="small" color="danger" (click)="confirmExtDelete()">Delete</ion-button>
+      <ion-button color="light" size="small" color="danger" (click)="confirmExtDelete()" translate>items.delete</ion-button>
     </div>
     <div *ngIf="this.ext === 'false'">
-      <ion-button  size="medium" color="danger" (click)="confirmDelete()">Delete</ion-button>
+      <ion-button  size="medium" color="danger" (click)="confirmDelete()" translate>items.delete</ion-button>
     </div>
   </div>
 </ion-content>

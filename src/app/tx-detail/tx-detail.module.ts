@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TxDetailPageRoutingModule } from './tx-detail-routing.module';
 
 import { TxDetailPage } from './tx-detail.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TxDetailPageRoutingModule
+    TxDetailPageRoutingModule,
+    TranslateModule
   ],
   declarations: [TxDetailPage]
 })

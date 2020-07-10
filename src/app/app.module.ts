@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,8 +27,15 @@ import { ZXingScannerModule } from "@zxing/ngx-scanner";
 import * as firebase from 'firebase/app';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MbscModule } from '@mobiscroll/angular';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 firebase.initializeApp(environment.firebaseConfig);
+
+// AoT requires an exported function for factories
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [AppComponent, AddItemsComponent, ScannerComponent, CoinSelectComponent],
@@ -57,6 +64,13 @@ firebase.initializeApp(environment.firebaseConfig);
     HttpClientModule,
     ZXingScannerModule,
     BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     Network,

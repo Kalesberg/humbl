@@ -11,6 +11,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { mobiscroll,  MbscNumpadDecimalOptions } from '@mobiscroll/angular';
+import { TranslateService } from '@ngx-translate/core';
 mobiscroll.settings = {
   theme: 'ios',
   themeVariant: 'light'
@@ -59,7 +60,8 @@ export class ChargeCashPage implements OnInit {
     public reportService: ReportService,
     public navCtrl: NavController,
     public platform: Platform,
-    public emailComposer: EmailComposer) { 
+    public emailComposer: EmailComposer,
+    private translate : TranslateService) { 
       if(this.dataPass.passedItems.usd !== null || 
         this.dataPass.passedItems.usd !== undefined){
         this.subtotal = parseFloat(this.dataPass.passedItems.usd);
@@ -135,18 +137,18 @@ export class ChargeCashPage implements OnInit {
 
   async presentConfirmSuccess() {
     let alert = await this.alertCtrl.create({
-      header: 'Transaction Successful!',
-      message: 'Would you like a receipt?',
+      header: this.translate.instant("transact.success"),
+      message: this.translate.instant("transact.like"),
       inputs: [
         {
           name: 'email',
-          placeholder: 'Customer Email',
+          placeholder: this.translate.instant("transact.email_holder"),
           type: 'email'
         }
       ],
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
             this.storeTransactionData();
@@ -154,7 +156,7 @@ export class ChargeCashPage implements OnInit {
           }
         },
         {
-          text: 'Receipt',
+          text: this.translate.instant("transact.receipt"),
           handler: data => {
             this.storeTransactionData();
             this.email = data.email;
@@ -170,9 +172,9 @@ export class ChargeCashPage implements OnInit {
   emailReceipt(data){
     let email = {
       to: data,
-      subject: `Your Receipt from ${this.business}`,
-      body: `Total: $${this.amount}, Purchased: ${this.output}, TxID: ${this.tx}.
-      We appreciate your business, ${this.business}.`,
+      subject: `${this.translate.instant("transact.from")} ${this.business}`,
+      body: `${this.translate.instant("transact.total")}: $${this.amount}, ${this.translate.instant("transact.purchased")}: ${this.output}, ${this.translate.instant("reports.txid")}: ${this.tx}.
+      ${this.translate.instant("transact.business")}, ${this.business}.`,
       isHtml: true
     }
     if(this.platform.is('ios') || this.platform.is('android')){

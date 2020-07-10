@@ -6,6 +6,18 @@
   max-width: 200px;
 }
 
+.languagepart{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 80px;
+  color: white;
+}
+
+select{
+  background-color: black;
+}
+
 .buttons {
   position: fixed;
   left: 0;

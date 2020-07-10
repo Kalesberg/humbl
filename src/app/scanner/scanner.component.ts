@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { map } from "rxjs/operators";
 import { ModalController } from '@ionic/angular';
 import {ZXingScannerComponent} from '@zxing/ngx-scanner';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-scanner',
@@ -18,7 +19,8 @@ export class ScannerComponent implements OnInit {
   qrResult: any;
   guestExist: boolean;
 
-  constructor(public modalCtrl: ModalController) {}
+  constructor(public modalCtrl: ModalController,
+    private translate : TranslateService) {}
 
   ngOnInit(): void {}
 

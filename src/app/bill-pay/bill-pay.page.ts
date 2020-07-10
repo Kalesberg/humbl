@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController, NavController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-bill-pay',
@@ -47,7 +48,8 @@ export class BillPayPage implements OnInit {
 
   constructor(public loadingCtrl: LoadingController, 
     public alertCtrl: AlertController,
-    public nav: NavController) { }
+    public nav: NavController,
+    private translate : TranslateService) { }
 
   ngOnInit() {
   }
@@ -102,7 +104,7 @@ export class BillPayPage implements OnInit {
 
   async confirm(){
     this.load = await this.loadingCtrl.create({
-      message: 'Sending Payment'
+      message: this.translate.instant("pay.sending")
     });
       this.load.present();
       setTimeout(()=>{
@@ -113,11 +115,11 @@ export class BillPayPage implements OnInit {
 
   async presentConfirmSuccess() {
     let alert = await this.alertCtrl.create({
-      header: 'Payment Sent',
-      message: 'Payment ID: 123687-qad',
+      header: this.translate.instant("pay.sent"),
+      message: this.translate.instant("pay.sent_message"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
             this.nav.navigateForward('home');

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Bill Pay</ion-title>
+    <ion-title translate>pay.title</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,16 +24,16 @@
     </ion-list>
   </div>
   <div *ngIf="this.setB">
-    <p class="label">How do you want to pay?</p>
+    <p class="label" translate>pay.heading</p>
     <ion-list>
       <ion-radio-group color="medium" [(ngModel)]="method">  
         <ion-item color="medium">
-          <ion-label>Cash</ion-label>
+          <ion-label translate>coin.cash</ion-label>
           <ion-radio value="cash"></ion-radio>
         </ion-item>
     
         <ion-item color="medium">
-          <ion-label>HUMBL Balance</ion-label>
+          <ion-label translate>pay.balance</ion-label>
           <p class="balance">${{balance}}</p>
           <ion-radio value="balance"></ion-radio>
         </ion-item>
@@ -41,25 +41,25 @@
     </ion-list>
   </div>
   <div *ngIf="this.method" class="form">
-    <ion-label class="memo" color="light" position="floating" clearInput>Payment Amount</ion-label>
-    <ion-input debounce="800" [(ngModel)]="amount" placeholder="Enter Payment Amount"></ion-input>
+    <ion-label class="memo" color="light" position="floating" clearInput translate>pay.amount</ion-label>
+    <ion-input debounce="800" [(ngModel)]="amount" placeholder="{{'pay.enter' | translate}}"></ion-input>
   </div>
   <div *ngIf="this.amount">
-    <p class="label">Make Recurring?</p>
+    <p class="label" translate>pay.make</p>
     <ion-list class="method">
       <ion-radio-group color="medium" [(ngModel)]="recurring">  
         <ion-item color="medium">
-          <ion-label>Yes</ion-label>
+          <ion-label translate>pay.yes</ion-label>
           <ion-radio value="recurring"></ion-radio>
         </ion-item>
       </ion-radio-group>
     </ion-list>
   </div>
   <div *ngIf="this.method" class="form">
-    <ion-label class="memo" color="light" position="floating" clearInput>Bill Pay Memo</ion-label>
-    <ion-textarea placeholder="Place your bill pay memo here, such as a Bill ID from your service provider"></ion-textarea>
+    <ion-label class="memo" color="light" position="floating" clearInput translate>pay.memo</ion-label>
+    <ion-textarea placeholder="{{'pay.memoholder' | translate}}"></ion-textarea>
   </div>
-  <ion-button *ngIf="this.amount" (click)="confirm()" color="light" size="medium">Send Payment</ion-button>
+  <ion-button *ngIf="this.amount" (click)="confirm()" color="light" size="medium" translate>pay.send</ion-button>
   <!-- <ion-row>
     <ion-col> -->
       <!-- <div *ngIf="this.setB">

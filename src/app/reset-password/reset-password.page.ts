@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reset-password',
@@ -15,7 +16,8 @@ export class ResetPasswordPage implements OnInit {
     private authService: AuthService,
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private translate : TranslateService
   ) {
     this.resetPasswordForm = this.formBuilder.group({
       email: [
@@ -37,10 +39,10 @@ export class ResetPasswordPage implements OnInit {
       this.authService.resetPassword(email).then(
         async () => {
           const alert = await this.alertCtrl.create({
-            message: 'Check your email for a password reset link',
+            message: this.translate.instant("reset.check_email"),
             buttons: [
               {
-                text: 'Ok',
+                text: this.translate.instant("register.ok"),
                 role: 'cancel',
                 handler: () => {
                   this.router.navigateByUrl('login');
@@ -53,7 +55,7 @@ export class ResetPasswordPage implements OnInit {
         async error => {
           const errorAlert = await this.alertCtrl.create({
             message: error.message,
-            buttons: [{ text: 'Ok', role: 'cancel' }],
+            buttons: [{ text: this.translate.instant("register.ok"), role: 'cancel' }],
           });
           await errorAlert.present();
         }

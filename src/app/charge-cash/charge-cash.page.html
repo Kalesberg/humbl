@@ -6,7 +6,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/pos"></ion-back-button>
     </ion-buttons>
-    <ion-title>Charge Cash</ion-title>
+    <ion-title translate>transact.charge</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,23 +16,23 @@
       <ion-col>
         <ion-item *ngIf="this.currency === 'USD'" >
           <ion-label>
-            <p>Subtotal: {{this.subtotal | number: '1.2-2'}}</p>
-            <p>Tax: {{this.tax | number: '1.2-2'}}</p>
-            <h2 class="light">Total: <ion-icon name="logo-usd"></ion-icon>{{this.amount | number: '1.2-2'}}</h2>
+            <p  translate>transact.subtotal: {{this.subtotal | number: '1.2-2'}}</p>
+            <p translate>transact.total: {{this.tax | number: '1.2-2'}}</p>
+            <h2 class="light" translate>transact.total: <ion-icon name="logo-usd"></ion-icon>{{this.amount | number: '1.2-2'}}</h2>
           </ion-label>
         </ion-item>
         <ion-item *ngIf="this.currency === 'EUR'">
           <ion-label>
-            <p>Subtotal: {{this.subtotal | number: '1.2-2'}}</p>
-            <p>Tax: {{this.tax | number: '1.2-2'}}</p>
+            <p translate>transact.subtotal: {{this.subtotal | number: '1.2-2'}}</p>
+            <p translate>transact.tax: {{this.tax | number: '1.2-2'}}</p>
             <h2 class="light">Total: <ion-icon name="logo-euro"></ion-icon>{{this.amount | number: '1.2-2'}}</h2>
           </ion-label>
         </ion-item>
         <ion-item *ngIf="this.currency !== 'USD' && this.currency !== 'EUR'">
           <ion-label>
-            <p>Subtotal: {{this.subtotal | number: '1.2-2'}}</p>
-            <p>Tax: {{this.tax | number: '1.2-2'}}</p>
-            <h2 class="light">Total: {{this.currency}} {{this.amount | number: '1.2-2'}}</h2>
+            <p translate>transact.subtotal: {{this.subtotal | number: '1.2-2'}}</p>
+            <p translate>transact.tax: {{this.tax | number: '1.2-2'}}</p>
+            <h2 class="light" translate>transact.total: {{this.currency}} {{this.amount | number: '1.2-2'}}</h2>
           </ion-label>
         </ion-item>
       </ion-col>
@@ -45,12 +45,12 @@
   </ion-grid>
   <div class="line"></div>
   <div class="banner">
-    <p class="center">Enter Amount Received</p> 
+    <p class="center" translate>transact.received</p> 
     <ion-row>
       <ion-col>
         <ion-item lines="none">
           <!-- <ion-input class="input" placeholder="Enter Amount 0.00" [(ngModel)]="this.received" type="number" (ionChange)="getChange()"></ion-input> -->
-          <ion-input class="input" type="text" [ngModel]="this.received | number:'1.2-2'" (ngModelChange)="this.received=$event" (click)="mbscNumpad.instance.show()" (ionChange)="getChange()" placeholder="Enter Amount 0.00" color="medium" readonly></ion-input>
+          <ion-input class="input" type="text" [ngModel]="this.received | number:'1.2-2'" (ngModelChange)="this.received=$event" (click)="mbscNumpad.instance.show()" (ionChange)="getChange()" placeholder="{{'transact.received_holder' | translate}}" color="medium" readonly></ion-input>
           <mbsc-form-group inset>
             <!-- <div>
                 <input type="number" data-role="stepper" [(ngModel)]="amount" min="0" max="2000" step="10" (click)="mbscNumpad.instance.show()" readonly />
@@ -61,7 +61,7 @@
         </ion-item>
       </ion-col>
     </ion-row>
-    <p *ngIf="this.received" class="center">Change Due</p>
+    <p *ngIf="this.received" class="center" translate>transact.change</p>
     <ion-row>    
       <ion-col>
         <p class="input2" color="light" type="number">{{this.change | number: '1.2-2'}}</p>
@@ -69,7 +69,7 @@
     </ion-row>
   </div>
   <div class="ion-padding space">
-    <ion-button expand="block" shape="round" color="medium" (click)="presentConfirmSuccess()">Mark Completed<ion-icon slot="end" name="checkmark-circle-outline"></ion-icon></ion-button>
+    <ion-button expand="block" shape="round" color="medium" (click)="presentConfirmSuccess()" translate>transact.mark<ion-icon slot="end" name="checkmark-circle-outline"></ion-icon></ion-button>
   </div>
   <!-- {{this.decoded1.cardNumber}} -->
 </ion-content>

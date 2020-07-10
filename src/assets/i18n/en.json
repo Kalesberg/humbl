@@ -1,29 +1,77 @@
 {
-    "HOME": {
-        "signup": "Sign Up",
-        "login": "Log In"
+  "common": {
+        "terminal": "Terminal",
+        "signin" : "Sign In",
+        "signout" : "Sign Out",
+        "messages" : "Messages",
+        "reports" : "Reports",
+        "reviews" : "Reviews",
+        "settings" : "Settings",
+        "qr" : "QR"
     },
-    "POS": {
+
+    "home": {
+        "signup": "Sign Up",
+        "login": "Log In",
+        "newversion" : "A new version is available. Load it?",
+        "select" : "Select Language",
+        "header" : "Network Error",
+        "subheader" : "You are not connected to the internet.",
+        "button" : "Check Settings"   
+    },
+
+    "terminal" : {
+        "title" : "Terminal",
+        "slogan" : "Welcome to HUMBL®",
+        "stripe" : "Connect to Stripe in Settings.",
+        "visit" : "Visit Settings"
+    },
+
+    "messages" : {
+        "title" : "Messages",
+        "reply" : "Reply",
+        "header" : "Reply message to",
+        "enter" : "Enter Your Message",
+        "cancel" : "Cancel",
+        "send" : "Send",
+        "message" : "This message will be deleted."
+    },
+
+    "pos": {
+        "title": "POS QR",
         "coin": "Coin",
         "total": "Total",
         "method": "Pay Method"
     },
-    "ITEMS": {
+
+    "items": {
         "title": "Add New Item",
+        "price" : "Enter Price",
         "price_label": "Enter Price 0.00",
         "name_label": "Description (optional)",
         "add_btn": " Add Item",
         "cancel": "Cancel",
         "save": "Save Item",
         "search": "Search Defined Items",
-        "delete": "DELETE"
+        "delete": "DELETE",
+        "edit" : "Edit Item Details",
+        "editholder" : "Item Description",
+        "item" : "Item Price",
+        "saved" : "Item Saved",
+        "warn" : "No Blank Fields",
+        "warnsub" : "Please Complete All Input Fields.",
+        "message" : "Try Again"
     },
-    "COIN": {
+
+    "coin": {
         "title": "Select Coin",
+        "cash" : "Cash",
         "select": "Select",
-        "close": "Close"
+        "close": "Close",
+        "card" : "Card"
     },
-    "TRANSACT": {
+
+    "transact": {
        "title": "Payment",
        "subtotal": "Subtotal",
        "tax": "Tax",
@@ -33,14 +81,39 @@
        "checking": "Checking for Payment",
        "btc_note": "Bitcoin transactions can take more than 10 minutes.",
        "ltc_note": "Litecoin transactions can take more than 3 minutes.",
-       "check_btn": "Check Blockchain Manually"
+       "check_btn": "Check Blockchain Manually",
+       "charge" : "Charge Cash",
+       "received" : "Enter Amount Received",
+       "received_holder" : "Enter Amount 0.00",
+       "change" : "change Due",
+       "mark" : "Mark Completed",
+       "success" : "Transaction Successful!",
+       "fail" : "Transaction Failed!",
+       "like" : "Would you like a receipt?",
+       "email_holder" : "Customer Email",
+       "receipt" : "Receipt",
+       "purchased" : "Purchased",
+       "business" : "We appreciate your business",
+       "from" : "Your Receipt from"
     },
-    "SETTINGS": {
+
+    "settings": {
         "title": "Settings",
+        "account" : "Account Details",
+        "change" : "Change username or password",
+        "username" : "Username",
+        "unique" : "Your unique username",
         "name": "Business Name",
         "name_label": "Tap to enter business name.",
         "email": "Business Email",
         "email_label": "Tap to enter business email.",
+        "business" : "Business Address",
+        "business_placeholder" : "123 A St. Suite B, Town, CA 12345 USA",
+        "lat" : "Lat",
+        "lon" : "Long",
+        "accept_card" : "Accept cards. Connect to Stripe",
+        "connected" : "Stripe Connected",
+        "disconnect" : "Disconnect",
         "address": "Address",
         "stellar_label": "Tap to enter Stellar address.",
         "digibyte_label": "Tap to enter DigiByte address.",
@@ -53,39 +126,98 @@
         "tax": "Optional Tax Rate",
         "local_tax": "Local Tax Rate",
         "transact": "Transact",
-        "help": "Help"
+        "help": "Help",
+        "upload" : "Upload Logo",
+        "reset" : "Reset Logo",
+        "enter_decimal" : "Enter Decimal eg. 10% = 0.10",
+        "qr" : "Business QR",
+        "logout" : "You Are Logged Out",
+        "your_business" : "Your Business Name",
+        "save" : "Save",
+        "cancel" : "Cancel",
+        "special" : "Special Characters",
+        "special_message" : "Please remove special characters like: '# or .' from your address",
+        "dismiss" : "Dismiss",
+        "saved" : "Data Saved",
+        "disconnect_stripe" : "Disconnect Stripe",
+        "disconnect_message" : "This will disconnect Stripe from your app. You must also disconnect manually in the Stripe dashboard."
     },
-    "REPORTS": {
-        "title": "Records",
+
+    "reports": {
+        "title": "Reports",
+        "records": "Records",
         "rates": "Current Rates",
         "connected": "Connected Wallets",
         "transactions": "Transactions",
+        "pos_transactions": "Pos Transactions",
+        "scan_transactions": "Scan Transactions",
         "revenue": "Revenue",
+        "total_revenue" : "Total Revenue",
         "revenue_note": "Based on current transactions.",
-        "search": "Coin Search",
+        "search_transaction": "Transaction Search",
+        "search_coin": "Coin Search",
+        "search_qr" : "Search By QR",
+        "scan_qr" : "Scan QR",
         "search_holder": "Search By Coin",
         "coin": "Coin",
         "date": "Date",
         "rate": "Rate",
         "fiat": "Fiat",
         "items": "Items",
-        "download": "Download CSV File"
+        "download": "Download CSV File",
+        "tips" : "Tips",
+        "enter" : "Enter Tx ID",
+        "toggle" : "Transaction Toggle",
+        "customer" : "Customer Scans",
+        "terminal" : "Terminal Scans",
+        "method" : "Method",
+        "txid" : "TxID",
+        "tip" : "Tip",
+        "visit" : "Visit Stripe",
+        "prompt" : "Place a barcode inside the scan area",
+        "email_subject" : "HUMBL Report",
+        "email_body" : "Your exported transaction report is attached.",
+        "refund_success" : "Refund Successful!",
+        "refund_fail" : "Refund Failed",
+        "refund_process" : "Processing Refund...",
+        "create" : "Creating CSV..."
     },
-    "LOGIN": {
+
+    "txdetail" : {
+        "title" : "Transaction Detail",
+        "id" : "Transaction ID",
+        "refund" : "Issue Refund",
+        "refund_header" : "This transaction will be refunded.",
+        "sure" : "Are you sure?",
+        "record" : "This record will be deleted."
+    },
+
+    "reviews" : {
+        "title" : "Reviews",
+        "heading" : "Reviews & Feedback",
+        "rating" : "Rating",
+        "feedback" : "Feedback",
+        "transaction" : "Transaction"
+    },
+
+    "login": {
         "title": "Sign In",
         "email": "Email",
         "email_valid": "Please enter a valid email address.",
         "password": "Password",
         "password_valid": "Your password needs more than 6 characters.",
-        "password_forgot": "I forgot my password"
+        "password_forgot": "I forgot my password 🙁",
+        "create" : "Create new account"
     },
-    "RESET": {
+    "reset": {
         "title": "Reset Password",
         "email": "Email",
         "email_note": "Your email address",
-        "reset": "Reset your Password"
+        "reset": "Reset your Password",
+        "check_email" : "Check your email for a password reset link"
     },
-    "REGISTER": {
+
+    "register": {
         "title": "Sign Up",
         "heading": "Create Your Account",
         "email": "Email",
@@ -95,30 +227,78 @@
         "password_note": "Your password",
         "password_check": "Type password again",
         "password_verify": "Your password needs more than 6 characters.",
-        "create_account": "Create Account"
+        "create_account": "Create Account", 
+        "ok" : "Ok"
     },
-    "CREATE": {
 
+    "payroll": {
+        "title" : "Payroll & Tips",
+        "filter" : "Filter Employees",
+        "name" : "Employee Name",
+        "hourly" : "Hourly",
+        "balance" : "Current Tip Balance"
     },
-    "PAY": {
-
+    "chargecard": {
+        "title" : "Charge Card",
+        "fee" : "HUMBL Fee",
+        "gratuity" : "Gratuity",
+        "custom" : "Custom",
+        "scan" : "Scan Customer's Card QR",
+        "confirm" : "Please Confirm Payment",
+        "feep" : "Fee",
+        "process" : "Process Payment",
+        "message" : "Processing Transaction...",
+        "tipheader" : "Enter Custom Tip",
+        "tipholder" : "Enter Your Tip",
+        "back" : "Go Back",
+        "enter" : "Enter"
     },
-    "TIP": {
-
+    
+    "success": {
+        "title" : "Connect",
+        "success" : "Connect Success!",
+        "success_note" : "Now you can start accepting credit cards with HUMBL.",
+        "fail" : "Connection Failed!",
+        "fail_note" : "Something went wrong. Your account could not be connected.",
+        "close" : "Close Page"
     },
-    "SUCCESS": {
 
+    "qr": {
+        "header" : "Send QR Email",
+        "message" : "Email QR Code?",
+        "email" : "Send to Email",
+        "send" : "Send Email",
+        "body" : "Use the raw data to generate a QR code from any QR code generator. Raw QR Data:",
+        "or" : "Or visit the web QR:"
     },
-    "WALLET": {
 
+    "pay": {
+        "title" : "Bill Pay",
+        "heading" : "How do you want to pay?",
+        "balance" : "HUMBL Balance",
+        "enter" : "Enter Payment Amount",
+        "make" : "Make Recurring?",
+        "memo" : "Bill Pay Memo",
+        "memoholder" : "Place your bill pay memo here, such as a Bill ID from your service provider",
+        "send" : "Send Payment",
+        "yes" : "Yes",
+        "amount" : "Payment Amount",
+        "sending" : "Sending Payment",
+        "sent" : "Payment Sent",
+        "sent_message" : "Payment ID: 123687-qad"
     },
-    "WALLET_E": {
-
-    },
-    "WALLET_SEND": {
-
-    },
-    "WALLET_REC": {
-
+    "account": {
+        "title" : "Account",
+        "email" : "Account Email",
+        "enteremail" : "Enter new account email.",
+        "password" : "Change Password",
+        "enterpassword" : "Enter new password",
+        "change" : "Change Account Email",
+        "new" : "New Account Email",
+        "enter" : "Enter Password",
+        "update" : "Change Account Password",
+        "oldpass" : "Old Password",
+        "newpass" : "New Password"
     }
+    
 }

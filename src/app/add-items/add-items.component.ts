@@ -3,6 +3,7 @@ import { NavController, ModalController, AlertController, ToastController } from
 import { Storage } from '@ionic/storage';
 import { ItemsService } from '../services/items.service';
 import { mobiscroll, MbscNumpadDecimalOptions } from '@mobiscroll/angular';
+import { TranslateService } from '@ngx-translate/core';
 mobiscroll.settings = {
   theme: 'ios',
   themeVariant: 'light'
@@ -23,7 +24,8 @@ export class AddItemsComponent implements OnInit {
   numpadSettings:  MbscNumpadDecimalOptions;
 
   constructor(private itemsService: ItemsService, public navCtrl: NavController, public modalCtrl: ModalController, 
-    public alertCtrl: AlertController, public storage: Storage, public toast: ToastController) {
+    public alertCtrl: AlertController, public storage: Storage, public toast: ToastController,
+    private translate : TranslateService) {
       this.storage.get('userSet').then((data) => {
         if(data != null){
         this.setItems = data;
@@ -69,23 +71,23 @@ export class AddItemsComponent implements OnInit {
   
   async editItem(item){
     let prompt = await this.alertCtrl.create({
-        header: 'Edit Item Details',
+        header: this.translate.instant("items.edit"),
         inputs: [
           {
             name: 'description',
-            placeholder: 'Item Description'
+            placeholder: this.translate.instant("items.editholder")
           },
           {
             name: 'price',
-            placeholder: 'Item Price'
+            placeholder: this.translate.instant("items.item")
           },
         ],
         buttons: [
             {
-              text: 'Cancel'
+              text: this.translate.instant("items.cancel")
             },
             {
-              text: 'Save',
+              text: this.translate.instant("settings.save"),
               handler: data => {
                   let index = this.setItems.indexOf(item);
                   if(index > -1){
@@ -122,7 +124,7 @@ export class AddItemsComponent implements OnInit {
 
   async presentToast() {
     const toast = await this.toast.create({
-      message: 'Item Saved',
+      message: this.translate.instant("items.saved"),
       position: 'middle',
       color: 'dark',
       duration: 1500
@@ -133,10 +135,10 @@ export class AddItemsComponent implements OnInit {
   // Present Notifications
   async fieldsWarning() {
     const alert = await this.alertCtrl.create({
-      header: 'No Blank Fields',
-      subHeader: 'Please Complete All Input Fields.',
-      message: 'Try Again.',
-      buttons: ['OK']
+      header: this.translate.instant("items.warn"),
+      subHeader: this.translate.instant("items.warnsub"),
+      message:this.translate.instant("items.message"),
+      buttons: [this.translate.instant("register.ok")]
     });
 
     await alert.present();

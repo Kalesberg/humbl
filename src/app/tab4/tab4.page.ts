@@ -13,6 +13,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import {ScannerComponent} from '../scanner/scanner.component';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
+import { TranslateService } from '@ngx-translate/core';
 const { Filesystem } = Plugins;
 
 @Component({
@@ -82,7 +83,8 @@ export class Tab4Page {
     public cryptoService: CryptoService, private settingsService: SettingsService, 
     private changeRef: ChangeDetectorRef, public crypto: CryptoService,
     public loadingCtrl: LoadingController,
-    public barcodeScanner: BarcodeScanner) { 
+    public barcodeScanner: BarcodeScanner,
+    private translate : TranslateService) { 
   
   }
 
@@ -157,7 +159,7 @@ export class Tab4Page {
     if(this.platform.is('ios') || this.platform.is('android')){
       this.barcodeScanner.scan({
         showFlipCameraButton : true,
-        prompt : "Place a barcode inside the scan area", // Android
+        prompt : this.translate.instant("reports.prompt"), // Android
         resultDisplayDuration: 500, 
         formats : "QR_CODE",
         disableSuccessBeep: false
@@ -193,7 +195,7 @@ export class Tab4Page {
     if(this.platform.is('ios') || this.platform.is('android')){
       this.barcodeScanner.scan({
         showFlipCameraButton : true,
-        prompt : "Place a barcode inside the scan area", // Android
+        prompt :this.translate.instant("reports.prompt"), // Android
         resultDisplayDuration: 500, 
         formats : "QR_CODE",
         disableSuccessBeep: false
@@ -354,8 +356,8 @@ export class Tab4Page {
           let email = {
             to: this.businessEmail,
             attachments: [result.uri],
-            subject: "HUMBL Report",
-            body: "Your exported transaction report is attached.",
+            subject: this.translate.instant("reports.email_subject"),
+            body: this.translate.instant("reports.email_body"),
             isHtml: true
           };
           console.log(res);
@@ -424,10 +426,10 @@ export class Tab4Page {
 
   async presentConfirmSuccess() {
     let alert = await this.alertCtrl.create({
-      header: 'Refund Successful!',
+      header: this.translate.instant("reports.refund_success"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
 
@@ -440,11 +442,11 @@ export class Tab4Page {
 
   async presentConfirmFail(error) {
     let alert = await this.alertCtrl.create({
-      header: 'Refund Failed',
+      header: this.translate.instant("reports.refund_fail"),
       message: error,
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
           }
@@ -456,14 +458,14 @@ export class Tab4Page {
 
   async presentProcessing() {
     this.loading = await this.loadingCtrl.create({
-      message: 'Processing Refund...'
+      message: this.translate.instant("reports.refund_process")
     });
     return await this.loading.present();
   }
 
   async presentLoader() {
     this.loading = await this.loadingCtrl.create({
-      message: 'Creating CSV...'
+      message: this.translate.instant("reports.create")
     });
     return await this.loading.present();
   }

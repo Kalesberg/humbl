@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,8 @@ export class SignupPage implements OnInit {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private translate : TranslateService
   ) {
     this.signupForm = this.formBuilder.group({
       email: [
@@ -57,7 +59,7 @@ export class SignupPage implements OnInit {
           this.loading.dismiss().then(async () => {
             const alert = await this.alertCtrl.create({
               message: error.message,
-              buttons: [{ text: 'Ok', role: 'cancel' }],
+              buttons: [{ text: this.translate.instant("register.ok"), role: 'cancel' }],
             });
             await alert.present();
           });

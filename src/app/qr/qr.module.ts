@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { QrPageRoutingModule } from './qr-routing.module';
 import { QrPage } from './qr.page';
 import { QRCodeModule } from 'angularx-qrcode';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     IonicModule,
     QRCodeModule,
     QrPageRoutingModule,
+    TranslateModule
   ],
   declarations: [QrPage]
 })

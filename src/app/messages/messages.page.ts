@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { MessageService } from '../services/message.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-items',
@@ -39,7 +40,8 @@ export class MessagesPage {
     public navCtrl: NavController, public modalCtrl: ModalController, 
     public alertCtrl: AlertController, public toast: ToastController, 
     public platform: Platform, public settingsService: SettingsService,
-    public loadingCtrl: LoadingController) {  
+    public loadingCtrl: LoadingController,
+    private translate : TranslateService) {  
   }
 
   ionViewWillEnter() {
@@ -104,25 +106,25 @@ export class MessagesPage {
 
   async reply_message(message){
     const alert = await this.alertCtrl.create({
-      header: `Reply message to ${message.sender_name.toUpperCase()}`,
+      header: `${this.translate.instant("messages.header")} ${message.sender_name.toUpperCase()}`,
       inputs: [
         {
           name: 'message',
           id: 'paragraph',
           type: 'textarea',
-          placeholder: 'Enter Your Message.'
+          placeholder: this.translate.instant("messages.enter")
         }
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: this.translate.instant("messages.cancel"),
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
           }
         }, {
-          text: 'Send',
+          text: this.translate.instant("messages.send"),
           handler: data => {
             const httpOptions = {
               headers: new HttpHeaders({
@@ -148,18 +150,18 @@ export class MessagesPage {
 
   async delete_message(message){
     let alert = await this.alertCtrl.create({
-      header: 'This message will be deleted.',
-      message: `Are you sure?`,
+      header: this.translate.instant("messages.message"),
+      message: this.translate.instant("txdeail.sure"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           cssClass: 'primary',
           handler: () => {
           }
         },
         {
-          text: 'DELETE',
+          text: this.translate.instant("items.delete"),
           cssClass: 'primary',
           handler: () => {
             this.messageService.removeMessage(message.id);
@@ -190,10 +192,10 @@ export class MessagesPage {
 
   async presentConfirmSuccess() {
     let alert = await this.alertCtrl.create({
-      header: 'Refund Successful!',
+      header: this.translate.instant("reports.refund_success"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
 
@@ -206,7 +208,7 @@ export class MessagesPage {
 
   async presentProcessing() {
     this.loading = await this.loadingCtrl.create({
-      message: 'Processing Refund...'
+      message: this.translate.instant("reports.refund_process")
     });
     return await this.loading.present();
   }

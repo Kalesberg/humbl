@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { Plugins } from '@capacitor/core';
-const { Storage } = Plugins;
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-qr-generate-info',
@@ -17,7 +16,8 @@ export class QrGenerateInfoPage implements OnInit {
   public pickerWidth = 338;
 
   constructor(private route: ActivatedRoute,
-    public nav: NavController) { 
+    public nav: NavController,
+    public storage: Storage) { 
     let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
     this.qrForOptions = JSON.parse(newqrForOptions)
     if(window.innerWidth<340){
@@ -124,12 +124,13 @@ export class QrGenerateInfoPage implements OnInit {
     }
 
     async next(status){
-      this.qrForOptions.qrcolor = status? this.selectedColor: '';
+      this.qrForOptions.qrcolor = status ? this.selectedColor : '';
       let barcodeData = {
         imgSrc: status? this.iamgeUrl: '',
         qroptions: this.qrForOptions
       }
-      await Storage.set({key: 'barcodestandee',value:JSON.stringify(barcodeData) });
+      console.log("132",JSON.stringify(barcodeData));
+      await this.storage.set('barcodestandee',JSON.stringify(barcodeData));
       this.nav.navigateForward('/qr');
     }
 

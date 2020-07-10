@@ -6,7 +6,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/pos"></ion-back-button>
     </ion-buttons>
-    <ion-title>Charge Card</ion-title>
+    <ion-title translate>chargecard.title</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,23 +19,23 @@
     <div>
       <table>
         <tr>
-          <th>Subtotal</th>
+          <th translate>transact.subtotal</th>
           <td>{{this.symbol}} {{this.subtotal | number : '1.2-2'}}</td>
         </tr>
         <tr>
-          <th>HUMBL Fee</th>
+          <th translate>chargecard.fee</th>
           <td>{{this.symbol}} {{this.fee / 100 | number : '1.2-2'}}</td>
         </tr>
         <tr>
-          <th>Tax</th>
+          <th translate>transact.tax</th>
           <td>{{this.symbol}} {{this.tax | number : '1.2-2'}}</td>
         </tr>
         <tr>
-          <th>Tip</th>
+          <th translate>reports.tip</th>
           <td>{{this.symbol}} {{this.tipDisplay | number : '1.2-2'}}</td>
         </tr>
         <tr>
-          <th>TOTAL</th>
+          <th translate>transact.total</th>
           <td>{{this.symbol}} {{this.total | number : '1.2-2'}}</td>
         </tr>
       </table>
@@ -43,7 +43,7 @@
   </div>
   <div *ngIf="this.subtotal">
     <!-- Tip Selection -->
-    <p class="gratuity">Gratuity</p>
+    <p class="gratuity" translate>chargecard.gratuity</p>
     <div class="tips">
       <ion-chip (click)="selectTip('.10')">
         <ion-label value=".10">10%</ion-label>
@@ -55,12 +55,12 @@
         <ion-label>20%</ion-label>
       </ion-chip>
       <ion-chip (click)="customTip()">
-        <ion-label>Custom</ion-label>
+        <ion-label translate>chargecard.custom</ion-label>
       </ion-chip>
     </div>
   </div>
   <div>
-    <ion-button expand="block" shape="round" color="medium" (click)="scanQR()">Scan Customer's Card QR<ion-icon slot="start" color="light" name="qr-code"></ion-icon></ion-button>
+    <!-- <ion-button expand="block" shape="round" color="medium" (click)="scanQR()">Scan Customer's Card QR<ion-icon slot="start" color="light" name="qr-code"></ion-icon></ion-button> -->
     <ion-button expand="block" shape="round" color="medium" (click)="paymentQr()">QR code for payment<ion-icon slot="start" color="light" name="qr-code"></ion-icon></ion-button>
   </div>  
 </ion-content>

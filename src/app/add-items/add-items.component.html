@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="medium" no-border>
-    <ion-title>Add New Item</ion-title>
+    <ion-title translate>items.title</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,7 +9,7 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label color="medium" position="floating">Enter Price</ion-label>
+          <ion-label color="medium" position="floating" translate>items.price</ion-label>
           <ion-input class="input" type="text" debounce="500" [ngModel]="this.price | number:'1.2-2'" (ngModelChange)="this.price=$event" (click)="mbscNumpad.instance.show()" placeholder="0.00" color="medium" readonly></ion-input>
           <mbsc-form-group inset>
             <!-- <div>
@@ -22,22 +22,22 @@
           <ion-input type="number" [(ngModel)]="price"></ion-input> -->
         </ion-item>
         <ion-item>
-          <ion-label color="medium" position="floating">Description (optional)</ion-label>
+          <ion-label color="medium" position="floating" translate>items.name_label</ion-label>
           <ion-input type="text" [(ngModel)]="description"></ion-input>
         </ion-item>
         <ion-grid>
           <ion-row>
             <ion-col col-12 col-sm>
               <div>
-                <ion-button expand="block" class="addbtn" shape="round" color="medium" (click)="saveItem()" [disabled]="!price || price <= 0">
-                  Add Item <ion-icon slot="end" name="add-circle"></ion-icon>
+                <ion-button expand="block" class="addbtn" shape="round" color="medium" (click)="saveItem()" [disabled]="!price || price <= 0" translate>items.add_btn
+                  <ion-icon slot="end" name="add-circle"></ion-icon>
                 </ion-button>
               </div>  
             </ion-col>
             <ion-col col-12 col-sm>
               <div>  
-                <ion-button expand="block" fill="outline" shape="round" color="medium" (click)="close()">
-                  Cancel
+                <ion-button expand="block" fill="outline" shape="round" color="medium" (click)="close()" translate>
+                  items.cancel
                 </ion-button>
               </div> 
             </ion-col>
@@ -47,10 +47,10 @@
           <ion-row>
             <ion-col col-12 col-sm>
               <div>  
-                <ion-button expand="block" shape="round" class="addbtn" color="medium" fill="outline" [disabled]="!price || price <= 0" (click)="storeUserDefined()">
-                  Save Item<ion-icon slot="end" name="cloud-done"></ion-icon>
+                <ion-button expand="block" shape="round" class="addbtn" color="medium" fill="outline" [disabled]="!price || price <= 0" (click)="storeUserDefined()" translate>
+                  items.save<ion-icon slot="end" name="cloud-done"></ion-icon>
                 </ion-button>
-                <ion-searchbar color="light" class="bar" placeholder="Search Defined Items" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+                <ion-searchbar color="light" class="bar" placeholder="{{'items.search' | translate}}" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
               </div>
               <ion-list>
                 <ion-item-sliding *ngFor="let item of setItems" detail>
@@ -65,7 +65,7 @@
                     </div>
                   </ion-item>
                   <ion-item-options side="end">
-                    <ion-item-option color="danger" (click)="deleteItem(item)">DELETE</ion-item-option>
+                    <ion-item-option color="danger" (click)="deleteItem(item)" translate>items.delete</ion-item-option>
                   </ion-item-options>
                 </ion-item-sliding>
               </ion-list>

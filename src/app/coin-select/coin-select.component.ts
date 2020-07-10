@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -9,7 +10,8 @@ import { ModalController } from '@ionic/angular';
 })
 export class CoinSelectComponent implements OnInit {
 
-  constructor(public modalCtrl: ModalController) { }
+  constructor(public modalCtrl: ModalController,
+    private translate : TranslateService) { }
 
   ngOnInit() {
   }

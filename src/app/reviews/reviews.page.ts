@@ -5,6 +5,7 @@ import { SettingsService } from '../services/settings.service';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-reviews',
@@ -63,8 +64,8 @@ export class ReviewsPage {
   constructor(public reviewService: ReviewsService,
     public settingsService: SettingsService,
     public changeRef: ChangeDetectorRef,
-    public alertCtrl: AlertController) {
-
+    public alertCtrl: AlertController,
+    private translate : TranslateService) {
   }
 
 
@@ -141,18 +142,18 @@ export class ReviewsPage {
 
   async confirmDelete(stripeId, id) {
     let alert = await this.alertCtrl.create({
-      header: 'This record will be deleted.',
-      message: `Are you sure?`,
+      header: this.translate.instant("txdeail.record"),
+      message: this.translate.instant("txdeail.sure"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           cssClass: 'primary',
           handler: () => {
           }
         },
         {
-          text: 'DELETE',
+          text: this.translate.instant("items.delete"),
           cssClass: 'primary',
           handler: () => {
             this.reviewService.removeReview(stripeId, id);

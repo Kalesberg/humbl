@@ -8,6 +8,7 @@ import 'firebase/auth';
 import {environment} from '../../environments/environment';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { CryptoService } from '../services/crypto.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab3',
@@ -50,7 +51,8 @@ export class Tab3Page {
     private settingsService: SettingsService,
     private afStorage: AngularFireStorage,
     public changeRef: ChangeDetectorRef,
-    public crypto: CryptoService) {
+    public crypto: CryptoService,
+    private translate : TranslateService) {
 
     this.storage.get('myTax').then((data) => {
         this.taxRate = data;
@@ -99,7 +101,7 @@ export class Tab3Page {
 
   async logoutToast() {
     const toast = await this.toast.create({
-      message: 'You Are Logged Out',
+      message: this.translate.instant("settings.logout"),
       position: 'middle',
       duration: 1000,
       color: 'light',
@@ -109,21 +111,21 @@ export class Tab3Page {
 
   async saveBusiness(): Promise<void> {
     const alert = await this.alertCtrl.create({
-      subHeader: 'Your Business Name',
+      subHeader: this.translate.instant("settings.your_business"),
       inputs: [
         {
           type: 'text',
           name: 'businessName',
-          placeholder: 'Your Business Name',
+          placeholder: this.translate.instant("settings.your_business"),
           value: this.business,
         }
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: this.translate.instant("settings.cancel"),
           role: 'cancel'
         }, {
-          text: 'Save',
+          text: this.translate.instant("settings.save"),
           handler: (data) => {
             this.business = data.businessName.trim().toLowerCase();
             //this.storage.set('myBusiness', this.business);
@@ -138,21 +140,21 @@ export class Tab3Page {
 
   async saveEmail(): Promise<void> {
     const alert = await this.alertCtrl.create({
-      subHeader: 'Your Business Email',
+      subHeader: this.translate.instant("settings.your_business"),
       inputs: [
         {
           type: 'text',
           name: 'businessEmail',
-          placeholder: 'Your Business Email',
+          placeholder: this.translate.instant("settings.your_business"),
           value: this.businessEmail,
         }
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: this.translate.instant("settings.cancel"),
           role: 'cancel'
         }, {
-          text: 'Save',
+          text: this.translate.instant("settings.save"),
           handler: (data) => {
             this.businessEmail = data.businessEmail.toLowerCase().trim();
             //this.storage.set('myBusinessEmail', this.businessEmail);
@@ -185,11 +187,11 @@ export class Tab3Page {
 
   async addressAlert(): Promise<void> {
     const alert = await this.alertCtrl.create({
-      subHeader: 'Special Characters',
-      message: "Please remove special characters like: '# or .' from your address",
+      subHeader: this.translate.instant("settings.special"),
+      message: this.translate.instant("settings.special_message"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel'
         }
       ],
@@ -211,7 +213,7 @@ export class Tab3Page {
 
   async presentToast() {
     const toast = await this.toast.create({
-      message: 'Data Saved',
+      message: this.translate.instant("settings.saved"),
       position: 'middle',
       duration: 1000,
       color: 'dark',
@@ -269,14 +271,14 @@ export class Tab3Page {
 
   async disconnectStripe(): Promise<void> {
     const alert = await this.alertCtrl.create({
-      subHeader: 'Disconnect Stripe',
-      message: 'This will disconnect Stripe from your app. You must also disconnect manually in the Stripe dashboard.',
+      subHeader: this.translate.instant("settings.disconnect_stripe"),
+      message: this.translate.instant("settings.disconnect_message"),
       buttons: [
         {
-          text: 'Cancel',
+          text: this.translate.instant("settings.cancel"),
           role: 'cancel'
         }, {
-          text: 'Disconnect',
+          text: this.translate.instant("settings.disconnect"),
           handler: () => {
             this.stripeId = null;
             this.settingsService.updateStripeId(this.stripeId);

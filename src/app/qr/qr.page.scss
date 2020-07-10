@@ -1,6 +1,12 @@
 .card{
     margin: auto;
+    // padding: 1px 1px 0px 0px;
+    // max-width: 300px;
+    // max-height: 420px;
+    // border-radius: 10px;
+    // margin-top: 30px;
     box-shadow: none !important;
+    // border: solid 1px #d8d8d8;
 }
 .qr{
     display: block;
@@ -9,11 +15,11 @@
 
 .logo{
     margin-top: 10px;
-    width: 22%;
+    width: 150px;
 }
 
 .logo2{
-    width: 250px;
+    width: 150px;
     height: auto;
     margin-bottom: 10px;
 }
@@ -24,9 +30,11 @@ img{
 }
 
 .div2{
+//    max-width: 250px;
    width: 100%;
    display: flex;
    justify-content: space-around;
+//    margin: auto;
    margin-bottom: 10px;
 }
 
@@ -46,6 +54,8 @@ img{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    // border: 2px solid #9A9B9B;
+    // height: 406px;
     width: 270px;
 }
 

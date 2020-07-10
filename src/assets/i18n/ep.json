@@ -1,0 +1,293 @@
+{
+    "home": {
+        "signup": "Registrarse",
+        "login": "Iniciar sesión",
+        "newversion" : "Una nueva versión está disponible. ¿Deseas descargarla?",
+        "select" : "Elegir idioma",
+        "header" : "Error de red",
+        "subheader" : "No tienes conexión a internet.",
+        "button" : "Revisar ajustes"   
+    },
+
+    "terminal" : {
+        "title" : "Terminal",
+        "slogan" : "Bienvenido a HUMBL®",
+        "stripe" : "Conéctate a Stripe en los ajustes.",
+        "visit" : "Ir a los ajustes"
+    },
+
+    "messages" : {
+        "title" : "Mensajes",
+        "reply" : "Responder",
+        "header" : "Responder mensaje a",
+        "enter" : "Escribe tu mensaje",
+        "cancel" : "Cancelar",
+        "send" : "Enviar",
+        "message" : "Este mensaje se eliminará."
+    },
+
+    "pos": {
+        "title": "Código QR del punto de venta",
+        "coin": "Moneda",
+        "total": "Total",
+        "method": "Método de pago"
+    },
+
+    "items": {
+        "title": "Agregar nuevo artículo",
+        "price" : "Ingresar precio",
+        "price_label": "Ingresar precio 0.00",
+        "name_label": "Descripción (opcional)",
+        "add_btn": "Agregar artículo",
+        "cancel": "Cancelar",
+        "save": "Guardar artículo",
+        "search": "Buscar artículos definidos",
+        "delete": "ELIMINAR",
+        "edit" : "Editar detalles del artículo",
+        "editholder" : "Descripción del artículo",
+        "item" : "Precio del artículo",
+        "saved" : "Artículo guardado",
+        "warn" : "No se permiten espacios en blanco",
+        "warnsub" : "Por favor rellena todos los campos.",
+        "message" : "Inténtalo de nuevo"
+    },
+
+    "coin": {
+        "title": "Seleccionar moneda",
+        "cash" : "Efectivo",
+        "select": "Seleccionar",
+        "close": "Cerrar",
+        "card" : "Tarjeta"
+    },
+
+    "transact": {
+       "title": "Pago",
+       "subtotal": "Subtotal",
+       "tax": "Impuesto",
+       "total": "Total",
+       "market": "Precio de mercado",
+       "due": "Due",
+       "checking": "Comprobando pago",
+       "btc_note": "Las transacciones con bitcoin pueden tardar más de 10 minutos.",
+       "ltc_note": "Las transacciones con litecoin pueden tardar más de 3 minutos.",
+       "check_btn": "Verifica el blockchain manualmente",
+       "charge" : "Cobrar en efectivo",
+       "received" : "Ingresa la cantidad recibida",
+       "received_holder" : "Ingresa la cantidad 0.00",
+       "change" : "Cambio",
+       "mark" : "Marca completada",
+       "success" : "¡Transacción exitosa!",
+       "fail" : "¡Transacción fallida!",
+       "like" : "¿Quieres un recibo?",
+       "email_holder" : "Correo electrónico del cliente",
+       "receipt" : "Recibo",
+       "purchased" : "Comprado",
+       "business" : "Te agradecemos por tu compra",
+       "from" : "Tu recibo de"
+    },
+
+    "settings": {
+        "title": "Ajustes",
+        "account" : "Account Details",
+        "change" : "Cambiar nombre de usuario o contraseña",
+        "username" : "Nombre de usuario",
+        "unique" : "Tu nombre de usuario único",
+        "name": "Nombre del negocio",
+        "name_label": "Tap to enter business name.",
+        "email": "Correo electrónico empresarial",
+        "email_label": "Toca aquí para ingresar el correo electrónico del negocio.",
+        "business" : "Dirección del negocio",
+        "business_placeholder" : "123 A St. Suite B, Town, CA 12345 USA",
+        "lat" : "Lat",
+        "lon" : "Long",
+        "accept_card" : "Aceptar tarjetas. Conectar a Stripe",
+        "connected" : "Se conectó a Stripe",
+        "disconnect" : "Desconectar",
+        "address": "Dirección",
+        "stellar_label": "Toca aquí para ingresar una dirección de Stellar.",
+        "digibyte_label": "Toca aquí para ingresar una dirección de DigiByte.",
+        "dai_label": "Toca aquí para ingresar una dirección de Dai.",
+        "litecoin_label": "Toca aquí para ingresar una dirección de Litecoin.",
+        "bitcoin_label": "Toca aquí para ingresar una dirección de Bitcoin.",
+        "alternate": "Alternativa",
+        "alt_active": "Alternativa activa",
+        "currency": "Selección de moneda",
+        "tax": "Tasa de impuesto opcional",
+        "local_tax": "Tasa de impuesto local",
+        "transact": "Negociar",
+        "help": "Ayuda",
+        "upload" : "Agregar logo",
+        "reset" : "Restablecer logo",
+        "enter_decimal" : "Ingresar decimal, por ejemplo: 10% = 0.10",
+        "qr" : "Código QR del negocio",
+        "logout" : "Has cerrado sesión",
+        "your_business" : "Nombre de tu negocio",
+        "save" : "Guardar",
+        "cancel" : "Cancelar",
+        "special" : "Caracteres especiales",
+        "special_message" : "Por favor borra caracteres especiales como: '# o .' de tu dirección",
+        "dismiss" : "Descartar",
+        "saved" : "Datos guardados",
+        "disconnect_stripe" : "Disconectar Stripe",
+        "disconnect_message" : "Se desconectará Stripe de tu app. También debes desconectarla manualmente en el menú de Stripe."
+    },
+
+    "reports": {
+        "title": "Reportes",
+        "records": "Registros",
+        "rates": "Tasas actuales",
+        "connected": "Monederos conectados",
+        "transactions": "Transaccioness",
+        "pos_transactions": "Transacciones en el punto de venta",
+        "scan_transactions": "Escanear transacciones",
+        "revenue": "Ingresos",
+        "total_revenue" : "Ingresos totales",
+        "revenue_note": "Basados en transacciones actuales.",
+        "search_transaction": "Búsqueda de transacción",
+        "search_coin": "Búsqueda de moneda",
+        "search_qr" : "Buscar por código QR",
+        "scan_qr" : "Escanear código QR",
+        "search_holder": "Buscar por moneda",
+        "coin": "Moneda",
+        "date": "Fecha",
+        "rate": "Tasa",
+        "fiat": "Dinero fiduciario",
+        "items": "Artículos",
+        "download": "Descargar archivo CSV",
+        "tips" : "Propinas",
+        "enter" : "Ingresar Tx ID",
+        "toggle" : "Transaction Toggle",
+        "customer" : "Escaneos del cliente",
+        "terminal" : "Terminal Escanear código",
+        "method" : "Método",
+        "txid" : "TxID",
+        "tip" : "Propina",
+        "visit" : "Ir a Stripe",
+        "prompt" : "Coloca un código de barras en el área de escaneo",
+        "email_subject" : "Reporte de HUMBL",
+        "email_body" : "Tu reporte exportado de transacciones está adjuntado.",
+        "refund_success" : "¡Reembolso exitoso!",
+        "refund_fail" : "Reembolso fallida",
+        "refund_process" : "Procesando reembolso...",
+        "create" : "Creando CSV..."
+    },
+
+    "txdetail" : {
+        "title" : "Detalles de la transacción",
+        "id" : "ID de la transacción",
+        "refund" : "Emitir reembolso",
+        "refund_header" : "Esta transacción será reembolsada.",
+        "sure" : "¿Estás seguro?",
+        "record" : "Este registro será eliminado."
+    },
+
+    "reviews" : {
+        "title" : "Reseñas",
+        "heading" : "Reseñas y comentarios",
+        "rating" : "Calificación",
+        "feedback" : "Comentarios",
+        "transaction" : "Transacción"
+    },
+
+    "login": {
+        "title": "Iniciar sesión",
+        "email": "Correo electrónico",
+        "email_valid": "Por favor ingresa un correo electrónico válido.",
+        "password": "Contraseña",
+        "password_valid": "Tu contraseña debe tener más de 6 caracteres.",
+        "password_forgot": "Olvidé mi contraseña 🙁",
+        "create" : "Crear nueva cuenta"
+    },
+    "reset": {
+        "title": "Restablecer contraseña",
+        "email": "Correo electrónico",
+        "email_note": "Tu dirección de correo electrónico",
+        "reset": "Restablecer tu contraseña",
+        "check_email" : "Revisa tu correo electrónico para restablecer tu contraseña"
+    },
+
+    "register": {
+        "title": "Registrarse",
+        "heading": "Crea tu cuenta",
+        "email": "Correo electrónico",
+        "email_note": "Tu dirección de correo electrónico",
+        "email_warn": "Por favor ingresa un correo electrónico válido.",
+        "password": "Contraseña",
+        "password_note": "Tu contraseña",
+        "password_check": "Escribe la contraseña de nuevo",
+        "password_verify": "Tu contraseña debe tener más de 6 caracteres.",
+        "create_account": "Crear cuenta", 
+        "ok" : "Ok"
+    },
+
+    "payroll": {
+        "title" : "Nómina y propinas",
+        "filter" : "Filtrar empleados",
+        "name" : "Nombre del empleado",
+        "hourly" : "Por hora",
+        "balance" : "Balance de propinas actual"
+    },
+    "chargecard": {
+        "title" : "Cobrar a la tarjeta",
+        "fee" : "Tarifa de HUMBL",
+        "gratuity" : "Propina",
+        "custom" : "Personalizar",
+        "scan" : "Escanear código QR de la tarjeta del cliente",
+        "confirm" : "Por favor confirma el pago",
+        "feep" : "Tarifa",
+        "process" : "Procesar pago",
+        "message" : "Procesando transacción...",
+        "tipheader" : "Ingresar propina",
+        "tipholder" : "Ingresa tu propina",
+        "back" : "Regresar",
+        "enter" : "Ingresar"
+    },
+    
+    "success": {
+        "title" : "Conectar",
+        "success" : "¡Conexión exitosa!",
+        "success_note" : "Ahora puedes aceptar tarjetas de crédito con HUMBL.",
+        "fail" : "¡Conexión fallida!",
+        "fail_note" : "Algo salió mal. Tu cuenta no se pudo conectar.",
+        "close" : "Cerrar página"
+    },
+
+    "qr": {
+        "header" : "Enviar correo de código QR",
+        "message" : "¿Enviar código QR por correo?",
+        "email" : "Enviar al correo electrónico",
+        "send" : "Enviar correo",
+        "body" : "Usa los datos brutos para generar un código QR desde cualquier generador de códigos QR. Datos brutos de QR:",
+        "or" : "O visita la página web del código QR:"
+    },
+
+    "pay": {
+        "title" : "Pago de factura",
+        "heading" : "¿Cómo quieres pagar?",
+        "balance" : "Balance de HUMBL",
+        "enter" : "Ingresa cantidad del pago",
+        "make" : "¿Volver recurrente?",
+        "memo" : "Nota de pago de factura",
+        "memoholder" : "Coloca tu nota de pago de factura aquí, tal como un ID de factura de tu proveedor de servicios",
+        "send" : "Enviar pago",
+        "yes" : "Sí",
+        "amount" : "Cantidad de pago",
+        "sending" : "Enviando pago",
+        "sent" : "Pago enviado",
+        "sent_message" : "ID de pago: 123687-qad"
+    },
+    "account": {
+        "title" : "Cuenta",
+        "email" : "Cuenta de correo electrónico",
+        "enteremail" : "Ingresa una nueva cuenta de correo electrónico.",
+        "password" : "Cambiar contraseña",
+        "enterpassword" : "Ingresa una nueva contraseña",
+        "change" : "Cambiar cuenta de correo electrónico",
+        "new" : "Nueva cuenta de correo electrónico",
+        "enter" : "Ingresar contraseña",
+        "update" : "Cambiar contraseña de la cuenta",
+        "oldpass" : "Contraseña antigua",
+        "newpass" : "Contraseña nueva"
+    }
+    
+}

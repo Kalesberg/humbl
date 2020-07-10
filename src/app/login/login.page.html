@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Sign In</ion-title>
+    <ion-title translate>login.title</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -28,7 +28,7 @@
           <ion-input
             formControlName="email"
             type="email"
-            placeholder="Your email address"
+            placeholder="{{'register.email_note' | translate}}"
             [class.invalid]="!loginForm.controls['email'].valid &&
             loginForm.controls['email'].touched"
           >
@@ -40,15 +40,15 @@
           *ngIf="!loginForm.controls['email'].valid &&
               loginForm.controls['email'].touched"
         >
-          <ion-label color="light">Please enter a valid email address.</ion-label>
+          <ion-label color="light" translate>register.email_warn</ion-label>
         </ion-item>
-
+      
         <ion-item class="padding" color="medium" lines="none">
           <!-- <ion-label position="stacked">Password</ion-label> -->
           <ion-input
             formControlName="password"
             type="password"
-            placeholder="Your password"
+            placeholder="{{'register.password_note' | translate}}"
             [class.invalid]="!loginForm.controls['password'].valid&& loginForm.controls['password'].touched"
           >
           </ion-input>
@@ -59,36 +59,33 @@
           *ngIf="!loginForm.controls['password'].valid
             && loginForm.controls['password'].touched"
         >
-          <ion-label color="light">Your password needs more than 6 characters.</ion-label>
+          <ion-label color="light" translate>register.password_verify</ion-label>
         </ion-item>
-        <ion-button class="ion-padding" color="light" shape="round" (click)="loginUser(loginForm)" expand="block" [disabled]="!loginForm.valid">Sign In</ion-button>
-        <br>
-        <ion-button class="ion-padding" fill="outline" color="light" shape="round" (click)="googleUserSignin()" expand="block" >Google<ion-icon slot="start" color="light" name="logo-google"></ion-icon></ion-button>
-        <ion-button class="ion-padding" fill="outline" color="light" shape="round" (click)="facebookUserSignin()" expand="block" >Facebook<ion-icon slot="start" color="light" name="logo-facebook"></ion-icon></ion-button>
-        <ion-button *ngIf="ios" class="ion-padding" fill="outline" color="light" shape="round" (click)="appleUserSignin()" expand="block" >Apple<ion-icon slot="start" color="light" name="logo-apple"></ion-icon></ion-button>
+
+        <ion-button class="ion-padding" color="light" shape="round" (click)="loginUser(loginForm)" expand="block" [disabled]="!loginForm.valid" translate>login.title</ion-button>
         <!-- <ion-button *ngIf="this.merchant" color="light" class="btn" [href]="'/home'" expand="block" [disabled]="!loginForm.valid">
           Sign In
         </ion-button> -->
-
+        
       </form>
-      <div class="space">
+      <div class="space"> 
         <!-- <ion-button expand="block" (click)="signInWithGoogle()" class="button btn-social btn-google"
           *ngIf="!authService.currentUser">
         <i class="fa fa-google-plus fa-lg"></i><ion-icon slot="start" name="logo-google"></ion-icon>Connect Google
         </ion-button> -->
         <ion-row>
           <ion-col>
-            <ion-button color="medium" expand="block" routerLink="/signup">
-              Create a new account
+            <ion-button color="medium" expand="block" routerLink="/signup" translate>
+              login.create
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button color="medium" expand="block" routerLink="/reset-password">
-              I forgot my password 🙁
+            <ion-button color="medium" expand="block" routerLink="/reset-password" translate>
+              login.password_forgot
             </ion-button>
           </ion-col>
         </ion-row>
-      </div>
+      </div>  
     </ion-card>
   <!-- <ion-col size="12" size-sm>
     <p>Digi-ID is built into your DigiByte mobile wallet app.</p>

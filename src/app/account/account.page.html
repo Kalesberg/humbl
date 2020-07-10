@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-toolbar color="medium">
-    <ion-title>Account</ion-title>
+    <ion-title translate>account.title</ion-title>
     <ion-buttons slot="start">
       <ion-back-button  defaultHref="/settings"></ion-back-button>
     </ion-buttons>
@@ -10,14 +10,14 @@
 <ion-content class="ion-padding">
   <ion-item (click)="updateEmail()" detail="true"> 
     <ion-label>
-      <p class="input">Account Email</p>
-      <ion-text>Enter new account email.</ion-text>
+      <p class="input" translate>account.email</p>
+      <ion-text translate>account.enteremail</ion-text>
     </ion-label>
   </ion-item>
   <ion-item (click)="updatePassword()" detail="true"> 
     <ion-label>
-      <p class="input">Change Password</p>
-      <ion-text>Enter new password.</ion-text>
+      <p class="input" translate>account.password</p>
+      <ion-text translate>account.enterpassword</ion-text>
     </ion-label>
   </ion-item>
 </ion-content>

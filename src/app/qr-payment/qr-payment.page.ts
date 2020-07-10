@@ -11,12 +11,12 @@ import * as CryptoJs from 'crypto-js';
 })
 export class QrPaymentPage implements OnInit {
 
-  public selectedColor: string = "#22ade4";
+  //public selectedColor: string = "#22ade4";
   public lightcolor: string = "#ffffff";
   public qrData: string;
   public user: boolean = false;
-  public totalAmount: number =0;
-  public logoImageURL: string ="";
+  public totalAmount = 0;
+  public logoImageURL = '';
 
   constructor(private settingsService: SettingsService,
     private route: ActivatedRoute) { }

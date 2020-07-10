@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="medium">
-    <ion-title>Connect</ion-title>
+    <ion-title translate>success.title</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,8 +10,8 @@
     <ion-avatar>
       <img src='assets/stripe.png'>
     </ion-avatar>
-    <h1 class="it">Connect Success!</h1>
-    <p>Now you can start accepting credit cards with HUMBL.</p> 
+    <h1 class="it" translate>success.success</h1>
+    <p translate>success.success_note</p> 
     <div padding>
       <ion-button expand="block" fill="outline" shape="round" (click)="close()" color="light">Close Page</ion-button>
     </div>
@@ -21,10 +21,10 @@
     <ion-avatar>
       <img src='assets/stripe.png'>
     </ion-avatar>
-    <h1 class="it">Connect Failed!</h1>
-    <p>Something went wrong. Your account could not be connected.</p> 
+    <h1 class="it" translate>success.fail</h1>
+    <p translate>success.fail_note</p> 
     <div class="ion-padding">
-      <ion-button expand="block" fill="outline" shape="round" (click)="close()" color="light">Close Page</ion-button>
+      <ion-button expand="block" fill="outline" shape="round" (click)="close()" color="light" translate>success.close</ion-button>
     </div>
   </ion-card>
 </ion-content>

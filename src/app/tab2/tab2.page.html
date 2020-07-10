@@ -8,7 +8,7 @@
         <ion-button fill="outline" size="small" color="light" (click)="this.selectCoin()">Method</ion-button>
       </ion-item>
     </div> -->
-    <ion-title>Terminal</ion-title>
+    <ion-title translate>terminal.title</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -32,16 +32,16 @@
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <div class="ion-padding">
-      <h2 class="item-total" *ngIf="this.currency === 'USD'">Total: {{ this.sum | currency: 0 }}</h2>
-      <h2 class="item-total" *ngIf="this.currency != 'USD'">Total: <span>{{ this.currency }}</span> {{ this.sum | number: '1.2-2' }}</h2>
-      <p *ngIf="this.coin" class="current-coin">Pay Method: {{this.coin}}</p>
+      <h2 class="item-total" *ngIf="this.currency === 'USD'" translate>pos.total <span>{{ this.sum | currency: 0 }}</span></h2>
+      <h2 class="item-total" *ngIf="this.currency != 'USD'" translate>pos.total <span>{{ this.currency }}</span> {{ this.sum | number: '1.2-2' }}</h2>
+      <p *ngIf="this.coin" class="current-coin" translate>pos.method {{this.coin}}</p>
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-button id="add" fill="outline" shape="round" expand="block" color="medium" (click)="addItem()">Add Item</ion-button>
+            <ion-button id="add" fill="outline" shape="round" expand="block" color="medium" (click)="addItem()" translate>items.add_btn</ion-button>
           </ion-col>
           <ion-col>
-            <ion-button color="medium" expand="block" shape="round" [disabled]="this.sum <= 0" class="total" (click)="this.selectCoin()">TOTAL</ion-button>
+            <ion-button color="medium" expand="block" shape="round" [disabled]="this.sum <= 0" class="total" (click)="this.selectCoin()" translate>pos.total</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

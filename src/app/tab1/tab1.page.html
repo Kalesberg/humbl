@@ -3,15 +3,21 @@
   <div class="slogan">
     <p></p>
   </div>
+  <label class="languagepart" translate>
+    home.select
+    <select #langSelect (change)="setAppLang(langSelect.value)">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+    </select>
+  </label>
   <div class="buttons">
     <div>
-      <ion-button class="sign-in" id="settings" shape="round" color="light" (click)="toSignupPage()" expand="block">
-        Sign Up
+      <ion-button translate class="sign-in" id="settings" shape="round" color="light" (click)="toSignupPage()" expand="block">
+        home.signup
       </ion-button>
     </div>
     <div class="btn"> 
-      <ion-button id="settings" color="light" shape="round" fill="outline" (click)="toLoginPage()" expand="block">
-        Log In
+      <ion-button translate id="settings" color="light" shape="round" fill="outline" (click)="toLoginPage()" expand="block">
+        home.login
       </ion-button>
     </div>
   </div>  

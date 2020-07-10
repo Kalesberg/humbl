@@ -12,6 +12,7 @@ import 'firebase/firestore';
 import * as CryptoJs from 'crypto-js';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 import {EmailComposer} from '@ionic-native/email-composer/ngx';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-charge-card',
@@ -69,7 +70,8 @@ export class ChargeCardPage {
     public loadingCtrl: LoadingController,
     public barcodeScanner: BarcodeScanner,
     public platform: Platform,
-    public emailComposer: EmailComposer) { 
+    public emailComposer: EmailComposer,
+    private translate : TranslateService) { 
       if(this.dataPass.passedItems.usd !== null || 
         this.dataPass.passedItems.usd !== undefined){
         this.subtotal = parseFloat(this.dataPass.passedItems.usd);
@@ -199,7 +201,7 @@ export class ChargeCardPage {
     if (this.platform.is('ios') || this.platform.is('android')){
         this.barcodeScanner.scan({
           showFlipCameraButton : true,
-          prompt : "Place a barcode inside the scan area", // Android
+          prompt : this.translate.instant("reports.prompt"), // Android
           resultDisplayDuration: 500, 
           formats : "QR_CODE",
           disableSuccessBeep: false
@@ -244,17 +246,17 @@ export class ChargeCardPage {
 
   async confirmCharge(cardDetails) {
     let alert = await this.alertCtrl.create({
-      header: 'Please Confirm Payment',
-      message: `Subtotal: <strong>$${this.subtotal.toFixed(2)}</strong> <br> Fee:..... <strong>$${(this.fee / 100).toFixed(2)}</strong> <br> Tax:..... <strong>$${this.tax.toFixed(2)}</strong> <br> Tip:..... <strong>$${this.tipDisplay.toFixed(2)}</strong> <br>Total:... <strong>$${this.total.toFixed(2)}</strong>`,
+      header: this.translate.instant("chargecard.confirm"),
+      message: `${this.translate.instant("transact.subtotal")}: <strong>$${this.subtotal.toFixed(2)}</strong> <br> ${this.translate.instant("chargecard.feep")}:..... <strong>$${(this.fee / 100).toFixed(2)}</strong> <br> ${this.translate.instant("transact.tax")}:..... <strong>$${this.tax.toFixed(2)}</strong> <br> ${this.translate.instant("reports.tip")}:..... <strong>$${this.tipDisplay.toFixed(2)}</strong> <br>${this.translate.instant("transact.total")}:... <strong>$${this.total.toFixed(2)}</strong>`,
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
           }
         },
         {
-          text: 'Process Payment',
+          text: this.translate.instant("chargecard.process"),
           handler: () => {
             this.chargeCustomer(cardDetails);
           } 
@@ -266,18 +268,18 @@ export class ChargeCardPage {
 
   async presentConfirmSuccess() {
     let alert = await this.alertCtrl.create({
-      header: 'Transaction Successful!',
-      message: 'Would you like a receipt?',
+      header: this.translate.instant("transact.success"),
+      message: this.translate.instant("transact.like"),
       inputs: [
         {
           name: 'email',
-          placeholder: 'Customer Email',
+          placeholder: this.translate.instant("transact.email_holder"),
           type: 'email'
         }
       ],
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
             this.storeTransactionData();
@@ -285,7 +287,7 @@ export class ChargeCardPage {
           }
         },
         {
-          text: 'Receipt',
+          text: this.translate.instant("transact.receipt"),
           handler: data => {
             this.storeTransactionData();
             this.email = data.email;
@@ -300,11 +302,11 @@ export class ChargeCardPage {
 
   async presentConfirmFail(error) {
     let alert = await this.alertCtrl.create({
-      header: 'Transaction Failed',
+      header: this.translate.instant("transact.fail"),
       message: error,
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
           }
@@ -317,9 +319,9 @@ export class ChargeCardPage {
   emailReceipt(data){
     let email = {
       to: data,
-      subject: `Your Receipt from ${this.business}`,
-      body: `Total: $${this.total}, Purchased: ${this.output}, TxID: ${this.tx}.
-      We appreciate your business, ${this.business}.`,
+      subject: `${this.translate.instant("transact.from")} ${this.business}`,
+      body: `${this.translate.instant("transact.total")}: $${this.amount}, ${this.translate.instant("transact.purchased")}: ${this.output}, ${this.translate.instant("reports.txid")}: ${this.tx}.
+      ${this.translate.instant("transact.business")}, ${this.business}.`,
       isHtml: true
     }
     if(this.platform.is('ios') || this.platform.is('android')){
@@ -346,7 +348,7 @@ export class ChargeCardPage {
 
   async presentProcessing() {
     this.loading = await this.loadingCtrl.create({
-      message: 'Processing Transaction...'
+      message: this.translate.instant("chargecard.message")
     });
     return await this.loading.present();
   }
@@ -357,23 +359,23 @@ export class ChargeCardPage {
 
   async customTip() {
     let alert = await this.alertCtrl.create({
-      header: 'Enter Custon Tip',
+      header: this.translate.instant("chargecard.tipheader"),
       inputs: [
         {
           name: 'tip',
           type: 'number',
-          placeholder: 'Enter Your Tip'
+          placeholder: this.translate.instant("chargecard.tipholder")
         }
       ],
       buttons: [
         {
-          text: 'Go Back',
+          text: this.translate.instant("chargecard.back"),
           role: 'cancel',
           handler: () => {
           }
         },
         {
-          text: 'Enter',
+          text: this.translate.instant("chargecard.enter"),
           handler: (data) => {
             //this.calculateFee();
             let test = parseFloat(data.tip.toString()).toFixed(2);

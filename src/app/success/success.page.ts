@@ -4,6 +4,7 @@ import { SettingsService } from '../services/settings.service';
 import { CryptoService } from '../services/crypto.service';
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-success',
@@ -22,7 +23,8 @@ export class SuccessPage {
     private settingsService: SettingsService,
     private crypto: CryptoService,
     public loadingCtrl: LoadingController,
-    public router: Router) {
+    public router: Router,
+    private translate : TranslateService) {
   
   }
 

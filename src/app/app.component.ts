@@ -8,15 +8,17 @@ import { SettingsService } from './services/settings.service';
 import * as CryptoJs from 'crypto-js';
 import { SwUpdate } from '@angular/service-worker';
 import { PushService } from './services/push.service';
-import {
-  Plugins,
+import { 
+  Plugins, 
   AppState,
   PushNotification,
   PushNotificationToken,
   PushNotificationActionPerformed } from '@capacitor/core';
+import { Storage } from '@ionic/storage'
+import { TranslateService } from '@ngx-translate/core';
 const { PushNotifications } = Plugins;
 const { SplashScreen } = Plugins;
-const { Storage, App } = Plugins;
+const { App } = Plugins;
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -34,33 +36,33 @@ export class AppComponent {
   public uid: string;
   public appPages = [
     {
-      title: 'Terminal',
+      title: 'terminal',
       url: '/pos',
       icon: 'calculator'
     },
     {
-      title: 'Messages',
+      title: 'messages',
       url: '/messages',
       icon: 'document-text-outline'
     },
     {
-      title: 'Reports',
+      title: 'reports',
       url: '/reports',
       icon: 'file-tray-full-outline'
     },
     {
-      title: 'Reviews',
+      title: 'reviews',
       url: '/reviews',
       icon: 'people'
     },
     {
-      title: 'POS QR',
+      title: 'qr',
       url: '/qr-dashboard',
       icon: 'qr-code',
       isQrMenu: true
     },
     {
-      title: 'Settings',
+      title: 'settings',
       url: '/settings',
       icon: 'cog'
     }
@@ -77,11 +79,27 @@ export class AppComponent {
     public ngZone: NgZone,
     private swUpdate: SwUpdate,
     private pushService: PushService,
+    private translate: TranslateService,
+    private storage: Storage,
     public nav: NavController
     ) {
 
     this.initializeApp();
     this.authCheck();
+
+    this.translate.setDefaultLang('en');
+    this.translate.langs = ['en', 'ep'];  
+
+    // Or to get a key/value pair
+    this.storage.get('lang').then((val) => {
+
+      if (val !== undefined) {
+        this.translate.use(val);
+      }
+      else {
+        this.translate.use('en')
+      }
+    });
   }
 
   // ionViewWillEnter(){
@@ -92,6 +110,17 @@ export class AppComponent {
 
     this.platform.ready().then(() => {
       SplashScreen.hide();
+      // this.deeplinks.route({
+      //   '/success/:slug': 'success',
+      // }).subscribe((match) => {
+      //   console.log("----------Succeefully matched route--------");
+      //   const internalPath = `/${match.$route}/${match.$args['slug']}`;
+      //   this.ngZone.run(() => {
+      //     this.router.navigateByUrl(internalPath);
+      //   });
+      // }, (noMatch) => {
+      //     console.log("not mathching!!!!");
+      // })
 
       App.addListener('appStateChange', (state: AppState) => {
         console.log('App state changed. Is active?', state.isActive);
@@ -115,10 +144,11 @@ export class AppComponent {
     });
     if (this.swUpdate.available) {
       this.swUpdate.available.subscribe(() => {
-        if (confirm('A new version is available. Load it?'))
+        if (confirm(this.translate.instant("home.newversion")))
           window.location.reload();
       });
     }
+
     window.addEventListener('beforeinstallprompt', e => {
       e.preventDefault();
     });
@@ -170,9 +200,9 @@ export class AppComponent {
 
   async showAlert1() {
     const alert1 = await this.alertCtrl.create({
-      header: 'Network Error',
-      subHeader: 'You are not connected to the internet.',
-      buttons: ['Check Settings']
+      header: this.translate.instant("header"),
+      subHeader: this.translate.instant("subheader"),
+      buttons: [this.translate.instant("home.button")]
     });
     return await alert1.present();
   }
@@ -250,7 +280,7 @@ export class AppComponent {
   }
 
   async posRedirect() {
-    let qrLocalData= await Storage.get({key: 'barcodestandee'});
+    let qrLocalData = await this.storage.get('barcodestandee');
     let isQrExist = false;
     if(qrLocalData && qrLocalData.value){
       let qrLocalinfo = JSON.parse(qrLocalData.value)

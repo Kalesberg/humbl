@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { BillPayPageRoutingModule } from './bill-pay-routing.module';
 
 import { BillPayPage } from './bill-pay.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BillPayPageRoutingModule
+    BillPayPageRoutingModule,
+    TranslateModule
   ],
   declarations: [BillPayPage]
 })

@@ -5,6 +5,7 @@ import * as firebase from 'firebase/app';
 import { ReportService } from '../services/report.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { CryptoService } from '../services/crypto.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tx-detail',
@@ -27,7 +28,8 @@ export class TxDetailPage implements OnInit {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public router: Router,
-    public crypto: CryptoService) { }
+    public crypto: CryptoService,
+    private translate : TranslateService) { }
 
   ngOnInit() {
   }
@@ -82,18 +84,18 @@ export class TxDetailPage implements OnInit {
 
   async confirmRefund() {
     let alert = await this.alertCtrl.create({
-      header: 'This transaction will be refunded.',
-      message: `Are you sure?`,
+      header: this.translate.instant("txdetail.refund_header"),
+      message: this.translate.instant("txdetail.sure"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("txdetail.dismiss"),
           role: 'cancel',
           cssClass: 'primary',
           handler: () => {
           }
         },
         {
-          text: 'Issue Refund',
+          text: this.translate.instant("txdetail.refund"),
           cssClass: 'primary',
           handler: () => {
             this.issueRefund();
@@ -135,10 +137,10 @@ export class TxDetailPage implements OnInit {
 
   async presentConfirmSuccess() {
     let alert = await this.alertCtrl.create({
-      header: 'Refund Successful!',
+      header: this.translate.instant("reports.refund_success"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
             this.router.navigateByUrl('/reports');
@@ -151,11 +153,11 @@ export class TxDetailPage implements OnInit {
 
   async presentConfirmFail(error) {
     let alert = await this.alertCtrl.create({
-      header: 'Refund Failed',
+      header: this.translate.instant("reports.refund_fail"),
       message: error,
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
             this.router.navigateByUrl('/reports');
@@ -168,25 +170,25 @@ export class TxDetailPage implements OnInit {
 
   async presentProcessing() {
     this.loading = await this.loadingCtrl.create({
-      message: 'Processing Refund...'
+      message: this.translate.instant("reports.refund_process")
     });
     return await this.loading.present();
   }
 
   async confirmDelete() {
     let alert = await this.alertCtrl.create({
-      header: 'This record will be deleted.',
-      message: `Are you sure?`,
+      header: this.translate.instant("txdeail.record"),
+      message: this.translate.instant("txdeail.sure"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           cssClass: 'primary',
           handler: () => {
           }
         },
         {
-          text: 'DELETE',
+          text: this.translate.instant("items.delete"),
           cssClass: 'primary',
           handler: () => {
             if(this.ext === 'true'){
@@ -207,18 +209,18 @@ export class TxDetailPage implements OnInit {
 
   async confirmExtDelete() {
     let alert = await this.alertCtrl.create({
-      header: 'This record will be deleted.',
-      message: `Are you sure?`,
+      header: this.translate.instant("txdeail.record"),
+      message: this.translate.instant("txdeail.sure"),
       buttons: [
         {
-          text: 'Dismiss',
+          text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           cssClass: 'primary',
           handler: () => {
           }
         },
         {
-          text: 'DELETE',
+          text: this.translate.instant("items.delete"),
           cssClass: 'primary',
           handler: () => {
             this.reportService.removeExtTx(this.stripeId, this.transaction.txId);

@@ -1,24 +1,24 @@
 <ion-header>
   <ion-toolbar color="medium">
-    <ion-title>Select Coin</ion-title>
+    <ion-title translate>coin.title</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
   <ion-list>
     <ion-item (click)="selectCoin('cash')" text-wrap>
-      <ion-label>Cash</ion-label>
+      <ion-label translate>coin.cash</ion-label>
       <ion-icon slot="start" color="medium" name="cash"></ion-icon>
-      <p slot="end">Select</p>
+      <p slot="end" translate>coin.select</p>
     </ion-item>
     <ion-item (click)="selectCoin('card')" text-wrap>
-      <ion-label>Card</ion-label>
+      <ion-label translate>coin.card</ion-label>
       <ion-icon slot="start" color="medium" name="card"></ion-icon>
-      <p slot="end">Select</p>
+      <p slot="end" translate>coin.select</p>
     </ion-item>
   </ion-list>
   <div class="ion-padding space">  
-    <ion-button fill="outline" shape="round" color="medium" expand="block" (click)="close()">
-      Close
+    <ion-button translate fill="outline" shape="round" color="medium" expand="block" (click)="close()">
+      coin.close
     </ion-button>
   </div> 
 </ion-content>

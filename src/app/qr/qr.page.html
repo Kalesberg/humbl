@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="medium">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/qr-dashboard"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -11,31 +11,35 @@
       <h3 class="title-text">Your code.</h3>
     </div>
 
-  <div class="barcode-wrapper">
-    <div class="barcode-content" #barcode3>
-      <div class="barcode-data data3" (click)="presentEmailPrompt()">
-        <ion-card class="card" color="light" *ngIf="this.username">
+    <div class="barcode-wrapper">
+      <div class="barcode-content" #barcode3>
+        <div class="barcode-data data3" (click)="presentEmailPrompt()">
+          <div class="logo-div2" *ngIf="imgSrc">
+            <img class="logo2" [src]="imgSrc">
+          </div>
+          <ion-card class="card" color="light" *ngIf="this.username">
               <qrcode [qrdata]="this.username" [width]="250" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
-              [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
-        </ion-card>
-        <div class="logo-div2" *ngIf="imgSrc">
-          <img class="logo2" [src]="imgSrc">
+                [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+          </ion-card>
         </div>
+        <ion-button class="share-text" shape="round" fill="outline" color="medium" (click)="next(barcode3)">Download and Print</ion-button> 
       </div>
-      <span class="share-text" (click)="printBarcode(barcode3)">Download and print share</span> 
     </div>
+    <!-- <div (click)="presentEmailPrompt()">
+      <ion-card class="card" color="light" *ngIf="this.username">
+        <div class="qr">
+            <qrcode [qrdata]="this.username" [size]="256" [level]="'M'" colorlight="#ffffff" colordark="#333333"></qrcode>
+        </div> 
+      </ion-card>
+    </div> -->
+    <!-- <div class="logo-div2">
+      <img class="logo2" src="../../assets/humbl-blue.png">
+    </div>
+    <div class="div2">
+      <img class="logo" src="../../assets/visa-logo.png">
+      <img class="logo" src="../../assets/mc.png">
+      <img class="logo" src="../../assets/discover.png">
+      <img class="logo" src="../../assets/amex.png">
+    </div> -->
   </div>
-  <div class="btn-wrapper next-btn-wrapper">
-    <ion-button class="btn-main btn-next " shape="round" 
-      color="medium" fill="outline" (click)="next()">
-      Generate Standees
-      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-      </ion-button>
-      <ion-button class="btn-main" shape="round" 
-      color="medium" fill="outline" (click)="back()">
-      <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
-        Back
-      </ion-button>
-  </div>
-</div>
 </ion-content>

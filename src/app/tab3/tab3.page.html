@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Settings
+    <ion-title translate>
+      settings.title
     </ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -16,47 +16,47 @@
   <ion-list>
     <ion-item color="medium" [routerLink]="['/account']" routerDirection="forward" detail="true">  
       <ion-label>
-        <p class="input">Account Details</p>
-        <ion-text>Change username or password</ion-text>
+        <p class="input" translate>settings.account</p>
+        <ion-text translate>settings.change</ion-text>
         <!-- <ion-text *ngIf="this.username === null || this.username === ''">Your unique username.</ion-text> -->
       </ion-label>
     </ion-item>
     <ion-item *ngIf="this.stripeId" color="medium" detail="true"> 
       <ion-label>
-        <p class="input">Username</p>
+        <p class="input" translate>settings.username</p>
         <ion-text>{{ this.username }}</ion-text>
-        <ion-text *ngIf="this.username === null || this.username === ''">Your unique username.</ion-text>
+        <ion-text *ngIf="this.username === null || this.username === ''" translate>settings.unique.</ion-text>
       </ion-label>
     </ion-item>
     <ion-item *ngIf="this.stripeId" color="medium" (click)="saveBusiness()"> 
       <ion-label>
-        <p class="input">Business Name</p>
+        <p class="input" translate>settings.name</p>
         <ion-text class="inputName">{{ this.business }}</ion-text>
-        <ion-text *ngIf="!this.business">Tap to enter business name.</ion-text>
+        <ion-text *ngIf="!this.business" translate>settings.name_label</ion-text>
       </ion-label>
     </ion-item>
     <ion-item *ngIf="this.stripeId" color="medium" (click)="saveEmail()"> 
       <ion-label>
-        <p class="input">Business Email</p>
+        <p class="input" translate>settings.email</p>
         <ion-text>{{ this.businessEmail }}</ion-text>
-        <ion-text *ngIf="!this.businessEmail">Tap to enter business email.</ion-text>
+        <ion-text *ngIf="!this.businessEmail" translate>settings.email_label</ion-text>
       </ion-label>
     </ion-item>
     <div *ngIf="this.stripeId" class="bg">
       <ion-label>
-        <p class="input3">Business Address</p>
+        <p class="input3" translate>settings.business</p>
       </ion-label>
       <ion-textarea
       type="text"
       rows="2" 
-      placeholder="123 A St. Suite B, Town, CA 12345 USA" 
+      placeholder="{{'settings.business_placeholder' | translate}}" 
       (ionChange)="saveBusinessAddress()" 
       debounce="700" 
       [(ngModel)]="this.businessAddress">
       </ion-textarea>
-      <ion-text class="input3" color="light">Lat: {{this.coordinates.lat}}</ion-text>
+      <ion-text class="input3" color="light" translate>settings.lat: {{this.coordinates.lat}}</ion-text>
       <div class="input3">
-        <ion-text color="light">Long: {{this.coordinates.lng}}</ion-text>
+        <ion-text color="light" translate>settings.lon: {{this.coordinates.lng}}</ion-text>
       </div>
     </div>
     <ion-item color="medium" (click)="stripe()" *ngIf="!this.stripeId" detail="true">
@@ -64,7 +64,7 @@
         <img src="../../assets/stripe.png">
       </ion-avatar>
       <ion-label>
-        <ion-text class="address">Accept cards. Connect to Stripe.</ion-text>
+        <ion-text class="address" translate>settings.accept_card</ion-text>
       </ion-label>
     </ion-item>
     <ion-item *ngIf="this.stripeId" color="medium" detail="true">
@@ -72,12 +72,12 @@
         <img src="../../assets/stripe.png">
       </ion-avatar>
       <ion-label>
-          <ion-text class="address">Stripe Connected</ion-text>
+          <ion-text class="address" translate>settings.connected</ion-text>
       </ion-label>
-      <ion-button class="stp-btn" size="small" fill="outline" color="medium" (click)="disconnectStripe()">Disconnect</ion-button>
+      <ion-button class="stp-btn" size="small" fill="outline" color="medium" (click)="disconnectStripe()" translate>settings.disconnect</ion-button>
     </ion-item>  
     <ion-item *ngIf="this.stripeId" color="medium" class="trns">
-      <ion-label>Currency Selection</ion-label>
+      <ion-label translate>settings.currency</ion-label>
       <ion-select color="medium" multiple="false" [(ngModel)]="this.currency" (ionChange)="saveCurrency()">
         <ion-select-option>USD</ion-select-option> 
         <ion-select-option>AUD</ion-select-option>
@@ -112,22 +112,22 @@
       </ion-select>
     </ion-item>
     <ion-item *ngIf="this.stripeId" color="medium">
-      <ion-label class="input">Optional Tax Rate</ion-label>
+      <ion-label class="input" translate>settings.tax</ion-label>
       <ion-toggle color="light" (ionChange)="editOptionalTax()" [(ngModel)]="optionalTax" checked="true"></ion-toggle>
     </ion-item>
     <ion-item class="input" color="medium" *ngIf="optionalTax === true && this.stripeId">
-      <ion-label class="input">Local Tax Rate</ion-label>
-      <ion-input class="input" debounce="1500" [(ngModel)]="taxRate" (ionChange)="editTaxRate()" placeholder="Enter Decimal eg. 10% = 0.10"></ion-input>
+      <ion-label class="input" translate>settings.local_tax</ion-label>
+      <ion-input class="input" debounce="1500" [(ngModel)]="taxRate" (ionChange)="editTaxRate()" placeholder="{{'settings.enter_decimal' | translate}}"></ion-input>
     </ion-item>
     <ion-item *ngIf="this.stripeId" color="medium">
-      <ion-label *ngIf="!this.imageURL">Upload Logo</ion-label>
+      <ion-label *ngIf="!this.imageURL" translate>settings.upload</ion-label>
       <div *ngIf="this.imageURL != ''" slot="start">
         <img class="logo" src="{{this.imageURL}}">
       </div>
       <input class="input2" type="file" (change)="upload($event)" accept=".png,.jpg,.jpeg" #file>
       <div slot="end">
-        <ion-button size="small" color="light" shape="round" (click)="file.click()">Upload Logo</ion-button>
-        <ion-button size="small" fill="outline" shape="round" color="light" (click)="removeImages()">Reset Logo</ion-button>
+        <ion-button size="small" color="light" shape="round" (click)="file.click()" translate>settings.upload</ion-button>
+        <ion-button size="small" fill="outline" shape="round" color="light" (click)="removeImages()" translate>settings.reset</ion-button>
       </div>
       <!-- <ion-button padding size="small" color="medium" (click)="file.click()">Upload Images</ion-button>
       <ion-button padding size="small" fill="outline" color="light" (click)="resetImages()">Reset Images</ion-button> -->
@@ -135,14 +135,14 @@
     </ion-item>
   </ion-list>
   <div class="faux-footer ion-padding">
-    <ion-button class="start-btn" shape="round" color="light" id="transact" expand="block" [disabled]="!this.username || !this.stripeId" (click)="toQR()">Business QR</ion-button>
+    <ion-button class="start-btn" shape="round" color="light" id="transact" expand="block" [disabled]="!this.username || !this.stripeId" (click)="toQR()" translate>settings.qr</ion-button>
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button shape="round" color="light" id="transact" expand="block" [disabled]="!this.businessEmail && !this.stripeId" (click)="toListMasterPage()">Transact</ion-button>
+          <ion-button shape="round" color="light" id="transact" expand="block" [disabled]="!this.businessEmail && !this.stripeId" (click)="toListMasterPage()" translate>settings.transact</ion-button>
         </ion-col>
         <ion-col>
-          <ion-button expand="block" fill="outline" shape="round" (click)="goToHelp()" color="light">Help</ion-button>
+          <ion-button expand="block" fill="outline" shape="round" (click)="goToHelp()" color="light" translate>settings.help</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

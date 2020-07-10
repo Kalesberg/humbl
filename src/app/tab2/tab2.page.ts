@@ -9,6 +9,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import {Router} from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab2',
@@ -28,7 +29,7 @@ export class Tab2Page {
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, 
     public loadingCtrl: LoadingController, public storage: Storage, 
     private settingsService: SettingsService, public alertCtrl: AlertController, 
-    private dataPass: DataPassService, public router: Router) {
+    private dataPass: DataPassService, public router: Router, private translate : TranslateService) {
       
   }
 
@@ -56,11 +57,11 @@ export class Tab2Page {
 
   async presentWarning() {
     let alert = await this.alertCtrl.create({
-      header: 'Welcome to HUMBL®',
-      message: 'Connect to Stripe in Settings.',
+      header: this.translate.instant("terminal.slogan"),
+      message: this.translate.instant("terminal.stripe"),
       buttons: [
         {
-          text: 'Visit Settings',
+          text: this.translate.instant("terminal.visit"),
           role: 'cancel',
           handler: () => {
             this.router.navigateByUrl('/settings');
