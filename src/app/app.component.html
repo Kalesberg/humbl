@@ -17,7 +17,9 @@
           <div class="vert"></div>
           <div (click)="toProfile()">
             <ion-card class="pad" color="light" *ngIf="this.username">
-                <qrcode class="avatar2" [qrdata]="this.username" [size]="256" [level]="'M'" [usesvg]="true" colorlight="#ffffff" colordark="#22ADE4"></qrcode>
+                <!-- <qrcode class="avatar2" [qrdata]="this.username" [size]="256"0 [level]="'M'" [usesvg]="true" colorlight="#ffffff" colordark="#22ADE4"></qrcode> -->
+                <qrcode [qrdata]="this.username" [width]="100" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
+                [colorLight]="'#ffffff'" [colorDark]="'#22ADE4'"></qrcode>
             </ion-card>
           </div>
         </div>

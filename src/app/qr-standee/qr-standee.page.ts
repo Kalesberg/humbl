@@ -21,8 +21,8 @@ export class QrStandeePage implements OnInit {
     private route: ActivatedRoute,
     public nav: NavController,
     public storage: Storage) {
-    this.setSource();
     this.getLocalData();
+    this.setSource();
     // let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
     // this.qrForOptions = JSON.parse(newqrForOptions);
     // this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? '#'+ this.qrForOptions.qrcolor: "#22ade4";
@@ -37,14 +37,12 @@ export class QrStandeePage implements OnInit {
   ngOnInit() {
   }
   async getLocalData(){
-    let qrLocalData = await this.storage.get('barcodestandee');
-    let qrLocalinfo = JSON.parse(qrLocalData)
-    console.log(qrLocalinfo)
-    this.imgSrc = qrLocalinfo.imgSrc;
-    this.qrData = qrLocalinfo.qrData;
-    console.log(this.qrData)
-    this.qrForOptions = qrLocalinfo.qroptions;
-    this.selectedColor =  (this.qrForOptions && this.qrForOptions.qrcolor) ? this.qrForOptions.qrcolor : "#22ade4";
+    let qrLocalData= await this.storage.get('barcodestandee');
+    console.log(qrLocalData)
+    this.imgSrc = qrLocalData.imgSrc;
+    this.qrData = qrLocalData.qrData;
+    this.qrForOptions = qrLocalData.qroptions;
+    this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? this.qrForOptions.qrcolor: "#22ade4";
   }
 
   async setSource(){
@@ -73,7 +71,7 @@ export class QrStandeePage implements OnInit {
 
   async finish(isNew){
     if(isNew){
-      await this.storage.set('barcodestandee',"");
+      await this.storage.set('barcodestandee',"" );
       this.nav.navigateRoot('qr-dashboard');
     }
     else {

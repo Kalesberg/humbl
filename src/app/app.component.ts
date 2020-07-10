@@ -19,6 +19,7 @@ import { TranslateService } from '@ngx-translate/core';
 const { PushNotifications } = Plugins;
 const { SplashScreen } = Plugins;
 const { App } = Plugins;
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -280,11 +281,10 @@ export class AppComponent {
   }
 
   async posRedirect() {
-    let qrLocalData = await this.storage.get('barcodestandee');
+    let qrLocalData= await this.storage.get('barcodestandee');
     let isQrExist = false;
-    if(qrLocalData && qrLocalData.value){
-      let qrLocalinfo = JSON.parse(qrLocalData.value)
-      if(qrLocalinfo.qrData){
+    if(qrLocalData){
+      if(qrLocalData.qrData){
         isQrExist =true;
       }
     }

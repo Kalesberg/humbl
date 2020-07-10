@@ -46,13 +46,11 @@ export class QrPage {
   }
 
   async getLocalData(){
-    let qrLocalData = await this.storage.get('barcodestandee');
-    console.log(qrLocalData);
-    let qrdata = await JSON.parse(qrLocalData)
-    console.log(qrdata)
-    this.imgSrc = qrdata.imgSrc;
-    this.qrForOptions = qrdata.qroptions;
-    this.selectedColor =  (this.qrForOptions && this.qrForOptions.qrcolor) ? this.qrForOptions.qrcolor : "#22ade4";
+    let qrLocalData= await this.storage.get('barcodestandee');
+    console.log(qrLocalData)
+    this.imgSrc = qrLocalData.imgSrc;
+    this.qrForOptions = qrLocalData.qroptions;
+    this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? this.qrForOptions.qrcolor: "#22ade4";
   }
 
   ionViewWillEnter(){
@@ -159,7 +157,7 @@ export class QrPage {
       qrData: this.username,
       qroptions: this.qrForOptions
     }
-    this.storage.set('barcodestandee',JSON.stringify(barcodeData));
+    await this.storage.set('barcodestandee',barcodeData);
     this.nav.navigateForward('/qr-standee');    
   }
   back(){

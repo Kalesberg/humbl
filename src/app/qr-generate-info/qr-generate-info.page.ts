@@ -129,8 +129,7 @@ export class QrGenerateInfoPage implements OnInit {
         imgSrc: status? this.iamgeUrl: '',
         qroptions: this.qrForOptions
       }
-      console.log("132",JSON.stringify(barcodeData));
-      await this.storage.set('barcodestandee',JSON.stringify(barcodeData));
+      await this.storage.set('barcodestandee',barcodeData);
       this.nav.navigateForward('/qr');
     }
 
