@@ -7,29 +7,28 @@
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
-    <div class="title-wrapper">
+    <!-- <div class="title-wrapper">
       <h3 class="title-text">Your payment code.</h3>
-    </div>
+    </div> -->
 
   <div class="barcode-wrapper">
     <div class="barcode-content" #barcode3>
-      <div class="barcode-data data3" [style.background]="selectedColor">
+      <div class="barcode-data data3">
+        <div class="logo-div2" *ngIf="logoImageURL">
+          <img class="logo2" [src]="logoImageURL">
+        </div>
         <ion-card class="card" color="light" *ngIf="this.qrData">
-              <qrcode [qrdata]="this.qrData" [width]="250" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
+              <qrcode [qrdata]="this.qrData" [width]="150" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
               [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
         </ion-card>
+        <div class="logo-div2">
+          <img class="logo2" src="../../assets/humbl-blue.png">
+        </div>
         <!-- <div class="div2"> -->
           <img class="logo" src="../../assets/cards-logo.png">
         <!-- </div> -->
       </div>
     </div>
   </div>
-  <!-- <div class="btn-wrapper next-btn-wrapper">
-      <ion-button class="btn-main" shape="round" 
-      color="medium" fill="outline" (click)="back()">
-      <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
-        Back
-      </ion-button>
-  </div> -->
 </div>
 </ion-content>

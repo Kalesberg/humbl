@@ -16,9 +16,10 @@ export class QrPaymentPage implements OnInit {
   public qrData: string;
   public user: boolean = false;
   public totalAmount: number =0;
+  public logoImageURL: string ="";
 
   constructor(private settingsService: SettingsService,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     let totalamt = this.route.snapshot.paramMap.get('totalamount');
@@ -32,7 +33,6 @@ export class QrPaymentPage implements OnInit {
   authCheck(){
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged((user: firebase.User) => {
-        console.log("user", user)
         if (user) {
           this.user = true;
           this.getProfile();
@@ -51,12 +51,10 @@ export class QrPaymentPage implements OnInit {
     .get()
     .then( userProfileSnapshot => {
       let userProfile = userProfileSnapshot.data();
-      console.log("userProfile", userProfile)
       if(userProfile) {
         let username = userProfile.email;
         this.qrData = "merchant-" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username))+"?amount="+this.totalAmount.toFixed(2);
-
-      console.log("this.qrData ", this.qrData )
+        this.logoImageURL = userProfile.logoUrl? userProfile.logoUrl : '../../assets/avatar.png';
       }
     });
   }
