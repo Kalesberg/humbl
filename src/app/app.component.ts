@@ -269,7 +269,7 @@ export class AppComponent {
       this.userProfile = userProfileSnapshot.data();
       if(this.userProfile){
         let username = this.userProfile.email;
-        this.username = "merchant-" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username));
+        this.username = "merchant:" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username));
         this.businessEmail = this.userProfile.businessEmail;
         this.imageURL = this.userProfile.logoUrl;
         this.business = this.userProfile.businessName;

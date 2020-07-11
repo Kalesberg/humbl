@@ -65,7 +65,7 @@ export class QrPage {
           console.log(this.user);
           this.getProfile();
           resolve(this.user);
-          
+
         } else {
           this.user = false;
           console.log(this.user);
@@ -83,7 +83,7 @@ export class QrPage {
       this.userProfile = userProfileSnapshot.data();
       if(this.userProfile){
         let username = this.userProfile.email;
-        this.username = "merchant-" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username));
+        this.username = "merchant:" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username));
         this.emailURL = `${this.qrAPI}${this.username}`;
         this.businessEmail = this.userProfile.businessEmail;
         this.imageURL = this.userProfile.logoUrl;
@@ -116,15 +116,13 @@ export class QrPage {
         {
           text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
-          handler: () => {
-           
-          }
+          handler: () => {}
         },
         {
           text: this.translate.instant("qr.send"),
           handler: (data: any) => {
             this.emailReceipt(data.email);
-          } 
+          }
         }
       ]
     });
@@ -158,7 +156,7 @@ export class QrPage {
       qroptions: this.qrForOptions
     }
     await this.storage.set('barcodestandee',barcodeData);
-    this.nav.navigateForward('/qr-standee');    
+    this.nav.navigateForward('/qr-standee');
   }
   back(){
     this.nav.back();

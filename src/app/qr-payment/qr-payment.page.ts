@@ -53,7 +53,7 @@ export class QrPaymentPage implements OnInit {
       let userProfile = userProfileSnapshot.data();
       if(userProfile) {
         let username = userProfile.email;
-        this.qrData = "merchant-" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username))+"?amount="+this.totalAmount.toFixed(2);
+        this.qrData = "merchant:" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username))+"?amount="+this.totalAmount.toFixed(2);
         this.logoImageURL = userProfile.logoUrl? userProfile.logoUrl : '../../assets/avatar.png';
       }
     });
