@@ -264,8 +264,8 @@ export class AppComponent {
   getProfile(){
     this.settingsService
     .getBusinessProfile()
-    .get()
-    .then( userProfileSnapshot => {
+    .onSnapshot((userProfileSnapshot)=>{
+      console.log("userProfileSnapshot", userProfileSnapshot)
       this.userProfile = userProfileSnapshot.data();
       if(this.userProfile){
         let username = this.userProfile.email;
@@ -277,7 +277,21 @@ export class AppComponent {
           this.imageURL = '../../assets/avatar.png';
         }
       }
-    });
+    })
+    // .get()
+    // .then( userProfileSnapshot => {
+    //   this.userProfile = userProfileSnapshot.data();
+    //   if(this.userProfile){
+    //     let username = this.userProfile.email;
+    //     this.username = "merchant:" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username));
+    //     this.businessEmail = this.userProfile.businessEmail;
+    //     this.imageURL = this.userProfile.logoUrl;
+    //     this.business = this.userProfile.businessName;
+    //     if(!this.imageURL){
+    //       this.imageURL = '../../assets/avatar.png';
+    //     }
+    //   }
+    // });
   }
 
   async posRedirect() {
