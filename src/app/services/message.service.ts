@@ -12,7 +12,7 @@ export class MessageService {
  
   constructor() { 
     firebase.auth().onAuthStateChanged(user => {
-        if(user.uid){
+        if(user && user.uid){
           this.userId = user.uid; 
           this.messagesList = firebase.firestore().collection(`messages`); 
         }    

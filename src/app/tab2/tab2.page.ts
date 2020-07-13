@@ -37,21 +37,21 @@ export class Tab2Page {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.currentUser = user.uid;
-      } 
-      this.settingsService
-      .getBusinessProfile()
-      .get()
-      .then( userProfileSnapshot => {
-        this.userProfile = userProfileSnapshot.data();
-        if(this.userProfile){
-          this.businessEmail = this.userProfile.businessEmail;
-          this.currency = this.userProfile.currency;
-          this.stripe = this.userProfile.stripeId;
-          if(!this.stripe){
-            this.presentWarning();
+        this.settingsService
+        .getBusinessProfile()
+        .get()
+        .then( userProfileSnapshot => {
+          this.userProfile = userProfileSnapshot.data();
+          if(this.userProfile){
+            this.businessEmail = this.userProfile.businessEmail;
+            this.currency = this.userProfile.currency;
+            this.stripe = this.userProfile.stripeId;
+            if(!this.stripe){
+              this.presentWarning();
+            }
           }
-        }
-      });
+        });
+      }
     });
   }
 

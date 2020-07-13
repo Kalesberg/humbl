@@ -18,7 +18,7 @@ export class PushService {
     private alertCtrl: AlertController,
     public settingsService: SettingsService) {
       firebase.auth().onAuthStateChanged(user => {
-        if (user.uid) {
+        if (user && user.uid) {
           this.currentUser = user;
           this.businessProfile = firebase.firestore().doc(`/businessProfile/${user.uid}`);
         }

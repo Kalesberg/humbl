@@ -220,6 +220,7 @@ export class AppComponent {
   logOut(): void {
     this.authService.logoutUser().then( () => {
       this.user = false;
+      this.username = "";
       this.toggleMenu();
       this.router.navigateByUrl('/login');
     });

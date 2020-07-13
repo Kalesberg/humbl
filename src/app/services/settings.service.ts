@@ -13,7 +13,7 @@ export class SettingsService {
 
   constructor() {
     firebase.auth().onAuthStateChanged(user => {
-      if (user.uid) {
+      if (user && user.uid) {
         this.currentUser = user;
         this.businessProfile = firebase.firestore().doc(`/businessProfile/${user.uid}`);
       }

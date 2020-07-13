@@ -13,6 +13,7 @@
     "home": {
         "signup": "Sign Up",
         "login": "Log In",
+        "signout": "Sign Out",
         "newversion" : "A new version is available. Load it?",
         "select" : "Select Language",
         "header" : "Network Error",

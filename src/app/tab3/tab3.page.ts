@@ -84,7 +84,7 @@ export class Tab3Page {
         }
         this.imageURL = this.userProfile.logoUrl;
         if(!this.imageURL){
-          this.imageURL = `../../assets/avatar`;
+          this.imageURL = `../../assets/avatar.png`;
         }
         this.business = this.userProfile.businessName;
         this.businessAddress = this.userProfile.businessAddress;
@@ -265,6 +265,7 @@ export class Tab3Page {
       this.afStorage.storage.refFromURL(this.imageURL).delete();
       this.imageURL = '';
       this.settingsService.updateLogo(this.imageURL);
+      this.imageURL = `../../assets/avatar.png`;
       this.changeRef.detectChanges();
     }
   }

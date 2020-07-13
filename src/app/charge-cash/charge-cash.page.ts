@@ -107,7 +107,7 @@ export class ChargeCashPage implements OnInit {
 
   ionViewWillEnter(){
     firebase.auth().onAuthStateChanged(user => {
-      if (user.uid) {
+      if (user && user.uid) {
         this.uid = user.uid;
       }
       this.settingsService

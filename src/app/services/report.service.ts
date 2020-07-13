@@ -15,7 +15,7 @@ export class ReportService {
  
   constructor() { 
     firebase.auth().onAuthStateChanged(user => {
-        if(user.uid){
+        if(user && user.uid){
           this.userId = user.uid; 
           this.transactionList = firebase.firestore().collection(`/transactions/${user.uid}/txList`); 
         }    
