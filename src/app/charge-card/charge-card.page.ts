@@ -126,7 +126,7 @@ export class ChargeCardPage {
           this.businessEmail = this.userProfile.businessEmail.toLowerCase();
           this.logo = this.userProfile.logoUrl;
           if(!this.logo){
-            this.logo = `../../avatar.png`;
+            this.logo = "../../assets/avatar.png";
           }
           if(this.currency === 'USD'){
             this.symbol = '$';

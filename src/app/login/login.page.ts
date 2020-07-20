@@ -15,7 +15,7 @@ export class LoginPage implements OnInit {
   //public jwt: string = null;
   public loginForm: FormGroup;
   public loading: HTMLIonLoadingElement;
-
+  public emailPass: boolean = false;
   constructor(private authService: AuthService, 
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
@@ -47,9 +47,34 @@ export class LoginPage implements OnInit {
       const password = loginForm.value.password;
   
       this.authService.loginUser(email, password).then(
-        () => {
-          this.loading.dismiss().then(() => {
-            this.router.navigateByUrl('/pos');
+        (user) => {
+          console.log(user);
+          this.loading.dismiss().then(async () => {
+            if(user.user.emailVerified) {
+              this.router.navigateByUrl('/pos');
+            } else {
+              const alert = await this.alertCtrl.create({
+                message: this.translate.instant("login.verify"),
+                buttons: 
+                  [
+                    { text: this.translate.instant("login.resend"), handler: () => {
+                      user.user.sendEmailVerification().then(async () => {
+                        const alert1 = await this.alertCtrl.create({
+                          message: this.translate.instant("login.sent"),
+                          buttons: [{ text: this.translate.instant("login.ok"), handler: () => {
+                            alert1.dismiss();
+                          }}]
+                        });
+                        await alert1.present();
+                      });
+                    }},
+                    { text: this.translate.instant("login.ok"), handler: () => {
+                      alert.dismiss();                      
+                    }}
+                  ],
+              });
+              await alert.present();
+            }
           });
         },
         error => {
@@ -63,5 +88,9 @@ export class LoginPage implements OnInit {
         }
       );
     }
+  }
+
+  chooseEmail(){
+    this.emailPass = true;
   }
 }

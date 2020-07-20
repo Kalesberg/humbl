@@ -11,9 +11,9 @@ import { Storage } from '@ionic/storage';
 export class QrStandeePage implements OnInit {
 
   public qrForOptions:any =null;
-  public selectedColor: string = "#22ade4";
+  public selectedColor: string = "";
   public lightcolor: string = "#ffffff";
-  public imgSrc: string = "";
+  public imgSrc: string = '../../assets/humbl-white.png';
   public qrData: string;
   public cardsImg: any;
 
@@ -39,10 +39,11 @@ export class QrStandeePage implements OnInit {
   async getLocalData(){
     let qrLocalData= await this.storage.get('barcodestandee');
     console.log(qrLocalData)
-    this.imgSrc = qrLocalData.imgSrc;
+    this.imgSrc = qrLocalData.imgSrc ? qrLocalData.imgSrc : '../../assets/humbl-white.png';
     this.qrData = qrLocalData.qrData;
     this.qrForOptions = qrLocalData.qroptions;
-    this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? this.qrForOptions.qrcolor: "#22ade4";
+    console.log((this.qrForOptions && this.qrForOptions.qrcolor) ? this.qrForOptions.qrcolor : "#22ade4")
+    this.selectedColor =  (this.qrForOptions && this.qrForOptions.qrcolor) ? this.qrForOptions.qrcolor : "#22ade4";
   }
 
   async setSource(){
@@ -79,29 +80,31 @@ export class QrStandeePage implements OnInit {
     }
   }
 
-  printBarcode(barcodeElement, width){
+  printBarcode(barcodeElement, height: any, width: any){
     let mywindow = window.open('', 'PRINT');
     mywindow.document.write('<html><head><title></title>');
-    mywindow.document.write('</head><body> <div style="display:flex; height:100%; width: 100%; justify-content: center; align-items: center; flex-direction: column;"> ');
-    mywindow.document.write('<div style="display: flex; justify-content: space-between; align-items: center; flex-direction: column; border: 2px solid #9A9B9B; height: auto; min-height: 350px; width: 270px; background-color: ' + this.selectedColor + '; -webkit-print-color-adjust: exact; ">');
-    mywindow.document.write('<div style="padding: 10px; width: 100%; display: flex; justify-content: center; align-items: center; line-height: 20px;">');
-    if(this.qrForOptions.scan)
-      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Scan.</span>');
-    if(this.qrForOptions.pay)
-      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Pay.</span>');
-    if(this.qrForOptions.tip)
-      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Tip.</span>');
-    if(this.qrForOptions.review)
-      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff;">Review.</span>');
-    mywindow.document.write('</div>');
+    mywindow.document.write('</head><body> <div style="display:block; height:'+height+'px; width:'+width+'px; margin:auto;"> ');
+    mywindow.document.write('<div style="display: flex; justify-content: space-between; align-items: center; flex-direction: column; border-radius: 5px; height:'+height+'px; width:'+width+'px; background-color: ' + this.selectedColor + '; -webkit-print-color-adjust: exact; ">');
     if(this.imgSrc){
       mywindow.document.write('<div>');
-      mywindow.document.write('<img style=" margin-bottom: 10px; width: '+width+'px; height: auto;" src="'+this.imgSrc+'">');
+      mywindow.document.write('<img style="margin-top: 30px; margin-bottom: 30px; max-width: 200px;" src="'+this.imgSrc+'">');
       mywindow.document.write('</div>');
-    }    
+    }
+    mywindow.document.write('<div style="display: block; margin: auto; height: 200px; width:200px; padding: 10px; border-radius: 10px; background-color: #ffffff;">');    
     mywindow.document.write(barcodeElement.innerHTML);
-    mywindow.document.write('<div style="width: 100%; display: flex; justify-content: space-around;">');
-    mywindow.document.write('<img style="margin-top: 10px; width: 100%;" src="'+this.cardsImg+'">');
+    mywindow.document.write('</div>');
+    mywindow.document.write('<div style="margin-top:30px; width: 100%; display: flex; justify-content: center; align-items: center; line-height: 20px;">');
+    if(this.qrForOptions.scan)
+      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff; font-size:30px; font-weight:700;">Scan.</span>');
+    if(this.qrForOptions.pay)
+      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff; font-size:30px; font-weight:700;">Pay.</span>');
+    if(this.qrForOptions.tip)
+      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff; font-size:30px; font-weight:700;">Tip.</span>');
+    if(this.qrForOptions.review)
+      mywindow.document.write('<span style="margin: 0px 5px;color: #ffffff; font-size:30px; font-weight:700;">Review.</span>');
+    mywindow.document.write('</div>');
+    mywindow.document.write('<div>');
+    mywindow.document.write('<img style="display: block; margin: auto; margin-top: 50px; width: 500px;" src="'+this.cardsImg+'">');
     mywindow.document.write('</div>');
     mywindow.document.write('</div>');
     mywindow.document.write('</div></body></html>');

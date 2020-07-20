@@ -1,4 +1,38 @@
-<ion-content fullscreen>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <!-- <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons> -->
+    <!-- <ion-title>Sign In</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding home-container">
+  <div class="container">
+    <img class="logo" src="../assets/hubs.png">
+    <!-- <div class="languagepart">
+      <label translate>home.select</label>
+      <select #langSelect (change)="setAppLang(langSelect.value)">
+        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+      </select>
+    </div> -->
+    
+    <div class="loginpart">
+      <p routerLink="/signup">
+        <ion-button color="light" shape="round" size="large" translate>home.signup</ion-button>
+      </p>
+      <p routerLink="/login">
+        <span translate>home.login</span>
+      </p>  
+    </div> 
+    <div class="language">
+      <p (click)="setAppLang('en')">🇬🇧EN</p>
+      <div class="vert"></div>
+      <p (click)="setAppLang('ep')">🇪🇸ES</p>   
+    </div> 
+  </div>
+</ion-content>
+<!-- <ion-content fullscreen>
   <img class="splash-logo" src='../../assets/humbl-white.png'>
   <div class="slogan">
     <p></p>
@@ -21,7 +55,7 @@
       </ion-button>
     </div>
   </div>  
-</ion-content>
+</ion-content> -->
 <!-- <ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="start">

@@ -4,6 +4,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { SettingsService } from '../services/settings.service'
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,7 @@ export class SignupPage implements OnInit {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder,
-    private router: Router,
+    private settingsService: SettingsService,
     private translate : TranslateService
   ) {
     this.signupForm = this.formBuilder.group({
@@ -50,9 +51,10 @@ export class SignupPage implements OnInit {
       const password: string = signupForm.value.password;
   
       this.authService.signupUser(email, password).then(
-        () => {
+        (res) => {
           this.loading.dismiss().then(() => {
-            this.router.navigateByUrl('/pos');
+            this.settingsService.updateSignupemail(res.user.uid,email);
+            this.authService.SendVerificationMail();
           });
         },
         error => {

@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" size="large" (click)="back()"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      <img class="logo" src='../../assets/humbl-white.png'>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" #content>
+  <div class="messages" #contentArea>
+    <p class="center" *ngIf="startIndex > 0"><span tappable (click)="loadPreviousMessages()">Load previous
+        messages</span></p>
+    <div *ngFor="let message of messagesToShow; let i=index;">
+      <div *ngIf="isSender(message) && ((i>0 && !isSender(messagesToShow[i-1])) || i==0)" class="userbox right">
+        <h3>{{ this.loggedInUserName }}</h3>  
+        <ion-avatar slot="start">
+          <img *ngIf="this.loggedInUserAvatar" src="{{ this.loggedInUserAvatar }}"/>
+          <img *ngIf="!this.loggedInUserAvatar" src="../../assets/avatar.png"/>
+        </ion-avatar>
+      </div>
+      <div *ngIf="!isSender(message) && ((i>0 && isSender(messagesToShow[i-1])) || i==0)" class="userbox left">
+        <ion-avatar slot="start">
+          <img *ngIf="this.userAvatar" src="{{ this.userAvatar }}"/>
+          <img *ngIf="!this.userAvatar" src="../../assets/avatar.png"/>
+        </ion-avatar>
+        <h3>{{ this.userName }}</h3>  
+      </div>
+      <div *ngIf="isSender(message)" class="chatbox right sender">
+        <div *ngIf="message.type == 'text'">
+          <p style="margin:0">{{message.message}}</p>
+        </div>
+        <div *ngIf="message.type == 'location'" [innerHtml]="message.message"></div>
+        <div *ngIf="message.type == 'contact'" [innerHtml]="message.message"></div>
+        <div *ngIf="message.type == 'image'">
+          <img tappable (click)="enlargeImage(message.message)" src="{{message.message}}" />
+        </div>
+        <div *ngIf="message.type == 'video'">
+          <video controls width="100%">
+            <source src="{{message.message}}" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div *ngIf="!isSender(message)" class="chatbox left">
+        <div *ngIf="message.type == 'text'">
+          <p style="margin:0">{{message.message}}</p>
+        </div>
+        <div *ngIf="message.type == 'location'" [innerHtml]="message.message"></div>
+        <div *ngIf="message.type == 'contact'" [innerHtml]="message.message"></div>
+        <div *ngIf="message.type == 'image'">
+          <img tappable (click)="enlargeImage(message.message)" src="{{message.message}}" />
+        </div>
+        <div *ngIf="message.type == 'video'">
+          <video controls width="100%">
+            <source src="{{message.message}}" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="medium">
+    <ion-item class="bottom_bar">
+      <ion-textarea style="margin:0" rows="0" placeholder="Type your message" [(ngModel)]="message">
+      </ion-textarea>
+      <ion-buttons slot="end" style="margin-left:4px;">
+        <ion-button fill="clear" (click)="attach()">
+          <ion-icon name="md-attach"></ion-icon>
+        </ion-button>
+        <ion-button color="primary" fill="clear" (click)="send('text')" [disabled]="!message">
+          <ion-icon name="arrow-redo-circle" color="medium" size="large"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

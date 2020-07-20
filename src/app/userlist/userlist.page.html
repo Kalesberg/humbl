@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <!-- <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons> -->
+    <ion-row class="ion-justify-content-between ion-align-items-center">
+      <ion-icon name="arrow-back-outline" size="large" (click)="toHome()"></ion-icon>
+      <ion-title>Messages</ion-title>
+      <div class="update-container">
+        <ion-icon name="pencil-sharp"></ion-icon>
+      </div>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Top banner on initial page load -->
+  <div class="container">
+    <ion-searchbar color="transparent" showCancelButton="never" debounce="600" placeholder="{{'search.title' | translate}}" [(ngModel)]="searchTerm" (ionChange)="getUsers()"></ion-searchbar>
+    <ion-list *ngIf="this.users !== []">
+      <ion-item *ngFor="let user of users" lines="none" (click)="chatUser(user)">
+        <ion-avatar slot="start">
+          <img *ngIf="user?.profileUrl" src="{{user?.profileUrl }}"/>
+          <img *ngIf="!user?.profileUrl" src="../../assets/avatar.png"/>
+        </ion-avatar>
+        <div class="message_part">
+          <h3>{{user?.businessName || (user?.firstname || "") + " " + (user?.lastname || "") }}</h3>
+          <p>{{user?.message}}</p>
+          <ion-badge color="medium" slot="end" *ngIf="user?.unread_count > 0">{{user?.unread_count}}</ion-badge>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<!-- Tabbed nav bar -->
+<ion-footer class="ion-no-border">
+  <div *ngIf="this.show === false && this.transaction_finished === false">
+    <ion-tab-bar color="medium" slot="bottom">
+      <ion-tab-button (click)="toHome()">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button selected="true">
+        <ion-icon name="search"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="this.scanService.scanQR()">
+          <ion-icon name="qr-code-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="toSettings()">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </div>
+</ion-footer>

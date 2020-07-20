@@ -1,3 +1,4 @@
+import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -26,9 +27,13 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ZXingScannerModule } from "@zxing/ngx-scanner";
 import * as firebase from 'firebase/app';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { MbscModule } from '@mobiscroll/angular';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { MediaCapture } from '@ionic-native/media-capture/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { Contacts } from '@ionic-native/contacts/ngx';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
+
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -45,7 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
     ScannerComponent
   ],
   imports: [ 
-    MbscModule, 
+    MbscModule,  
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
@@ -77,6 +82,10 @@ export function createTranslateLoader(http: HttpClient) {
     BarcodeScanner,
     EmailComposer,
     Stripe,
+    Geolocation,
+    File,
+    Contacts,
+    MediaCapture,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

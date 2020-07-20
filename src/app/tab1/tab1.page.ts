@@ -24,6 +24,7 @@ export class Tab1Page {
   }
 
   setAppLang(lang : string) {
+    console.log(lang)
     this.translate.use(lang);
     this.storage.set("lang", lang);
   }

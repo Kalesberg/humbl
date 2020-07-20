@@ -1,71 +1,143 @@
-.splash-logo {
-  padding-top: 100px;
+.logo{
   display: block;
-  margin: auto;
-  width: 60%;
   max-width: 200px;
 }
 
-.languagepart{
-  position: absolute;
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.loginpart{
   width: 100%;
   text-align: center;
   margin-top: 80px;
   color: white;
+  label {
+      margin-right: 10px;
+  }
 }
 
 select{
   background-color: black;
 }
 
-.buttons {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding-bottom: 30px;
+ion-item{
+  max-width: 270px;
+  margin: auto;
+  margin-bottom: 15px;
+  border-bottom: thin solid #ffffff;
 }
 
-.btn {
-  padding-top: 20px;
+ion-button{
+  --ion-color-contrast: var(--ion-color-medium) !important;
+  --box-shadow: none;
 }
 
-.bigD {
+ion-card{
+  max-width: 500px;
+  margin: auto;
+}
+
+// ion-segment{
+//     margin-bottom: 10px;
+// }
+
+// ion-segment-button{
+//     border: solid 1px;
+//     margin: 5px;
+// }
+
+ion-avatar{
+  position: absolute;
+  width: 100px;
+  height: 100px;
   display: block;
-  padding: 20px;
-  margin: auto;
-  width: 33%;
-  max-width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
 }
 
-.splash-intro {
-  color: #002352;
+// .invalid {
+//     border-bottom: 1px solid #ff6153;
+// }
+
+
+.error-message { 
+  min-height: 2rem;
+  ion-label {
+      margin: 2px 0;
+      font-size: 1em;
+      color: var(--ion-color-danger);
+  }
+  // .item-inner {
+  //     border-bottom: 0 !important;
+  // }
+}
+
+ion-input { 
+  margin-top: 6px;
+  --color: #ffffff;
+  // --background: var(--ion-color-light);
+  // border-radius: 5px;
+  // border-radius: 99px;
+}
+
+span{
+  font-weight: 800;
+  color: #ffffff;
+}
+
+p{
   text-align: center;
-  max-width: 85%;
-  margin: auto;
+  margin-top: 30px;
 }
 
-p {
-  font-size: 24px;
-}
-
-#settings {
-  max-width: 85%;
-  margin: auto;
-}
-
-ion-button {
-  text-transform: inherit;
-  font-size: 1.2em;
-}
-
-ion-content {
+ion-content{
   --background: var(--ion-color-medium);
 }
 
-.sign-in{
-  --box-shadow:none;
+ion-label{
+  --color: #ffffff;
 }
+
+.space {
+  ion-row {
+      margin-top: 30px;
+  }
+}
+
+.padding{
+  margin-bottom: 20px;
+}
+
+ion-button{
+  max-width: 280px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.language{
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 40px;
+  p{
+    color: #ffffff;
+  }
+}
+
+.vert{
+  margin-top: 35px;
+  border-left: 1px solid #ffffff;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 
 // ion-content {
 //   --background: var(--ion-color-medium);

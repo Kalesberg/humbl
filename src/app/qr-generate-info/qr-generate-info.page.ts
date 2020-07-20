@@ -12,7 +12,7 @@ export class QrGenerateInfoPage implements OnInit {
 
   public qrForOptions:any =null;
   public selectedColor: string = "#22ade4";
-  public iamgeUrl: any = "";
+  public iamgeUrl: any = '../../assets/humbl-white.png';
   public pickerWidth = 338;
 
   constructor(private route: ActivatedRoute,

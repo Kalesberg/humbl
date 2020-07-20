@@ -1,92 +1,79 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="medium">
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title translate>login.title</ion-title>
+    </ion-buttons> -->
+    <!-- <ion-title>Sign In</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-    <ion-card class="card ion-padding" color="medium">
-      <!-- <img *ngIf="this.merchant" class="logo" src="../assets/merchant.png"> -->
-      <img class="logo" src="../../assets/merchant.png">
-      <!-- <ion-avatar>
-        <img src="../assets/employee.png">
-      </ion-avatar> -->
-      <!-- <ion-segment (ionChange)="segmentChanged($event)" color="medium" value="agent">
-        <ion-segment-button value="agent">
-          <ion-label>Agent</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="merchant">
-          <ion-label>Merchant</ion-label>
-        </ion-segment-button>
-      </ion-segment> -->
-      <form [formGroup]="loginForm">
-        <ion-item class="padding" color="medium" lines="none">
-          <!-- <ion-label position="stacked">Email</ion-label> -->
-          <ion-input
-            formControlName="email"
-            type="email"
-            placeholder="{{'register.email_note' | translate}}"
-            [class.invalid]="!loginForm.controls['email'].valid &&
-            loginForm.controls['email'].touched"
-          >
-          </ion-input>
-        </ion-item>
-        <ion-item
-          color="medium"
-          class="error-message"
-          *ngIf="!loginForm.controls['email'].valid &&
-              loginForm.controls['email'].touched"
-        >
-          <ion-label color="light" translate>register.email_warn</ion-label>
-        </ion-item>
-      
-        <ion-item class="padding" color="medium" lines="none">
-          <!-- <ion-label position="stacked">Password</ion-label> -->
-          <ion-input
-            formControlName="password"
-            type="password"
-            placeholder="{{'register.password_note' | translate}}"
-            [class.invalid]="!loginForm.controls['password'].valid&& loginForm.controls['password'].touched"
-          >
-          </ion-input>
-        </ion-item>
-        <ion-item
-          color="medium"
-          class="error-message"
-          *ngIf="!loginForm.controls['password'].valid
-            && loginForm.controls['password'].touched"
-        >
-          <ion-label color="light" translate>register.password_verify</ion-label>
-        </ion-item>
+<ion-content class="ion-padding" translate>
+  <!-- <img *ngIf="this.merchant" class="logo" src="../assets/merchant.png"> -->
+  <img class="logo" src="../../assets/hubs.png">
+  <form [formGroup]="loginForm">
+    <div *ngIf="emailPass">
+      <ion-row>
+        <ion-input
+        value="{{this.username}}"
+        formControlName="email"
+        type="email"
+        placeholder="{{'common.email' | translate}}" [class.invalid]="!loginForm.controls['email'].valid &&
+        loginForm.controls['email'].touched"
+        ></ion-input>
+      </ion-row>
+      <ion-row
+        lines="none"
+        color="medium"
+        class="error-message"
+        *ngIf="!loginForm.controls['email'].valid
+        && loginForm.controls['email'].touched">
+        <ion-label translate>login.validemail</ion-label>
+      </ion-row>
+    
+      <ion-row color="medium" lines="none" >
+        <ion-input
+          formControlName="password"
+          type="password"
+          placeholder="{{'common.password' | translate}}"></ion-input>
+      </ion-row>
+      <ion-row
+        lines="none"
+        color="medium"
+        class="error-message"
+        *ngIf="!loginForm.controls['password'].valid &&
+        loginForm.controls['password'].touched">
+        <ion-label color="light" translate>login.validpassword</ion-label>
+      </ion-row>
 
-        <ion-button class="ion-padding" color="light" shape="round" (click)="loginUser(loginForm)" expand="block" [disabled]="!loginForm.valid" translate>login.title</ion-button>
-        <!-- <ion-button *ngIf="this.merchant" color="light" class="btn" [href]="'/home'" expand="block" [disabled]="!loginForm.valid">
-          Sign In
-        </ion-button> -->
-        
-      </form>
-      <div class="space"> 
-        <!-- <ion-button expand="block" (click)="signInWithGoogle()" class="button btn-social btn-google"
-          *ngIf="!authService.currentUser">
-        <i class="fa fa-google-plus fa-lg"></i><ion-icon slot="start" name="logo-google"></ion-icon>Connect Google
-        </ion-button> -->
-        <ion-row>
-          <ion-col>
-            <ion-button color="medium" expand="block" routerLink="/signup" translate>
-              login.create
-            </ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button color="medium" expand="block" routerLink="/reset-password" translate>
-              login.password_forgot
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </div>  
-    </ion-card>
+      <p *ngIf="emailPass" class="ion-padding-top">
+        <ion-button color="light" shape="round" size="large" [disabled]="!loginForm.valid" (click)="loginUser(loginForm)" translate>common.signin</ion-button>
+        <!-- <ion-button color="light" shape="round" size="large" [disabled]="!loginForm.valid" (click)="loginUser(loginForm)">Sign In</ion-button> -->
+      </p>
+    </div>
+    <div *ngIf="!emailPass" class="social_buttons">
+      <ion-button color="light" shape="round" (click)="chooseEmail()" expand="block" ><div class="icon_container"><ion-icon name="mail" style="color:#22ade4;"></ion-icon></div><span>Sign In With Email</span></ion-button>
+      <p class="or">
+        <b>OR</b>
+      </p>
+      <ion-button color="light" shape="round" fill="outline" (click)="googleUserSignin()" expand="block" ><div class="icon_container"><ion-icon name="logo-google" style="color:rgb(228, 44, 44) !important;"></ion-icon></div><span>Sign In with Google</span></ion-button>
+      <ion-button color="light" shape="round" fill="outline" (click)="facebookUserSignin()" expand="block" ><div class="icon_container"><ion-icon name="logo-facebook" class="facebook" style="color:rgb(30, 30, 222) !important;"></ion-icon></div><span>Sign In with Facebook</span></ion-button>
+      <ion-button color="light" shape="round" fill="outline" (click)="appleUserSignin()" expand="block" ><ion-icon name="logo-apple" class="apple" color="light" size="large"></ion-icon><span>Sign In with Apple</span></ion-button>
+    </div>
+    <!-- (click)="loginUser(loginForm)" -->
+    <!-- <ion-button *ngIf="this.merchant" color="light" class="btn" [href]="'/home'" expand="block" [disabled]="!loginForm.valid">
+      Sign In
+    </ion-button> -->
+    <p routerLink="/signup" translate>
+      <b translate>login.signupnew</b>
+    </p>
+    <p routerLink="/reset-password" translate>
+      login.forgotpassword
+    </p>
+  </form>
+    <!-- <ion-button expand="block" (click)="signInWithGoogle()" class="button btn-social btn-google"
+      *ngIf="!authService.currentUser">
+    <i class="fa fa-google-plus fa-lg"></i><ion-icon slot="start" name="logo-google"></ion-icon>Connect Google
+    </ion-button> -->
   <!-- <ion-col size="12" size-sm>
     <p>Digi-ID is built into your DigiByte mobile wallet app.</p>
     <ion-card class="card" padding>

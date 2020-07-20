@@ -26,7 +26,7 @@ export class QrPage {
   public qrForOptions:any =null;
   public selectedColor: string = "#22ade4";
   public lightcolor: string = "#ffffff";
-  public imgSrc: string = ""
+  public imgSrc: string = '../../assets/humbl-white.png';
 
   constructor(
     public router: Router,
@@ -50,7 +50,8 @@ export class QrPage {
     console.log(qrLocalData)
     this.imgSrc = qrLocalData.imgSrc;
     this.qrForOptions = qrLocalData.qroptions;
-    this.selectedColor =  (this.qrForOptions &&  this.qrForOptions.qrcolor)? this.qrForOptions.qrcolor: "#22ade4";
+    console.log(this.qrForOptions)
+    this.selectedColor =  (this.qrForOptions && this.qrForOptions.qrcolor) ? this.qrForOptions.qrcolor : "#22ade4";
   }
 
   ionViewWillEnter(){

@@ -5,8 +5,7 @@ import { ItemsService } from '../services/items.service';
 import { mobiscroll, MbscNumpadDecimalOptions } from '@mobiscroll/angular';
 import { TranslateService } from '@ngx-translate/core';
 mobiscroll.settings = {
-  theme: 'ios',
-  themeVariant: 'light'
+  theme: 'ios'
 };
 
 @Component({

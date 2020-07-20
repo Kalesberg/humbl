@@ -9,36 +9,45 @@
 <ion-content>
   <div class="content-wrapper">
     <div class="title-wrapper">
-      <h3 class="title-text">Your standee.</h3>
+      <h3 class="title-text">Your POS Display QR.</h3>
     </div>
 
   <div class="barcode-wrapper">
     <div class="barcode-content">
-      <span class="size-text">4 x 6</span> 
+      <!-- <span class="size-text">4 x 6</span>  -->
       <div class="barcode-data data1" [style.background]="selectedColor">
-        <div class="tag-wrapper">
-          <span *ngIf="qrForOptions?.scan">Scan.</span> 
-          <span *ngIf="qrForOptions?.pay">Pay.</span>
-          <span *ngIf="qrForOptions?.tip">Tip.</span>
-          <span *ngIf="qrForOptions?.review">Review.</span>
-        </div>
         <div class="logo-div2" *ngIf="imgSrc">
           <img class="logo2 qrlogo1" [src]="imgSrc">
         </div>
         <div #barcode1>
           <ion-card class="card" color="light" *ngIf="this.qrData">
-              <qrcode [qrdata]="this.qrData" [width]="150" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
-              [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+              <qrcode class="qr" [qrdata]="this.qrData" [size]="200" [level]="'M'"
+              [colorlight]="lightcolor" [colordark]="selectedColor"></qrcode>
           </ion-card>
+        </div>
+        <div class="tag-wrapper">
+          <span *ngIf="qrForOptions?.scan">Scan.</span> 
+          <span *ngIf="qrForOptions?.pay">Pay.</span>
+          <span *ngIf="qrForOptions?.tip">Tip.</span>
+          <span *ngIf="qrForOptions?.review">Review.</span>
         </div>        
         <!-- <div class="div2"> -->
-          <img class="logo" [src]="cardsImg">
+        <img class="logo" [src]="cardsImg">
         <!-- </div> -->
       </div>
-      <span class="share-text" (click)="printBarcode(barcode1,150)">Download and print share</span> 
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button shape="round" fill="outline" color="medium" (click)="printBarcode(barcode1, 750, 500)">Download 4x6</ion-button> 
+          </ion-col>
+          <ion-col size="6">
+            <ion-button shape="round" fill="outline" color="medium" (click)="printBarcode(barcode1, 875, 625)">Download 5x7</ion-button> 
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
 
-    <div class="barcode-content">
+    <!-- <div class="barcode-content">
       <span class="size-text">5 x 7</span> 
       <div class="barcode-data data2" [style.background]="selectedColor">
         <div class="tag-wrapper">
@@ -52,18 +61,18 @@
         </div>
         <div #barcode2>
           <ion-card class="card" color="light" *ngIf="this.qrData">
-                <qrcode [qrdata]="this.qrData" [width]="200" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
-                [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+                <qrcode class="qr" [qrdata]="this.qrData" [size]="250" [level]="'M'"
+                [colorlight]="lightcolor" [colordark]="selectedColor"></qrcode>
           </ion-card>
         </div>
         <div class="div2">
           <img class="logo" [src]="cardsImg">
         </div>
       </div>
-    <span class="share-text" (click)="printBarcode(barcode2,200)">Download and print share</span> 
-  </div>
+    <span class="share-text" (click)="printBarcode(barcode2, 875, 625)">Download and Print</span> 
+  </div> -->
 
-  <div class="barcode-content">
+  <!-- <div class="barcode-content">
     <span class="size-text">8.5 x 11</span> 
     <div class="barcode-data data3" [style.background]="selectedColor">
       <div class="tag-wrapper">
@@ -77,16 +86,16 @@
       </div>
       <div #barcode3>
         <ion-card class="card" color="light" *ngIf="this.qrData">
-              <qrcode [qrdata]="this.qrData" [width]="250" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
-              [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+            <qrcode class="qr" [qrdata]="this.qrData" [size]="250" [level]="'M'"
+            [colorlight]="lightcolor" [colordark]="selectedColor"></qrcode>
         </ion-card>
       </div>
       <div class="div2">
         <img class="logo" [src]="cardsImg">
       </div>
     </div>
-    <span class="share-text" (click)="printBarcode(barcode3,250)">Download and print share</span> 
-  </div>
+    <span class="share-text" (click)="printBarcode(barcode3, 1250, 1000)">Download and print share</span> 
+  </div>-->
   </div>
   <div class="btn-wrapper next-btn-wrapper">
     <ion-button class="btn-main btn-next" shape="round" 

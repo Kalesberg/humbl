@@ -18,8 +18,8 @@
             <img class="logo2" [src]="imgSrc">
           </div>
           <ion-card class="card" color="light" *ngIf="this.username">
-              <qrcode [qrdata]="this.username" [width]="250" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
-                [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+              <qrcode [qrdata]="this.username" [size]="250" [level]="'M'"
+              [colordark]="selectedColor"></qrcode>
           </ion-card>
         </div>
         <ion-button class="share-text" shape="round" fill="outline" color="medium" (click)="next(barcode3)">Download and Print</ion-button> 

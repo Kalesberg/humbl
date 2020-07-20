@@ -6,13 +6,14 @@ const routes: Routes = [
   { path: 'home', loadChildren: ()=> import('./tab1/tab1.module').then(m => m.Tab1PageModule)},
   { path: 'pos', loadChildren: ()=>import('./tab2/tab2.module').then(m => m.Tab2PageModule), canActivate: [AuthGuard]},
   { path: 'settings', loadChildren: ()=>import('./tab3/tab3.module').then(m => m.Tab3PageModule), canActivate: [AuthGuard]},
-  { path: 'messages', loadChildren: ()=>import('./messages/messages.module').then(m => m.MessagesPageModule), canActivate: [AuthGuard]},
+  { path: 'messages', loadChildren: ()=>import('./userlist/userlist.module').then(m => m.UserlistPageModule), canActivate: [AuthGuard]},
   { path: 'reports', loadChildren: ()=>import('./tab4/tab4.module').then(m => m.Tab4PageModule), canActivate: [AuthGuard]},
   { path: 'signup', loadChildren: ()=>import('./signup/signup.module').then(m => m.SignupPageModule)},
   { path: 'login', loadChildren: ()=>import('./login/login.module').then(m => m.LoginPageModule)},
   { path: 'reset-password', loadChildren: ()=>import('./reset-password/reset-password.module').then(m => m.ResetPasswordPageModule)},
   { path: 'success', loadChildren: ()=> import('./success/success.module').then(m => m.SuccessPageModule)},
   { path: 'account', loadChildren: ()=> import('./account/account.module').then(m => m.AccountPageModule), canActivate: [AuthGuard]},
+  { path: 'verify_email', loadChildren: ()=> import('./verify-email/verify-email.module').then(m => m.VerifyEmailPageModule)},
   {path: 'qr', loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule), canActivate: [AuthGuard]},
   { path: 'charge-card', 
   loadChildren: ()=>import('./charge-card/charge-card.module').then(m => m.ChargeCardPageModule), canActivate: [AuthGuard]
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'qr-payment/:totalamount',
     loadChildren: () => import('./qr-payment/qr-payment.module').then( m => m.QrPaymentPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./message/message.module').then( m => m.MessagePageModule), canActivate: [AuthGuard],
   },
 ];
 @NgModule({

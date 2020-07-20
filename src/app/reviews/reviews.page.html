@@ -12,8 +12,8 @@
   <ion-list>
     <ion-item *ngFor="let review of reviews" color="medium">
       <ion-label>
-        <p class="ion-text-wrap"><span translate>reports.date:</span> {{this.review.date.toDate() | Date : 'MM/dd/yy'}}</p>
-        <p class="ion-text-wrap"><span translate>reviews.rating:</span> {{this.review.rating}}</p>
+        <p class="ion-text-wrap"><span translate>reports.date</span> {{this.review.date.toDate() | date }}</p>
+        <p class="ion-text-wrap"><span translate>reviews.rating</span> {{this.review.rating}}</p>
         <div class="range">
           <ion-icon *ngIf="this.review.rating > 0" class="stars" color="light" slot="end" name="star"></ion-icon>
           <ion-icon *ngIf="this.review.rating > 1" class="stars" color="light" slot="end" name="star"></ion-icon>
@@ -21,9 +21,9 @@
           <ion-icon *ngIf="this.review.rating > 3" class="stars" color="light" slot="end" name="star"></ion-icon>
           <ion-icon *ngIf="this.review.rating > 4" class="stars" color="light" slot="end" name="star"></ion-icon>
         </div>
-        <p class="ion-text-wrap"><span translate>reviews.feedback:</span> {{this.review.message}}</p>
-        <p class="ion-text-wrap"><span translate>reviews.transaction:</span> {{this.review.txid}}</p>
-        <p class="ion-text-wrap"><span translate>pos.total:</span> {{this.review.total | currency}}</p>
+        <p class="ion-text-wrap"><span translate>reviews.feedback</span> {{this.review.message}}</p>
+        <p class="ion-text-wrap"><span translate>reviews.transaction</span> {{this.review.txid}}</p>
+        <p class="ion-text-wrap"><span translate>pos.total</span> {{this.review.total | currency}}</p>
         <!-- <ion-button color="light" shape="round" [routerLink]='"/payroll"'>Respond</ion-button> -->
       </ion-label>
       <ion-button slot="end" fill="outline" size="small" color="light" (click)="confirmDelete(review.sid, review.id)"><ion-icon name="trash-outline"></ion-icon></ion-button>

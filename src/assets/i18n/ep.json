@@ -1,4 +1,14 @@
 {
+    "common": {
+        "terminal": "Terminal",
+        "signin" : "Iniciar sesión",
+        "signout" : "Cerrar sesión",
+        "messages" : "Mensajes",
+        "reports" : "Reportes",
+        "reviews" : "Reseñas",
+        "settings" : "Ajustes",
+        "qr" : "QR"
+    },
     "home": {
         "signup": "Registrarse",
         "login": "Iniciar sesión",

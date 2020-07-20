@@ -10,6 +10,7 @@ export class SettingsService {
 
   public currentUser: firebase.User;
   public businessProfile: firebase.firestore.DocumentReference;
+  public userProfile: firebase.firestore.DocumentReference;
 
   constructor() {
     firebase.auth().onAuthStateChanged(user => {
@@ -18,6 +19,11 @@ export class SettingsService {
         this.businessProfile = firebase.firestore().doc(`/businessProfile/${user.uid}`);
       }
     });
+  }
+
+  getUserProfile(uid): firebase.firestore.DocumentReference {
+    this.userProfile = firebase.firestore().doc(`/userProfile/${uid}`);
+    return this.userProfile;
   }
 
   getBusinessProfile(): firebase.firestore.DocumentReference {
@@ -73,6 +79,10 @@ export class SettingsService {
       .catch(error => {
         console.error(error);
       });
+  }
+
+  updateSignupemail(userId, email){
+    return firebase.firestore().doc(`/businessProfile/${userId}`).set({ email: email },{merge: true});
   }
 
   updatePassword(newPassword: string, oldPassword: string): Promise<any> {
