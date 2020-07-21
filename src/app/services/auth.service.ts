@@ -3,6 +3,8 @@ import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import 'firebase/auth';
 import 'firebase/firestore';
+import { HttpClient } from "@angular/common/http";
+import { environment} from "../../environments/environment";
 
 // export interface callback{
 //   uri: string
@@ -20,6 +22,7 @@ export class AuthService {
 
   constructor(    
     private router: Router,
+    private http: HttpClient,
   ) { }
 
   loginUser(email: string, password: string): Promise<firebase.auth.UserCredential> {
@@ -59,6 +62,27 @@ export class AuthService {
   logoutUser():Promise<void> {
     return firebase.auth().signOut();
   }
+
+  sendEmailVerificationLink(email, isNavigate) {
+    let observable = this.http
+                .post(environment.apiUrl + 'sendEmailVerificationLink/',
+                    {email: email,appType: "merchant" },
+                    { headers: { "Content-Type": "application/json" } });
+    observable.toPromise().then(() => {
+    if(isNavigate)
+      this.router.navigateByUrl('/verify_email');
+    });
+  }
+
+  sendPasswordResetLink(email) {
+    let observable = this.http
+      .post(environment.apiUrl + 'sendPasswordResetLink/',
+        {email: email,appType: "merchant" },
+        { headers: { "Content-Type": "application/json" } });
+
+    return observable.toPromise();
+  }
+
 }  
 
 

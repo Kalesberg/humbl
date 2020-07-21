@@ -54,7 +54,7 @@ export class SignupPage implements OnInit {
         (res) => {
           this.loading.dismiss().then(() => {
             this.settingsService.updateSignupemail(res.user.uid,email);
-            this.authService.SendVerificationMail();
+            this.authService.sendEmailVerificationLink(email, true);// SendVerificationMail()
           });
         },
         error => {

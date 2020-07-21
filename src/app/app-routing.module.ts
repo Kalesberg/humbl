@@ -57,6 +57,10 @@ const routes: Routes = [
     path: 'chat',
     loadChildren: () => import('./message/message.module').then( m => m.MessagePageModule), canActivate: [AuthGuard],
   },
+  {
+    path: 'auth/email/:action',
+    loadChildren: () => import('./email-customization/email-customization.module').then( m => m.EmailCustomizationPageModule)
+  },
 ];
 @NgModule({
   imports: [

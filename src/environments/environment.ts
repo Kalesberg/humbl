@@ -18,7 +18,8 @@ export const environment = {
     storageBucket: "humbl-lite.appspot.com",
     messagingSenderId: "630870458757",
     appId: "1:630870458757:web:d230b766a65312078904ec"
-  }
+  },
+  apiUrl: "https://us-central1-humbl-lite.cloudfunctions.net/"
 };
 
 /*

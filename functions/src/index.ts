@@ -181,15 +181,21 @@ exports.verifyEmails = functions.https
         let verificationData : any = (respData && respData.data())? respData.data(): null;
         let isVerified = false;
         console.log("verifyEmails verificationData ", verificationData);
-        if(verificationData && !verificationData.isChanged 
+        if(verificationData && !verificationData.isVerified 
             && verificationData.appType === request.body.appType && verificationData.sendTime) {
+            // const currentTimestamp = Math.floor(Date.now() / 1000);
+          console.log("currentTimestamp", Date.now())
+          if(Date.now() - new Date(verificationData.sendTime._seconds*1000).getTime()  < (30*60*1000)){
               isVerified = true;
+            }
         }
         if(isVerified){
           const userData = await admin.auth().getUserByEmail(verificationData.email);
           console.log("verifyEmails userData ", userData);
           if(userData && userData.uid) {
             await admin.auth().updateUser(userData.uid,{emailVerified: true});
+            await admin.firestore().collection('verificationEmails')
+              .doc(request.body.oobCode).update({isVerified: true})
             response.send({ status: true, message: "Email Verified Successfully." });
           }
           else {
@@ -225,13 +231,19 @@ return cors(request, response, async () => {
       console.log("changePassword verificationData ", verificationData);
       if(verificationData && !verificationData.isChanged 
           && verificationData.appType === request.body.appType && verificationData.sendTime) {
+          // const currentTimestamp = Math.floor(Date.now() / 1000);
+          console.log("currentTimestamp", Date.now())
+          if(Date.now() - new Date(verificationData.sendTime._seconds*1000).getTime()  < (30*60*1000)){
             isVerified = true;
+          }
       }
       if(isVerified){
         const userData = await admin.auth().getUserByEmail(verificationData.email);
         console.log("changePassword userData ", userData);
         if(userData && userData.uid){
-          admin.auth().updateUser(userData.uid, { password: request.body.newPassword });
+          await admin.auth().updateUser(userData.uid, { password: request.body.newPassword });
+          await admin.firestore().collection('passwordResetEmail')
+          .doc(request.body.oobCode).update({isChanged: true})
           response.send({ status: true, message: "Password changed Successfully." });             
         }
         else {

@@ -1,0 +1,23 @@
+<ion-content class="ion-padding">
+  <div class="form-wrapper">
+    <ion-card class="loading-card ion-padding ion-text-center" color="medium" *ngIf="!isVerified && !isError">
+      <ion-spinner class="loader" name="crescent"></ion-spinner>
+      <ion-text>
+        Verifying email please wait...
+      </ion-text>
+    </ion-card>    
+    <ion-card  class="msg-card" color="success"  *ngIf="isVerified && !isError">
+      <ion-icon class="success-icon" name="checkmark-circle-outline"></ion-icon>
+      <ion-text class="success-text">
+        Email verified successfully please click continue to login again.
+      </ion-text>
+      <ion-button color="primary" (click)="this.router.navigateByUrl('/login');" >Continue To Login</ion-button>
+    </ion-card>   
+    <ion-card class="msg-card" color="danger"  *ngIf="!isVerified && isError">
+      <ion-icon class="success-icon" name="close-circle-outline"></ion-icon>
+      <ion-text class="success-text">
+        {{errorMessage}}
+      </ion-text>
+    </ion-card>   
+  </div>
+</ion-content>

@@ -11,7 +11,8 @@
   <img class="logo" src='../../assets/humbl-white.png'>
   <div class="content">
     <p translate>verify.check</p>
-    <p (click)="authService.SendVerificationMail()">
+    <p (click)="authService.sendEmailVerificationLink(userData.email, false)">
+    <!-- <p (click)="authService.SendVerificationMail()"> -->
       <b translate>verify.resend</b>
     </p>
     <p routerLink="/login">

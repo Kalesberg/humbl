@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./verify-email.page.scss'],
 })
 export class VerifyEmailPage implements OnInit {
+  public userData;
   constructor(
     public authService: AuthService,
     private router: Router,
@@ -25,6 +26,7 @@ export class VerifyEmailPage implements OnInit {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         let firstname, lastname, username;
+        this.userData = user;
         this.storage.forEach((value, key) => {
           if(key === 'firstname'){
             firstname = value;
@@ -42,5 +44,9 @@ export class VerifyEmailPage implements OnInit {
         })
       }
     });
+  }
+
+  ionViewWillLeave() {
+    this.authService.logoutUser();
   }
 }

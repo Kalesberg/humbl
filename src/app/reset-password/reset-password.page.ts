@@ -36,31 +36,61 @@ export class ResetPasswordPage implements OnInit {
       );
     } else {
       const email: string = resetPasswordForm.value.email;
-      this.authService.resetPassword(email).then(
-        async () => {
+      // this.authService.resetPassword(email).then(
+      //   async () => {
+      //     const alert = await this.alertCtrl.create({
+      //       message: this.translate.instant("reset.check_email"),
+      //       buttons: [
+      //         {
+      //           text: this.translate.instant("register.ok"),
+      //           role: 'cancel',
+      //           handler: () => {
+      //             this.router.navigateByUrl('login');
+      //           },
+      //         },
+      //       ],
+      //     });
+      //     await alert.present();
+      //   },
+      //   async error => {
+      //     const errorAlert = await this.alertCtrl.create({
+      //       message: error.message,
+      //       buttons: [{ text: this.translate.instant("register.ok"), role: 'cancel' }],
+      //     });
+      //     await errorAlert.present();
+      //   }
+      // );
+      this.authService.sendPasswordResetLink(email).then(async (resp: any)=>{
+        if(resp && resp.status){
           const alert = await this.alertCtrl.create({
-            message: this.translate.instant("reset.check_email"),
-            buttons: [
-              {
-                text: this.translate.instant("register.ok"),
-                role: 'cancel',
-                handler: () => {
-                  this.router.navigateByUrl('login');
-                },
+          message: this.translate.instant("reset.check"),
+          buttons: [
+            {
+              text: this.translate.instant("login.ok"),
+              role: 'cancel',
+              handler: () => {
+                this.router.navigateByUrl('login');
               },
-            ],
-          });
-          await alert.present();
-        },
-        async error => {
-          const errorAlert = await this.alertCtrl.create({
-            message: error.message,
-            buttons: [{ text: this.translate.instant("register.ok"), role: 'cancel' }],
-          });
-          await errorAlert.present();
+            },
+          ],
+        });
+        await alert.present();
         }
-      );
+        else {
+          this.displayError(resp.message);
+        }
+      },(error)=>{
+        this.displayError(error.message);
+      })
     }
   }
-
+  
+  async displayError(message){
+    const errorAlert = await this.alertCtrl.create({
+          message: message,
+          buttons: [{ text: this.translate.instant("login.ok"), role: 'cancel' }],
+        });
+    await errorAlert.present();
+  }
+  
 }
