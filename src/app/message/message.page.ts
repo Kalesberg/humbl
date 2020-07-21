@@ -9,6 +9,7 @@ import { Contacts } from '@ionic-native/contacts/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ImagemodalPage } from '../imagemodal/imagemodal.page'
 import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 const { Keyboard, Camera } = Plugins;
 
@@ -54,6 +55,7 @@ export class MessagePage implements OnInit {
     public modalCtrl: ModalController,
     public actionSheet: ActionSheetController,
     public contacts: Contacts,
+    public http: HttpClient,
     public settings: SettingsService,
     public geolocation: Geolocation
   ) {
@@ -238,10 +240,23 @@ export class MessagePage implements OnInit {
   send(type: any) {
     if (this.message) {
       // User entered a text on messagebox
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'secret-key'
+        })
+      };
+      let message_data = {sender_id: this.loggedInUserId, receiver_id: this.userId, message: this.message, toMerchant: this.userType === 'merchants', toUser: this.userType === 'people', sent: new Date()};
+
+      this.http.post('https://us-central1-humbl-lite.cloudfunctions.net/sendMessage', message_data, httpOptions).subscribe(res => {
+        console.log('res ', res)
+      }, err => {
+        console.log('err', err)
+      })
       if (this.conversationId) {
         let messages = this.messages;
         messages.push({
-          date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + "T" + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds(),
+          date: new Date().toISOString(),
           sender: this.loggedInUserId,
           type: type,
           message: this.message
@@ -284,7 +299,7 @@ export class MessagePage implements OnInit {
         // New Conversation with friend.
         let messages = [];
         messages.push({
-          date: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + "T" + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds(),
+          date: new Date().toISOString(),
           sender: this.loggedInUserId,
           type: type,
           message: this.message
@@ -296,7 +311,7 @@ export class MessagePage implements OnInit {
         users.push(this.userId);
         // Add conversation.
         firebase.firestore().collection('conversations').add({
-          dateCreated: new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate() + "T" + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds(),
+          dateCreated: new Date().toISOString(),
           messages: messages,
           users: users
         }).then((success) => {

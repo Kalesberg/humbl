@@ -33,6 +33,7 @@ export class UserlistPage {
   public user_ID: String;
   public currentDate: string;
   public searchTerm: string = "";
+  public searchFilter = "";
 
   constructor(public settings: SettingsService,
     public storage: Storage,
@@ -64,6 +65,8 @@ export class UserlistPage {
             this.business = this.userProfile.businessName;
           }
         });
+        this.getMessages();
+        this.searchFilter = "username";
       }
     });
   }
@@ -78,6 +81,11 @@ export class UserlistPage {
     console.log(event.detail.value);
   }
 
+  changeSearchFilter() {
+    this.searchTerm = "";
+    this.users = [];
+  }
+
   getUsersSearch() {
     const total_users = this.total_users;
     if(this.searchTerm !== '') {
@@ -89,13 +97,48 @@ export class UserlistPage {
     }
   }
 
+  async getMessages() {
+    this.users = [];
+    const loading = await this.loadingCtrl.create();
+    loading.present();
+    firebase.firestore().collection('businessProfile/' + this.uid + '/conversations').get().then(async snapshot => {
+      let users = [];
+      snapshot.forEach(item => {
+        let conversations = item.data().conversations;
+        let conversation_id = conversations[conversations.length - 1].conversationId;
+        let unread_count = conversations.filter(item => { return item.messageRead === 0; }).length;
+        users.push({ user_id: item.id, conversation_id, unread_count });
+      });
+      const user_promise = users.map(async user => {
+        return firebase.firestore().doc('conversations/' + user.conversation_id).get().then(conversation => {
+          let messages = conversation.data().messages.filter(val => { return val.type === 'text' && val.sender === user.user_id; });
+          let last_message;
+          if(messages.length > 0){
+            let last_sent = new Date(messages[messages.length - 1].date).getTime();
+            last_message = messages[messages.length - 1].message;
+            return firebase.firestore().doc('userProfile/' + user.user_id).get().then(userSnapShot => {
+              return { ...userSnapShot.data(), id:userSnapShot.id, unread_count: user.unread_count, message: last_message, last_sent};
+            })
+          }
+        });
+      })
+      let users_array = [];
+      users_array = await Promise.all(user_promise);
+      this.users = users_array.filter(val => {
+        return val.searchvisible !== false;
+      }).sort(function(a, b){
+        return b.last_sent - a.last_sent; 
+      })
+      loading.dismiss();
+    });
+  }
+
   async getUsers() {
-    let searchCollection;
     this.users = [];
     if(this.searchTerm !== ""){
       const loading = await this.loadingCtrl.create();
       loading.present();
-      firebase.firestore().collection('userProfile')
+      firebase.firestore().collection('userProfile').orderBy(this.searchFilter).startAt(this.searchTerm.toLowerCase()).endAt(this.searchTerm.toLowerCase()+ "\uf8ff")
       .get()
       .then(async (querySnapshot) => {
         let users = [];
@@ -111,23 +154,29 @@ export class UserlistPage {
               let unread_count = conversations.filter(val => { return val.messageRead === 0; }).length;
               return firebase.firestore().doc('/conversations/' + conversation_id).get().then(conversation => {
                 let messages = conversation.data().messages.filter(val => { return val.type === 'text' && val.sender === user.id; });
-                let last_message;
+                let last_message, last_sent;
                 if(messages.length > 0){
+                  last_sent = new Date(messages[messages.length - 1].date).getTime();
                   last_message = messages[messages.length - 1].message;
                 } else {
+                  last_sent = 0;
                   last_message = '';
                 }
-                return { ...user, unread_count, message: last_message};
+                return { ...user, unread_count, message: last_message, last_sent};
               })
             } else {
-              return { ...user, unread_count: 0, message: ''};
+              return { ...user, unread_count: 0, message: '', message_count: 0, last_sent: 0};
             }
           });
         });
-        const total_users = await Promise.all(user_promises);
-        this.users = total_users.filter(val => {
-          return (val.businessName && val.businessName.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) || (val.firstname && val.firstname.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) || (val.lastname && val.lastname.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) || (val.message && val.message.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1);
-        });
+        let users_array = [];
+        users_array = await Promise.all(user_promises);
+        console.log(users_array);
+        this.users = users_array.filter(val => {
+          return val.searchvisible !== false || val.message_count !== 0;
+        }).sort(function(a, b){
+          return b.last_sent - a.last_sent; 
+        })
         loading.dismiss();
       })
       .catch(function(error) {
