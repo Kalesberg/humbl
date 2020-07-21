@@ -5,36 +5,6 @@ const snedGridMail = require("@sendgrid/mail");
 const sendGridAPIKey = "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"
 admin.initializeApp();
 
-
-exports.sendPushNotification = functions.firestore
-  .document('notifications/{notificationId}')
-  .onCreate(
-    (
-      snap: FirebaseFirestore.DocumentSnapshot,
-      context: functions.EventContext
-    ) => {
-      const pushNotification = snap.data()!;
-
-      const payload: any = {
-        token: pushNotification.token,
-        notification: {
-          title: pushNotification.title,
-          body: pushNotification.description
-        },
-        webpush: {
-          fcmOptions: {
-            link: 'https://myCoolApp.com/path_to_notification'
-          },
-          fcm_options: {
-            link: 'https://myCoolApp.com/path_to_notification'
-          }
-        }
-      };
-      return admin.messaging().send(payload);
-    }
-  );
-
-
 exports.sendEmailVerificationLink = functions.https
 .onRequest(async (request, response) => {
     return cors(request, response, async () => {

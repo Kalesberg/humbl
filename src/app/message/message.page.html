@@ -70,10 +70,13 @@
       </ion-textarea>
       <ion-buttons slot="end" style="margin-left:4px;">
         <ion-button fill="clear" (click)="attach()">
-          <ion-icon name="md-attach"></ion-icon>
+          <ion-icon name="attach-outline"></ion-icon>
         </ion-button>
         <ion-button color="primary" fill="clear" (click)="send('text')" [disabled]="!message">
           <ion-icon name="arrow-redo-circle" color="medium" size="large"></ion-icon>
+        </ion-button>
+        <ion-button class="emojiButton" fill="clear" (click)="emojiShow = !emojiShow">
+          <ion-icon name="happy" size="large"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-item>

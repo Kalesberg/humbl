@@ -225,6 +225,14 @@ export class MessagePage implements OnInit {
     }
   }
 
+  selectEmoji(event){
+    if(this.message){
+      this.message += event.emoji.native;
+    }else{
+      this.message = event.emoji.native;
+    }
+  }
+
 
   // Send message, if there's no conversation yet, create a new conversation.
   send(type: any) {
