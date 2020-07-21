@@ -12,9 +12,7 @@ exports.sendEmailVerificationLink = functions.https
             response.status(400).send("Only Post Requests are supported");
             return;
         }
-        console.log(request.body);
         if(request.body.email && request.body.appType) {
-
           let userData =await admin.auth().getUserByEmail(request.body.email);
           if(userData && userData.uid) {
             await admin.firestore()
@@ -33,7 +31,6 @@ exports.sendEmailVerificationLink = functions.https
         else {
           response.send({ status: false, message: "Bad request." });
         }
-
     });
 });
 
@@ -44,9 +41,7 @@ exports.sendPasswordResetLink = functions.https
             response.status(400).send("Only Post Requests are supported");
             return;
         }
-        console.log(request.body);
         if(request.body.email && request.body.appType) {
-
           let userData =await admin.auth().getUserByEmail(request.body.email);
           if(userData && userData.uid) {
             await admin.firestore()
@@ -65,7 +60,6 @@ exports.sendPasswordResetLink = functions.https
         else {
           response.send({ status: false, message: "Bad request." });
         }
-
     });
 });
 
@@ -77,25 +71,22 @@ exports.createVerifyemail = functions.firestore
   try {
 
     const emailDetail = snap.data();
-    console.log("verifyEmailDetail", emailDetail);
-    console.log("verifyEmailDetail snap.id", snap.id);
-
     let userData =await admin.auth().getUserByEmail(emailDetail.email);
 
     const text = emailDetail.appType=="customer"? 
-    `<p>Hello ${userData.displayName},</p>
-    <p>Follow this link to verify your email address.</p>
-    <p><a href='https://app.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}</a></p>
-    <p>If you didn’t ask to verify this address, you can ignore this email.</p>
-    <p>Thanks,</p>
-    <p>Your HUMBL Pay team</p>` 
+    `<div>Hello ${userData.displayName},</div>
+    <div>Follow this link to verify your email address.</div>
+    <div><a href='https://app.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}</a></div>
+    <div>If you didn’t ask to verify this address, you can ignore this email.</div>
+    <div>Thanks,</div>
+    <div>Your HUMBL Pay team</div>` 
     :
-    `<p>Hello ${userData.displayName},</p>
-    <p>Follow this link to verify your email address.</p>
-    <p><a href='https://merchantportal.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}</a></p>
-    <p>If you didn’t ask to verify this address, you can ignore this email.</p>
-    <p>Thanks,</p>
-    <p>Your HUMBL Merchant team</p>`
+    `<div>Hello ${userData.displayName},</div>
+    <div>Follow this link to verify your email address.</div>
+    <div><a href='https://merchantportal.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}</a></div>
+    <div>If you didn’t ask to verify this address, you can ignore this email.</div>
+    <div>Thanks,</div>
+    <div>Your HUMBL Merchant team</div>`
 
     const msg = {
       to: emailDetail.email,
@@ -113,9 +104,9 @@ exports.createVerifyemail = functions.firestore
           .doc(snap.id)
           .update({userId: userData.uid, sendTime: admin.firestore.FieldValue.serverTimestamp() });
 
-} catch (error) {
-  console.log("verificationEmails error", error);
-}
+  } catch (error) {
+    console.error("verificationEmails error", error);
+  }
 });
 
 exports.createPasswordResetemail = functions.firestore
@@ -125,25 +116,22 @@ exports.createPasswordResetemail = functions.firestore
   try {
 
     const emailDetail = snap.data();
-    console.log("passwordResetEmailDetail", emailDetail);
-    console.log("passwordResetEmailDetail snap.id", snap.id);
-
-    let userData =await admin.auth().getUserByEmail(emailDetail.email);
+    let userData = await admin.auth().getUserByEmail(emailDetail.email);
 
     const text = emailDetail.appType=="customer"? 
-    `<p>Hello ${userData.displayName},</p>
-    <p>Follow this link to verify your email address.</p>
-    <p><a href='https://app.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}</a></p>
-    <p>If you didn’t ask to verify this address, you can ignore this email.</p>
-    <p>Thanks,</p>
-    <p>Your HUMBL Pay team</p>` 
+    `<html><body><div>Hello ${userData.displayName? userData.displayName:''},</div>
+    <div>Follow this link to verify your email address.</div>
+    <div><a href='https://app.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}</a></div>
+    <div>If you didn’t ask to verify this address, you can ignore this email.</div>
+    <div>Thanks,</div>
+    <div>Your HUMBL Pay team</div></body></html>` 
     :
-    `<p>Hello ${userData.displayName},</p>
-    <p>Follow this link to verify your email address.</p>
-    <p><a href='https://merchantportal.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}</a></p>
-    <p>If you didn’t ask to verify this address, you can ignore this email.</p>
-    <p>Thanks,</p>
-    <p>Your HUMBL Merchant team</p>`
+    `<html><body><div>Hello ${userData.displayName? userData.displayName:''},</div>
+    <div>Follow this link to verify your email address.</div>
+    <div><a href='https://merchantportal.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}</a></div>
+    <div>If you didn’t ask to verify this address, you can ignore this email.</div>
+    <div>Thanks,</div>
+    <div>Your HUMBL Merchant team</div></body></html>`
 
     const msg = {
       to: emailDetail.email,
@@ -161,9 +149,9 @@ exports.createPasswordResetemail = functions.firestore
           .doc(snap.id)
           .update({userId: userData.uid, sendTime: admin.firestore.FieldValue.serverTimestamp() });
 
-} catch (error) {
-  console.log("verificationEmails error", error);
-}
+  } catch (error) {
+    console.error("verificationEmails error", error);
+  }
 });
 
 exports.verifyEmails = functions.https
@@ -173,25 +161,19 @@ exports.verifyEmails = functions.https
           response.status(400).send("Only Post Requests are supported");
           return;
       }
-      console.log(request.body);
       if(request.body.oobCode && request.body.appType) {
         const respData = await  admin.firestore().collection('verificationEmails')
         .doc(request.body.oobCode).get();
-
         let verificationData : any = (respData && respData.data())? respData.data(): null;
         let isVerified = false;
-        console.log("verifyEmails verificationData ", verificationData);
         if(verificationData && !verificationData.isVerified 
             && verificationData.appType === request.body.appType && verificationData.sendTime) {
-            // const currentTimestamp = Math.floor(Date.now() / 1000);
-          console.log("currentTimestamp", Date.now())
           if(Date.now() - new Date(verificationData.sendTime._seconds*1000).getTime()  < (30*60*1000)){
               isVerified = true;
             }
         }
         if(isVerified){
           const userData = await admin.auth().getUserByEmail(verificationData.email);
-          console.log("verifyEmails userData ", userData);
           if(userData && userData.uid) {
             await admin.auth().updateUser(userData.uid,{emailVerified: true});
             await admin.firestore().collection('verificationEmails')
@@ -209,7 +191,7 @@ exports.verifyEmails = functions.https
       else {
           response.send({ status: false, message: "Bad request." });
       }
-})
+  })
 })
 
 
@@ -221,25 +203,19 @@ return cors(request, response, async () => {
         response.status(400).send("Only Post Requests are supported");
         return;
     }
-    console.log(request.body);
     if(request.body.oobCode && request.body.appType && request.body.newPassword) {
       const respData = await  admin.firestore().collection('passwordResetEmail')
       .doc(request.body.oobCode).get();
-
       let verificationData : any = (respData && respData.data())? respData.data(): null;
       let isVerified = false;
-      console.log("changePassword verificationData ", verificationData);
       if(verificationData && !verificationData.isChanged 
           && verificationData.appType === request.body.appType && verificationData.sendTime) {
-          // const currentTimestamp = Math.floor(Date.now() / 1000);
-          console.log("currentTimestamp", Date.now())
           if(Date.now() - new Date(verificationData.sendTime._seconds*1000).getTime()  < (30*60*1000)){
             isVerified = true;
           }
       }
       if(isVerified){
         const userData = await admin.auth().getUserByEmail(verificationData.email);
-        console.log("changePassword userData ", userData);
         if(userData && userData.uid){
           await admin.auth().updateUser(userData.uid, { password: request.body.newPassword });
           await admin.firestore().collection('passwordResetEmail')
@@ -251,11 +227,11 @@ return cors(request, response, async () => {
         }
       }
       else {
-        response.send({ status: false, message: 'The action code is invalid. This can happen if the code is malformed, expired, or has already been used.' });
+        response.send({ status: false, message: 'The link is invalid. This can happen if the link is malformed, expired, or has already been used.' });
       }
     }
     else {
         response.send({ status: false, message: "Bad request." });
     }
-})
+  })
 })

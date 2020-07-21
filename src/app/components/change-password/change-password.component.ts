@@ -20,6 +20,8 @@ export class ChangePasswordComponent implements OnInit {
   isError: boolean = false;
   isLoading: boolean = false;
   errorMessage: string = "";
+  loadingMessage: string = "";
+
   constructor(private afAuth: AngularFireAuth, 
     private fb: FormBuilder, 
     private alertController: AlertController, 
@@ -37,6 +39,44 @@ export class ChangePasswordComponent implements OnInit {
     this.isError = false;
     this.isVerified = false;
     this.isLoading = false;
+    const code = this.route.snapshot.queryParams['oobCode'];
+    if(code){
+      this.checkLink(code);
+    }
+    else {
+      this.showLinkExpireError();
+    }
+  }
+
+  async checkLink(oobCode){
+    let isAllow = false;
+    this.isLoading = true;
+    this.loadingMessage = "Verifying link please wait ...";
+    try {
+      const respData = await  this.angularfire.collection('passwordResetEmail')
+      .doc(oobCode).get().toPromise();
+
+      let verificationData : any = (respData && respData.data())? respData.data(): null;
+      if(verificationData && !verificationData.isChanged 
+          && verificationData.appType === "merchant" && verificationData.sendTime) {
+          if(Date.now() - new Date(verificationData.sendTime._seconds*1000).getTime()  < (30*60*1000)){
+            isAllow = true;
+          }
+      }
+      if(!isAllow){
+        this.showLinkExpireError();
+      }      
+    } catch (error) {
+      console.error(error);
+      this.showLinkExpireError();
+    }
+  }
+
+  showLinkExpireError(){
+    this.isError = true;
+    this.isVerified = false;
+    this.isLoading = false;
+    this.errorMessage = "The link is invalid. This can happen if the link is malformed, expired, or has already been used.";
   }
 
   setPassword(){
@@ -55,6 +95,7 @@ export class ChangePasswordComponent implements OnInit {
     }
     this.isVerified = false;
     this.isLoading = true;
+    this.loadingMessage = "Resetting password please wait ...";
     const code = this.route.snapshot.queryParams['oobCode'];
     if(code){
       let observable = this.http
