@@ -56,6 +56,11 @@ export class AppComponent {
       url: '/reviews',
       icon: 'people'
     },
+    // {
+    //   title: 'offers',
+    //   url: '/offers',
+    //   icon: 'cash',
+    // },
     {
       title: 'qr',
       url: '/qr-dashboard',
@@ -66,7 +71,12 @@ export class AppComponent {
       title: 'settings',
       url: '/settings',
       icon: 'cog'
-    }
+    },
+    // {
+    //   title: 'agents',
+    //   url: 'http://localhost:8101/home',
+    //   icon: 'person'
+    // }
   ];
 
   constructor(

@@ -1,0 +1,147 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <img class="hubs-logo" src='../assets/hubs.png'>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Agent Portal</h2>
+  <ion-row>
+    <ion-col size="12" size-sm>
+      <ion-card class="welcome-card" [routerLink]="'/pos'">
+        <ion-card-header color="medium">
+        <ion-card-title>Send Money</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- <p class="alternate">
+            Manage Business Overhead
+          </p> -->
+          <div class="stars">
+            <ion-icon color="light" name="chevron-up"></ion-icon>
+          </div>
+          <!-- <ion-button [routerLink]="'/bill-pay'" color="medium">
+            Pay Bills
+          </ion-button> -->
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="12" size-sm>
+      <ion-card class="welcome-card" [routerLink]="'/pos'">
+      <ion-card-header color="medium">
+          <ion-card-title>Receive Money</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- <p class="alternate">
+            Average Spent per Visit
+          </p> -->
+          <div class="stars">
+            <ion-icon color="light" name="chevron-down"></ion-icon>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="12" size-sm>
+      <ion-card class="welcome-card" [routerLink]="'/pos'">
+        <ion-card-header color="medium">
+        <ion-card-title>Exchange Money</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- <p class="alternate">
+            Last 30 days.
+          </p> -->
+          <div class="stars">
+            <ion-icon color="light" name="sync"></ion-icon>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" size-sm>
+      <ion-card class="welcome-card" [routerLink]="'/agent-inquiry'">
+        <ion-card-header color="medium">
+        <ion-card-title>Get a Loan</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- <p class="alternate">
+            Manage Reviews & Feedback
+          </p> -->
+          <div class="stars">
+            <ion-icon color="light" name="rocket"></ion-icon>
+            <!-- <ion-icon color="light" name="star"></ion-icon>
+            <ion-icon color="light" name="star"></ion-icon>
+            <ion-icon color="light" name="star"></ion-icon>
+            <ion-icon color="light" name="star"></ion-icon> -->
+          </div>
+          <!-- <ion-button [routerLink]="'/reviews'" color="medium">
+            Feedback
+          </ion-button> -->
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="12" size-sm>
+      <ion-card class="welcome-card" [routerLink]="'/bill-pay'">
+        <ion-card-header color="medium">
+        <ion-card-title>Pay a Bill</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- <p class="alternate">
+            Customer Refunds & Receipts
+          </p> -->
+          <div class="stars">
+            <ion-icon color="light" name="mail-open"></ion-icon>
+          </div>
+          <!-- <ion-button [routerLink]="'/reports'" color="medium">
+            Manage
+          </ion-button> -->
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="12" size-sm>
+      <ion-card class="welcome-card">
+        <ion-card-header color="medium">
+        <ion-card-title>Other</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- <p class="alternate">
+            Manage employee tips & payroll.
+          </p> -->
+          <div class="stars">
+            <ion-icon color="light" name="globe"></ion-icon>
+          </div>
+          <!-- <ion-button [routerLink]="'/payroll'" color="medium">
+            Payroll
+          </ion-button> -->
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-list lines="none">
+    <ion-list-header color="medium">
+      <ion-label>Resources</ion-label>
+    </ion-list-header>
+    <!-- <ion-item href="http://api.humbl.io" color="medium" detail>
+      <ion-icon slot="start" color="medium" color="light" name="help-buoy"></ion-icon>
+      <ion-label>HUMBL API</ion-label>
+    </ion-item> -->
+    <ion-item href="https://humbl-1.gitbook.io/humbl-agent-manual/" color="medium" detail>
+      <ion-icon slot="start" color="light" name="document"></ion-icon>
+      <ion-label>Agent Manual</ion-label>
+    </ion-item>
+    <!-- <ion-item href="https://humbl.io" color="medium" detail>
+      <ion-icon slot="start" color="light" name="document"></ion-icon>
+      <ion-label>Network Administration</ion-label>
+    </ion-item> -->
+    <!-- <ion-item href="https://humbl.io" color="medium" detail>
+      <ion-icon slot="start" color="light" name="help-buoy"></ion-icon>
+      <ion-label>System Support</ion-label>
+    </ion-item> -->
+    <ion-item href="https://humbl.io" color="medium" detail>
+      <ion-icon slot="start" color="light" name="pulse"></ion-icon>
+      <ion-label>Technical Support</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

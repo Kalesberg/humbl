@@ -122,7 +122,7 @@ export class BillPayPage implements OnInit {
           text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
-            this.nav.navigateForward('home');
+            this.nav.navigateForward('agents');
           }
         }
       ]

@@ -1,5 +1,8 @@
 {
   "common": {
+        "merchant" : "Merchant",
+        "offers" : "Offers",
+        "agents" : "Agent",
         "terminal": "Terminal",
         "signin" : "Sign In",
         "signout" : "Sign Out",
@@ -152,7 +155,7 @@
         "rates": "Current Rates",
         "connected": "Connected Wallets",
         "transactions": "Transactions",
-        "pos_transactions": "Pos Transactions",
+        "pos_transactions": "POS Transactions",
         "scan_transactions": "Scan Transactions",
         "revenue": "Revenue",
         "total_revenue" : "Total Revenue",
