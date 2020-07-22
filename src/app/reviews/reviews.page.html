@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar color="medium">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
     </ion-buttons>
     <ion-title translate>reviews.heading</ion-title>
   </ion-toolbar>
@@ -11,6 +11,7 @@
   <ion-searchbar *ngIf="this.reviews" debounce="700" placeholder="Search By Transaction ID" [(ngModel)]="searchTerm" (ionClear)="getList()" (ionChange)="setFilteredItems()"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let review of reviews" color="medium">
+      <img class="reviewer" src="../../assets/avatar.png">
       <ion-label>
         <p class="ion-text-wrap"><span translate>reports.date</span> {{this.review.date.toDate() | date }}</p>
         <p class="ion-text-wrap"><span translate>reviews.rating</span> {{this.review.rating}}</p>
@@ -26,7 +27,7 @@
         <p class="ion-text-wrap"><span translate>pos.total</span> {{this.review.total | currency}}</p>
         <!-- <ion-button color="light" shape="round" [routerLink]='"/payroll"'>Respond</ion-button> -->
       </ion-label>
-      <ion-button slot="end" fill="outline" size="small" color="light" (click)="confirmDelete(review.sid, review.id)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+      <ion-button slot="end" fill="outline" shape="round" size="small" color="light" (click)="confirmDelete(review.sid, review.id)">Reply</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

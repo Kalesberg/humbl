@@ -76,7 +76,7 @@ export class QrStandeePage implements OnInit {
       this.nav.navigateRoot('qr-dashboard');
     }
     else {
-      this.nav.navigateRoot('settings');
+      this.nav.navigateRoot('pos');
     }
   }
 

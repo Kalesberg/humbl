@@ -1,0 +1,133 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/pos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agent Inquiry</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Important Information About Procedures For Becoming an Agent</h2>
+  <p>To help the government fight the funding of terrorism and money laundering activities, Federal law requires all financial institutions to obtain, verify, and record information that identifies each person who opens an account.
+    What this means for you: When you open an account, we will ask for your name, address, date of birth, and other information that will allow us to identify you. We may also ask to see your driver’s license or other identifying documents.</p>
+  <!-- <ion-label color="light" position="floating" clearInput>Purpose of Loan</ion-label>
+  <ion-input [(ngModel)]="amount" placeholder="Purpose"></ion-input> -->
+
+  <p>This application initiates the loan process. Final signature(s) will be required to advance funds, including signatures for joint applicants. We will contact you the next business day.</p>
+  <h2>PLEASE TELL US ABOUT YOURSELF (PRIMARY AGENT)</h2>
+  <ion-row>
+    <ion-col>
+      <ion-label color="light" position="floating" clearInput>Full Name</ion-label>
+      <ion-input placeholder="Full Name"></ion-input>
+    </ion-col>
+    <ion-col>
+      <ion-label color="light" position="floating" clearInput>Address</ion-label>
+      <ion-input placeholder="Address"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-label color="light" position="floating" clearInput>Address 2</ion-label>
+      <ion-input placeholder="Address 2"></ion-input>
+    </ion-col>
+    <ion-col>
+      <ion-label color="light" position="floating" clearInput>City</ion-label>
+      <ion-input placeholder="City"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-label color="light" position="floating" clearInput>State</ion-label>
+      <ion-input placeholder="State"></ion-input>
+    </ion-col>
+    <ion-col>
+      <ion-label color="light" position="floating" clearInput>Zip</ion-label>
+      <ion-input placeholder="Zip"></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <!-- <h2 *ngIf="this.payout_currency">Select Payout Method</h2>
+  <p *ngIf="this.payout_currency === ''" class="instructions">Options will display after filter selection.</p>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="method">
+      <ion-item>
+        <ion-label>Bank</ion-label>
+        <ion-radio value="bank"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Card</ion-label>
+        <ion-radio value="card"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Cash</ion-label>
+        <ion-radio value="cash"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>HUMBL Wallet</ion-label>
+        <ion-radio value="eWallet"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list> -->
+  <h2>Entity Type</h2>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="beneficiary_entity">
+      <!-- <ion-list-header>
+        Select Payout Method
+      </ion-list-header> -->
+      <ion-item>
+        <ion-label>Individual</ion-label>
+        <ion-radio color="light" value="individual"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Company</ion-label>
+        <ion-radio value="company"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <!-- <h2>Requested Loan Amount {{this.symbol}}{{this.amount | number:'1.2'}}</h2>
+  <ion-label color="light" position="floating" clearInput>Loan Amount</ion-label>
+  <ion-input [(ngModel)]="amount" placeholder="Enter Loan Amount"></ion-input> -->
+  <!-- <hr>
+  <h2>Receiver Payout Amount {{this.symbol}}{{this.amount | number:'1.2'}}</h2>
+  <ion-label color="dark" position="floating" clearInput>Payout Amount</ion-label>
+  <ion-input [(ngModel)]="amount" placeholder="Enter Payout Amount"></ion-input> -->
+  <!-- <ion-list>
+    <ion-item *ngFor="let co of senderCountry" (click)="setSenderCountry(co)">
+        <p slot="end">{{co.Name}}</p>
+        <p slot="start">{{co.Code}}</p>
+    </ion-item>
+  </ion-list> -->
+  <!-- <ion-item>
+    <p slot="start">{{this.sender_country}}</p>
+    <p slot="end">{{this.senderCoName}}</p>
+  </ion-item> -->
+  <!-- <h2>Sender Entity Type</h2>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="sender_entity">
+      <ion-item>
+        <ion-label>Individual</ion-label>
+        <ion-radio value="individual"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Company</ion-label>
+        <ion-radio value="company"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list> -->
+  <div class="form">
+    <ion-label class="memo" color="light" position="floating" clearInput>Bill Pay Memo</ion-label>
+    <ion-textarea rows="6" cols="30" placeholder="Place your bill pay memo here, such as a Bill ID from your service provider"></ion-textarea>
+  </div>
+  <p>Disclaimer: I/we hereby certify that all statements made are true and complete, are submitted for the purpose of obtaining credit, and that the credit union may rely on them for such determination. We understand that federal law requires the verification of identification for all new accounts should i not have an existing account. I/we authorize you to obtain such information as you may require concerning the statements made in this application and proper identification, and agree that the application shall remain your property, and you are authorized to answer questions about your credit experience with me/us.</p>
+  <ion-item>
+    <ion-label class="ion-text-wrap">I agree</ion-label>
+    <ion-checkbox (ionChange)="setBusiness()" color="primary"></ion-checkbox>
+  </ion-item>
+  <ion-button class="bottom" size="medium" color="light" [routerLink]="'/grid'">Complete Required Data</ion-button>
+</ion-content>

@@ -1,0 +1,29 @@
+img{
+    max-width: 300px;
+    margin-top: 50px;
+    margin-left: 25px;
+}
+
+ion-content{
+    --background: var(--ion-color-medium);
+}
+
+div{
+    margin-top: 50px;
+}
+
+ion-button{
+    margin-left: 25px;
+}
+
+ion-input {
+    display: block;
+    --placeholder-color: rgb(95, 95, 95);
+    --background: #ffffff;
+    max-width: 350px;
+    //margin-left: 20px;
+    border-radius: 5px;
+    height: 50px;
+    margin-bottom: 7px;
+}
+

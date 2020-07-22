@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar color="medium">
     <ion-buttons slot="start">
-      <ion-icon name="arrow-back-outline" size="large" (click)="back()"></ion-icon>
+      <ion-back-button  defaultHref="/messages"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      <img class="logo" src='../../assets/humbl-white.png'>
+      <img class="logo" src='../../assets/hubs.png'>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -69,9 +69,9 @@
       <ion-textarea style="margin:0" rows="0" placeholder="Type your message" [(ngModel)]="message">
       </ion-textarea>
       <ion-buttons slot="end" style="margin-left:4px;">
-        <ion-button fill="clear" (click)="attach()">
-          <ion-icon name="attach-outline"></ion-icon>
-        </ion-button>
+        <!-- <ion-button fill="clear" (click)="attach()">
+          <ion-icon name="attach-outline" color="medium" size="large"></ion-icon>
+        </ion-button> -->
         <ion-button color="primary" fill="clear" (click)="send('text')" [disabled]="!message">
           <ion-icon name="arrow-redo-circle" color="medium" size="large"></ion-icon>
         </ion-button>

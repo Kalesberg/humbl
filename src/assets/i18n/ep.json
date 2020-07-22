@@ -1,5 +1,7 @@
 {
     "common": {
+        "home" : "Comienzo",
+        "agents" : "Agents",
         "terminal": "Terminal",
         "signin" : "Iniciar sesión",
         "signout" : "Cerrar sesión",
