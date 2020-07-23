@@ -2,7 +2,9 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 const cors = require('cors')({ origin: true })
 const snedGridMail = require("@sendgrid/mail");
-const sendGridAPIKey = "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"
+const sendGridAPIKey = "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";
+const sendGridFromId = "support@humbl.io";
+
 admin.initializeApp();
 
 exports.sendEmailVerificationLink = functions.https
@@ -67,13 +69,13 @@ exports.sendPasswordResetLink = functions.https
 exports.createVerifyemail = functions.firestore
 .document(`verificationEmails/{verifyEmailId}`)
 .onCreate(async (snap, context) => {
-  //create a record in user collection
+  // create a record in user collection
   try {
 
     const emailDetail = snap.data();
-    let userData =await admin.auth().getUserByEmail(emailDetail.email);
+    let userData = await admin.auth().getUserByEmail(emailDetail.email);
 
-    const text = emailDetail.appType=="customer"? 
+    const text = emailDetail.appType == "customer"? 
     `<div>Hello ${userData.displayName},</div>
     <div>Follow this link to verify your email address.</div>
     <div><a href='https://app.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}</a></div>
@@ -90,7 +92,7 @@ exports.createVerifyemail = functions.firestore
 
     const msg = {
       to: emailDetail.email,
-      from: "mobaddicts@hotmail.com",
+      from: sendGridFromId,
       subject: `Verify your email for ${emailDetail.appType=="customer"? 'HUMBL Pay': "HUMBL Merchant" }`,
       text: text,
       html: text
@@ -135,7 +137,7 @@ exports.createPasswordResetemail = functions.firestore
 
     const msg = {
       to: emailDetail.email,
-      from: "mobaddicts@hotmail.com",
+      from: sendGridFromId,
       subject: `Verify your email for ${emailDetail.appType=="customer"? 'HUMBL Pay': "HUMBL Merchant" }`,
       text: text,
       html: text
