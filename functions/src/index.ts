@@ -76,16 +76,18 @@ exports.createVerifyemail = functions.firestore
     let userData = await admin.auth().getUserByEmail(emailDetail.email);
 
     const text = emailDetail.appType == "customer"? 
-    `<div>Hello ${userData.displayName},</div>
+    `<div>Hello ${userData.displayName? userData.displayName : ''},</div>
     <div>Follow this link to verify your email address.</div>
-    <div><a href='https://app.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}</a></div>
+    <div><a href='https://app.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}'>
+    https://app.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}</a></div>
     <div>If you didn’t ask to verify this address, you can ignore this email.</div>
     <div>Thanks,</div>
     <div>Your HUMBL Pay team</div>` 
     :
-    `<div>Hello ${userData.displayName},</div>
+    `<div>Hello ${userData.displayName? userData.displayName : ''},</div>
     <div>Follow this link to verify your email address.</div>
-    <div><a href='https://merchantportal.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}</a></div>
+    <div><a href='https://merchantportal.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}'>
+    https://merchantportal.humbl.io/auth/email/action?mode=verifyEmail&oobCode=${snap.id}</a></div>
     <div>If you didn’t ask to verify this address, you can ignore this email.</div>
     <div>Thanks,</div>
     <div>Your HUMBL Merchant team</div>`
@@ -121,16 +123,18 @@ exports.createPasswordResetemail = functions.firestore
     let userData = await admin.auth().getUserByEmail(emailDetail.email);
 
     const text = emailDetail.appType=="customer"? 
-    `<html><body><div>Hello ${userData.displayName? userData.displayName:''},</div>
+    `<html><body><div>Hello ${userData.displayName? userData.displayName : ''},</div>
     <div>Follow this link to verify your email address.</div>
-    <div><a href='https://app.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}</a></div>
+    <div><a href='https://app.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}'>
+    https://app.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}</a></div>
     <div>If you didn’t ask to verify this address, you can ignore this email.</div>
     <div>Thanks,</div>
     <div>Your HUMBL Pay team</div></body></html>` 
     :
-    `<html><body><div>Hello ${userData.displayName? userData.displayName:''},</div>
+    `<html><body><div>Hello ${userData.displayName? userData.displayName : ''},</div>
     <div>Follow this link to verify your email address.</div>
-    <div><a href='https://merchantportal.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}</a></div>
+    <div><a href='https://merchantportal.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}'>
+    https://merchantportal.humbl.io/auth/email/action?mode=resetPassword&oobCode=${snap.id}</a></div>
     <div>If you didn’t ask to verify this address, you can ignore this email.</div>
     <div>Thanks,</div>
     <div>Your HUMBL Merchant team</div></body></html>`
