@@ -5,40 +5,45 @@ PODS:
   - CordovaPlugins (2.2.0):
     - CapacitorCordova
   - CordovaPluginsResources (0.0.105)
-  - Firebase/CoreOnly (6.27.0):
-    - FirebaseCore (= 6.8.0)
-  - Firebase/Messaging (6.27.0):
+  - Firebase/CoreOnly (6.24.0):
+    - FirebaseCore (= 6.7.0)
+  - Firebase/Messaging (6.24.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 4.5.0)
-  - FirebaseCore (6.8.0):
+    - FirebaseMessaging (~> 4.4.0)
+  - FirebaseAnalyticsInterop (1.5.0)
+  - FirebaseCore (6.7.0):
     - FirebaseCoreDiagnostics (~> 1.3)
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
     - GoogleUtilities/Environment (~> 6.5)
     - GoogleUtilities/Logger (~> 6.5)
-  - FirebaseCoreDiagnostics (1.4.0):
+  - FirebaseCoreDiagnostics (1.3.0):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
     - GoogleDataTransportCCTSupport (~> 3.1)
     - GoogleUtilities/Environment (~> 6.5)
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 1.30905.0)
-  - FirebaseInstallations (1.4.0):
-    - FirebaseCore (~> 6.8)
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseInstallations (1.2.0):
+    - FirebaseCore (~> 6.6)
     - GoogleUtilities/Environment (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.6)
     - PromisesObjC (~> 1.2)
-  - FirebaseInstanceID (4.4.0):
-    - FirebaseCore (~> 6.8)
+  - FirebaseInstanceID (4.3.4):
+    - FirebaseCore (~> 6.6)
     - FirebaseInstallations (~> 1.0)
     - GoogleUtilities/Environment (~> 6.5)
     - GoogleUtilities/UserDefaults (~> 6.5)
-  - FirebaseMessaging (4.5.0):
-    - FirebaseCore (~> 6.8)
+  - FirebaseMessaging (4.4.1):
+    - FirebaseAnalyticsInterop (~> 1.5)
+    - FirebaseCore (~> 6.6)
     - FirebaseInstanceID (~> 4.3)
     - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
     - GoogleUtilities/Environment (~> 6.5)
     - GoogleUtilities/Reachability (~> 6.5)
     - GoogleUtilities/UserDefaults (~> 6.5)
     - Protobuf (>= 3.9.2, ~> 3.9)
-  - GoogleDataTransport (6.2.1)
-  - GoogleDataTransportCCTSupport (3.2.0):
+  - GoogleDataTransport (6.1.0)
+  - GoogleDataTransportCCTSupport (3.1.0):
     - GoogleDataTransport (~> 6.1)
     - nanopb (~> 1.30905.0)
   - GoogleUtilities/AppDelegateSwizzler (6.6.0):
@@ -63,7 +68,7 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
-  - PromisesObjC (1.2.9)
+  - PromisesObjC (1.2.8)
   - Protobuf (3.12.0)
 
 DEPENDENCIES:
@@ -76,8 +81,10 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Firebase
+    - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
     - FirebaseInstallations
     - FirebaseInstanceID
     - FirebaseMessaging
@@ -103,19 +110,21 @@ SPEC CHECKSUMS:
   CapacitorCordova: a77bb95d31143546af63577154d9852d33c62a82
   CordovaPlugins: 32ab80725fb5b1ab018a61a9e9b0486740ef60a1
   CordovaPluginsResources: 323f609dca3c233ad6c425093aa717b87ddc2aa7
-  Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
-  FirebaseCore: feda061cb1ee6d8ad4824f4a4a8ffbcfe284f595
-  FirebaseCoreDiagnostics: 4505e4d4009b1d93f605088ee7d7764d5f0d1c84
-  FirebaseInstallations: 293f567159b6d66d1c990f13bb868066096c94ec
-  FirebaseInstanceID: 3b119bfe90e904851218159c9a4ecb847cc51d18
-  FirebaseMessaging: ad9e1a80ea64905e01a0ce1b3eb76a2944544151
-  GoogleDataTransport: 9a8a16f79feffc7f42096743de2a7c4815e84020
-  GoogleDataTransportCCTSupport: 489c1265d2c85b68187a83a911913d190012158d
+  Firebase: b28e55c60efd98963cd9011fe2fac5a10c2ba124
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
+  FirebaseCore: e610482f64097b0e9f056cd97bc6b33dfabcbb6a
+  FirebaseCoreDiagnostics: 4a773a47bd83bbd5a9b1ccf1ce7caa8b2d535e67
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseInstallations: 2119fb3e46b0a88bfdbf12562f855ee3252462fa
+  FirebaseInstanceID: cef67c4967c7cecb56ea65d8acbb4834825c587b
+  FirebaseMessaging: 29543feb343b09546ab3aa04d008ee8595b43c44
+  GoogleDataTransport: f6f8eba931df03ebd2232ff4645aa85f8f47b5ab
+  GoogleDataTransportCCTSupport: d70a561f7d236af529fee598835caad5e25f6d3d
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
-  PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
 
 PODFILE CHECKSUM: c08bafbe2ef57a3b7462517172c34d125c48fb0a
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.9.0
