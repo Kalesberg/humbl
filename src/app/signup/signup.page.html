@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="medium">
+  <ion-toolbar class="name-toolbar" color="medium">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
@@ -7,68 +7,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-    <h3 translate>register.heading</h3>
-  <ion-card class="card ion-padding" color="medium">
+<ion-content color="medium" class="ion-padding">
+  <div class="login-content">
+    <!-- <h3 translate>register.heading</h3> -->
+  <!-- <ion-card class="card ion-padding" color="medium"> -->
     <img class="logo" src="../../assets/merchant.png">
-    <form [formGroup]="signupForm">
-      <ion-item color="medium" lines="none">
-        <!-- <ion-label position="stacked">Email</ion-label> -->
-        <ion-input
-        formControlName="email"
-        type="email"
-        placeholder="{{'register.email_note' | translate}}" [class.invalid]="!signupForm.controls['email'].valid &&
-        signupForm.controls['email'].touched"
-        ></ion-input> 
-      </ion-item> 
-      <ion-item
-        color="medium"
-        class="error-message"
-        *ngIf="!signupForm.controls['email'].valid
-        && signupForm.controls['email'].touched"
-        >
-        <ion-label translate>register.email_warn</ion-label>
-      </ion-item>
-      <ion-item color="medium" lines="none">
-        <!-- <ion-label position="stacked">Password</ion-label> -->
-       <ion-input
-        formControlName="password"
-        type="password"
-        placeholder="{{'register.password_note' | translate}}" [class.invalid]="!signupForm.controls['password'].valid &&
-        signupForm.controls['password'].touched"
-        ></ion-input> 
-      </ion-item> 
-      <ion-item
-        color="medium"
-        class="error-message"
-        *ngIf="!signupForm.controls['password'].valid &&
-        signupForm.controls['password'].touched"
-        >
-        <ion-label translate>register.password_verify</ion-label>
-      </ion-item>
-      <ion-item color="medium" lines="none" *ngIf="signupForm.controls['password'].valid">
-        <!-- <ion-label position="stacked">Re-Enter Password</ion-label>  -->
-        <ion-input
-        formControlName="passwordCheck"
-        type="password"
-        placeholder="{{'register.password_check' | translate}}" [class.invalid]="!signupForm.controls['password'].valid &&
-        signupForm.controls['passwordCheck'].touched"
-        >
-        </ion-input> 
-      </ion-item> 
-      <ion-item
-        color="medium"
-        class="error-message"
-        *ngIf="!signupForm.controls['passwordCheck'].valid &&
-        signupForm.controls['passwordCheck'].touched"
-        >
-        <ion-label translate>register.password_verify</ion-label>
-      </ion-item>
-      <ion-button class="ion-padding"
-      expand="block" shape="round" color="light" (click)="signupUser(signupForm)" [disabled]="signupForm.value.password != signupForm.value.passwordCheck"
-      translate>
-      register.create_account
-      </ion-button>
+    <form class="form-wrapper" [formGroup]="signupForm">
+      <div class="form-input-div">
+        <ion-item color="medium" class="form-item" lines="none">
+          <ion-label position="stacked">{{'register.email_note' | translate}}</ion-label>
+          <ion-input formControlName="email" type="email"
+          [class.invalid]="!signupForm.controls['email'].valid && signupForm.controls['email'].touched"></ion-input> 
+        </ion-item> 
+        <ion-item color="medium" class="error-message" *ngIf="!signupForm.controls['email'].valid
+          && signupForm.controls['email'].touched" lines="none">
+          <ion-label translate>register.email_warn</ion-label>
+        </ion-item>
+        <ion-item color="medium" class="form-item" lines="none">
+          <ion-label position="stacked">{{'register.password_note' | translate}}</ion-label>
+        <ion-input formControlName="password" type="password"
+        [class.invalid]="!signupForm.controls['password'].valid && signupForm.controls['password'].touched"></ion-input> 
+        </ion-item> 
+        <ion-item color="medium" class="error-message" *ngIf="!signupForm.controls['password'].valid &&
+          signupForm.controls['password'].touched" lines="none">
+          <ion-label translate>register.password_verify</ion-label>
+        </ion-item>
+        <ion-item color="medium" class="form-item"  lines="none" *ngIf="signupForm.controls['password'].valid">
+          <ion-label position="stacked">{{'register.password_check' | translate}}</ion-label> 
+          <ion-input formControlName="passwordCheck" type="password"
+          [class.invalid]="!signupForm.controls['password'].valid && signupForm.controls['passwordCheck'].touched"></ion-input> 
+        </ion-item> 
+        <ion-item color="medium" class="error-message" lines="none"
+        *ngIf="!signupForm.controls['passwordCheck'].valid && signupForm.controls['passwordCheck'].touched">
+          <ion-label translate>register.password_verify</ion-label>
+        </ion-item>
+        <ion-button class="form-submit-btn" (click)="signupUser(signupForm)" 
+        [disabled]="signupForm.value.password != signupForm.value.passwordCheck" translate>
+          register.create_account
+        </ion-button>
+      </div>
     </form>
-  </ion-card> 
+  </div>
+  <!-- </ion-card>  -->
 </ion-content>

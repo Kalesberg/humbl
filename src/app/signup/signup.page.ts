@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SettingsService } from '../services/settings.service'
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +21,8 @@ export class SignupPage implements OnInit {
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder,
     private settingsService: SettingsService,
-    private translate : TranslateService
+    private translate : TranslateService,
+    private appHelperService: AppHelperService
   ) {
     this.signupForm = this.formBuilder.group({
       email: [
@@ -39,7 +41,17 @@ export class SignupPage implements OnInit {
     console.log(this.signupForm);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.appHelperService.hideMenu();
+  }
+
+  ionViewWillEnter() {    
+    this.appHelperService.hideMenu();
+  }
+
+  ionViewWillLeave() {
+    this.appHelperService.showMenu();
+  } 
 
   async signupUser(signupForm: FormGroup): Promise<void> {
     if (!signupForm.valid) {

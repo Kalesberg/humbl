@@ -1,0 +1,84 @@
+.name-toolbar {
+    --min-height: 100px;
+    ion-title {
+        font-size: 30px;
+    }
+    ion-back-button {
+        --icon-font-size: 42px;
+        font-size: 28px;
+        --icon-margin-end: 5px;
+    }
+}
+.form-wrapper {
+    width: 90%;
+    max-width: 700px;
+}
+.form-input-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    ion-row {
+        width: 100%;
+    }
+}
+.form-item {
+    border: 2px solid #E8E8E8;
+    border-radius: 12px;
+    margin: 10px 0px;
+    width: 100%;
+    height: 80px;
+    --padding-bottom: 0px;
+    --padding-top: 0px;
+    ion-label {
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+    input {
+        padding: 15px 0px 0px;
+        font-size: 18px;
+    }
+}
+.form-submit-btn {
+    width: 80%;
+    max-width: 380px;
+    height: 85px;
+    text-transform: uppercase;
+    font-size: 25px;
+    letter-spacing: 0.05em;
+    font-weight: normal;
+}
+@media screen and (max-width: 420px) { 
+    .form-item {
+        border: 1px solid #E8E8E8;
+        margin: 10px 0px;
+        height: 65px;
+        --padding-bottom: 0px;
+        --padding-top: 0px;
+        ion-label {
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        input {
+            padding: 10px 0px 0px;
+            font-size: 16px;
+        }
+    }
+    .form-submit-btn {
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .name-toolbar {
+        --min-height: 50px;
+        ion-title {
+            font-size: 20px;
+        }
+        ion-back-button {
+            --icon-font-size: 30px;
+            font-size: 22px;
+            --icon-margin-end: 1px;
+        }
+    }
+}

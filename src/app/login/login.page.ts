@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, IonSegment } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,15 @@ export class LoginPage implements OnInit {
   public loginForm: FormGroup;
   public loading: HTMLIonLoadingElement;
   public emailPass: boolean = false;
+  @ViewChild('typesegment') typesegment:any;
+
   constructor(private authService: AuthService, 
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     private router: Router,
     private formBuilder: FormBuilder,
-    private translate : TranslateService) { 
+    private translate : TranslateService,
+    private appHelperService: AppHelperService) { 
     //this.jwt = this.authService.digiQR().toString();
     this.loginForm = this.formBuilder.group({
       email: ['',
@@ -34,7 +38,18 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.appHelperService.hideMenu();
   }
+
+  ionViewWillEnter() {    
+    this.appHelperService.hideMenu();
+    if(this.typesegment)
+      this.typesegment.value = "merchant";
+  }
+
+  ionViewWillLeave() {
+    this.appHelperService.showMenu();
+  } 
 
   async loginUser(loginForm: FormGroup): Promise<void> {
     if (!loginForm.valid) {

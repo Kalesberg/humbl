@@ -78,6 +78,7 @@ export class AppComponent {
     //   icon: 'person'
     // }
   ];
+  public isDeepLink: boolean = false;
 
   constructor(
     public platform: Platform,
@@ -96,7 +97,26 @@ export class AppComponent {
     ) {
 
     this.initializeApp();
-    this.authCheck();
+    this.isDeepLink = false;
+    // this.authCheck();
+    // if(this.platform.is("capacitor")) {
+      this.authCheck().then(async (userStatus)=>{
+        if(!this.isDeepLink){
+          console.log(userStatus, this.uid)
+          if(userStatus && this.uid){
+            this.router.navigateByUrl('/pos');
+            // await this.authService.redirectTo(this.uid);
+          }
+          else {
+            if(SplashScreen)
+              SplashScreen.hide();
+            this.router.navigateByUrl('/home');
+          }
+        }
+      });
+    // } else{
+    //   this.authCheck();
+    // }
 
     this.translate.setDefaultLang('en');
     this.translate.langs = ['en', 'ep'];  
@@ -120,7 +140,7 @@ export class AppComponent {
   initializeApp() {
 
     this.platform.ready().then(() => {
-      SplashScreen.hide();
+      // SplashScreen.hide();
       // this.deeplinks.route({
       //   '/success/:slug': 'success',
       // }).subscribe((match) => {
@@ -143,6 +163,7 @@ export class AppComponent {
           const slug = data.url.split(".io").pop();
           console.log("----Url Link----", slug);
           if (slug) {
+            this.isDeepLink = true;
             this.router.navigateByUrl(slug);
           }
         })
@@ -231,6 +252,7 @@ export class AppComponent {
     this.authService.logoutUser().then( () => {
       this.user = false;
       this.username = "";
+      this.uid = "";
       this.toggleMenu();
       this.router.navigateByUrl('/login');
     });
@@ -257,7 +279,7 @@ export class AppComponent {
           this.user = true;
           this.uid = user.uid;
           this.getProfile();
-          if(this.platform.is('ios') || this.platform.is('android')){
+          if(this.platform.is('capacitor') && (this.platform.is('ios') || this.platform.is('android'))){
             this.setUpPushNotifications();
           } else {
             this.pushService.requestPermission();
