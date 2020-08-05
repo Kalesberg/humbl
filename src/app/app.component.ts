@@ -98,25 +98,25 @@ export class AppComponent {
 
     this.initializeApp();
     this.isDeepLink = false;
-    // this.authCheck();
-    // if(this.platform.is("capacitor")) {
-      this.authCheck().then(async (userStatus)=>{
-        if(!this.isDeepLink){
-          console.log(userStatus, this.uid)
-          if(userStatus && this.uid){
+    this.authCheck();
+    if (this.platform.is("capacitor")) {
+      this.authCheck().then(async (userStatus) => {
+        if (!this.isDeepLink) {
+          console.log(userStatus, this.uid);
+          if (userStatus && this.uid) {
             this.router.navigateByUrl('/pos');
             // await this.authService.redirectTo(this.uid);
-          }
-          else {
-            if(SplashScreen)
+          } else {
+            if (SplashScreen) {
               SplashScreen.hide();
+            }
             this.router.navigateByUrl('/home');
           }
         }
       });
-    // } else{
-    //   this.authCheck();
-    // }
+    } else {
+      this.authCheck();
+    }
 
     this.translate.setDefaultLang('en');
     this.translate.langs = ['en', 'ep'];  
