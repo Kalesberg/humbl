@@ -11,6 +11,7 @@ import { NavController,
 import {Router, ActivatedRoute, NavigationExtras} from '@angular/router';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-userlist',
@@ -45,7 +46,8 @@ export class UserlistPage {
     public router: Router,
     private changeDetector : ChangeDetectorRef,
     private route: ActivatedRoute,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    public appHelperService: AppHelperService) {
       this.searchCategory = 'merchants'
   }
 
@@ -212,15 +214,16 @@ export class UserlistPage {
         userType: this.searchCategory
       }
     };
-    this.router.navigate(['chat'], navigationExtras);
+    this.router.navigate(['/merchant/chat'], navigationExtras);
   }
 
   toSettings() {
-    this.router.navigateByUrl('tab3');
+    this.router.navigateByUrl('/merchant/tab3');
   }
 
   toHome() {
-    this.router.navigateByUrl('pos');
+    this.appHelperService.activeUrl = '/merchant/pos';
+    this.router.navigateByUrl('/merchant/pos');
   }
 
 

@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class AppHelperService {
 
+  public activeUrl: string;
+  
   public hideMenu() {
     (<any>document.getElementsByClassName('split-pane-side')[0]).style.visibility = 'hidden';
     (<any>document.getElementsByClassName('split-pane-side')[0]).style.width = '0px';

@@ -339,7 +339,7 @@ export class MessagePage implements OnInit {
   }
 
   viewUser(userId) {
-    this.router.navigateByUrl('userinfo/' + userId);
+    this.router.navigateByUrl('/merchant/userinfo/' + userId);
   }
 
 
@@ -439,7 +439,7 @@ export class MessagePage implements OnInit {
   }
 
   back() {
-    this.router.navigateByUrl('messages');
+    this.router.navigateByUrl('/merchant/messages');
   }
 
 

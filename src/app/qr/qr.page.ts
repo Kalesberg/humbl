@@ -157,7 +157,7 @@ export class QrPage {
       qroptions: this.qrForOptions
     }
     await this.storage.set('barcodestandee',barcodeData);
-    this.nav.navigateForward('/qr-standee');
+    this.nav.navigateForward('/merchant/qr-standee');
   }
   back(){
     this.nav.back();

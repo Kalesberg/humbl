@@ -10,16 +10,6 @@ export class GridPage implements OnInit {
 
   constructor(private appHelperService: AppHelperService) { }
 
-  ngOnInit() {
-    this.appHelperService.hideMenu();
-  }
-
-  ionViewWillEnter() {    
-    this.appHelperService.hideMenu();
-  }
-
-  ionViewWillLeave() {
-    this.appHelperService.showMenu();
-  } 
+  ngOnInit() {}
 
 }

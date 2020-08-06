@@ -38,17 +38,17 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.appHelperService.hideMenu();
+    // this.appHelperService.hideMenu();
   }
 
   ionViewWillEnter() {    
-    this.appHelperService.hideMenu();
+    // this.appHelperService.hideMenu();
     if(this.typesegment)
       this.typesegment.value = "merchant";
   }
 
   ionViewWillLeave() {
-    this.appHelperService.showMenu();
+    // this.appHelperService.showMenu();
   } 
 
   async loginUser(loginForm: FormGroup): Promise<void> {
@@ -66,7 +66,8 @@ export class LoginPage implements OnInit {
           console.log(user);
           this.loading.dismiss().then(async () => {
             if(user.user.emailVerified) {
-              this.router.navigateByUrl('/pos');
+              this.appHelperService.activeUrl = '/merchant/pos';
+              this.router.navigateByUrl('/merchant/pos');
             } else {
               const alert = await this.alertCtrl.create({
                 message: this.translate.instant("login.verify"),

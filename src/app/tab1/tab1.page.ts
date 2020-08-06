@@ -17,17 +17,8 @@ export class Tab1Page {
     private appHelperService: AppHelperService) {
 
   }
-  ngOnInit() {
-    this.appHelperService.hideMenu();
-  }
+  ngOnInit() { }
 
-  ionViewWillEnter() {    
-    this.appHelperService.hideMenu();
-  }
-
-  ionViewWillLeave() {
-    this.appHelperService.showMenu();
-  } 
   toLoginPage() {
     this.route.navigateByUrl('login');
   }

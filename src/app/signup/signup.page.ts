@@ -41,17 +41,7 @@ export class SignupPage implements OnInit {
     console.log(this.signupForm);
   }
 
-  ngOnInit() {
-    this.appHelperService.hideMenu();
-  }
-
-  ionViewWillEnter() {    
-    this.appHelperService.hideMenu();
-  }
-
-  ionViewWillLeave() {
-    this.appHelperService.showMenu();
-  } 
+  ngOnInit() { }
 
   async signupUser(signupForm: FormGroup): Promise<void> {
     if (!signupForm.valid) {

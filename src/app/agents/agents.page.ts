@@ -11,15 +11,15 @@ export class AgentsPage implements OnInit {
   constructor(private appHelperService: AppHelperService) { }
 
   ngOnInit() {
-    this.appHelperService.hideMenu();
+    //this.appHelperService.hideMenu();
   }
 
-  ionViewWillEnter() {    
-    this.appHelperService.hideMenu();
-  }
+  // ionViewWillEnter() {    
+  //   this.appHelperService.hideMenu();
+  // }
 
-  ionViewWillLeave() {
-    this.appHelperService.showMenu();
-  } 
+  // ionViewWillLeave() {
+  //   this.appHelperService.showMenu();
+  // } 
 
 }

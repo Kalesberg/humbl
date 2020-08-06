@@ -1,6 +1,3 @@
-import { Plugins } from '@capacitor/core';
-import { Platform } from '@ionic/angular';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
@@ -8,7 +5,6 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import { HttpClient } from "@angular/common/http";
 import { environment} from "../../environments/environment";
-const { SplashScreen } = Plugins;
 
 // export interface callback{
 //   uri: string
@@ -24,31 +20,10 @@ export class AuthService {
 
   currentUser: any;
 
-  constructor ( 
+  constructor(    
     private router: Router,
     private http: HttpClient,
-    private afAuth: AngularFireAuth,
-    private platform: Platform
-  ) {
-    if (!this.platform.is("capacitor")) {
-      this.afAuth.getRedirectResult().then(async (result) => {
-          this.afAuth.onAuthStateChanged((userData) => {
-            if (userData && userData.uid) {
-            this.router.navigateByUrl('/pos');
-            } else {
-              if (SplashScreen) {
-                SplashScreen.hide();
-              }
-              this.router.navigateByUrl('/home');
-            }
-          });
-      }).catch((error) => {
-        alert(error.message);
-        console.error(error);
-        throw new Error(error);
-      });
-    }
-  }
+  ) { }
 
   loginUser(email: string, password: string): Promise<firebase.auth.UserCredential> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
@@ -76,7 +51,7 @@ export class AuthService {
   SendVerificationMail() {
     return firebase.auth().currentUser.sendEmailVerification().then(() => {
         firebase.auth().signOut();
-        this.router.navigateByUrl('/verify_email');
+        this.router.navigateByUrl('/merchant/verify_email');
       });
   }
 
@@ -95,7 +70,7 @@ export class AuthService {
                     { headers: { "Content-Type": "application/json" } });
     observable.toPromise().then(() => {
     if(isNavigate)
-      this.router.navigateByUrl('/verify_email');
+      this.router.navigateByUrl('/merchant/verify_email');
     });
   }
 

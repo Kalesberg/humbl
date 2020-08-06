@@ -92,5 +92,20 @@
     --ion-color-tint: var(--ion-color-darkblue-tint);
   }
   
-
+  --ion-color-silver: #8E949F;
+  --ion-color-silver-rgb: 142,148,159;
+  --ion-color-silver-contrast: #ffffff;
+  --ion-color-silver-contrast-rgb: 255,255,255;
+  --ion-color-silver-shade: #7d828c;
+  --ion-color-silver-tint: #999fa9;
+  
+  .ion-color-silver {
+    --ion-color-base: var(--ion-color-silver);
+    --ion-color-base-rgb: var(--ion-color-silver-rgb);
+    --ion-color-contrast: var(--ion-color-silver-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-silver-contrast-rgb);
+    --ion-color-shade: var(--ion-color-silver-shade);
+    --ion-color-tint: var(--ion-color-silver-tint);
+  }
+  
 }

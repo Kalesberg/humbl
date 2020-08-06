@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-agent-inquiry',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgentInquiryPage implements OnInit {
 
-  constructor() { }
+  constructor(public appHelperService: AppHelperService) { }
 
   ngOnInit() {
   }

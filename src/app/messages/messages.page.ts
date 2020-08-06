@@ -9,6 +9,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import { MessageService } from '../services/message.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-items',
@@ -40,7 +41,7 @@ export class MessagesPage {
     public navCtrl: NavController, public modalCtrl: ModalController, 
     public alertCtrl: AlertController, public toast: ToastController, 
     public platform: Platform, public settingsService: SettingsService,
-    public loadingCtrl: LoadingController,
+    public loadingCtrl: LoadingController, public appHelperService: AppHelperService,
     private translate : TranslateService) {  
   }
 

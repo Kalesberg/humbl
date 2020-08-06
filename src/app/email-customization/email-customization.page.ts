@@ -16,26 +16,26 @@ export class EmailCustomizationPage implements OnInit {
    }
 
   ngOnInit() {
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.visibility = 'hidden';
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.width = '0px';
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.maxWidth = '0px';
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.minWidth = '0px';
+    // (<any>document.getElementsByClassName('split-pane-side')[0]).style.visibility = 'hidden';
+    // (<any>document.getElementsByClassName('split-pane-side')[0]).style.width = '0px';
+    // (<any>document.getElementsByClassName('split-pane-side')[0]).style.maxWidth = '0px';
+    // (<any>document.getElementsByClassName('split-pane-side')[0]).style.minWidth = '0px';
   }
 
-  ionViewWillEnter() {
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.visibility = 'hidden';
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.width = '0px';
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.maxWidth = '0px';
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.minWidth = '0px';
-    // this.nav.swipeBackEnabled = false;
-  }
+  // ionViewWillEnter() {
+  //   (<any>document.getElementsByClassName('split-pane-side')[0]).style.visibility = 'hidden';
+  //   (<any>document.getElementsByClassName('split-pane-side')[0]).style.width = '0px';
+  //   (<any>document.getElementsByClassName('split-pane-side')[0]).style.maxWidth = '0px';
+  //   (<any>document.getElementsByClassName('split-pane-side')[0]).style.minWidth = '0px';
+  //   // this.nav.swipeBackEnabled = false;
+  // }
 
-  ionViewWillLeave() {
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.visibility = 'visible';
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.width = '';
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.maxWidth = '';
-    (<any>document.getElementsByClassName('split-pane-side')[0]).style.minWidth = '';
-    // this.nav.swipeBackEnabled = true;
-  } 
+  // ionViewWillLeave() {
+  //   (<any>document.getElementsByClassName('split-pane-side')[0]).style.visibility = 'visible';
+  //   (<any>document.getElementsByClassName('split-pane-side')[0]).style.width = '';
+  //   (<any>document.getElementsByClassName('split-pane-side')[0]).style.maxWidth = '';
+  //   (<any>document.getElementsByClassName('split-pane-side')[0]).style.minWidth = '';
+  //   // this.nav.swipeBackEnabled = true;
+  // } 
 
 }

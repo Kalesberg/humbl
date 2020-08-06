@@ -114,7 +114,7 @@ export class TxDetailPage implements OnInit {
           this.loading.dismiss();
           this.presentConfirmSuccess();
           this.reportService.removeExtTx(this.stripeId, this.transaction.id);
-          this.router.navigateByUrl('/reports');
+          this.router.navigateByUrl('/merchant/reports');
         } else {
           this.loading.dismiss();
           this.presentConfirmFail(data.status);
@@ -126,7 +126,7 @@ export class TxDetailPage implements OnInit {
           this.loading.dismiss();
           this.presentConfirmSuccess();
           this.reportService.removeTx(this.currentUser, this.transaction.id);
-          this.router.navigateByUrl('/reports');
+          this.router.navigateByUrl('/merchant/reports');
         } else {
           this.loading.dismiss();
           this.presentConfirmFail(data.status);
@@ -143,7 +143,7 @@ export class TxDetailPage implements OnInit {
           text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
-            this.router.navigateByUrl('/reports');
+            this.router.navigateByUrl('/merchant/reports');
           }
         }
       ]
@@ -160,7 +160,7 @@ export class TxDetailPage implements OnInit {
           text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
-            this.router.navigateByUrl('/reports');
+            this.router.navigateByUrl('/merchant/reports');
           }
         }
       ]  
@@ -194,11 +194,11 @@ export class TxDetailPage implements OnInit {
             if(this.ext === 'true'){
               console.log(this.transaction.id)
               this.reportService.removeExtTx(this.stripeId, this.transaction.id);
-              this.router.navigateByUrl('/reports');
+              this.router.navigateByUrl('/merchant/reports');
             } else{
               console.log(this.transaction.id)
               this.reportService.removeTx(this.currentUser, this.transaction.id);
-              this.router.navigateByUrl('/reports');
+              this.router.navigateByUrl('/merchant/reports');
             }
           },
         }
@@ -224,7 +224,7 @@ export class TxDetailPage implements OnInit {
           cssClass: 'primary',
           handler: () => {
             this.reportService.removeExtTx(this.stripeId, this.transaction.txId);
-            this.router.navigateByUrl('/reports');
+            this.router.navigateByUrl('/merchant/reports');
           }
         },
       ]

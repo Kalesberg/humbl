@@ -38,9 +38,13 @@
     font-size: 18px;
     --indicator-color: var(--ion-color-primary);
     margin: 0px;
+    --background-checked: var(--ion-color-primary);
+    --color-checked: #ffffff;
+    --indicator-height: 0px;
 }
 .sagment-active {
     border: 2px solid #ffffff;
+    border-radius:12px;
 }
 
 .form-submit-btn {

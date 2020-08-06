@@ -61,7 +61,7 @@
   </ion-row>
   <!-- START QR Scans List-->
   <ion-list *ngIf="extTransactions && this.showExts">
-      <ion-item *ngFor="let ex of extTransactions" color="medium" [routerLink]="['/tx-detail', ex.txId, 'true']" routerDirection="backward">
+      <ion-item *ngFor="let ex of extTransactions" color="medium" [routerLink]="['/merchant/tx-detail', ex.txId, 'true']" routerDirection="backward">
         <ion-grid>
           <ion-row>
             <ion-col size="3" size-xs>
@@ -107,7 +107,7 @@
   <!-- END QR Scans List-->
 
   <ion-list *ngIf="!this.showExts">
-      <ion-item *ngFor="let tx of transactions" color="medium" [routerLink]="['/tx-detail', tx.txId, 'false']" routerDirection="backward">
+      <ion-item *ngFor="let tx of transactions" color="medium" [routerLink]="['/merchant/tx-detail', tx.txId, 'false']" routerDirection="backward">
         <ion-grid>
           <ion-row>
             <ion-col size="1" size-xs>

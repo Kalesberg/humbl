@@ -9,6 +9,7 @@ import {environment} from '../../environments/environment';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { CryptoService } from '../services/crypto.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-tab3',
@@ -52,7 +53,8 @@ export class Tab3Page {
     private afStorage: AngularFireStorage,
     public changeRef: ChangeDetectorRef,
     public crypto: CryptoService,
-    private translate : TranslateService) {
+    private translate : TranslateService,
+    public appHelperService: AppHelperService) {
 
     this.storage.get('myTax').then((data) => {
         this.taxRate = data;
@@ -222,11 +224,13 @@ export class Tab3Page {
   }
 
   toListMasterPage() {
-      this.navCtrl.navigateForward('pos');
+    this.appHelperService.activeUrl = '/merchant/pos';
+    this.navCtrl.navigateForward('/merchant/pos');
   }
 
   toQR() {
-    this.navCtrl.navigateForward('qr');
+    this.appHelperService.activeUrl = '/merchant/qr';
+    this.navCtrl.navigateForward('/merchant/qr');
 }
 
   goToHelp(): void {

@@ -1,12 +1,4 @@
-<!-- <ion-header class="ion-no-border">
-  <ion-toolbar color="medium">
-    <img class="hubs-logo" src='../assets/hubs.png'>
-    
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content color="medium">
-  <!-- <h2>Agent Portal</h2> -->
   <div class="top-profile-content">
     <img class="profile-hubs-logo" src='../assets/hubs.png'>
     <div class="profile-info">
@@ -19,10 +11,8 @@
       </ion-thumbnail>
     </div>
   </div>
-  <!-- <ion-row>
-    <ion-col size="12" size-sm> -->
   <div class="welcome-card-wrapper">
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/pos'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/pos'" [routerLink]="'/merchant/pos'">
         <ion-item color="primary">
           <ion-label>Send Money</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -30,18 +20,8 @@
         <div class="welcome-card-icon">
           <ion-icon name="mail"></ion-icon>
         </div>
-        <!-- <ion-card-header color="medium">
-        <ion-card-title>Send Money</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <div class="stars">
-            <ion-icon color="light" name="chevron-up"></ion-icon>
-          </div>
-        </ion-card-content> -->
       </ion-card>
-    <!-- </ion-col>
-    <ion-col size="12" size-sm> -->
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/pos'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/pos'"  [routerLink]="'/merchant/pos'">
         <ion-item color="primary">
           <ion-label>Receive Money</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -49,18 +29,8 @@
         <div class="welcome-card-icon">
           <ion-icon name="mail"></ion-icon>
         </div>
-      <!-- <ion-card-header color="medium">
-          <ion-card-title>Receive Money</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <div class="stars">
-            <ion-icon color="light" name="chevron-down"></ion-icon>
-          </div>
-        </ion-card-content> -->
       </ion-card>
-    <!-- </ion-col>
-    <ion-col size="12" size-sm> -->
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/pos'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/pos'" [routerLink]="'/merchant/pos'">
         <ion-item color="primary">
           <ion-label>Exchange Money</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -68,20 +38,8 @@
         <div class="welcome-card-icon">
           <ion-icon src="../../assets/random-icon.svg"></ion-icon>
         </div>
-        <!-- <ion-card-header color="medium">
-        <ion-card-title>Exchange Money</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <div class="stars">
-            <ion-icon color="light" name="sync"></ion-icon>
-          </div>
-        </ion-card-content> -->
       </ion-card>
-    <!-- </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="12" size-sm> -->
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/agent-inquiry'">
+      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/agent-inquiry'">
         <ion-item color="primary">
           <ion-label>Get a Loan</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -89,18 +47,8 @@
         <div class="welcome-card-icon">
           <ion-icon name="mail"></ion-icon>
         </div>
-        <!-- <ion-card-header color="medium">
-        <ion-card-title>Get a Loan</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <div class="stars">
-            <ion-icon color="light" name="rocket"></ion-icon>
-          </div>
-        </ion-card-content> -->
       </ion-card>
-    <!-- </ion-col>
-    <ion-col size="12" size-sm> -->
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/bill-pay'">
+      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/bill-pay'">
         <ion-item color="primary">
           <ion-label>Pay Bills</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -108,43 +56,16 @@
         <div class="welcome-card-icon">
           <ion-icon name="mail"></ion-icon>
         </div>
-        <!-- <ion-card-header color="medium">
-        <ion-card-title>Pay a Bill</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <div class="stars">
-            <ion-icon color="light" name="mail-open"></ion-icon>
-          </div>
-        </ion-card-content> -->
       </ion-card>
-    <!-- </ion-col>
-    <ion-col size="12" size-sm> -->
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/bill-pay'">
+      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/bill-pay'">
         <ion-item color="primary">
           <ion-label>Other</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
         </ion-item>
         <img class="setting-img" src="../../assets/agent-settings.png" />
-        <!-- <div class="welcome-card-icon">
-          <ion-icon src="../../assets/agent-settins.png" ></ion-icon>
-        </div> -->
-        <!-- <ion-card-header color="medium">
-        <ion-card-title>Other</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <div class="stars">
-            <ion-icon color="light" name="globe"></ion-icon>
-          </div>
-        </ion-card-content> -->
       </ion-card>
     </div>
-    <!-- </ion-col>
-    
-  </ion-row> -->
   <h1 class="resource-text ion-padding-start">Resources</h1>
-  <!-- <ion-list lines="none">
-    <ion-list-header color="medium"> -->
-    <!-- </ion-list-header> -->
     <div class="welcome-card-wrapper resource-wrapper ion-padding-start">
         <ion-card class="welcome-card" color="medium" href="https://humbl-1.gitbook.io/humbl-agent-manual/">
           <ion-item color="primary">
@@ -165,13 +86,4 @@
           </div>
         </ion-card>
     </div>
-    <!-- <ion-item href="https://humbl-1.gitbook.io/humbl-agent-manual/" color="medium" detail>
-      <ion-icon slot="start" color="light" name="document"></ion-icon>
-      <ion-label>Agent Manual</ion-label>
-    </ion-item> -->
-    <!-- <ion-item href="https://humbl.io" color="medium" detail>
-      <ion-icon slot="start" color="light" name="pulse"></ion-icon>
-      <ion-label>Technical Support</ion-label>
-    </ion-item> -->
-  <!-- </ion-list> -->
 </ion-content>

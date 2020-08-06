@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="merchant/payment-detail"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title class="">Scan to Pay</ion-title> -->
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium" class="ion-padding">
+  <div class="content">
+    <ion-card color="primary" class="primary-card">
+      <h3 class="card-title" >Scan to Pay</h3>
+      <ion-card class="card" color="medium">     
+        <qrcode [qrdata]="this.qrData" [size]="256" [level]="'M'"
+        [colordark]="selectedColor"></qrcode>
+        <img class="logo-img" src="../../assets/humbl-white.png">
+      </ion-card>
+    </ion-card>
+  </div>
+</ion-content>

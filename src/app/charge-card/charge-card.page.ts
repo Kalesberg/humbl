@@ -13,6 +13,7 @@ import * as CryptoJs from 'crypto-js';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 import {EmailComposer} from '@ionic-native/email-composer/ngx';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-charge-card',
@@ -71,7 +72,8 @@ export class ChargeCardPage {
     public barcodeScanner: BarcodeScanner,
     public platform: Platform,
     public emailComposer: EmailComposer,
-    private translate : TranslateService) { 
+    private translate : TranslateService,
+    public appHelperService: AppHelperService) { 
       if(this.dataPass.passedItems.usd !== null || 
         this.dataPass.passedItems.usd !== undefined){
         this.subtotal = parseFloat(this.dataPass.passedItems.usd);
@@ -283,7 +285,8 @@ export class ChargeCardPage {
           role: 'cancel',
           handler: () => {
             this.storeTransactionData();
-            this.navCtrl.navigateBack('pos');
+            this.appHelperService.activeUrl = '/merchant/pos'
+            this.navCtrl.navigateBack('/merchant/pos');
           }
         },
         {
@@ -292,7 +295,8 @@ export class ChargeCardPage {
             this.storeTransactionData();
             this.email = data.email;
             this.emailReceipt(this.email);
-            this.navCtrl.navigateBack('pos');
+            this.appHelperService.activeUrl = '/merchant/pos'
+            this.navCtrl.navigateBack('/merchant/pos');
           } 
         }
       ]
@@ -426,7 +430,7 @@ export class ChargeCardPage {
   }
 
   paymentQr(){
-    this.navCtrl.navigateForward("/qr-payment/"+ this.total)
+    this.navCtrl.navigateForward("/merchant/qr-payment/"+ this.total)
   }
 
 }

@@ -1,7 +1,7 @@
 {
   "common": {
         "merchant" : "Merchant",
-        "offers" : "Offers",
+        "offers" : "Special Offers",
         "agents" : "Agent",
         "terminal": "Terminal",
         "signin" : "Sign In",
@@ -12,7 +12,9 @@
         "settings" : "Settings",
         "qr" : "QR",
         "email" : "Email",
-        "password" : "Password"
+        "password" : "Password",
+        "payments" : "Payments",
+        "textorder":"Text Orders"
     },
 
     "home": {

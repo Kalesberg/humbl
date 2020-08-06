@@ -10,6 +10,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import {Router} from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-tab2',
@@ -29,7 +30,8 @@ export class Tab2Page {
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, 
     public loadingCtrl: LoadingController, public storage: Storage, 
     private settingsService: SettingsService, public alertCtrl: AlertController, 
-    private dataPass: DataPassService, public router: Router, private translate : TranslateService) {
+    private dataPass: DataPassService, public router: Router, private translate : TranslateService,
+    private appHelperService: AppHelperService) {
       
   }
 
@@ -64,7 +66,8 @@ export class Tab2Page {
           text: this.translate.instant("terminal.visit"),
           role: 'cancel',
           handler: () => {
-            this.router.navigateByUrl('/settings');
+            this.appHelperService.activeUrl = '/merchant/settings';
+            this.router.navigateByUrl('/merchant/settings');
           }
         }
       ]  
@@ -131,13 +134,13 @@ export class Tab2Page {
     this.dataPass.passedItems = subtotal;
     if(this.coin === 'card'){
       this.coin = '';
-      this.navCtrl.navigateForward('charge-card');
+      this.navCtrl.navigateForward('/merchant/charge-card');
     } else if (this.coin === 'cash'){
       this.coin = ''
-      this.navCtrl.navigateForward('charge-cash');
+      this.navCtrl.navigateForward('/merchant/charge-cash');
     } else {
       this.coin = ''
-      this.navCtrl.navigateForward('transact');
+      this.navCtrl.navigateForward('/merchant/transact');
     }
     this.reset();
   }

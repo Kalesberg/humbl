@@ -29,17 +29,7 @@ export class ResetPasswordPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.appHelperService.hideMenu();
-  }
-
-  ionViewWillEnter() {    
-    this.appHelperService.hideMenu();
-  }
-
-  ionViewWillLeave() {
-    this.appHelperService.showMenu();
-  } 
+  ngOnInit() {}
 
   resetPassword(resetPasswordForm: FormGroup): void {
     if (!resetPasswordForm.valid) {
