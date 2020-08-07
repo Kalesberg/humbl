@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-bill-pay',
@@ -49,7 +50,8 @@ export class BillPayPage implements OnInit {
   constructor(public loadingCtrl: LoadingController, 
     public alertCtrl: AlertController,
     public nav: NavController,
-    private translate : TranslateService) { }
+    private translate : TranslateService,
+    public appHelperService: AppHelperService) { }
 
   ngOnInit() {
   }
@@ -122,7 +124,7 @@ export class BillPayPage implements OnInit {
           text: this.translate.instant("settings.dismiss"),
           role: 'cancel',
           handler: () => {
-            this.nav.navigateForward('agents');
+            this.nav.navigateForward('/agents');
           }
         }
       ]

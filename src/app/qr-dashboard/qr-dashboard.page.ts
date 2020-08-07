@@ -22,7 +22,7 @@ export class QrDashboardPage implements OnInit {
   }
 
   next(){
-    this.nav.navigateForward('/qr-generate-info/'+ JSON.stringify(this.qrForOptions));
+    this.nav.navigateForward('/merchant/qr-generate-info/'+ JSON.stringify(this.qrForOptions));
   }
 
 

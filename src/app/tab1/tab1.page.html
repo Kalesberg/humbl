@@ -1,25 +1,18 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar color="medium">
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar color="medium"> -->
     <!-- <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons> -->
     <!-- <ion-title>Sign In</ion-title> -->
-  </ion-toolbar>
-</ion-header>
+  <!-- </ion-toolbar>
+</ion-header> -->
 
-<ion-content class="ion-padding home-container">
+<!-- <ion-content class="ion-padding home-container">
   <div class="container">
     <img class="logo" src="../assets/hubs.png">
-    <!-- <div class="languagepart">
-      <label translate>home.select</label>
-      <select #langSelect (change)="setAppLang(langSelect.value)">
-        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
-      </select>
-    </div> -->
-    
     <div class="loginpart">
       <p routerLink="/signup">
-        <ion-button color="light" shape="round" size="large" translate>home.signup</ion-button>
+        <ion-button class="form-submit-btn" translate>home.signup</ion-button>
       </p>
       <p routerLink="/login">
         <span translate>home.login</span>
@@ -31,7 +24,7 @@
       <p (click)="setAppLang('ep')">🇪🇸ES</p>   
     </div> 
   </div>
-</ion-content>
+</ion-content> -->
 <!-- <ion-content fullscreen>
   <img class="splash-logo" src='../../assets/humbl-white.png'>
   <div class="slogan">
@@ -210,3 +203,23 @@
   </ion-toolbar>
 </ion-footer> -->
 
+<ion-content color="medium" class="ion-padding home-container">
+  <div class="container">
+    <img class="logo" src="../assets/hubs.png">
+  </div>
+  <div class="content-data">
+    <div class="loginpart">
+      <p routerLink="/signup">
+        <ion-button shape="round" class="btn-primary" translate>home.signup</ion-button>
+      </p>
+      <p routerLink="/login">
+        <span translate>home.login</span>
+      </p>
+    </div>  
+    <div class="lang-wrapper">
+      <span (click)="setAppLang('en')" [class.lan-active]="!translate.currentLang || translate.currentLang=='en'"
+      [class.lan-inactive]="translate.currentLang && translate.currentLang!='en'" >🇬🇧 &nbsp;EN</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span (click)="setAppLang('ep')" 
+      [class.lan-active]="translate.currentLang=='ep'" [class.lan-inactive]="translate.currentLang!='ep'">🇪🇸 &nbsp;ES</span>
+    </div>
+  </div>
+</ion-content>

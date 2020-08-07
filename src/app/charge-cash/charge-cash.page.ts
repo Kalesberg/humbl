@@ -12,6 +12,9 @@ import 'firebase/firestore';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { mobiscroll,  MbscNumpadDecimalOptions } from '@mobiscroll/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
+
+
 mobiscroll.settings = {
   theme: 'ios',
   themeVariant: 'light'
@@ -61,7 +64,8 @@ export class ChargeCashPage implements OnInit {
     public navCtrl: NavController,
     public platform: Platform,
     public emailComposer: EmailComposer,
-    private translate : TranslateService) { 
+    private translate : TranslateService,
+    public appHelperService: AppHelperService) { 
       if(this.dataPass.passedItems.usd !== null || 
         this.dataPass.passedItems.usd !== undefined){
         this.subtotal = parseFloat(this.dataPass.passedItems.usd);
@@ -152,7 +156,8 @@ export class ChargeCashPage implements OnInit {
           role: 'cancel',
           handler: () => {
             this.storeTransactionData();
-            this.navCtrl.navigateBack('pos');
+            this.appHelperService.activeUrl = '/merchant/pos';
+            this.navCtrl.navigateBack('/merchant/pos');
           }
         },
         {
@@ -161,7 +166,8 @@ export class ChargeCashPage implements OnInit {
             this.storeTransactionData();
             this.email = data.email;
             this.emailReceipt(this.email);
-            this.navCtrl.navigateBack('pos');
+            this.appHelperService.activeUrl = '/merchant/pos';
+            this.navCtrl.navigateBack('/merchant/pos');
           } 
         }
       ]

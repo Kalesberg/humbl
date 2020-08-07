@@ -1,27 +1,60 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="medium">
+  <ion-toolbar class="profile-toolbar" color="medium">
     <ion-buttons slot="start">
-      <ion-back-button  defaultHref="/pos"></ion-back-button>
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
     </ion-buttons>
-    <ion-title>Special Offers & Deals</ion-title>
+    <ion-title class="">Special Offers & Deals</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-row>
-      <ion-col>
+<ion-content color="medium" class="ion-padding">
+    <div class="offer-container">
+      <div class="offer-image">
         <img src="../../assets/Offer.png">
-        <ion-button shape="round" size="small" color="tertiary">Upload Image</ion-button>
-      </ion-col>
-      <ion-col>
-        <div>
-          <ion-label color="light">Title</ion-label>
-          <ion-input placeholder="Offer Title"></ion-input>
-          <ion-label color="light">Terms</ion-label>
-          <ion-input placeholder="Offer Terms"></ion-input>
-          <ion-label color="light">Description</ion-label>
-          <ion-input placeholder="Offer Description"></ion-input>
-        </div>
-      </ion-col>
-    </ion-row>
+      </div>
+      <div class="offer-form-wrapper">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Name of Promotion</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Promotion Run Dates</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Promotion Budget</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </div>
+    </div>
+    <div class="share-container">
+      <ion-button color="silver" class="share-btn">
+        Share
+      </ion-button>
+      <div class="chk-item-content">
+        <ion-item class="chk-item" color="medium" lines="none">
+          <ion-checkbox mode="md" slot="start"></ion-checkbox>
+          <img class="chk-humbl-logo" src="../../assets/humbl-white.png" />
+        </ion-item>
+        <ion-item class="chk-item" color="medium" lines="none">
+          <ion-checkbox mode="md" slot="start"></ion-checkbox>
+          <ion-icon name="logo-instagram"></ion-icon>
+        </ion-item>
+        <ion-item class="chk-item" color="medium" lines="none">
+          <ion-checkbox mode="md" slot="start"></ion-checkbox>
+          <ion-icon name="logo-twitter"></ion-icon>
+        </ion-item>
+      </div>
+    </div>
 </ion-content>

@@ -1,0 +1,59 @@
+<ion-split-pane contentId="main-content">
+  <ion-menu contentId="main-content" class="mercahnt-menu" type="overlay">
+    <ion-header class="ion-no-border">
+      <ion-toolbar color="medium">
+        <img class="menu-logo-image" src='../assets/hubs.png'>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="medium"> 
+      <!-- <p *ngIf="this.user" class="title">{{this.business}}</p>
+      <div class="container" *ngIf="this.user">
+        <div class="ion-padding" (click)="toProfile()">
+          <div *ngIf="this.user && this.logo">
+            <img class="avatar" src="{{this.logo}}"/>
+          </div>
+        </div>
+      </div> -->
+      <ion-list class="mercahnt-menu-list" color="medium">
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-item *ngIf="!p.isQrMenu" class="menu-item-content" [class.menu-item-active]="p.url === this.appHelperService.activeUrl" 
+          lines="none" [routerDirection]="'root'" [routerLink]="[p.url]" color="medium" (click)="this.appHelperService.activeUrl = p.url" >
+            <ion-icon slot="start" [class]="p.iconcss" [name]="p.icon"></ion-icon>
+            <ion-label color="light" translate>
+              common.{{p.title}}
+            </ion-label>
+          </ion-item>
+          <ion-item class="qritem" class="menu-item-content" button
+          [class.menu-item-active]="this.appHelperService.activeUrl ==='/merchant/qr-standee' || this.appHelperService.activeUrl === '/merchant/qr-dashboard'"
+          lines="none" *ngIf="p.isQrMenu" (click)="posRedirect()" color="medium">
+            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+            <ion-label color="light" translate>
+              common.{{p.title}}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-item *ngIf="this.user" class="menu-item-content" lines="none" button (click)="logOut()" color="medium">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-icon slot="start" name="log-out"></ion-icon>
+          <ion-label color="light" translate>
+            home.signout
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="!this.user" class="menu-item-content" lines="none" button (click)="logIn()" color="medium">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-icon slot="start" name="log-out"></ion-icon>
+          <ion-label color="light" translate>
+            home.login
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <!-- <ion-avatar>
+        <img src="../assets/coffeelogo.jpg">
+      </ion-avatar>
+      <p class="name">Custom Coffee</p>
+      <p class="info">Nosara, Costa Rica</p>
+      <p class="info">HUMBL @CustomCoffee</p> -->
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-split-pane>

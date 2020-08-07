@@ -67,7 +67,7 @@ export class SuccessPage {
   }
 
   close(){
-    this.router.navigateByUrl('settings');
+    this.router.navigateByUrl('/merchant/settings');
   }
 
 }

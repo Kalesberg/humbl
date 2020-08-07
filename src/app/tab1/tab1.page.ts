@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-tab1',
@@ -11,9 +12,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class Tab1Page {
 
-  constructor(public route: Router, private storage : Storage, private translate : TranslateService) {
+  constructor(public route: Router, private storage : Storage, 
+    private translate : TranslateService,
+    private appHelperService: AppHelperService) {
 
   }
+  ngOnInit() { }
 
   toLoginPage() {
     this.route.navigateByUrl('login');

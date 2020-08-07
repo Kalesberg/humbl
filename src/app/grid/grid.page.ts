@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-grid',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GridPage implements OnInit {
 
-  constructor() { }
+  constructor(private appHelperService: AppHelperService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

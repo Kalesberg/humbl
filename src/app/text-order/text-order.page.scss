@@ -1,0 +1,63 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.card-title {
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.pcard-btn-wrapper{
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 25px;
+}
+.share-btn {
+    height: 55px;
+    width: 90%;
+    max-width: 250px;
+    --border-radius: 18px;
+    --box-shadow: none;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.54px;
+}
+
+.pinput-item {
+    max-width: 600px;
+    --placeholder-font-weight: 700;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 20px 0px 30px;
+    border-bottom: 2px solid #ffffff;
+    --min-height: 100px;
+    ion-label {
+        font-size: 32px;
+        font-weight: 500;
+        color: #ffffff;
+    }    
+}
+.pcard-item-notes {
+    height: 100%;
+}
+@media screen and (max-width: 420px) { 
+    .card-title {
+        font-size: 18px;
+    }    
+    .pinput-item{
+        font-size: 18px;
+        margin: 20px 0px 30px;
+        --min-height: 80px;
+        ion-label {
+            font-size: 18px;
+        }
+    }
+    .card-title2 {
+        margin-bottom: 10px;
+    }
+}

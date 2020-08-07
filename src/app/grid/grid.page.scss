@@ -1,31 +1,74 @@
-ion-content {
-  --background: var(--ion-color-medium);
+.merchant-img {
+  width: 100%;
+  height: 150px;
+  background: url('../../assets/gallery/2914759@2x.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-ion-card-header{
-  text-align: center;
-  background: rgb(34,173,228);
+.review-wrapper {
+  display: flex;
+  width: 100%;
+  height: 150px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-ion-card-title{
-    color: #ffffff;
-    font-size: 1.3em;
-    font-weight: 500;
-    letter-spacing: 2px;
-
+.review-item {
+  border: none;
+  width: 100%;
 }
-
-ion-button{
-  display: block;
-  margin: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
+.review-image {
+  width: 90px;
+  height: 90px;
+  --border-radius: 12px;
+  border: 1px solid #E8E8E8;
 }
-
-.hubs-logo{
-    max-width: 150px;
+.review-title {
+  padding: 0px;
+  margin: 0px;
+  font-size: 16px;
+  font-weight: 700;
 }
-
+.review-subtitle {
+  padding: 0px;
+  margin: 0px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.review-star {
+  padding: 0px;
+  margin: 0px;
+  font-size: 10px;
+  ion-icon {
+    background: #8E949F;
+    border-radius: 5px;
+    padding: 2px;
+    margin-left: 2px;
+  }
+}
+.review-time {
+  padding: 0px;
+  margin: 0px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.review-note {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+.offer-image {
+  width: 90px;
+  height: 90px;
+}
+.resource-wrapper {
+  justify-content: flex-start;
+}
+.resource-text {
+  padding-left: 30px;
+}
 .agent-banner{
   display: block;
   margin: auto;
@@ -39,6 +82,7 @@ ion-button{
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 500px 200px;
+  margin-bottom: 5px;
   .agent-button{
     display: block;
     margin: auto;
@@ -56,86 +100,4 @@ ion-button{
   .agent-banner {
     display: none;
   }
-}
-
-.welcome-card {
-  height: 150px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  background-color: var(--ion-color-medium);
-  box-shadow: none;
-}
-
-.footer{
-  margin-left: 20px;
-  font-size: small;
-  color:#ffffff;
-}
-
-.deposits{
-  text-align: center;
-  margin:auto;
-  color: var(--ion-color-medium);
-  padding-top: 20px;
-  margin-bottom: 45px;
-  // position: absolute;
-  // top: 40px;
-  // right: 0;
-  // left: 0;
-  // margin: auto;
-  font-size: 2em;
-  font-weight: bold;
-}
-
-.alternate{
-  text-align: center;
-  margin-bottom:10px;
-  padding-top: 5px;
-  font-size: 1em;
-  font-weight: 500;
-  color: #ffffff;
-}
-
-// ion-card-content p{
-//   margin-top: 10px;
-// }
-
-ion-card-content{
-  // max-width: 200px;
-  // position: absolute;
-  // top: 90px;
-  // right: 0;
-  // left: 0;
-  margin: auto;
-}
-
-ion-col{
-  --ion-grid-column-padding: 0px;
-}
-
-.stars{
-  text-align: center;
-  margin:auto;
-  // position: absolute;
-  // top: 46px;
-  // right: 0;
-  // left: 0;
-  // margin: auto;
-  font-size: 2em;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-ion-icon{
-    font-size: 1.6em;
-}
-
-ion-list{
-  margin: 0px;
-  padding: 0px;
-}
-
-h2{
-  color: #ffffff;
-  margin-left: 15px;
 }

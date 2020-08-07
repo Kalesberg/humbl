@@ -1,29 +1,85 @@
-img{
-    max-width: 300px;
-    margin-top: 50px;
-    margin-left: 25px;
+.offer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.offer-image {
+    width: 48%;
+}
+.offer-form-wrapper{
+    width: 45%;
+}
+.share-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+}
+.chk-humbl-logo {
+    width: 120px;
+}
+.chk-item-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+}
+.chk-item {
+    --min-height: 55px;
+    ion-checkbox {
+        margin-right: 10px;
+        --background: var(--ion-color-medium);
+        --background-checked: var(--ion-color-medium);
+        --border-color: #ffffff;
+        --border-color-checked: #ffffff;
+        --border-radius: 5px;
+        --checkmark-color: #ffffff;
+        --size: 19px;
+    }
+    ion-icon {
+        font-size: 40px;
+    }
+}
+.share-btn {
+    height: 55px;
+    width: 120px;
+    --border-radius: 18px;
+    --box-shadow: none;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.54px;
+    position: relative;
 }
 
-ion-content{
-    --background: var(--ion-color-medium);
+@media screen and (max-width: 420px) { 
+    .share-container {
+        flex-direction: column-reverse;
+    }
 }
-
-div{
-    margin-top: 50px;
+@media screen and (max-width: 480px) { 
+    .offer-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .offer-image {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0px 20px;
+        img{
+            height: 220px;
+            max-width: 100%;
+            max-height: 100vw;
+        }
+    }
+    .offer-form-wrapper{
+        width: 100%;
+    }
 }
-
-ion-button{
-    margin-left: 25px;
-}
-
-ion-input {
-    display: block;
-    --placeholder-color: rgb(95, 95, 95);
-    --background: #ffffff;
-    max-width: 350px;
-    //margin-left: 20px;
-    border-radius: 5px;
-    height: 50px;
-    margin-bottom: 7px;
-}
-

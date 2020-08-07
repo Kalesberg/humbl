@@ -1,0 +1,363 @@
+.name-toolbar {
+    --min-height: 100px;
+    ion-title {
+        font-size: 30px;
+    }
+    ion-back-button {
+        --icon-font-size: 42px;
+        font-size: 28px;
+        --icon-margin-end: 5px;
+    }
+}
+.profile-toolbar {
+    --min-height: 100px;
+    ion-title {
+        // font-size: 30px;
+        display: none;
+    }
+    ion-back-button {
+        --icon-font-size: 42px;
+        font-size: 28px;
+        --icon-margin-end: 5px;
+    }
+}
+.form-wrapper {
+    width: 90%;
+    max-width: 700px;
+}
+.form-input-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    ion-row {
+        width: 100%;
+    }
+}
+.form-item {
+    border: 2px solid #E8E8E8;
+    border-radius: 12px;
+    margin: 10px 0px;
+    width: 100%;
+    --min-height: 80px;
+    --padding-bottom: 0px;
+    --padding-top: 0px;
+    ion-label {
+        text-transform: uppercase !important;
+        font-size: 18px !important;
+        color: #ffffff !important;
+    }
+    input {
+        // padding: 15px 0px 0px !important;
+        font-size: 18px !important;
+    }
+}
+.form-submit-btn {
+    width: 80%;
+    max-width: 380px;
+    height: 85px;
+    text-transform: uppercase;
+    font-size: 25px;
+    letter-spacing: 0.05em;
+    font-weight: normal;
+}
+.top-profile-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: calc(env(safe-area-inset-top) + 20px);
+    padding: 20px;
+}
+.profile-hubs-logo {
+    width: 40%;
+    max-width: 500px;
+}
+.profile-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;    
+    padding: 10px;
+    ion-thumbnail {
+        width: 109px;
+        height: 109px;
+        border: 1px solid #FFFFFF;
+        border-radius: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 90px;
+            max-height: 90px;
+        }
+    }
+}
+
+.profile-text {
+    text-align: right;
+    padding-right: 20px;
+    h3 {
+        font-size: 31px;
+        margin: 0px;
+        line-height: 50px;
+    }
+    p {
+        font-size: 25px;
+        font-weight: 300;
+        margin: 0px;
+    }
+}
+.welcome-card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.welcome-card {
+    height: 80px;
+    border: 4px solid #FFFFFF;
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: none;
+    height: 220px;
+    border: 6px solid #FFFFFF;
+    border-radius: 10px 10px 15px 15px;
+    width: 30%;
+    ion-item{
+        --min-height: 59px;
+        border-bottom: 4px solid #FFFFFF;
+        border-radius: 10px 10px 0px 0px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+.welcome-card-arrow {
+    color: #FFFFFF;
+    background: var(--ion-color-darkblue);
+    border-radius: 100%;
+    padding: 2px;
+}
+.welcome-card-icon{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    margin-top: 32px;
+    ion-icon {
+        font-size: 80px;
+    }
+}
+.welcome-card-text {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    h3 {
+        font-size: 35px;
+        font-weight: 700;
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+    span {
+        font-size: 18px;
+    }
+}
+.page-form-item {
+    border: 4px solid #FFFFFF;
+    border-radius: 18px;
+    margin: 0px 0px 15px;
+    --min-height: 80px;
+    ion-label{
+        text-transform: uppercase;
+        color: #FFFFFF !important;
+        font-size: 14px !important;
+    }
+    input {
+        // padding: 15px 0px 0px !important;
+        font-weight: 700 !important;
+        font-size: 22px !important;
+    }
+}
+
+.primary-card {
+    border-radius: 18px;
+    max-width: 600px;
+    box-shadow: none;
+    padding: 0px 20px 10px;
+    margin: 0px;
+}
+
+.primary-card-item {
+    border-bottom: 1px solid #ffffff;
+    --padding-start: 0px;
+    --padding-end: 0px;
+    --inner-padding-start: 0px;
+    --inner-padding-end: 0px;
+}
+
+.pcard-item-icon {
+    font-size: 38px;
+}
+.pcard-item-label{
+    h3 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    p {
+        font-size: 18px;
+        font-weight: 400;
+        margin-top: 5px;
+    }
+}
+.pcard-item-notes {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        width: 40px;
+        text-align: center;
+    }
+}
+.primary-card-item-total {
+    margin-top: 10px;
+    --padding-start: 0px;
+    --padding-end: 0px;
+    --inner-padding-start: 0px;
+    --inner-padding-end: 0px;
+    h3 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    ion-notes {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+.primary-serach-input {
+    --border-radius: 14px;
+    --box-shadow: none;
+    max-width: 610px;
+    margin: 0px;
+    padding: 0px;
+    input {
+        border-radius: 8px !important;
+    }
+}
+
+@media screen and (max-width: 420px) { 
+    .form-item {
+        border: 1px solid #E8E8E8;
+        margin: 10px 0px;
+        --min-height: 65px;
+        --padding-bottom: 0px;
+        --padding-top: 0px;
+        ion-label {
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        input {
+            // padding: 10px 0px 0px;
+            font-size: 16px;
+        }
+    }
+    .form-submit-btn {
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .name-toolbar {
+        --min-height: 50px;
+        ion-title {
+            font-size: 20px;
+        }
+        ion-back-button {
+            --icon-font-size: 30px;
+            font-size: 22px;
+            --icon-margin-end: 1px;
+        }
+    }
+    
+    .profile-hubs-logo {
+        width: 60%;
+    }
+    .pcard-item-label{
+        h3 {
+            font-size: 16px;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+    .pcard-item-notes {
+        font-size: 16px;
+        span {
+            width: 30px;
+        }
+    }
+    .pcard-item-icon {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 650px) { 
+    .profile-info {
+        display: none;
+    }
+    .profile-toolbar {
+        --min-height: 50px;
+        ion-title {
+            display: unset;
+            font-size: 18px;
+        }
+        .ios ion-title {
+            vertical-align: middle;
+            line-height: 50px;
+        }
+        ion-back-button {
+            --icon-font-size: 30px;
+            font-size: 18px;
+            --icon-margin-end: 1px;
+        }
+    }
+    .ios ion-title {
+        vertical-align: middle;
+        line-height: 50px;
+    }
+}
+
+@media screen and (max-width: 768px) { 
+    .welcome-card {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 480px) { 
+    .welcome-card {
+        width: 90%;
+    }
+    .page-form-item {
+        border: 2px solid #FFFFFF;
+        border-radius: 18px;
+        margin: 0px 0px 15px;
+        --min-height: 60px;
+        ion-label{
+            text-transform: uppercase;
+            color: #FFFFFF !important;
+            font-size: 10px !important;
+        }
+        input {
+            // padding: 15px 0px 0px !important;
+            font-weight: 500 !important;
+            font-size: 18px !important;
+        }
+    }
+}

@@ -1,15 +1,26 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="medium">
+  <ion-toolbar class="profile-toolbar" color="medium">
     <ion-buttons slot="start">
       <ion-back-button  defaultHref="/grid"></ion-back-button>
     </ion-buttons>
     <ion-title translate>reviews.heading</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-searchbar *ngIf="this.reviews" debounce="700" placeholder="Search By Transaction ID" [(ngModel)]="searchTerm" (ionClear)="getList()" (ionChange)="setFilteredItems()"></ion-searchbar>
-  <ion-list>
+<ion-content color="medium" class="ion-padding">
+  <!-- <ion-searchbar *ngIf="this.reviews" debounce="700" placeholder="Search By Transaction ID" [(ngModel)]="searchTerm" (ionClear)="getList()" (ionChange)="setFilteredItems()"></ion-searchbar> -->
+  <!-- <ion-list>
     <ion-item *ngFor="let review of reviews" color="medium">
       <img class="reviewer" src="../../assets/avatar.png">
       <ion-label>
@@ -25,9 +36,64 @@
         <p class="ion-text-wrap"><span translate>reviews.feedback</span> {{this.review.message}}</p>
         <p class="ion-text-wrap"><span translate>reviews.transaction</span> {{this.review.txid}}</p>
         <p class="ion-text-wrap"><span translate>pos.total</span> {{this.review.total | currency}}</p>
-        <!-- <ion-button color="light" shape="round" [routerLink]='"/payroll"'>Respond</ion-button> -->
       </ion-label>
       <ion-button slot="end" fill="outline" shape="round" size="small" color="light" (click)="confirmDelete(review.sid, review.id)">Reply</ion-button>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
+  <div class="review-content">
+    <div class="user-profile">
+      <ion-thumbnail class="user-image">
+        <img src="../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png" />
+      </ion-thumbnail>
+      <h3 class="profile-name">Shawna C.</h3>
+      <span class="profile-date">August 4, 2020</span>
+      <ion-button color="silver" class="reply-btn">Reply</ion-button>
+    </div>
+    <ion-card color="primary" class="review-card">
+      <div class="review-card-top-content">
+        <p class="review-star">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </p>
+        <img src="../../assets/humbl-white.png" />
+      </div>
+      <p class="review-text" >“Great tacos, love the pay and pickup feature!”</p>
+      <div class="review-img-wrapper">
+        <!-- [style.background]="'url('+profileImg+')'"  for dynamic image-->
+        <div class="review-item-img" [style.background]="'url(../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png)'"></div>
+        <div class="review-item-img" [style.background]="'url(../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png)'"></div>
+      </div>
+    </ion-card>
+  </div>
+  <div class="review-content">
+    <div class="user-profile">
+      <ion-thumbnail class="user-image">
+        <img src="../../assets/gallery/james-resly-_H5Tnj7e1hc-unsplash-1@2x.png" />
+      </ion-thumbnail>
+      <h3 class="profile-name">Shawna C.</h3>
+      <span class="profile-date">August 4, 2020</span>
+      <ion-button color="silver" class="reply-btn">Reply</ion-button>
+    </div>
+    <ion-card color="primary" class="review-card">
+      <div class="review-card-top-content">
+        <p class="review-star">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </p>
+        <img src="../../assets/humbl-white.png" />
+      </div>
+      <p class="review-text" >“Great tacos, love the pay and pickup feature!”</p>
+      <div class="review-img-wrapper">
+        <!-- [style.background]="'url('+profileImg+')'"  for dynamic image-->
+        <div class="review-item-img" [style.background]="'url(../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png)'"></div>
+        <div class="review-item-img" [style.background]="'url(../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png)'"></div>
+      </div>
+    </ion-card>
+  </div>
 </ion-content>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-qr-standee',
@@ -20,7 +21,8 @@ export class QrStandeePage implements OnInit {
   constructor(public router: Router,
     private route: ActivatedRoute,
     public nav: NavController,
-    public storage: Storage) {
+    public storage: Storage,
+    public appHelperService: AppHelperService) {
     this.getLocalData();
     this.setSource();
     // let newqrForOptions = this.route.snapshot.paramMap.get('qroptions');
@@ -73,10 +75,11 @@ export class QrStandeePage implements OnInit {
   async finish(isNew){
     if(isNew){
       await this.storage.set('barcodestandee',"" );
-      this.nav.navigateRoot('qr-dashboard');
+      this.nav.navigateRoot('/merchant/qr-dashboard');
     }
     else {
-      this.nav.navigateRoot('pos');
+      this.appHelperService.activeUrl = '/merchant/pos';
+      this.nav.navigateRoot('/merchant/pos');
     }
   }
 

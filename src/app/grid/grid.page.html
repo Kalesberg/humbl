@@ -1,165 +1,130 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar color="medium">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <img class="hubs-logo" src='../assets/hubs.png'>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <h2>Merchant Portal</h2>
-  <ion-row>
-    <ion-col size="12" size-sm>
-      <ion-card class="welcome-card" [routerLink]="'/settings'">
-        <ion-card-header color="medium">
-        <ion-card-title>Merchant Profile</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <!-- <p class="alternate">
-            Manage Business Overhead
-          </p> -->
-          <div class="stars">
-            <ion-icon color="light" name="person"></ion-icon>
-          </div>
-          <!-- <ion-button [routerLink]="'/bill-pay'" color="medium">
-            Pay Bills
-          </ion-button> -->
-        </ion-card-content>
+<ion-content color="medium">
+  <div class="top-profile-content">
+    <img class="profile-hubs-logo" src='../assets/hubs.png'>
+    <div class="profile-info">
+      <div class="profile-text">
+        <h3>Maria C.</h3>
+        <p>HUBS AGENT #4567</p>
+      </div>
+      <ion-thumbnail class="thumb-image">
+        <img src="../../assets/Picture6@2x.png" />
+      </ion-thumbnail>
+    </div>
+  </div>
+  <div class="welcome-card-wrapper">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/settings'" 
+      [routerLink]="'/merchant/settings'">
+        <ion-item color="primary">
+          <ion-label>Merchant Profile</ion-label>
+          <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+        <div class="merchant-img"></div>
       </ion-card>
-    </ion-col>
-    <ion-col size="12" size-sm>
-      <ion-card class="welcome-card" [routerLink]="'/messages'">
-      <ion-card-header color="medium">
-          <ion-card-title>Messages/Chat</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <!-- <p class="alternate">
-            Average Spent per Visit
-          </p> -->
-          <div class="stars">
-            <ion-icon color="light" name="chatbox"></ion-icon>
-          </div>
-        </ion-card-content>
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/settings'" 
+      [routerLink]="'/merchant/settings'">
+        <ion-item color="primary">
+          <ion-label>Gross Sales</ion-label>
+          <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+        <div class="welcome-card-text">
+          <h3>$1,750.00</h3>
+          <span>August 15, 2020</span>
+        </div>
       </ion-card>
-    </ion-col>
-    <ion-col size="12" size-sm>
-      <ion-card class="welcome-card" [routerLink]="'/pos'">
-        <ion-card-header color="medium">
-        <ion-card-title>POS Terminal</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <!-- <p class="alternate">
-            Last 30 days.
-          </p> -->
-          <div class="stars">
-            <ion-icon color="light" name="calculator"></ion-icon>
-          </div>
-        </ion-card-content>
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/messages'" 
+      [routerLink]="'/merchant/messages'">
+        <ion-item color="primary">
+          <ion-label>Messages/Chat</ion-label>
+          <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+        <div class="welcome-card-icon">
+          <ion-icon name="chatbox"></ion-icon>
+        </div>
       </ion-card>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="12" size-sm>
-      <ion-card class="welcome-card" [routerLink]="'/reviews'">
-        <ion-card-header color="medium">
-        <ion-card-title>Ratings & Reviews</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <!-- <p class="alternate">
-            Manage Reviews & Feedback
-          </p> -->
-          <div class="stars">
-            <ion-icon color="light" name="star"></ion-icon>
-            <!-- <ion-icon color="light" name="star"></ion-icon>
-            <ion-icon color="light" name="star"></ion-icon>
-            <ion-icon color="light" name="star"></ion-icon>
-            <ion-icon color="light" name="star"></ion-icon> -->
-          </div>
-          <!-- <ion-button [routerLink]="'/reviews'" color="medium">
-            Feedback
-          </ion-button> -->
-        </ion-card-content>
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/pos'" [routerLink]="'/merchant/pos'">
+        <ion-item color="primary">
+          <ion-label>POS Terminal</ion-label>
+          <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+        <div class="welcome-card-icon">
+          <ion-icon name="calculator"></ion-icon>
+        </div>
       </ion-card>
-    </ion-col>
-    <ion-col size="12" size-sm>
-      <ion-card class="welcome-card" [routerLink]="'/reports'">
-        <ion-card-header color="medium">
-        <ion-card-title>Transactions</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <!-- <p class="alternate">
-            Customer Refunds & Receipts
-          </p> -->
-          <div class="stars">
-            <ion-icon color="light" name="repeat"></ion-icon>
-          </div>
-          <!-- <ion-button [routerLink]="'/reports'" color="medium">
-            Manage
-          </ion-button> -->
-        </ion-card-content>
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/reviews'" 
+      [routerLink]="'/merchant/reviews'">
+        <ion-item color="primary">
+          <ion-label>Ratings & Reviews</ion-label>
+          <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+        <div class="review-wrapper">
+          <ion-item class="review-item" color="medium" lines="none">
+            <ion-thumbnail class="review-image" slot="start">
+              <img src="../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png" />
+            </ion-thumbnail>
+            <ion-labl>
+              <h3 class="review-title">SHAWNA C.</h3>
+              <p class="review-subtitle">Bogota, Colombia</p>
+              <p class="review-star">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </p>
+              <p class="review-time">3:30 PM | July 20, 2020</p>
+            </ion-labl>
+          </ion-item>         
+          <span class="review-note">“Tacos were great, thank you!”</span>
+        </div>
       </ion-card>
-    </ion-col>
-    <ion-col size="12" size-sm>
-      <ion-card class="welcome-card">
-        <ion-card-header color="medium">
-        <ion-card-title>Special Offers & Deals</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <!-- <p class="alternate">
-            Manage employee tips & payroll.
-          </p> -->
-          <div class="stars">
-            <ion-icon color="light" name="cash"></ion-icon>
-          </div>
-          <!-- <ion-button [routerLink]="'/payroll'" color="medium">
-            Payroll
-          </ion-button> -->
-        </ion-card-content>
+      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/reports'">
+        <ion-item color="primary">
+          <ion-label>Transactions</ion-label>
+          <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+        <div class="welcome-card-icon">
+          <ion-icon name="repeat"></ion-icon>
+        </div>
       </ion-card>
-    </ion-col>
-  </ion-row>
+      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/offers'">
+        <ion-item color="primary">
+          <ion-label>Special Offers & Deals</ion-label>
+          <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+        <div class="review-wrapper">
+          <ion-item class="review-item" color="medium" lines="none">
+            <ion-thumbnail class="offer-image" slot="start">
+              <img src="../../assets/gallery/Screen Shot 2020-07-17 at 1.23 1@2x.png" />
+            </ion-thumbnail>
+            <ion-labl>
+              <h3 class="review-title">Today’s Deals</h3>
+              <p class="review-subtitle">Taco Tuesday</p>
+              <p class="review-time">$5 off text orders</p>
+            </ion-labl>
+          </ion-item>    
+        </div>
+      </ion-card>
+  </div>
   <div class="agent-banner">
     <ion-row>
       <ion-col size="6">
         <h2>Become an Agent</h2>
       </ion-col>
       <ion-col size="6">
-        <ion-button class="agent-button" color="light" shape="round" [routerLink]="'/agent-inquiry'">Sign Up</ion-button>
+        <ion-button class="agent-button" color="light" shape="round" [routerLink]="'/merchant/agent-inquiry'">Sign Up</ion-button>
       </ion-col>
     </ion-row>
-    <!-- <h2>Become an Agent</h2> -->
-    <!-- <p>Become a HUMBL HUB Agent today.</p> -->
-    <!-- <ion-button class="agent-button" color="light" shape="round">Sign Up</ion-button> -->
   </div>
-  <ion-list lines="none">
-    <ion-list-header color="medium">
-      <ion-label>Resources</ion-label>
-    </ion-list-header>
-    <!-- <ion-item href="http://api.humbl.io" color="medium" detail>
-      <ion-icon slot="start" color="medium" color="light" name="help-buoy"></ion-icon>
-      <ion-label>HUMBL API</ion-label>
-    </ion-item> -->
-    <!-- <ion-item href="https://humbl-1.gitbook.io/humbl-agent-manual/" color="medium" detail>
-      <ion-icon slot="start" color="light" name="document"></ion-icon>
-      <ion-label>Agent Manual</ion-label>
-    </ion-item> -->
-    <!-- <ion-item href="https://humbl.io" color="medium" detail>
-      <ion-icon slot="start" color="light" name="document"></ion-icon>
-      <ion-label>Network Administration</ion-label>
-    </ion-item> -->
-    <!-- <ion-item href="https://humbl.io" color="medium" detail>
-      <ion-icon slot="start" color="light" name="help-buoy"></ion-icon>
-      <ion-label>System Support</ion-label>
-    </ion-item> -->
-    <ion-item href="https://humbl.io" color="medium" detail>
-      <ion-icon slot="start" color="light" name="pulse"></ion-icon>
-      <ion-label>Technical Support</ion-label>
-    </ion-item>
-  </ion-list>
-</ion-content>
-<!-- <ion-footer>
-  <ion-toolbar color="medium">
-    <p class="footer">Copyright 2020 | HUMBL, LLC</p>
-  </ion-toolbar>
-</ion-footer> -->
+
+  <h1 class="resource-text">Resources</h1>
+    <div class="welcome-card-wrapper resource-wrapper ion-padding-start">
+        <ion-card class="welcome-card" color="medium" href="https://humbl.io">
+          <ion-item color="primary">
+            <ion-label>Technical Support</ion-label>
+            <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+          </ion-item>
+          <div class="welcome-card-icon">
+            <ion-icon name="pulse"></ion-icon>
+          </div>
+        </ion-card>
+    </div>

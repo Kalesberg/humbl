@@ -1,6 +1,6 @@
 .logo{
   display: block;
-  max-width: 200px;
+  max-width: 600px;
 }
 
 .container{
@@ -9,9 +9,22 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  text-align: center;
+}
+.content-data{
+  position: absolute;
+  bottom: calc(env(safe-area-inset-bottom) + 50px);
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
 }
 
-.loginpart{
+.languagepart{
   width: 100%;
   text-align: center;
   margin-top: 80px;
@@ -21,203 +34,52 @@
   }
 }
 
-select{
-  background-color: black;
-}
-
-ion-item{
-  max-width: 270px;
-  margin: auto;
-  margin-bottom: 15px;
-  border-bottom: thin solid #ffffff;
-}
-
-ion-button{
-  --ion-color-contrast: var(--ion-color-medium) !important;
-  --box-shadow: none;
-}
-
-ion-card{
-  max-width: 500px;
-  margin: auto;
-}
-
-// ion-segment{
-//     margin-bottom: 10px;
-// }
-
-// ion-segment-button{
-//     border: solid 1px;
-//     margin: 5px;
-// }
-
-ion-avatar{
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-}
-
-// .invalid {
-//     border-bottom: 1px solid #ff6153;
-// }
-
-
-.error-message { 
-  min-height: 2rem;
-  ion-label {
-      margin: 2px 0;
-      font-size: 1em;
-      color: var(--ion-color-danger);
-  }
-  // .item-inner {
-  //     border-bottom: 0 !important;
-  // }
-}
-
-ion-input { 
-  margin-top: 6px;
-  --color: #ffffff;
-  // --background: var(--ion-color-light);
-  // border-radius: 5px;
-  // border-radius: 99px;
-}
-
 span{
-  font-weight: 800;
-  color: #ffffff;
+  font-weight: 400;
 }
 
 p{
   text-align: center;
   margin-top: 30px;
-}
-
-ion-content{
-  --background: var(--ion-color-medium);
-}
-
-ion-label{
-  --color: #ffffff;
-}
-
-.space {
-  ion-row {
-      margin-top: 30px;
-  }
-}
-
-.padding{
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 30px;
 }
 
 ion-button{
-  max-width: 280px;
-  margin: auto;
-  margin-top: 30px;
+  width: 350px;
+  height: 66px;
+  font-size: 24px;
+  text-transform: uppercase;
 }
 
-.language{
-  display: inline-flex;
-  width: 100%;
+.lang-wrapper{
+  font-size: 30px;
+  color: #ffffff;
+  display: flex;
   justify-content: center;
-  margin-top: 40px;
+  align-items: center;
+}
+.lan-active {
+  font-weight: 500;
+}
+.lan-inactive {
+  font-weight: 300;
+}
+
+@media screen and (max-width: 420px) {
+  .logo {
+    width: 80%;
+    max-width: 200px;
+  }
+  .lang-wrapper {
+    font-size: 18px;
+  }
+  ion-button {
+    width: 150px;
+    height: 41px;
+    font-size: 16px;
+  }
   p{
-    color: #ffffff;
+    font-size: inherit;
   }
 }
-
-.vert{
-  margin-top: 35px;
-  border-left: 1px solid #ffffff;
-  height: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-
-// ion-content {
-//   --background: var(--ion-color-medium);
-// }
-
-// ion-card-header{
-//   text-align: center;
-// }
-
-// ion-button{
-//   display: block;
-//   margin: auto;
-//   margin-top: 15px;
-//   margin-bottom: 15px;
-// }
-
-// .welcome-card {
-//   min-height: 200px;
-// }
-
-// .footer{
-//   margin-left: 20px;
-//   font-size: small;
-//   color: lightslategrey;
-// }
-
-// .deposits{
-//   text-align: center;
-//   margin:auto;
-//   color: var(--ion-color-medium);
-//   padding-top: 20px;
-//   margin-bottom: 45px;
-//   // position: absolute;
-//   // top: 40px;
-//   // right: 0;
-//   // left: 0;
-//   // margin: auto;
-//   font-size: 2em;
-//   font-weight: bold;
-// }
-
-// .alternate{
-//   text-align: center;
-//   margin-bottom:10px;
-//   padding-top: 5%;
-//   font-size: 1em;
-//   font-weight: 500;
-//   color: #666666;
-// }
-
-// // ion-card-content p{
-// //   margin-top: 10px;
-// // }
-
-// ion-card-content{
-//   // max-width: 200px;
-//   // position: absolute;
-//   // top: 90px;
-//   // right: 0;
-//   // left: 0;
-//   margin: auto;
-// }
-
-// ion-col{
-//   --ion-grid-column-padding: 0px;
-// }
-
-// .stars{
-//   text-align: center;
-//   margin:auto;
-//   // position: absolute;
-//   // top: 46px;
-//   // right: 0;
-//   // left: 0;
-//   // margin: auto;
-//   font-size: 2em;
-//   font-weight: bold;
-// }
-
-// ion-list{
-//   margin: 0px;
-//   padding: 0px;
-// }

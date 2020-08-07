@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
           resolve(true);
         } else {
           console.log('User is not logged in');
-          this.ngZone.run(()=> this.router.navigateByUrl('tab1'));
+          this.ngZone.run(()=> this.router.navigateByUrl('/home'));
           resolve(false);
         }
       });

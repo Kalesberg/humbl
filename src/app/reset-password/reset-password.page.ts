@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHelperService } from '../services/app-helper.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,7 +18,8 @@ export class ResetPasswordPage implements OnInit {
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder,
     private router: Router,
-    private translate : TranslateService
+    private translate : TranslateService,
+    private appHelperService: AppHelperService
   ) {
     this.resetPasswordForm = this.formBuilder.group({
       email: [

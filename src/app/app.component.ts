@@ -26,58 +26,9 @@ const { App } = Plugins;
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  public userProfile: any;
-  public username: string;
-  public business: string;
-  public businessEmail: string;
-  public logo: string;
-  public imageURL: string;
-  public loggedin: boolean = false;
   public user: boolean = false;
   public uid: string;
-  public appPages = [
-    {
-      title: 'terminal',
-      url: '/pos',
-      icon: 'calculator'
-    },
-    {
-      title: 'messages',
-      url: '/messages',
-      icon: 'document-text-outline'
-    },
-    {
-      title: 'reports',
-      url: '/reports',
-      icon: 'file-tray-full-outline'
-    },
-    {
-      title: 'reviews',
-      url: '/reviews',
-      icon: 'people'
-    },
-    // {
-    //   title: 'offers',
-    //   url: '/offers',
-    //   icon: 'cash',
-    // },
-    {
-      title: 'qr',
-      url: '/qr-dashboard',
-      icon: 'qr-code',
-      isQrMenu: true
-    },
-    {
-      title: 'settings',
-      url: '/settings',
-      icon: 'cog'
-    },
-    // {
-    //   title: 'agents',
-    //   url: 'http://localhost:8101/home',
-    //   icon: 'person'
-    // }
-  ];
+  public isDeepLink: boolean = false;
 
   constructor(
     public platform: Platform,
@@ -96,7 +47,25 @@ export class AppComponent {
     ) {
 
     this.initializeApp();
-    this.authCheck();
+    this.isDeepLink = false;
+    console.log("call component");
+    if (this.platform.is("capacitor")) {
+      this.authCheck().then(async (userStatus) => {
+        if (SplashScreen) {
+          SplashScreen.hide();
+        }
+        if (!this.isDeepLink) {
+          console.log(userStatus, this.uid);
+          if (userStatus && this.uid) {
+            this.router.navigateByUrl('merchant/pos');
+          } else {
+            this.router.navigateByUrl('/home');
+          }
+        }
+      });
+    } else {
+      this.authCheck();
+    }
 
     this.translate.setDefaultLang('en');
     this.translate.langs = ['en', 'ep'];  
@@ -113,14 +82,10 @@ export class AppComponent {
     });
   }
 
-  // ionViewWillEnter(){
-  //   this.authCheck();
-  // }
-
   initializeApp() {
 
     this.platform.ready().then(() => {
-      SplashScreen.hide();
+      // SplashScreen.hide();
       // this.deeplinks.route({
       //   '/success/:slug': 'success',
       // }).subscribe((match) => {
@@ -143,6 +108,7 @@ export class AppComponent {
           const slug = data.url.split(".io").pop();
           console.log("----Url Link----", slug);
           if (slug) {
+            this.isDeepLink = true;
             this.router.navigateByUrl(slug);
           }
         })
@@ -197,17 +163,10 @@ export class AppComponent {
     PushNotifications.addListener('pushNotificationActionPerformed',
       (notification: PushNotificationActionPerformed) => {
         // alert(notification);
-        this.router.navigateByUrl('/messages');
+        this.router.navigateByUrl('/merchant/messages');
       }
     );
   }
-
-  // private listenConnect(){
-  //   this.network.onConnect()
-  //     .subscribe(async () => {
-  //       await this.showAlert2();
-  //     });
-  // }
 
   async showAlert1() {
     const alert1 = await this.alertCtrl.create({
@@ -218,19 +177,11 @@ export class AppComponent {
     return await alert1.present();
   }
 
-  // async showAlert2() {
-  //   const alert2 = await this.alertCtrl.create({
-  //     header: 'Network Connected',
-  //     subHeader: 'Successfully connected to the internet!',
-  //     buttons: ['OK']
-  //   });
-  //   return await alert2.present();
-  // }
-
   logOut(): void {
     this.authService.logoutUser().then( () => {
       this.user = false;
-      this.username = "";
+      // this.username = "";
+      this.uid = "";
       this.toggleMenu();
       this.router.navigateByUrl('/login');
     });
@@ -243,7 +194,7 @@ export class AppComponent {
 
   toProfile(){
     this.toggleMenu();
-    this.router.navigateByUrl('/qr');
+    this.router.navigateByUrl('/merchant/qr');
   }
 
   toggleMenu() {
@@ -256,8 +207,8 @@ export class AppComponent {
         if (user) {
           this.user = true;
           this.uid = user.uid;
-          this.getProfile();
-          if(this.platform.is('ios') || this.platform.is('android')){
+          // this.getProfile();
+          if(this.platform.is('capacitor') && (this.platform.is('ios') || this.platform.is('android'))){
             this.setUpPushNotifications();
           } else {
             this.pushService.requestPermission();
@@ -272,39 +223,6 @@ export class AppComponent {
     });
   }
 
-  getProfile(){
-    this.settingsService
-    .getBusinessProfile()
-    .onSnapshot((userProfileSnapshot)=>{
-      console.log("userProfileSnapshot", userProfileSnapshot)
-      this.userProfile = userProfileSnapshot.data();
-      if(this.userProfile){
-        let username = this.userProfile.email;
-        this.username = "merchant:" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username));
-        this.businessEmail = this.userProfile.businessEmail;
-        this.imageURL = this.userProfile.logoUrl;
-        this.business = this.userProfile.businessName;
-        if(!this.imageURL){
-          this.imageURL = '../../assets/avatar.png';
-        }
-      }
-    })
-    // .get()
-    // .then( userProfileSnapshot => {
-    //   this.userProfile = userProfileSnapshot.data();
-    //   if(this.userProfile){
-    //     let username = this.userProfile.email;
-    //     this.username = "merchant:" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(username));
-    //     this.businessEmail = this.userProfile.businessEmail;
-    //     this.imageURL = this.userProfile.logoUrl;
-    //     this.business = this.userProfile.businessName;
-    //     if(!this.imageURL){
-    //       this.imageURL = '../../assets/avatar.png';
-    //     }
-    //   }
-    // });
-  }
-
   async posRedirect() {
     let qrLocalData= await this.storage.get('barcodestandee');
     let isQrExist = false;
@@ -313,6 +231,6 @@ export class AppComponent {
         isQrExist =true;
       }
     }
-    this.nav.navigateRoot(isQrExist? '/qr-standee': '/qr-dashboard');
+    this.nav.navigateRoot(isQrExist? '/merchant/qr-standee': '/merchant/qr-dashboard');
   }
 }

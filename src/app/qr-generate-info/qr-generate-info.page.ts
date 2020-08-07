@@ -130,7 +130,7 @@ export class QrGenerateInfoPage implements OnInit {
         qroptions: this.qrForOptions
       }
       await this.storage.set('barcodestandee',barcodeData);
-      this.nav.navigateForward('/qr');
+      this.nav.navigateForward('/merchant/qr');
     }
 
   toBase64(file) {
