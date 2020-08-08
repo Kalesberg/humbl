@@ -55,17 +55,28 @@ export class ChangePasswordComponent implements OnInit {
     try {
       const respData = await  this.angularfire.collection('passwordResetEmail')
       .doc(oobCode).get().toPromise();
-
+      console.log(respData)
       let verificationData : any = (respData && respData.data())? respData.data(): null;
       if(verificationData && !verificationData.isChanged 
           && verificationData.appType === "merchant" && verificationData.sendTime) {
-          if(Date.now() - new Date(verificationData.sendTime._seconds*1000).getTime()  < (30*60*1000)){
-            isAllow = true;
+          if((new Date(verificationData.sendTime._seconds*1000)).toString() != "Invalid Date") {
+            if(Date.now() - new Date(verificationData.sendTime._seconds*1000).getTime()  < (30*60*1000)){
+              isAllow = true;
+            }
           }
+          else {
+            if(Date.now() - new Date(verificationData.sendTime.seconds*1000).getTime()  < (30*60*1000)){
+              isAllow = true;
+            }
+          }
+          
       }
       if(!isAllow){
         this.showLinkExpireError();
-      }      
+      }
+      else {
+        this.isLoading = false;
+      }
     } catch (error) {
       console.error(error);
       this.showLinkExpireError();
