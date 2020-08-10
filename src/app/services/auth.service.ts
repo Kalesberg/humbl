@@ -51,7 +51,7 @@ export class AuthService {
   SendVerificationMail() {
     return firebase.auth().currentUser.sendEmailVerification().then(() => {
         firebase.auth().signOut();
-        this.router.navigateByUrl('/merchant/verify_email');
+        this.router.navigateByUrl('/verify_email');
       });
   }
 
@@ -70,7 +70,7 @@ export class AuthService {
                     { headers: { "Content-Type": "application/json" } });
     observable.toPromise().then(() => {
     if(isNavigate)
-      this.router.navigateByUrl('/merchant/verify_email');
+      this.router.navigateByUrl('/verify_email');
     });
   }
 
