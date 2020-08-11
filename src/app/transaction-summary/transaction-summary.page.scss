@@ -1,0 +1,61 @@
+.review-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    margin-right: 20px;
+}
+.user-image {
+    width: 120px;
+    height: 122px;
+    --border-radius: 18px;
+}.profile-name{
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.profile-date {
+    font-size: 0.9em;
+    font-weight: 400;
+}
+.transaction-card {
+    padding: 20px 30px;
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: none;
+}
+.reply-btn {
+    height: 48px;
+    width: 130px;
+    --border-radius: 18px;
+    --box-shadow: none;
+    margin-top: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.54px;
+}
+.card{
+    box-shadow: none !important;
+    border-radius: 18px;
+}
+.logo-img {
+    position: absolute;
+    top: 40%;
+    width: 80%;
+    left: 10%;
+}
+.summary-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}

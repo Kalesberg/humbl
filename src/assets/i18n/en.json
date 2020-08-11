@@ -14,7 +14,8 @@
         "email" : "Email",
         "password" : "Password",
         "payments" : "Payments",
-        "textorder":"Text Orders"
+        "textorder":"Text Orders",
+        "transaction":"Transactions"
     },
 
     "home": {

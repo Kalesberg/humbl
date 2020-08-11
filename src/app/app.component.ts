@@ -57,7 +57,7 @@ export class AppComponent {
         if (!this.isDeepLink) {
           console.log(userStatus, this.uid);
           if (userStatus && this.uid) {
-            this.router.navigateByUrl('merchant/pos');
+            this.router.navigateByUrl('/grid');
           } else {
             this.router.navigateByUrl('/home');
           }

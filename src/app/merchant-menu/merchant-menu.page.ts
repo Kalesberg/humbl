@@ -71,6 +71,11 @@ export class MerchantMenuPage implements OnInit {
       url: '/merchant/text-order',
       icon: 'chatbubble'
     },
+    {
+      title: 'transaction',
+      url: '/merchant/transaction-summary',
+      icon: 'logo-usd'
+    },
     // {
     //   title: 'agents',
     //   url: 'http://localhost:8101/home',

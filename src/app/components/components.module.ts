@@ -4,10 +4,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { ChatDetailsComponent } from './chat-details/chat-details.component';
 @NgModule({
 	declarations: [
 		ChangePasswordComponent,
-		VerifyEmailComponent
+		VerifyEmailComponent,
+		ChatDetailsComponent
 	],
 	imports: [
 		IonicModule,
@@ -17,11 +19,13 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 	],
 	exports: [
 		ChangePasswordComponent,
-		VerifyEmailComponent
+		VerifyEmailComponent,
+		ChatDetailsComponent
 	],
 	entryComponents: [
 		ChangePasswordComponent,
-		VerifyEmailComponent
+		VerifyEmailComponent,
+		ChatDetailsComponent
 	]
 })
 export class ComponentsModule { }

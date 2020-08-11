@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AppHelperService } from '../services/app-helper.service';
+import { UiService } from '../services/ui-service';
 
 @Component({
   selector: 'app-reset-password',
@@ -19,7 +20,8 @@ export class ResetPasswordPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private translate : TranslateService,
-    private appHelperService: AppHelperService
+    private appHelperService: AppHelperService,
+    private uiService: UiService
   ) {
     this.resetPasswordForm = this.formBuilder.group({
       email: [
@@ -37,35 +39,12 @@ export class ResetPasswordPage implements OnInit {
         'Form is not valid yet, current value:', resetPasswordForm.value
       );
     } else {
+      this.uiService.displayLoader("Please wait..");
       const email: string = resetPasswordForm.value.email;
-      // this.authService.resetPassword(email).then(
-      //   async () => {
-      //     const alert = await this.alertCtrl.create({
-      //       message: this.translate.instant("reset.check_email"),
-      //       buttons: [
-      //         {
-      //           text: this.translate.instant("register.ok"),
-      //           role: 'cancel',
-      //           handler: () => {
-      //             this.router.navigateByUrl('login');
-      //           },
-      //         },
-      //       ],
-      //     });
-      //     await alert.present();
-      //   },
-      //   async error => {
-      //     const errorAlert = await this.alertCtrl.create({
-      //       message: error.message,
-      //       buttons: [{ text: this.translate.instant("register.ok"), role: 'cancel' }],
-      //     });
-      //     await errorAlert.present();
-      //   }
-      // );
       this.authService.sendPasswordResetLink(email).then(async (resp: any)=>{
         if(resp && resp.status){
           const alert = await this.alertCtrl.create({
-          message: this.translate.instant("reset.check"),
+          message: this.translate.instant("reset.check_email"),
           buttons: [
             {
               text: this.translate.instant("login.ok"),
@@ -76,6 +55,7 @@ export class ResetPasswordPage implements OnInit {
             },
           ],
         });
+        this.uiService.dismissLoader();
         await alert.present();
         }
         else {
@@ -92,6 +72,7 @@ export class ResetPasswordPage implements OnInit {
           message: message,
           buttons: [{ text: this.translate.instant("login.ok"), role: 'cancel' }],
         });
+    this.uiService.dismissLoader();
     await errorAlert.present();
   }
   

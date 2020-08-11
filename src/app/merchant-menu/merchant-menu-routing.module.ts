@@ -31,6 +31,8 @@ const routes: Routes = [
       { path: 'payment-detail', loadChildren: () => import('../payment-detail/payment-detail.module').then( m => m.PaymentDetailPageModule)},
       { path: 'scan-and-pay', loadChildren: () => import('../scan-and-pay/scan-and-pay.module').then( m => m.ScanAndPayPageModule)},
       { path: 'text-order', loadChildren: () => import('../text-order/text-order.module').then( m => m.TextOrderPageModule)},
+      { path: 'order-chat', loadChildren: () => import('../chat/chat.module').then(m => m.ChatPageModule)},
+      { path: 'transaction-summary', loadChildren: () => import('../transaction-summary/transaction-summary.module').then( m => m.TransactionSummaryPageModule)},
     ]
   }
 ];
