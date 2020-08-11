@@ -66,8 +66,8 @@ export class LoginPage implements OnInit {
           console.log(user);
           this.loading.dismiss().then(async () => {
             if(user.user.emailVerified) {
-              this.appHelperService.activeUrl = '/merchant/pos';
-              this.router.navigateByUrl('/merchant/pos');
+              this.appHelperService.activeUrl = '/grid';
+              this.router.navigateByUrl('/grid');
             } else {
               const alert = await this.alertCtrl.create({
                 message: this.translate.instant("login.verify"),

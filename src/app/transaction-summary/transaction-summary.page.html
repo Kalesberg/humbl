@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Text Orders</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <div class="review-content">
+    <div class="user-profile">
+      <ion-thumbnail class="user-image">
+        <img src="../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png" />
+      </ion-thumbnail>
+      <h3 class="profile-name">Shawna C.</h3>
+      <span class="profile-date">August 4, 2020</span>
+      <ion-button color="silver" class="reply-btn">Send Message</ion-button>
+    </div>
+    <ion-card color="primary" class="transaction-card">
+      <h3 class="transaction-card-title" >Transaction Summary</h3>
+      <div class="summary-wrapper">
+        <div class="transation-summary">
+          <ion-row class="summary-data">
+            <ion-col size="8"> Transaction ID </ion-col>
+            <ion-col size="4"> 443eff66 </ion-col>
+          </ion-row>
+          <ion-row class="summary-data">
+            <ion-col size="8"> Amount Paid </ion-col>
+            <ion-col size="4"> $12.50 </ion-col>
+          </ion-row>
+          <ion-row class="summary-data">
+            <ion-col size="8"> Transaction Fee </ion-col>
+            <ion-col size="4"> $0.25 </ion-col>
+          </ion-row>
+          <ion-row class="summary-total">
+            <ion-col size="8"> Transaction Fee </ion-col>
+            <ion-col size="4"> $0.25 </ion-col>
+          </ion-row>
+        </div>
+        <div class="transation-barcode">
+          <ion-card class="card" color="medium">     
+            <qrcode [qrdata]="this.qrData" [size]="256" [level]="'M'"
+            [colordark]="selectedColor"></qrcode>
+            <img class="logo-img" src="../../assets/humbl-white.png">
+          </ion-card>
+        </div>
+      </div>      
+    </ion-card>
+  </div>
+</ion-content>

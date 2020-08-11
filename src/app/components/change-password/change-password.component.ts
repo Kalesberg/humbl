@@ -73,8 +73,7 @@ export class ChangePasswordComponent implements OnInit {
       }
       if(!isAllow){
         this.showLinkExpireError();
-      }
-      else {
+      } else {
         this.isLoading = false;
       }
     } catch (error) {

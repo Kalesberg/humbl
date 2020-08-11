@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-text-order',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextOrderPage implements OnInit {
 
-  constructor() { }
+  constructor(private navController: NavController) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  sendLink() {
+    this.navController.navigateForward('merchant/chat')
   }
-
 }

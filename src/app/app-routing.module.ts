@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 const routes: Routes = [
-  { path: '', redirectTo: 'merchant/pos', pathMatch: 'full', canActivate: [AuthGuard],},
+  { path: '', redirectTo: '/grid', pathMatch: 'full', canActivate: [AuthGuard],},
   { path: 'home', loadChildren: ()=> import('./tab1/tab1.module').then(m => m.Tab1PageModule)},
   // { path: 'pos', loadChildren: ()=>import('./tab2/tab2.module').then(m => m.Tab2PageModule), canActivate: [AuthGuard]},
   // { path: 'settings', loadChildren: ()=>import('./tab3/tab3.module').then(m => m.Tab3PageModule), canActivate: [AuthGuard]},
@@ -81,6 +81,10 @@ const routes: Routes = [
     path: 'merchant',
     loadChildren: () => import('./merchant-menu/merchant-menu.module').then( m => m.MerchantMenuPageModule), canActivate: [AuthGuard]
   },
+  // {
+  //   path: 'agent-terms',
+  //   loadChildren: () => import('./agent-terms/agent-terms.module').then( m => m.AgentTermsPageModule)
+  // },
 ];
 @NgModule({
   imports: [
