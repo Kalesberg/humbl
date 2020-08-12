@@ -1,0 +1,94 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Exchange Money</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <div class="wrapper">
+    <div class="input-item-content">
+      <div class="input-content">
+        <ion-item class="page-form-item page-form-currency-item" color="primary" lines="none">
+          <ion-label position="stacked">Starting amount</ion-label>
+          <ion-input  placeholder="$0.00"></ion-input>
+        </ion-item>
+      </div>
+      <div class="currency-box">
+        <span>USD</span>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="input-item-content">
+      <div class="input-content">
+        <ion-item class="page-form-item page-form-currency-item" color="primary" lines="none">
+          <ion-label position="stacked">Converted amount</ion-label>
+          <ion-input  placeholder="$0.00"></ion-input>
+        </ion-item>
+      </div>
+      <div class="currency-box">
+        <span>MXN</span>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="content">
+    <h3 class="card-title card-title2">Other currencies</h3>
+    <ion-searchbar class="primary-serach-input" color="primary" mode="md" placeholder="Search"></ion-searchbar>
+    <ion-item color="medium" lines="none" class="detail-list-item">
+      <ion-thumbnail slot="start">
+        <img src="../../assets/gallery/Canada.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="detail-item-title">CAD</h3>
+        <p class="detail-item-text">$1.33</p>
+      </ion-label>
+      <ion-notes slot="end" class="detail-item-notes">
+        <ion-button color="primary" class="detail-item-forward-btn">
+          <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-notes>
+    </ion-item>
+    <ion-item color="medium" lines="none" class="detail-list-item">
+      <ion-thumbnail slot="start">
+        <img src="../../assets/gallery/EU.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="detail-item-title">EUR</h3>
+        <p class="detail-item-text">€0.85</p>
+      </ion-label>
+      <ion-notes slot="end" class="detail-item-notes">
+        <ion-button color="primary" class="detail-item-forward-btn">
+          <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-notes>
+    </ion-item>
+    <ion-item color="medium" lines="none" class="detail-list-item">
+      <ion-thumbnail slot="start">
+        <img src="../../assets/gallery/Mexico.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="detail-item-title">MXN</h3>
+        <p class="detail-item-text">$21.09</p>
+      </ion-label>
+      <ion-notes slot="end" class="detail-item-notes">
+        <ion-button color="primary" class="detail-item-forward-btn">
+          <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-notes>
+    </ion-item>
+  </div>
+    <ion-button color="silver" class="reply-btn">Exchange Money</ion-button>
+</div>
+</ion-content>

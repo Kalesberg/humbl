@@ -59,3 +59,44 @@
     align-items: flex-start;
     width: 100%;
 }
+.summary-total{
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+.transation-summary {
+    width: 70%;
+    margin-top: 10px;
+}
+.transation-barcode{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+}
+@media screen and (max-width: 650px) { 
+    .user-profile {
+        display: none;
+    }
+    .summary-wrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .transation-summary {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .transation-barcode{
+        width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 650px) { 
+    .transaction-card {
+        padding: 15px 10px;
+    }
+  }

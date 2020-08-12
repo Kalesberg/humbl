@@ -46,7 +46,7 @@ export class ChatPage implements OnInit {
   public fromUserName: string = "Mission Taco";
   public toUserName: string = "Shawna C.";
   public fromUserImage: string = "../../../assets/gallery/ixb3sh0thWI-unsplash@2x.png";
-  public toUserImage: string = "../../../assets/gallery/james-resly-_H5Tnj7e1hc-unsplash@2x.png";
+  public toUserImage: string = "../../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png";
   public chatUsers: any[];
   public message = '';
   

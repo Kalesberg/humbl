@@ -1,0 +1,63 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Agent Settings</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <div class="content">
+    <ion-thumbnail class="thumb-profile-image">
+      <img src="../../assets/Picture6@2x.png" />
+    </ion-thumbnail>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Agent name</ion-label>
+          <ion-input  placeholder="Enter Agent name"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="6" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Business email</ion-label>
+          <ion-input placeholder="biz@missiontaco.com"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="password" placeholder="Enter Password"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="6" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label class="agent-qr-label">Agent QR</ion-label>
+          <ion-note slot="end" class="qr-notes">
+            <ion-card class="card" color="medium">     
+              <qrcode [qrdata]="this.qrData" [size]="45" [level]="'M'"
+              [colordark]="selectedColor"></qrcode>
+              <img class="logo-img" src="../../assets/humbl-white.png">
+            </ion-card>
+          </ion-note>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <p class="aget-id-text">
+      Agent #4567
+    </p>
+  </div>
+</ion-content>
