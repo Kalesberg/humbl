@@ -10,10 +10,11 @@ const routes: Routes = [
   { path: 'success', loadChildren: ()=> import('./success/success.module').then(m => m.SuccessPageModule)},
   { path: 'verify_email', loadChildren: ()=> import('./verify-email/verify-email.module').then(m => m.VerifyEmailPageModule)},
   { path: 'grid', loadChildren: () => import('./grid/grid.module').then( m => m.GridPageModule), canActivate: [AuthGuard]},
-  { path: 'agents', loadChildren: () => import('./agents/agents.module').then( m => m.AgentsPageModule), canActivate: [AuthGuard]},
+  { path: 'agents', loadChildren: () => import('./agents/agents.module').then( m => m.AgentsPageModule)},
   { path: 'auth/email/:action', loadChildren: () => import('./email-customization/email-customization.module').then( m => m.EmailCustomizationPageModule)},
   { path: 'merchant', loadChildren: () => import('./merchant-menu/merchant-menu.module').then( m => m.MerchantMenuPageModule), canActivate: [AuthGuard]},
   { path: 'agent-terms', loadChildren: () => import('./agent-terms/agent-terms.module').then( m => m.AgentTermsPageModule)},
+  { path: 'agent', loadChildren: () => import('./agent-menu/agent-menu.module').then( m => m.AgentMenuPageModule), canActivate: [AuthGuard]},
 ];
 @NgModule({
   imports: [

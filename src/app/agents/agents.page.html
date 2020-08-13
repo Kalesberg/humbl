@@ -12,7 +12,8 @@
     </div>
   </div>
   <div class="welcome-card-wrapper">
-      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/pos'" [routerLink]="'/merchant/pos'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/agent/send-money'" 
+      [routerLink]="'/agent/send-money'">
         <ion-item color="primary">
           <ion-label>Send Money</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -21,7 +22,8 @@
           <ion-icon name="mail"></ion-icon>
         </div>
       </ion-card>
-      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/pos'"  [routerLink]="'/merchant/pos'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/agent/receive-money'"
+      [routerLink]="'/agent/receive-money'">
         <ion-item color="primary">
           <ion-label>Receive Money</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -30,7 +32,8 @@
           <ion-icon name="mail"></ion-icon>
         </div>
       </ion-card>
-      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/pos'" [routerLink]="'/merchant/pos'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/agent/exchange-money'"
+      [routerLink]="'/agent/exchange-money'">
         <ion-item color="primary">
           <ion-label>Exchange Money</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -39,7 +42,8 @@
           <ion-icon src="../../assets/random-icon.svg"></ion-icon>
         </div>
       </ion-card>
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/agent-inquiry'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/agent/loan-products'"
+      [routerLink]="'/agent/loan-products'">
         <ion-item color="primary">
           <ion-label>Get a Loan</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -48,7 +52,8 @@
           <ion-icon name="mail"></ion-icon>
         </div>
       </ion-card>
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/bill-pay'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/agent/pay-bills'"
+      [routerLink]="'/agent/pay-bills'">
         <ion-item color="primary">
           <ion-label>Pay Bills</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -57,7 +62,8 @@
           <ion-icon name="mail"></ion-icon>
         </div>
       </ion-card>
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/bill-pay'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/agent/agent-settings'"
+      [routerLink]="'/agent/agent-settings'">
         <ion-item color="primary">
           <ion-label>Other</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MerchantMenuPage } from './merchant-menu.page';
+import { AgentMenuPage } from './agent-menu.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: MerchantMenuPage,
+    component: AgentMenuPage,
     children: [
       { path: 'pos', loadChildren: ()=>import('../tab2/tab2.module').then(m => m.Tab2PageModule)},
       { path: 'settings', loadChildren: ()=>import('../tab3/tab3.module').then(m => m.Tab3PageModule)},
@@ -50,4 +50,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MerchantMenuPageRoutingModule {}
+export class AgentMenuPageRoutingModule {}

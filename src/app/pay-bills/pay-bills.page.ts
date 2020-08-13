@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pay-bills',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PayBillsPage implements OnInit {
 
-  constructor() { }
+  constructor(private navController: NavController) { }
 
   ngOnInit() {
   }
 
+  gotoPayableBills() {
+    this.navController.navigateForward('merchant/payable-bills')
+  }
 }
