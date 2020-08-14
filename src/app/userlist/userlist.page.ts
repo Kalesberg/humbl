@@ -222,8 +222,8 @@ export class UserlistPage {
   }
 
   toHome() {
-    this.appHelperService.activeUrl = '/merchant/pos';
-    this.router.navigateByUrl('/merchant/pos');
+    this.appHelperService.activeUrl = '/grid';
+    this.router.navigateByUrl('/grid');
   }
 
 

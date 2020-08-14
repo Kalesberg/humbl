@@ -1,0 +1,110 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Send Money</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <ion-grid>
+  <ion-row>
+    <ion-col size="12" size-md="8" size-sm="12">
+      <ion-row>
+        <ion-col>
+          <h3 class="header-text">Recipient Details</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-sm="6">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">Full name</ion-label>
+            <ion-input  placeholder="Enter Name"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="6" size-sm="6">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">Phone number</ion-label>
+            <ion-input placeholder="000-000-000"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">Address</ion-label>
+            <ion-input  placeholder="Enter Address"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-sm="6">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">State</ion-label>
+            <ion-input  placeholder="Enter State"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="6" size-sm="6">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">Zip code</ion-label>
+            <ion-input  placeholder="00000"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col size-md="4" size="12" size-sm="12">
+      <ion-row>
+        <ion-col>
+          <h3 class="header-text">Send amount</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+            <ion-item class="page-form-item" color="primary" lines="none">
+              <ion-input class="usd-input"  placeholder="$0.00"></ion-input>
+              <ion-note class="usd-notes" slot="end">
+                <span>USD</span>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </ion-note>
+            </ion-item>
+          </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <h3 class="about-title">Important Information About Procedures For Cash Pickup</h3>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item class="page-form-item" color="primary" lines="none">
+        <ion-textarea  placeholder="$0.00" readonly="true" autoGrow="true"
+        value="To help the government fight the funding of terrorism and money laundering activities, Federal law requires all financial institutions to obtain, verify, and record information that identifies each person who opens an account. What this means for you: When you pick up cash, we will ask for your name, address, date of birth, and other information that will allow us to identify you. We may also ask to see your driver’s license or other identifying documents.">
+      </ion-textarea>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item class="chk-item" color="medium" lines="none">
+        <ion-checkbox mode="md" slot="start"></ion-checkbox>
+        I Agree
+      </ion-item>
+      <ion-button color="silver" class="reply-btn">Send Money</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

@@ -44,13 +44,14 @@
             <ion-col size="4"> $0.25 </ion-col>
           </ion-row>
           <ion-row class="summary-total">
-            <ion-col size="8"> Transaction Fee </ion-col>
-            <ion-col size="4"> $0.25 </ion-col>
+            <ion-col size="8"> Total: </ion-col>
+            <ion-col size="4"> $12.75 </ion-col>
           </ion-row>
         </div>
         <div class="transation-barcode">
+          <span>Transaction Code</span>
           <ion-card class="card" color="medium">     
-            <qrcode [qrdata]="this.qrData" [size]="256" [level]="'M'"
+            <qrcode [qrdata]="this.qrData" [size]="150" [level]="'M'"
             [colordark]="selectedColor"></qrcode>
             <img class="logo-img" src="../../assets/humbl-white.png">
           </ion-card>

@@ -111,24 +111,24 @@
 }
 
 
-:root {
-  /* width */
-  ::-webkit-scrollbar {
-    width: 5px !important;
-  }
+// :root {
+//   /* width */
+//   ::-webkit-scrollbar {
+//     width: 5px !important;
+//   }
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: inherit !important;
-  }
+//   /* Track */
+//   ::-webkit-scrollbar-track {
+//     background: inherit !important;
+//   }
   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #000 !important;
-  }
+//   /* Handle */
+//   ::-webkit-scrollbar-thumb {
+//     background: #000 !important;
+//   }
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-}
+//   /* Handle on hover */
+//   ::-webkit-scrollbar-thumb:hover {
+//     background: #555;
+//   }
+// }

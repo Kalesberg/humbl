@@ -14,8 +14,14 @@
         "email" : "Email",
         "password" : "Password",
         "payments" : "Payments",
-        "textorder":"Text Orders",
-        "transaction":"Transactions"
+        "textorder": "Text Orders",
+        "transaction": "Transactions",
+        "sendmoney": "Send Money",
+        "receivemoney": "Receive Money",
+        "exchangemoney": "Exchange Money",
+        "paybills": "Pay Bills",
+        "loanproduct": "Loan Products",
+        "agentsettings": "Agent Settings"
     },
 
     "home": {

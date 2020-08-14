@@ -1,0 +1,90 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Payment Details</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <div class="review-content">
+    <div class="summary-data-wrapper">
+      <ion-card color="primary" class="transaction-card">
+        <div class="summary-wrapper">
+          <div class="transation-img">
+            <ion-thumbnail class="summary-data-img">
+              <img src="../../assets/stripe.png" />
+            </ion-thumbnail>
+          </div>
+          <div class="transation-summary">
+            <ion-row class="summary-data">
+              <ion-col size="12" class="summary-name"> AT&T Mexico </ion-col>
+            </ion-row>
+            <ion-row class="summary-data">
+              <ion-col size="12"> $300.00 </ion-col>
+            </ion-row>
+          </div>
+        </div>      
+      </ion-card>
+      <h3 class="transaction-card-title" >Payment Details</h3>
+      <ion-grid>        
+        <ion-row>
+          <ion-col size="12">
+            <ion-segment class="segment-wrapper" #typesegment>
+              <ion-segment-button class="segment-btn" value="humble"
+                [class.sagment-active]="this.typesegment.value === 'humble'">
+                <ion-label>HUMBL BALANCE</ion-label>
+                <p>$2,100</p>
+              </ion-segment-button>
+              <ion-segment-button class="segment-btn" value="cash"
+              [class.sagment-active]="this.typesegment.value === 'cash'">
+                <ion-label>CASH</ion-label>
+              </ion-segment-button>
+            </ion-segment>   
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" size-md="6" size-sm="6">
+            <ion-item class="page-form-item" color="primary" lines="none">
+              <ion-label position="stacked">Payment Amount</ion-label>
+              <ion-input  placeholder="$0.00"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" size-md="6" size-sm="6">
+            <ion-card class="page-form-card" color="primary">
+              <ion-label position="stacked">Recurring</ion-label>
+              <div class="chk-item">
+                <div class="chk-data">
+                  <ion-checkbox mode="md"></ion-checkbox> Yes
+                </div>
+                <div class="chk-data">
+                  <ion-checkbox mode="md"></ion-checkbox> No
+                </div>
+              </div>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="page-form-item" color="primary" lines="none">
+              <ion-label position="stacked">Bill PAY Memo</ion-label>
+              <ion-input  placeholder="Bill ID, Note, etc."></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div> 
+    <ion-button color="silver" class="reply-btn">Send payment</ion-button>
+  </div>
+</ion-content>

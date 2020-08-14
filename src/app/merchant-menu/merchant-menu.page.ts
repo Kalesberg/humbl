@@ -76,6 +76,36 @@ export class MerchantMenuPage implements OnInit {
       url: '/merchant/transaction-summary',
       icon: 'logo-usd'
     },
+    {
+      title: 'sendmoney',
+      url: '/merchant/send-money',
+      icon: 'phone-portrait-outline'
+    },
+    {
+      title: 'receivemoney',
+      url: '/merchant/receive-money',
+      icon: 'mail-outline'
+    },
+    {
+      title: 'exchangemoney',
+      url: '/merchant/exchange-money',
+      icon: 'mail-outline'
+    },
+    {
+      title: 'paybills',
+      url: '/merchant/pay-bills',
+      icon: 'cash-outline'
+    },
+    {
+      title: 'loanproduct',
+      url: '/merchant/loan-products',
+      icon: 'document-text-outline'
+    },
+    {
+      title: 'agentsettings',
+      url: '/merchant/agent-settings',
+      icon: 'settings-outline'
+    },
     // {
     //   title: 'agents',
     //   url: 'http://localhost:8101/home',

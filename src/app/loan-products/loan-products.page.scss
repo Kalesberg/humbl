@@ -1,0 +1,31 @@
+.about-title{
+    font-weight: 700;
+    padding: 0px;
+    margin: 0px;
+}
+.chk-item {
+    --min-height: 55px;
+    font-weight: 600;
+    font-size: 18px;
+    --padding-start: 5px;
+    ion-checkbox {
+        margin-right: 10px;
+        --background: var(--ion-color-medium);
+        --background-checked: var(--ion-color-medium);
+        --border-color: #ffffff;
+        --border-color-checked: #ffffff;
+        --border-radius: 3px;
+        --checkmark-color: #ffffff;
+    }
+}
+.reply-btn {
+    height: 40px;
+    width: 160px;
+    --border-radius: 10px;
+    --box-shadow: none;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    margin-top: 20px;
+}

@@ -185,7 +185,17 @@
         font-size: 22px !important;
     }
 }
-
+.page-form-currency-item {
+    border: 2px solid #FFFFFF;
+    --min-height: 100px;
+    ion-label{
+        text-transform: uppercase;
+        font-size: 18px !important;
+    }
+    input {
+        font-size: 36px !important;
+    }
+}
 .primary-card {
     border-radius: 18px;
     max-width: 600px;
@@ -237,7 +247,7 @@
         font-size: 20px;
         font-weight: 700;
     }
-    ion-notes {
+    ion-note {
         font-size: 20px;
         font-weight: 700;
     }
@@ -252,6 +262,49 @@
         border-radius: 8px !important;
     }
 }
+.usd-input input {
+    font-size: 30px !important;
+}
+
+
+.detail-list-item {
+    margin-top: 10px;
+    --padding-end: 0px;
+    --inner-padding-end: 0px;
+    --padding-start: 0px;
+    --inner-padding-start: 0px;
+}
+.detail-list-item:first-of-type {
+    margin-top: 30px;
+}
+.detail-thumbnail {
+    height: 75px;
+    --border-radius: 12px;
+    width: 75px;
+    border: 1px solid #E8E8E8;
+    margin-right: 10px;
+}
+.detail-item-title {
+    font-weight: 600 !important;
+    font-size: 18px !important;
+}
+
+.detail-item-text {
+    font-size: 16px !important;
+}
+.detail-item-forward-btn {
+    box-shadow: none;
+    --border-radius: 14px;
+    --box-shadow: none;
+    height: 50px;
+    width: 80px;
+    font-size: 18px;
+}
+.detail-item-notes {
+    margin: 0px;
+    padding: 0px;
+}
+
 
 @media screen and (max-width: 420px) { 
     .form-item {
@@ -261,8 +314,7 @@
         --padding-bottom: 0px;
         --padding-top: 0px;
         ion-label {
-            text-transform: uppercase;
-            font-size: 16px;
+            font-size: 14px !important;
         }
         input {
             // padding: 10px 0px 0px;
@@ -346,12 +398,10 @@
     }
     .page-form-item {
         border: 2px solid #FFFFFF;
-        border-radius: 18px;
+        border-radius: 12px;
         margin: 0px 0px 15px;
         --min-height: 60px;
         ion-label{
-            text-transform: uppercase;
-            color: #FFFFFF !important;
             font-size: 10px !important;
         }
         input {
@@ -359,5 +409,37 @@
             font-weight: 500 !important;
             font-size: 18px !important;
         }
+    }
+    .page-form-currency-item {
+        border: 2px solid #FFFFFF;
+        --min-height: 70px;
+        ion-label{
+            text-transform: uppercase;
+            font-size: 12px !important;
+        }
+        input {
+            font-size: 26px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {    
+    .detail-item-forward-btn {
+        --border-radius: 9px;
+        height: 35px;
+        width: 50px;
+        font-size: 14px;
+    }
+    .detail-item-title {
+        font-size: 16px !important;
+    }
+    
+    .detail-item-text {
+        font-size: 14px !important;
+    }
+    .detail-thumbnail {
+        --border-radius: 12px;
+        height: 60px;
+        width: 60px;
     }
 }
