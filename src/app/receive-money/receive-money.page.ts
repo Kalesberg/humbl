@@ -14,6 +14,6 @@ export class ReceiveMoneyPage implements OnInit {
   }
 
   gotoPendingPickup() {
-    this.navController.navigateForward('merchant/pending-pickups')
+    this.navController.navigateForward('agent/pending-pickups')
   }
 }

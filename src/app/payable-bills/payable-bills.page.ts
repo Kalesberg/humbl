@@ -13,6 +13,6 @@ export class PayableBillsPage implements OnInit {
   ngOnInit() {
   }
   gotoPaymentDetails() {
-    this.navController.navigateForward('merchant/pay-bills-detail')
+    this.navController.navigateForward('agent/pay-bills-detail')
   }
 }

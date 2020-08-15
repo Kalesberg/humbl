@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ToastController, LoadingController, ActionSheetController, AlertController, PopoverController, ModalController } from "@ionic/angular";
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
 	providedIn: "root"
@@ -9,7 +10,9 @@ export class UiService {
 
 	public loading: HTMLIonLoadingElement;
 
-	constructor(private loadingCtrl: LoadingController) { }
+	constructor(private loadingCtrl: LoadingController,
+		public alertCtrl: AlertController,
+		private translate : TranslateService,) { }
 
 	async displayLoader(message: string) {
 		this.loading = await this.loadingCtrl.create({
@@ -24,7 +27,15 @@ export class UiService {
 		}
 	}
 
-
+	async displayAlertMsg(message){
+		const alert1 = await this.alertCtrl.create({
+			message: message,
+			buttons: [{ text: this.translate.instant("login.ok"), handler: () => {
+			  alert1.dismiss();
+			}}]
+		  });
+		  await alert1.present();
+	}
 
 
 }

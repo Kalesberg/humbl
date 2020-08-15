@@ -14,6 +14,6 @@ export class PayBillsPage implements OnInit {
   }
 
   gotoPayableBills() {
-    this.navController.navigateForward('merchant/payable-bills')
+    this.navController.navigateForward('agent/payable-bills')
   }
 }

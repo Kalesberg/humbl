@@ -40,17 +40,6 @@ export class MerchantMenuPage implements OnInit {
       icon: 'file-tray-full-outline'
     },
     {
-      title: 'reviews',
-      url: '/merchant/reviews',
-      icon: 'star'
-    },
-    {
-      title: 'offers',
-      url: '/merchant/offers',
-      icon: 'pricetag',
-      iconcss:"offertag"
-    },
-    {
       title: 'qr',
       url: '/merchant/qr-dashboard',
       icon: 'qr-code',
@@ -77,40 +66,16 @@ export class MerchantMenuPage implements OnInit {
       icon: 'logo-usd'
     },
     {
-      title: 'sendmoney',
-      url: '/merchant/send-money',
-      icon: 'phone-portrait-outline'
+      title: 'reviews',
+      url: '/merchant/reviews',
+      icon: 'star'
     },
     {
-      title: 'receivemoney',
-      url: '/merchant/receive-money',
-      icon: 'mail-outline'
-    },
-    {
-      title: 'exchangemoney',
-      url: '/merchant/exchange-money',
-      icon: 'mail-outline'
-    },
-    {
-      title: 'paybills',
-      url: '/merchant/pay-bills',
-      icon: 'cash-outline'
-    },
-    {
-      title: 'loanproduct',
-      url: '/merchant/loan-products',
-      icon: 'document-text-outline'
-    },
-    {
-      title: 'agentsettings',
-      url: '/merchant/agent-settings',
-      icon: 'settings-outline'
-    },
-    // {
-    //   title: 'agents',
-    //   url: 'http://localhost:8101/home',
-    //   icon: 'person'
-    // }
+      title: 'offers',
+      url: '/merchant/offers',
+      icon: 'pricetag',
+      iconcss:"offertag"
+    }
   ];
   constructor(
     private settingsService: SettingsService,

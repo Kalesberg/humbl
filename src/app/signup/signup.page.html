@@ -11,9 +11,19 @@
   <div class="login-content">
     <!-- <h3 translate>register.heading</h3> -->
   <!-- <ion-card class="card ion-padding" color="medium"> -->
-    <img class="logo" src="../../assets/merchant.png">
+    <img class="logo" src="../../assets/merchant.png">    
     <form class="form-wrapper" [formGroup]="signupForm">
       <div class="form-input-div">
+        <ion-segment class="segment-wrapper" #typesegment>
+          <ion-segment-button class="segment-btn" value="merchant"
+            [class.sagment-active]="this.typesegment.value === 'merchant'">
+            <ion-label>Merchant</ion-label>
+          </ion-segment-button>
+          <ion-segment-button class="segment-btn" value="agent"
+          [class.sagment-active]="this.typesegment.value === 'agent'">
+            <ion-label>Agent</ion-label>
+          </ion-segment-button>
+        </ion-segment> 
         <ion-item color="medium" class="form-item" lines="none">
           <ion-label position="stacked">{{'register.email_note' | translate}}</ion-label>
           <ion-input formControlName="email" type="email"

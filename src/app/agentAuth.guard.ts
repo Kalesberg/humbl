@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AgentAuthGuard implements CanActivate {
   constructor(private router: Router, public ngZone: NgZone,
     private storage: Storage) {}
   canActivate(
@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
       firebase.auth().onAuthStateChanged(async (user: firebase.User) => {
         if (user && user.uid && user.emailVerified) {
           let userData = await this.storage.get('humble_user');
-          if(userData && !userData.isAgent){
+          if(userData && userData.isAgent){
             resolve(true);
           } else {
             this.ngZone.run(()=> this.router.navigateByUrl('/home'));

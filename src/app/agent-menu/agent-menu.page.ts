@@ -25,16 +25,16 @@ export class AgentMenuPage implements OnInit {
   public user: boolean = false;
   public uid: string;
   public appPages = [
-    {
-      title: 'terminal',
-      url: '/agent/pos',
-      icon: 'calculator'
-    },
-    {
-      title: 'reports',
-      url: '/agent/reports',
-      icon: 'file-tray-full-outline'
-    },
+    // {
+    //   title: 'terminal',
+    //   url: '/agent/pos',
+    //   icon: 'calculator'
+    // },
+    // {
+    //   title: 'reports',
+    //   url: '/agent/reports',
+    //   icon: 'file-tray-full-outline'
+    // },
     {
       title: 'sendmoney',
       url: '/agent/send-money',

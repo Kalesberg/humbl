@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SettingsService } from '../services/settings.service'
-import { AppHelperService } from '../services/app-helper.service';
+import { UiService } from '../services/ui-service';
 
 @Component({
   selector: 'app-signup',
@@ -13,16 +12,18 @@ import { AppHelperService } from '../services/app-helper.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  
   public signupForm: FormGroup;
   public loading: any;
+  @ViewChild('typesegment') typesegment:any;
+
   constructor(
     private authService: AuthService,
-    private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private formBuilder: FormBuilder,
     private settingsService: SettingsService,
     private translate : TranslateService,
-    private appHelperService: AppHelperService
+    private uiService: UiService
   ) {
     this.signupForm = this.formBuilder.group({
       email: [
@@ -38,10 +39,14 @@ export class SignupPage implements OnInit {
         Validators.compose([Validators.minLength(6), Validators.required]),
       ],
     });
-    console.log(this.signupForm);
   }
 
   ngOnInit() { }
+
+  ionViewWillEnter() {
+    if(this.typesegment)
+      this.typesegment.value = "merchant";
+  }
 
   async signupUser(signupForm: FormGroup): Promise<void> {
     if (!signupForm.valid) {
@@ -51,26 +56,23 @@ export class SignupPage implements OnInit {
     } else {
       const email: string = signupForm.value.email;
       const password: string = signupForm.value.password;
+      this.uiService.displayLoader("");
   
       this.authService.signupUser(email, password).then(
-        (res) => {
-          this.loading.dismiss().then(() => {
-            this.settingsService.updateSignupemail(res.user.uid,email);
-            this.authService.sendEmailVerificationLink(email, true);// SendVerificationMail()
-          });
-        },
-        error => {
-          this.loading.dismiss().then(async () => {
+        async (res) => {
+            let isAgent = (this.typesegment.value === "agent");
+            await this.settingsService.addBusinessProfile(res.user.uid, email);
+            await this.settingsService.addUserProfile(res.user.uid, email, isAgent);
+            this.authService.sendEmailVerificationLink(email, true, false);
+        }, async (error) => {
             const alert = await this.alertCtrl.create({
               message: error.message,
               buttons: [{ text: this.translate.instant("register.ok"), role: 'cancel' }],
             });
+            this.uiService.dismissLoader();
             await alert.present();
-          });
         }
       );
-      this.loading = await this.loadingCtrl.create({});
-      await this.loading.present();
     }
   }
 
