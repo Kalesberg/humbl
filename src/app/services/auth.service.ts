@@ -105,14 +105,17 @@ export class AuthService {
     return observable.toPromise();
   }
 
-  authCheckAndRedirect(){
+  authCheckAndRedirect(isLogin: boolean = false){
     let url = "/home";
       firebase.auth().onAuthStateChanged(async (user: firebase.User) => {
         if (user && user.uid && user.emailVerified) {
           let userData = await this.settingsService.getUserProfile(user.uid).get();
           if(userData && userData.data()){
             if(userData.data().isAgent){
-              url= "/agents";
+              if(isLogin)
+                url= "/agent-terms";
+              else
+                url= "/agents";
             }
             else {
               url= "/grid";

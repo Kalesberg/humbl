@@ -12,8 +12,8 @@
     </div>
   </div>
   <div class="welcome-card-wrapper">
-      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/settings'" 
-      [routerLink]="'/merchant/settings'">
+      <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/merchant-profile'" 
+      [routerLink]="'/merchant/merchant-profile'">
         <ion-item color="primary">
           <ion-label>Merchant Profile</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -77,7 +77,7 @@
           <span class="review-note">“Tacos were great, thank you!”</span>
         </div>
       </ion-card>
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/reports'">
+      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/transaction-details'">
         <ion-item color="primary">
           <ion-label>Transactions</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>

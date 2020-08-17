@@ -1,0 +1,109 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/agents"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Loan Product</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <ion-grid>
+  <ion-row>
+    <ion-col size="12" size-md="8" size-sm="12">
+      <ion-row>
+        <ion-col>
+          <h3 class="header-text">Primary Borrower</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-sm="6">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">Full name</ion-label>
+            <ion-input  placeholder="Enter Name"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="6" size-sm="6">
+          <ion-card class="page-form-card" color="primary">
+            <ion-label position="stacked">Borrower type</ion-label>
+            <div class="chk-list-item">
+              <div class="chk-data">
+                <ion-checkbox mode="md"></ion-checkbox> Individual
+              </div>
+              <div class="chk-data">
+                <ion-checkbox mode="md"></ion-checkbox> Company
+              </div>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">Address</ion-label>
+            <ion-input  placeholder="Enter Address"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-sm="6">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">State</ion-label>
+            <ion-input  placeholder="Enter State"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="6" size-sm="6">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">Zip code</ion-label>
+            <ion-input  placeholder="00000"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item class="page-form-item" color="primary" lines="none">
+            <ion-label position="stacked">Purpose of loan</ion-label>
+            <ion-input  placeholder="Purpose of loan"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col size-md="4" size="12" size-sm="12">
+      <ion-row>
+        <ion-col>
+          <h3 class="header-text">Loan amount</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+            <ion-item class="page-form-item" color="primary" lines="none">
+              <ion-input class="usd-input"  placeholder="$0.00"></ion-input>
+              <ion-note class="usd-notes" slot="end">
+                <span>USD</span>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </ion-note>
+            </ion-item>
+          </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button color="silver" class="reply-btn" (click)="signLoanProduct()">
+        Sign application
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

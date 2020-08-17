@@ -1,0 +1,96 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Profile</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Business name</ion-label>
+          <ion-input  placeholder="Enter Business Name"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Username</ion-label>
+          <ion-input placeholder="Enter Username"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Currency selection</ion-label>
+          <ion-input  placeholder="Enter Currency"></ion-input>
+          <ion-note class="usd-notes" slot="end">
+            <span>USD</span>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </ion-note>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Business Email</ion-label>
+          <ion-input  placeholder="Enter email"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="password" placeholder="Enter Password"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Stripe connection</ion-label>
+          <ion-input  placeholder="Stripe"></ion-input>
+          <ion-note class="usd-notes" slot="end">
+            <ion-icon class="checkmark-icon" name="checkmark-circle-outline"></ion-icon>
+          </ion-note>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Optional tax rate</ion-label>
+          <ion-input  placeholder="Enter Decimal"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label class="agent-qr-label">Business QR</ion-label>
+          <ion-note slot="end" class="qr-notes">
+            <ion-card class="card" color="medium">     
+              <qrcode [qrdata]="this.qrData" [size]="45" [level]="'M'"
+              [colordark]="selectedColor"></qrcode>
+              <img class="logo-img" src="../../assets/humbl-white.png">
+            </ion-card>
+          </ion-note>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>     
+      <ion-col class="last-content" size="12">
+        <div class="img-content">
+          <img src="../../assets/mission_taco.png">
+          <ion-icon class="taco-frw-icon" name="chevron-forward-circle"></ion-icon>
+        </div>
+        <p>Mission Tacos <br> 13636 Ventura Blvd. <br>#402 Sherman Oaks, CA 921432</p>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
+</ion-content>

@@ -17,6 +17,9 @@ const routes: Routes = [
       { path: 'pending-pickups', loadChildren: () => import('../pending-pickups/pending-pickups.module').then( m => m.PendingPickupsPageModule)},
       { path: 'payable-bills', loadChildren: () => import('../payable-bills/payable-bills.module').then( m => m.PayableBillsPageModule)},
       { path: 'pay-bills-detail', loadChildren: () => import('../pay-bills-detail/pay-bills-detail.module').then( m => m.PayBillsDetailPageModule)},
+      { path: 'receive-money-form', loadChildren: () => import('../receive-money-form/receive-money-form.module').then( m => m.ReceiveMoneyFormPageModule)},
+      { path: 'loan-products-form', loadChildren: () => import('../loan-products-form/loan-products-form.module').then( m => m.LoanProductsFormPageModule)},
+      { path: 'loan-products-sign', loadChildren: () => import('../loan-products-sign/loan-products-sign.module').then( m => m.LoanProductsSignPageModule)},
     ]
   }
 ];

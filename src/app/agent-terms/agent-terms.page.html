@@ -137,10 +137,10 @@
         </div>
       </ion-card>
       <ion-item class="chk-item" color="primary" lines="none">
-        <ion-checkbox mode="md" slot="start"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="isTermAccepted" mode="md" slot="start"></ion-checkbox>
         I Agree
       </ion-item>
     </ion-card>
-    <ion-button color="silver" class="reply-btn">Get started</ion-button>
+    <ion-button color="silver" [disabled]="!isTermAccepted" class="reply-btn" (click)="gotoHome()" >Get started</ion-button>
 </div>
 </ion-content>

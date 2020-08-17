@@ -51,18 +51,23 @@ export class MerchantMenuPage implements OnInit {
       icon: 'cog'
     },
     {
+      title: 'merchantprofile',
+      url: '/merchant/merchant-profile',
+      icon: 'card-outline'
+    },
+    {
       title: 'payments',
       url: '/merchant/payment-detail',
       icon: 'card-outline'
     },
     {
       title: 'textorder',
-      url: '/merchant/text-order',
+      url: '/merchant/text-order-details',
       icon: 'chatbubble'
     },
     {
       title: 'transaction',
-      url: '/merchant/transaction-summary',
+      url: '/merchant/transaction-details',
       icon: 'logo-usd'
     },
     {

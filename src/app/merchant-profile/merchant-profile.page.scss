@@ -1,0 +1,79 @@
+.usd-notes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 18px;
+    height: 100%;
+}
+.usd-notes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 18px;
+    height: 100%;
+    margin: 0px;
+}
+.checkmark-icon {
+    font-size: 45px;
+}
+.agent-qr-label {
+    font-size: 20px !important;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.qr-notes {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.card{
+    box-shadow: none !important;
+    border-radius: 0px;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 5px;
+}
+.logo-img {
+    position: absolute;
+    top: 40%;
+    width: 80%;
+    left: 10%;
+}
+.img-content {
+    border: 2px solid #FFFFFF;
+    padding: 5px 8px;
+    border-radius: 12px;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    position: relative;
+}
+.last-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    p {
+        margin: 0px;
+        font-size: 14px;
+    }
+}
+.taco-frw-icon {
+    opacity: 0.6;
+    font-size: 18px;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+}

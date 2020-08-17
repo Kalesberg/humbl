@@ -2,17 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-text-order',
-  templateUrl: './text-order.page.html',
-  styleUrls: ['./text-order.page.scss'],
+  selector: 'app-text-order-details',
+  templateUrl: './text-order-details.page.html',
+  styleUrls: ['./text-order-details.page.scss'],
 })
-export class TextOrderPage implements OnInit {
+export class TextOrderDetailsPage implements OnInit {
 
   constructor(private navController: NavController) { }
 
-  ngOnInit() {}
-
-  sendLink() {
+  ngOnInit() {
+  }
+  orderChat(){
     this.navController.navigateForward('merchant/order-chat')
   }
 }

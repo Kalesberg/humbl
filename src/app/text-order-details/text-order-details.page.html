@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Order Details</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>Maria C.</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="../../assets/Picture6@2x.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <div class="wrapper">
+    <div class="content">
+    <ion-item color="medium" lines="none" class="detail-list-item">
+      <ion-thumbnail slot="start" class="detail-thumbnail">
+        <img src="../../assets/gallery/james-resly-_H5Tnj7e1hc-unsplash-1@2x.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="detail-item-title">SHAWNA C.</h3>
+        <p class="detail-item-text">Hey! I got stuck with the lunch run today.</p>
+      </ion-label>
+      <ion-note slot="end" class="detail-item-notes">
+        <ion-button color="primary" class="detail-item-forward-btn" (click)="orderChat()">
+          reply
+        </ion-button>
+      </ion-note>
+    </ion-item>
+    <ion-item color="medium" lines="none" class="detail-list-item">
+      <ion-thumbnail slot="start" class="detail-thumbnail">
+        <img src="../../assets/gallery/james-resly-_H5Tnj7e1hc-unsplash-1@2x.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="detail-item-title">Marina S.</h3>
+        <p class="detail-item-text">Hey! I would love to order some tacos. Could they be ready in an hour?</p>
+      </ion-label>
+      <ion-note slot="end" class="detail-item-notes">
+        <ion-button color="primary" class="detail-item-forward-btn" (click)="orderChat()">
+          reply
+        </ion-button>
+      </ion-note>
+    </ion-item>
+    <ion-item color="medium" lines="none" class="detail-list-item">
+      <ion-thumbnail slot="start" class="detail-thumbnail">
+        <img src="../../assets/gallery/james-resly-_H5Tnj7e1hc-unsplash-1@2x.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="detail-item-title">Ravi C.</h3>
+        <p class="detail-item-text">May I please get an order of four tacos? Two Shrimp and two beef?</p>
+      </ion-label>
+      <ion-note slot="end" class="detail-item-notes">
+        <ion-button color="primary" class="detail-item-forward-btn" (click)="orderChat()">
+          reply
+        </ion-button>
+      </ion-note>
+    </ion-item>
+  </div>
+</div>
+</ion-content>

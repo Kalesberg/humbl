@@ -1,4 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-chat',
@@ -50,8 +51,12 @@ export class ChatPage implements OnInit {
   public chatUsers: any[];
   public message = '';
   
-  constructor() {}
+  constructor(private navController: NavController) {}
 
   ngOnInit() { }
 
+  textOrder(){
+    this.navController.navigateForward('merchant/text-order')
+  }
+  sendChatMessage(){}
 }

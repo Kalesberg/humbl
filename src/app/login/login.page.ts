@@ -52,7 +52,7 @@ export class LoginPage implements OnInit {
       this.authService.loginUser(email, password).then(
         async (user) => {
             if(user.user.emailVerified) {
-              this.authService.authCheckAndRedirect();
+              this.authService.authCheckAndRedirect(true);
             } else {
               this.uiService.dismissLoader();
               const alert = await this.alertCtrl.create({
