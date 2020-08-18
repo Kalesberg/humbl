@@ -7,11 +7,12 @@
     <ion-buttons slot="end">
       <div class="profile-info">
         <div class="profile-text">
-          <h3>Maria C.</h3>
+          <h3>{{this.userProfile?.businessName}}</h3>
           <p>HUBS AGENT #4567</p>
         </div>
         <ion-thumbnail class="thumb-image">
-          <img src="../../assets/Picture6@2x.png" />
+          <img *ngIf="this.userProfile?.logoUrl" [src]="this.userProfile?.logoUrl" />
+          <img *ngIf="!this.userProfile?.logoUrl" src="../../assets/avatar.png" />
         </ion-thumbnail>
       </div>
     </ion-buttons>
@@ -40,35 +41,57 @@
       <ion-button slot="end" fill="outline" shape="round" size="small" color="light" (click)="confirmDelete(review.sid, review.id)">Reply</ion-button>
     </ion-item>
   </ion-list> -->
-  <div class="review-content">
+  <div class="wrapper">
+    <div class="content">
+      <ion-item color="medium" lines="none" class="detail-list-item" *ngFor="let review of reviews">
+        <ion-thumbnail slot="start" class="detail-thumbnail">
+          <img *ngIf="review.logo" [src]="review.logo" />
+          <img *ngIf="!review.logo" src="../../assets/avatar.png" />
+        </ion-thumbnail>
+        <ion-label>
+          <h3 class="detail-item-title">{{review.business}}</h3>
+          <p class="review-star">
+            <ion-icon name="star" *ngIf="this.review.rating > 0"></ion-icon>
+            <ion-icon name="star" *ngIf="this.review.rating > 1"></ion-icon>
+            <ion-icon name="star" *ngIf="this.review.rating > 2"></ion-icon>
+            <ion-icon name="star" *ngIf="this.review.rating > 3"></ion-icon>
+            <ion-icon name="star" *ngIf="this.review.rating > 4"></ion-icon>
+          </p>
+          <p class="detail-item-text">{{review.message}}</p>
+          <p class="detail-item-text">{{this.review.date.toDate() | date }}</p>
+        </ion-label>
+        <ion-note slot="end" class="detail-item-notes">
+          <ion-button color="primary" class="detail-item-forward-btn" (click)="orderChat()">
+            reply
+          </ion-button>
+        </ion-note>
+      </ion-item>
+    </div>
+  </div>
+  <!-- <div class="review-content" *ngFor="let review of reviews">
     <div class="user-profile">
       <ion-thumbnail class="user-image">
-        <img src="../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png" />
+        <img src=".../../assets/avatar.png" />
       </ion-thumbnail>
       <h3 class="profile-name">Shawna C.</h3>
-      <span class="profile-date">August 4, 2020</span>
+      <span class="profile-date"> {{this.review.date.toDate() | date }}</span>
       <ion-button color="silver" class="reply-btn">Reply</ion-button>
     </div>
     <ion-card color="primary" class="review-card">
       <div class="review-card-top-content">
         <p class="review-star">
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
-          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star" *ngIf="this.review.rating > 0"></ion-icon>
+          <ion-icon name="star" *ngIf="this.review.rating > 1"></ion-icon>
+          <ion-icon name="star" *ngIf="this.review.rating > 2"></ion-icon>
+          <ion-icon name="star" *ngIf="this.review.rating > 3"></ion-icon>
+          <ion-icon name="star" *ngIf="this.review.rating > 4"></ion-icon>
         </p>
         <img src="../../assets/humbl-white.png" />
       </div>
-      <p class="review-text" >“Great tacos, love the pay and pickup feature!”</p>
-      <div class="review-img-wrapper">
-        <!-- [style.background]="'url('+profileImg+')'"  for dynamic image-->
-        <div class="review-item-img" [style.background]="'url(../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png)'"></div>
-        <div class="review-item-img" [style.background]="'url(../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png)'"></div>
-      </div>
+      <p class="review-text" translate>{{this.review.message}}</p>
     </ion-card>
-  </div>
-  <div class="review-content">
+  </div> -->
+  <!-- <div class="review-content">
     <div class="user-profile">
       <ion-thumbnail class="user-image">
         <img src="../../assets/gallery/james-resly-_H5Tnj7e1hc-unsplash-1@2x.png" />
@@ -90,10 +113,9 @@
       </div>
       <p class="review-text" >“Great tacos, love the pay and pickup feature!”</p>
       <div class="review-img-wrapper">
-        <!-- [style.background]="'url('+profileImg+')'"  for dynamic image-->
         <div class="review-item-img" [style.background]="'url(../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png)'"></div>
         <div class="review-item-img" [style.background]="'url(../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png)'"></div>
       </div>
     </ion-card>
-  </div>
+  </div> -->
 </ion-content>

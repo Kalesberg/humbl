@@ -21,7 +21,8 @@
         "exchangemoney": "Exchange Money",
         "paybills": "Pay Bills",
         "loanproduct": "Loan Products",
-        "agentsettings": "Agent Settings"
+        "agentsettings": "Agent Settings",
+        "merchantprofile": "Merchant Profile"
     },
 
     "home": {

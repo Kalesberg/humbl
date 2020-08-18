@@ -1,12 +1,12 @@
-ion-button {
-    text-transform: inherit;
-    font-size: 1.1em;
-}
+// ion-button {
+//     text-transform: inherit;
+//     font-size: 1.1em;
+// }
 
-.bar{
-    padding-top: 22px;
-    color: #333333;
-}
+// .bar{
+//     padding-top: 22px;
+//     color: #333333;
+// }
 
 .item-desc {
     font-size: 1.2em;
@@ -19,10 +19,24 @@ ion-text{
     padding: 0px;
 }
 
-ion-input { 
-    color: var(--ion-color-dark); /* input text color to primary */
-}
+// ion-input { 
+//     color: var(--ion-color-dark); /* input text color to primary */
+// }
 
-ion-label {
-    --color: var(--ion-color-medium);
+// ion-label {
+//     --color: var(--ion-color-medium);
+// }
+.price-input {
+    color: #ffffff;
+}
+.primary-serach-input {
+    margin: 20px 0px;
+}
+.cloud-list {
+    background: var(--ion-item-medium);
+}
+.cloud-item {
+    margin: 10px 0px;
+    border-radius: 12px;
+    --border-radius: 12px;
 }

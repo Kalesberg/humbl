@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { ChatDetailsComponent } from './chat-details/chat-details.component';
+import { SelectOptionsComponent } from './select-options/select-options.component';
 @NgModule({
 	declarations: [
 		ChangePasswordComponent,
 		VerifyEmailComponent,
-		ChatDetailsComponent
+		ChatDetailsComponent,
+		SelectOptionsComponent
 	],
 	imports: [
 		IonicModule,
@@ -20,12 +22,14 @@ import { ChatDetailsComponent } from './chat-details/chat-details.component';
 	exports: [
 		ChangePasswordComponent,
 		VerifyEmailComponent,
-		ChatDetailsComponent
+		ChatDetailsComponent,
+		SelectOptionsComponent
 	],
 	entryComponents: [
 		ChangePasswordComponent,
 		VerifyEmailComponent,
-		ChatDetailsComponent
+		ChatDetailsComponent,
+		SelectOptionsComponent
 	]
 })
 export class ComponentsModule { }

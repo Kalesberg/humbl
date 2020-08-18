@@ -115,6 +115,8 @@ export class AgentMenuPage implements OnInit {
       this.user = false;
       // this.username = "";
       this.uid = "";
+      this.appHelperService.currentUser$.next(null);
+      this.storage.remove('humble_user');
       this.toggleMenu();
       this.router.navigateByUrl('/login');
     });

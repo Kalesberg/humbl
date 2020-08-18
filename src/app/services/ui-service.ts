@@ -12,7 +12,8 @@ export class UiService {
 
 	constructor(private loadingCtrl: LoadingController,
 		public alertCtrl: AlertController,
-		private translate : TranslateService,) { }
+		private translate : TranslateService,
+		public toast: ToastController ) { }
 
 	async displayLoader(message: string) {
 		this.loading = await this.loadingCtrl.create({
@@ -36,6 +37,14 @@ export class UiService {
 		  });
 		  await alert1.present();
 	}
-
+	async presentToast(msg) {
+		const toast = await this.toast.create({
+		  message: msg,
+		  position: 'middle',
+		  duration: 1000,
+		  color: 'dark',
+		});
+		toast.present();
+	  }
 
 }

@@ -1,16 +1,16 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar color="medium" no-border>
     <ion-title translate>items.title</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content scrollX="true">
+<ion-content color="medium" scrollX="true">
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-item>
-          <ion-label color="medium" position="floating" translate>items.price</ion-label>
-          <ion-input class="input" type="text" debounce="500" [ngModel]="this.price | number:'1.2-2'" (ngModelChange)="this.price=$event" (click)="mbscNumpad.instance.show()" placeholder="0.00" color="medium" readonly></ion-input>
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked" translate>items.price</ion-label>
+          <ion-input class="price-input" type="text" debounce="500" [ngModel]="this.price | number:'1.2-2'" (ngModelChange)="this.price=$event" (click)="mbscNumpad.instance.show()" placeholder="0.00" color="medium" readonly></ion-input>
           <mbsc-form-group inset>
             <!-- <div>
                 <input type="number" data-role="stepper" [(ngModel)]="amount" min="0" max="2000" step="10" (click)="mbscNumpad.instance.show()" readonly />
@@ -21,22 +21,22 @@
           <!-- <ion-label color="medium" position="floating">Enter Price 0.00</ion-label>
           <ion-input type="number" [(ngModel)]="price"></ion-input> -->
         </ion-item>
-        <ion-item>
-          <ion-label color="medium" position="floating" translate>items.name_label</ion-label>
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked" translate>items.name_label</ion-label>
           <ion-input type="text" [(ngModel)]="description"></ion-input>
         </ion-item>
         <ion-grid>
           <ion-row>
             <ion-col col-12 col-sm>
               <div>
-                <ion-button expand="block" class="addbtn" shape="round" color="medium" (click)="saveItem()" [disabled]="!price || price <= 0" translate>items.add_btn
+                <ion-button expand="block" class="addbtn" color="primary" shape="round" (click)="saveItem()" [disabled]="!price || price <= 0" translate>items.add_btn
                   <ion-icon slot="end" name="add-circle"></ion-icon>
                 </ion-button>
               </div>  
             </ion-col>
             <ion-col col-12 col-sm>
               <div>  
-                <ion-button expand="block" fill="outline" shape="round" color="medium" (click)="close()" translate>
+                <ion-button expand="block" color="primary"  shape="round" (click)="close()" translate>
                   items.cancel
                 </ion-button>
               </div> 
@@ -47,22 +47,27 @@
           <ion-row>
             <ion-col col-12 col-sm>
               <div>  
-                <ion-button expand="block" shape="round" class="addbtn" color="medium" fill="outline" [disabled]="!price || price <= 0" (click)="storeUserDefined()" translate>
+                <ion-button expand="block" shape="round" class="addbtn" color="primary" [disabled]="!price || price <= 0" (click)="storeUserDefined()" translate>
                   items.save<ion-icon slot="end" name="cloud-done"></ion-icon>
                 </ion-button>
-                <ion-searchbar color="light" class="bar" placeholder="{{'items.search' | translate}}" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+                <ion-searchbar class="primary-serach-input" color="primary" mode="md" placeholder="{{'items.search' | translate}}" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
               </div>
-              <ion-list>
-                <ion-item-sliding *ngFor="let item of setItems" detail>
-                  <ion-item>
-                    <ion-label color="dark" text-wrap>
+              <ion-list class="cloud-list">
+                <ion-item-sliding class="cloud-item" *ngFor="let item of setItems" detail>
+                  <ion-item color="primary" lines="none">
+                    <ion-label text-wrap>
                       <p class="item-desc ion-text-wrap">{{ item.description }}</p>
-                      <ion-text color="dark">{{ item.price | number: '1.2-2'}}</ion-text>
+                      <ion-text >{{ item.price | number: '1.2-2'}}</ion-text>
                     </ion-label>
-                    <div slot="end">
-                      <ion-button slot="icon-only" color="medium" fill="outline" (click)="saveFromUserDefined(item)"><ion-icon name="checkmark-circle-outline"></ion-icon></ion-button>
-                      <ion-button slot="icon-only" color="medium" fill="outline" (click)="editItem(item)"><ion-icon name="pencil"></ion-icon></ion-button>
-                    </div>
+                    <!-- <div slot="end"> -->
+                      <!-- <ion-button  slot="end" color="light"  (click)="saveFromUserDefined(item)"> -->
+                      <ion-icon  slot="end" color="light" (click)="saveFromUserDefined(item)"
+                      name="checkmark-circle-outline"></ion-icon>
+                      <!-- </ion-button> -->
+                      <!-- <ion-button slot="end" color="light" (click)="editItem(item)"> -->
+                      <ion-icon  slot="end"  color="light" name="pencil" (click)="editItem(item)"></ion-icon>
+                      <!-- </ion-button> -->
+                    <!-- </div> -->
                   </ion-item>
                   <ion-item-options side="end">
                     <ion-item-option color="danger" (click)="deleteItem(item)" translate>items.delete</ion-item-option>

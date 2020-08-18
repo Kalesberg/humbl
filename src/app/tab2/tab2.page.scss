@@ -1,48 +1,9 @@
-// .item-total{
-//     text-align: right;
-//     color: var(--ion-color-medium);
-//     font-weight: bold;
-//     font-size: 1.8em;
-//     margin-top: 0px;
-// }
-
-// ion-icon {
-//     padding-top: 4px;
-//     padding-bottom: 4px;
-// }
-
-// .item-desc {
-//     color: var(--ion-color-medium);
-//     font-size: 1.2em;
-//     font-weight: bold;
-//     margin-right: 12px;
-// }
-
-// .item-desc-desc {
-//     font-size: 1.2em;
-//     text-transform: capitalize;
-//     color: #333333;
-// }
-// ion-button {
-//     text-transform: inherit;
-//     font-size: 1.2em;
-// }
-
-// .current-coin {
-//     text-align: right;
-//     text-transform: capitalize;
-//     margin: 0px;
-//     color: #333333;
-// }
-
-// .total {
-//      --box-shadow:none;
-// }
-
 .wrapper {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    justify-content: center;
+    align-items: center;
+
 }
 .card-title {
     letter-spacing: 0.4px;
@@ -51,24 +12,6 @@
     font-weight: 700;
     margin-bottom: 20px;
 }
-.pcard-btn-wrapper{
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    margin-top: 25px;
-}
-.share-btn {
-    height: 55px;
-    width: 90%;
-    max-width: 250px;
-    --border-radius: 18px;
-    --box-shadow: none;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.54px;
-}
-
 .pinput-item {
     max-width: 600px;
     --placeholder-font-weight: 700;
@@ -85,6 +28,16 @@
 }
 .pcard-item-notes {
     height: 100%;
+}
+.footer-btn {
+    text-transform: uppercase;
+    box-shadow: none;
+    --box-shadow: none;
+    min-height: 45px;
+}
+.footer-grid {
+    width: 100%;
+    max-width: 600px;
 }
 @media screen and (max-width: 420px) { 
     .card-title {

@@ -93,6 +93,10 @@ export class SettingsService {
     return firebase.firestore().collection('userProfile').doc(userId).set({ email: email, isAgent: isAgent }, { merge: true });
   }
 
+  updateBusinessProfile(businessData: any ): Promise<any> {
+    return this.businessProfile.update(businessData);
+  }
+
   updatePassword(newPassword: string, oldPassword: string): Promise<any> {
     const credential: firebase.auth.AuthCredential = firebase.auth.EmailAuthProvider.credential(
       this.currentUser.email,

@@ -1,22 +1,31 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="medium">
+  <ion-toolbar class="profile-toolbar" color="medium">
     <ion-buttons slot="start">
       <ion-back-button  defaultHref="/grid"></ion-back-button>
     </ion-buttons>
-    <ion-row class="ion-justify-content-between ion-align-items-center">
-      <!-- <ion-icon name="arrow-back-outline" size="large" (click)="toHome()"></ion-icon> -->
-      <ion-title>Messages</ion-title>
-      <!-- <div class="update-container">
-        <ion-icon name="pencil-sharp"></ion-icon>
-      </div> -->
-    </ion-row>
+    <ion-title class="">Messages</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>{{this.userProfile?.businessName}}</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img *ngIf="this.userProfile?.logoUrl" [src]="this.userProfile?.logoUrl" />
+          <img *ngIf="!this.userProfile?.logoUrl" src="../../assets/avatar.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-content color="medium" class="ion-padding">
+  <div class="wrapper">
+    <div class="content">
 
-<ion-content>
-  <!-- Top banner on initial page load -->
-  <div class="container">
-    <ion-searchbar color="transparent" showCancelButton="never" debounce="600" placeholder="{{'search.title' | translate}}" [(ngModel)]="searchTerm" (ionChange)="getUsers()"></ion-searchbar>
+    <ion-searchbar class="primary-serach-input" color="primary" mode="md" showCancelButton="never" 
+      debounce="600" placeholder="{{'search.title' | translate}}" [(ngModel)]="searchTerm" 
+      (ionChange)="getUsers()">
+    </ion-searchbar>
     <ion-radio-group [(ngModel)]="this.searchFilter" (ionChange)="changeSearchFilter()">
       <ion-row>
         <ion-col size="12">
@@ -41,7 +50,7 @@
       </ion-row>
     </ion-radio-group>
     <ion-list *ngIf="this.users !== []">
-      <ion-item *ngFor="let user of users" lines="none" (click)="chatUser(user)">
+      <!-- <ion-item *ngFor="let user of users" lines="none" (click)="chatUser(user)">
         <ion-avatar slot="start">
           <img *ngIf="user?.profileUrl" src="{{user?.profileUrl }}"/>
           <img *ngIf="!user?.profileUrl" src="../../assets/avatar.png"/>
@@ -51,9 +60,23 @@
           <p>{{user?.message}}</p>
           <ion-badge color="medium" slot="end" *ngIf="user?.unread_count > 0">{{user?.unread_count}}</ion-badge>
         </div>
+      </ion-item> -->
+      <ion-item color="medium" lines="none" class="detail-list-item" 
+        *ngFor="let user of users" (click)="chatUser(user)">
+        <ion-thumbnail slot="start" class="detail-thumbnail">
+          <img *ngIf="user?.profileUrl" src="{{user?.profileUrl }}"/>
+          <img *ngIf="!user?.profileUrl" src="../../assets/avatar.png"/>
+        </ion-thumbnail>
+        <ion-label>
+          <h3 class="detail-item-title">{{user?.businessName || (user?.firstname || "") + " " + (user?.lastname || "") }}</h3>
+          <p class="detail-item-text">{{user?.message}}</p>
+        </ion-label>
+        <ion-badge color="medium" class="list-badge" slot="end" *ngIf="user?.unread_count > 0">{{user?.unread_count}}</ion-badge>
       </ion-item>
     </ion-list>
+
   </div>
+</div>
 </ion-content>
 
 <!-- Tabbed nav bar -->

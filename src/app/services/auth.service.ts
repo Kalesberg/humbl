@@ -120,6 +120,7 @@ export class AuthService {
             else {
               url= "/grid";
             }
+            this.appHelperService.currentUser$.next(userData.data());
             await this.storage.set('humble_user', userData.data());
           }
         }

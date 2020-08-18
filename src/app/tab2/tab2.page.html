@@ -7,11 +7,12 @@
     <ion-buttons slot="end">
       <div class="profile-info">
         <div class="profile-text">
-          <h3>Maria C.</h3>
+          <h3>{{this.userProfile?.businessName}}</h3>
           <p>HUBS AGENT #4567</p>
         </div>
         <ion-thumbnail class="thumb-image">
-          <img src="../../assets/Picture6@2x.png" />
+          <img *ngIf="this.userProfile?.logoUrl" [src]="this.userProfile?.logoUrl" />
+          <img *ngIf="!this.userProfile?.logoUrl" src="../../assets/avatar.png" />
         </ion-thumbnail>
       </div>
     </ion-buttons>
@@ -20,7 +21,7 @@
 
 <ion-content color="medium" class="ion-padding">  
   <!-- <ion-list> -->
-    <ion-item color="primary" *ngFor="let item of items">
+    <!-- <ion-item color="primary" *ngFor="let item of items">
       <div slot="end">
         <ion-item lines="none">
           <ion-button size="small" color="medium" (click)="saveItem(item)"><ion-icon name="add"></ion-icon></ion-button>
@@ -32,89 +33,52 @@
         <h3 class="item-desc" *ngIf="this.currency != 'USD'">{{ item.price | number: '1.2-2'}}</h3>
       </ion-text>
       <ion-label class="item-desc-desc" text-wrap>{{ item.description }}</ion-label>
-    </ion-item>
+    </ion-item> -->
   <!-- </ion-list> -->
   <div class="wrapper">
-    <div class="content">
-      <h3 class="card-title card-title2">Enter Item</h3>
-      <ion-searchbar class="primary-serach-input" color="primary" mode="md" placeholder="Search Saved Items"></ion-searchbar>
-      <ion-item color="medium" class="primary-card-item pinput-item" lines="none">
-        <ion-label position="stacked">Menu Item </ion-label>
-        <ion-input placeholder="Enter Name"></ion-input>
+    <ion-card color="primary" class="primary-card" *ngIf="items && items.length>0">
+      <ion-item color="primary" class="primary-card-item" lines="none" *ngFor="let item of items">
+        <ion-label class="pcard-item-label">
+          <h3>{{ item.description }}</h3>
+          <p *ngIf="this.currency === 'USD'">{{ item.price | currency: 0}}</p>
+          <p *ngIf="this.currency != 'USD'">{{ item.price | number: '1.2-2'}}</p>
+        </ion-label>
         <ion-note slot="end" class="pcard-item-notes">
-          <ion-icon name="remove-circle-outline" class="pcard-item-icon"></ion-icon>
-          <span>2</span>
-          <ion-icon name="add-circle-outline" class="pcard-item-icon"></ion-icon>
+          <ion-icon name="remove-circle-outline" class="pcard-item-icon" (click)="deleteItem(item)"></ion-icon>
+          <span>1</span>
+          <ion-icon color="medium" name="add-circle-outline" (click)="saveItem(item)" class="pcard-item-icon"></ion-icon>
         </ion-note>
       </ion-item>
-      <h3 class="card-title">Customer order</h3>
-      <ion-card color="primary" class="primary-card">
-        <ion-item color="primary" class="primary-card-item" lines="none">
-          <ion-label class="pcard-item-label">
-            <h3>Beef Taco</h3>
-            <p>$2.00</p>
-          </ion-label>
-          <ion-note slot="end" class="pcard-item-notes">
-            <ion-icon name="remove-circle-outline" class="pcard-item-icon"></ion-icon>
-            <span>2</span>
-            <ion-icon color="medium" name="add-circle-outline" class="pcard-item-icon"></ion-icon>
-          </ion-note>
-        </ion-item>
-        <ion-item color="primary" class="primary-card-item" lines="none">
-          <ion-label class="pcard-item-label">
-            <h3>Chicken Taco</h3>
-            <p>$2.00</p>
-          </ion-label>
-          <ion-note slot="end" class="pcard-item-notes">
-            <ion-icon name="remove-circle-outline" class="pcard-item-icon"></ion-icon>
-            <span>1</span>
-            <ion-icon color="medium" name="add-circle-outline" class="pcard-item-icon"></ion-icon>
-          </ion-note>
-        </ion-item>
-        <ion-item color="primary" class="primary-card-item" lines="none">
-          <ion-label class="pcard-item-label">
-            <h3>Jarritos</h3>
-            <p>$2.00</p>
-          </ion-label>
-          <ion-note slot="end" class="pcard-item-notes">
-            <ion-icon name="remove-circle-outline" class="pcard-item-icon"></ion-icon>
-            <span>2</span>
-            <ion-icon color="medium" name="add-circle-outline" class="pcard-item-icon"></ion-icon>
-          </ion-note>
-        </ion-item>
-        <ion-item color="primary" class="primary-card-item-total" lines="none">
-          <ion-label>
-            <h3>Total</h3>
-          </ion-label>
-          <ion-note slot="end">
-            <span>$10.00</span>
-          </ion-note>
-        </ion-item>
-      </ion-card>
-      <div class="pcard-btn-wrapper">
-        <ion-button color="silver" class="share-btn" (click)="sendLink()" >
-          Send Payment link
-        </ion-button>
-      </div>
-    </div>
+      <ion-item color="primary" class="primary-card-item-total" lines="none">
+        <ion-label>
+          <h3 translate>pos.total</h3>
+        </ion-label>
+        <ion-note slot="end">
+          <span *ngIf="this.currency === 'USD'" translate>{{ this.sum | currency: 0 }}</span>
+          <span *ngIf="this.currency != 'USD'" translate><span>{{ this.currency }}</span> {{ this.sum | number: '1.2-2' }}</span>
+        </ion-note>
+      </ion-item>
+    </ion-card>
   </div>
 </ion-content>  
 <ion-footer class="ion-no-border">
   <ion-toolbar color="medium">
-    <div class="ion-padding">
-      <h2 class="item-total" *ngIf="this.currency === 'USD'" translate>pos.total <span>{{ this.sum | currency: 0 }}</span></h2>
+    <!-- <div class="ion-padding"> -->
+      <!-- <h2 class="item-total" *ngIf="this.currency === 'USD'" translate>pos.total <span>{{ this.sum | currency: 0 }}</span></h2>
       <h2 class="item-total" *ngIf="this.currency != 'USD'" translate>pos.total <span>{{ this.currency }}</span> {{ this.sum | number: '1.2-2' }}</h2>
-      <p *ngIf="this.coin" class="current-coin" translate>pos.method {{this.coin}}</p>
-      <ion-grid>
+      <p *ngIf="this.coin" class="current-coin" translate>pos.method {{this.coin}}</p> -->
+      <ion-grid class="footer-grid">
         <ion-row>
           <ion-col>
-            <ion-button id="add" fill="outline" color="silver" shape="round" expand="block" (click)="addItem()" translate>items.add_btn</ion-button>
+            <ion-button id="add" class="footer-btn" color="primary" shape="round" expand="block" 
+            (click)="addItem()" translate>items.add_btn</ion-button>
           </ion-col>
           <ion-col>
-            <ion-button color="silver" expand="block" shape="round" [disabled]="this.sum <= 0" class="total" (click)="this.selectCoin()" translate>pos.total</ion-button>
+            <ion-button color="light" expand="block" class="footer-btn" shape="round" [disabled]="this.sum <= 0" 
+            class="total" (click)="this.selectCoin()" translate>pos.total</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
-    </div>
+    <!-- </div> -->
   </ion-toolbar>
 </ion-footer>
