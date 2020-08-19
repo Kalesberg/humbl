@@ -1,97 +1,208 @@
-.business-logo{
-    max-width: 100px;
-    float: right;
+// .business-logo{
+//     max-width: 100px;
+//     float: right;
+// }
+
+// p {
+//     margin: 0px;
+//     font-size: 1em;
+//     font-weight: 600;
+// }
+
+// .alt-symbol {
+//     // margin-left: 95px;
+//     margin-top: 12px;
+//     font-size: 1em;
+//     font-size: 0.9em;
+//     text-align: center;
+//     font-weight: 700;
+//     color: var(--ion-color-medium); 
+// }
+
+// .light{
+//     color: var(--ion-color-medium);
+//     font-weight: 700; 
+// }
+
+// h2{
+//     margin-top: 5px;
+// }
+
+// .light {
+//     margin: 0px;
+// }
+
+// .line{
+//     padding-top:7px;
+//     // border-bottom: 1px solid #999999;
+// }
+
+// .space{
+//     margin-top: 30px;
+// }
+
+// .input {
+//     font-size: 1em;
+//     text-align: center;
+//     font-weight: 700;
+//     // border-bottom: 1px solid var(--ion-color-primary);
+// }
+
+// .input2 {
+//     font-size: 1.4em;
+//     text-align: center;
+//     font-weight: 700;
+//     // border-bottom: 1px solid var(--ion-color-primary);
+// }
+
+// .change {
+//     font-size: 1.4em;
+//     font-weight: 700;
+//     margin-left: 0;
+// }
+
+// .symbol {
+//     position: absolute;
+//     left: 0;
+//     //top: 80px;
+//     right: 0;
+//     font-size: 1.4em;
+//     font-weight: 700;
+// }
+
+// .center{
+//     margin-top: 10px;
+//     font-size: 1.4em;
+//     text-align: center;
+// }
+
+// ion-text{
+//     margin: auto;
+// }
+
+// ion-button{
+//     display: block;
+//     margin: auto;
+//     max-width: 70%;
+// }
+
+// ion-input {
+//     display: block;
+//     margin: auto;
+//     --placeholder-color: black;
+//     --background: #dfdfdf;
+//     max-width: 80%;
+//     //margin-left: 20px;
+//     border-radius: 5px;
+// }
+
+.review-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-p {
-    margin: 0px;
-    font-size: 1em;
-    font-weight: 600;
+.transaction-card {
+    padding: 20px 30px;
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: none;
 }
-
-.alt-symbol {
-    // margin-left: 95px;
-    margin-top: 12px;
-    font-size: 1em;
-    font-size: 0.9em;
-    text-align: center;
+.card{
+    box-shadow: none !important;
+    border-radius: 18px;
+}
+.logo-img {
+    width: 100%;
+}
+.summary-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+.summary-total{
+    font-size: 20px;
     font-weight: 700;
-    color: var(--ion-color-medium); 
+    margin-top: 20px;
 }
-
-.light{
-    color: var(--ion-color-medium);
-    font-weight: 700; 
-}
-
-h2{
-    margin-top: 5px;
-}
-
-.light {
-    margin: 0px;
-}
-
-.line{
-    padding-top:7px;
-    // border-bottom: 1px solid #999999;
-}
-
-.space{
-    margin-top: 30px;
-}
-
-.input {
-    font-size: 1em;
-    text-align: center;
-    font-weight: 700;
-    // border-bottom: 1px solid var(--ion-color-primary);
-}
-
-.input2 {
-    font-size: 1.4em;
-    text-align: center;
-    font-weight: 700;
-    // border-bottom: 1px solid var(--ion-color-primary);
-}
-
-.change {
-    font-size: 1.4em;
-    font-weight: 700;
-    margin-left: 0;
-}
-
-.symbol {
-    position: absolute;
-    left: 0;
-    //top: 80px;
-    right: 0;
-    font-size: 1.4em;
-    font-weight: 700;
-}
-
-.center{
+.transation-summary {
+    width: 70%;
     margin-top: 10px;
-    font-size: 1.4em;
+}
+.transation-barcode{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+}
+.receive-text {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+.total-amt {
+    display: flex;
+    align-items: center;
+}
+.change-due-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.due-card {
+    background: var(--ion-color-primary);
+    max-width: 450px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    border: 3px solid #ffffff;
+}
+.due-title, .due-amt{
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 3px 0px;
+}
+.due-amt {
+    font-weight: normal;
+}
+.addbtn {
+    width: 100%;
+    max-width: 450px;
+    text-transform: uppercase;
+    box-shadow: none;
+    --box-shadow: none;
+    min-height: 45px;
+    margin-top: 20px;
 }
 
-ion-text{
-    margin: auto;
-}
+@media screen and (max-width: 650px) {     
+    .summary-wrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .transation-summary {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .transation-barcode{
+        width: 100%;
+    }
+  }
 
-ion-button{
-    display: block;
-    margin: auto;
-    max-width: 70%;
-}
-
-ion-input {
-    display: block;
-    margin: auto;
-    --placeholder-color: black;
-    --background: #dfdfdf;
-    max-width: 80%;
-    //margin-left: 20px;
-    border-radius: 5px;
-}
+  @media screen and (max-width: 650px) { 
+    .transaction-card {
+        padding: 15px 10px;
+    }
+  }

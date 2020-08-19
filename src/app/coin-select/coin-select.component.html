@@ -1,10 +1,23 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="medium">
     <ion-title translate>coin.title</ion-title>
   </ion-toolbar>
-</ion-header>
-<ion-content padding>
-  <ion-list>
+</ion-header> -->
+<ion-content color="medium" class="ion-padding">
+  <div class="wrapper">
+    <h3 class="title-text" translate>coin.title</h3>
+    <div class="content">
+      <div class="card-content" (click)="selectCoin('cash')">
+        <ion-icon class="card-icon" slot="start" color="light" name="cash"></ion-icon>
+        <ion-label class="card-text" translate>coin.cash</ion-label>
+      </div>
+      <div class="card-content" (click)="selectCoin('card')">
+        <ion-icon class="card-icon" slot="start" color="light" name="card"></ion-icon>
+        <ion-label class="card-text" translate>coin.card</ion-label>
+      </div>
+    </div>
+  </div>
+  <!-- <ion-list>
     <ion-item (click)="selectCoin('cash')" text-wrap>
       <ion-label translate>coin.cash</ion-label>
       <ion-icon slot="start" color="medium" name="cash"></ion-icon>
@@ -20,5 +33,5 @@
     <ion-button translate fill="outline" shape="round" color="medium" expand="block" (click)="close()">
       coin.close
     </ion-button>
-  </div> 
+  </div>  -->
 </ion-content>

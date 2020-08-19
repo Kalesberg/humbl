@@ -28,6 +28,6 @@ export class TextOrderPage implements OnInit {
   }
 
   sendLink() {
-    this.navController.navigateForward('merchant/order-chat')
+    // this.navController.navigateForward('merchant/chat')
   }
 }

@@ -111,15 +111,15 @@ export class AuthService {
         if (user && user.uid && user.emailVerified) {
           let userData = await this.settingsService.getUserProfile(user.uid).get();
           if(userData && userData.data()){
-            if(userData.data().isAgent){
-              if(isLogin)
-                url= "/agent-terms";
-              else
-                url= "/agents";
-            }
-            else {
+            // if(userData.data().isAgent){
+            //   if(isLogin)
+            //     url= "/agent-terms";
+            //   else
+            //     url= "/agents";
+            // }
+            // else {
               url= "/grid";
-            }
+            // }
             this.appHelperService.currentUser$.next(userData.data());
             await this.storage.set('humble_user', userData.data());
           }

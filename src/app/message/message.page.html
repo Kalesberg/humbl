@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="medium">
     <ion-buttons slot="start">
       <ion-back-button  defaultHref="/merchant/messages"></ion-back-button>
@@ -7,52 +7,101 @@
       <img class="logo" src='../../assets/hubs.png'>
     </ion-title>
   </ion-toolbar>
+</ion-header> -->
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/merchant/messages"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Text Orders</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>{{this.userProfile?.businessName}}</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img *ngIf="this.userProfile?.logoUrl" [src]="this.userProfile?.logoUrl" />
+          <img *ngIf="!this.userProfile?.logoUrl" src="../../assets/avatar.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content [scrollEvents]="true" #content>
+<ion-content scrollX="false" color="medium" scrollY="false" color="medium" #content>
+  <div class="main-content">
+    <div class="content-wrapper">
+      <div class="user-profile">
+        <ion-thumbnail class="user-image">
+          <img *ngIf="this.userAvatar" src="{{ this.userAvatar }}"/>
+          <img *ngIf="!this.userAvatar" src="../../assets/avatar.png"/>
+        </ion-thumbnail>
+        <h3 class="profile-name">{{this.userName}}</h3>
+        <span class="profile-date">{{this.toUserProfile?.username}}</span>
+        <!-- <span class="profile-date">+1 619-867-5309</span> -->
+      </div>
   <div class="messages" #contentArea>
     <p class="center" *ngIf="startIndex > 0"><span tappable (click)="loadPreviousMessages()">Load previous
         messages</span></p>
     <div *ngFor="let message of messagesToShow; let i=index;">
       <div *ngIf="isSender(message) && ((i>0 && !isSender(messagesToShow[i-1])) || i==0)" class="userbox right">
-        <h3>{{ this.loggedInUserName }}</h3>  
+        <!-- <h3>{{ this.loggedInUserName }}</h3>  
         <ion-avatar slot="start">
           <img *ngIf="this.loggedInUserAvatar" src="{{ this.loggedInUserAvatar }}"/>
           <img *ngIf="!this.loggedInUserAvatar" src="../../assets/avatar.png"/>
-        </ion-avatar>
+        </ion-avatar> -->
+        <ion-item class="user-item" lines="none" color="primary">
+          <ion-thumbnail class="thumb-img" slot="end">
+            <img *ngIf="this.loggedInUserAvatar" src="{{ this.loggedInUserAvatar }}"/>
+            <img *ngIf="!this.loggedInUserAvatar" src="../../assets/avatar.png"/>
+          </ion-thumbnail>
+          <ion-label>
+            <h3 class="profile-name">{{ this.loggedInUserName }} </h3>
+          </ion-label>
+        </ion-item>
       </div>
       <div *ngIf="!isSender(message) && ((i>0 && isSender(messagesToShow[i-1])) || i==0)" class="userbox left">
-        <ion-avatar slot="start">
+        <!-- <ion-avatar slot="start">
           <img *ngIf="this.userAvatar" src="{{ this.userAvatar }}"/>
           <img *ngIf="!this.userAvatar" src="../../assets/avatar.png"/>
         </ion-avatar>
-        <h3>{{ this.userName }}</h3>  
+        <h3>{{ this.userName }}</h3>   -->
+        <ion-item class="user-item" lines="none" color="primary">
+          <ion-thumbnail class="thumb-img" slot="start">
+            <img *ngIf="this.userAvatar" src="{{ this.userAvatar }}"/>
+            <img *ngIf="!this.userAvatar" src="../../assets/avatar.png"/>
+          </ion-thumbnail>
+          <ion-label>
+            <h3 class="profile-name">{{ this.userName }} </h3>
+          </ion-label>
+        </ion-item>
       </div>
       <div *ngIf="isSender(message)" class="chatbox right sender">
-        <div *ngIf="message.type == 'text'">
+        <div class="chatbox-content" *ngIf="message.type == 'text'">
           <p style="margin:0">{{message.message}}</p>
         </div>
-        <div *ngIf="message.type == 'location'" [innerHtml]="message.message"></div>
-        <div *ngIf="message.type == 'contact'" [innerHtml]="message.message"></div>
-        <div *ngIf="message.type == 'image'">
+        <div class="chatbox-content" *ngIf="message.type == 'location'" [innerHtml]="message.message"></div>
+        <div class="chatbox-content" *ngIf="message.type == 'contact'" [innerHtml]="message.message"></div>
+        <div class="chatbox-content" *ngIf="message.type == 'image'">
           <img tappable (click)="enlargeImage(message.message)" src="{{message.message}}" />
         </div>
-        <div *ngIf="message.type == 'video'">
+        <div class="chatbox-content" *ngIf="message.type == 'video'">
           <video controls width="100%">
             <source src="{{message.message}}" type="video/mp4">
           </video>
         </div>
       </div>
       <div *ngIf="!isSender(message)" class="chatbox left">
-        <div *ngIf="message.type == 'text'">
+        <div class="chatbox-content" *ngIf="message.type == 'text'">
           <p style="margin:0">{{message.message}}</p>
         </div>
-        <div *ngIf="message.type == 'location'" [innerHtml]="message.message"></div>
-        <div *ngIf="message.type == 'contact'" [innerHtml]="message.message"></div>
-        <div *ngIf="message.type == 'image'">
+        <div class="chatbox-content" *ngIf="message.type == 'location'" [innerHtml]="message.message"></div>
+        <div class="chatbox-content" *ngIf="message.type == 'contact'" [innerHtml]="message.message"></div>
+        <div class="chatbox-content" *ngIf="message.type == 'image'">
           <img tappable (click)="enlargeImage(message.message)" src="{{message.message}}" />
         </div>
-        <div *ngIf="message.type == 'video'">
+        <div class="chatbox-content" *ngIf="message.type == 'video'">
           <video controls width="100%">
             <source src="{{message.message}}" type="video/mp4">
           </video>
@@ -61,10 +110,21 @@
     </div>
 
   </div>
+</div>  
+<div class="order-icon-wrapper">
+  <div class="order-icon" (click)="textOrder()">
+    <ion-icon color="light" class="key-icon" src="../../assets/keyboard.svg"></ion-icon>
+    <div class="text-wrapper">
+      <span>customer</span>
+      <span>order <ion-icon name="chevron-forward-outline"></ion-icon> </span>
+    </div>
+  </div>
+</div>
+</div>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="medium">
+<ion-footer class="ion-no-border">
+  <ion-toolbar color="primary">
     <ion-item class="bottom_bar">
       <ion-textarea style="margin:0" rows="0" placeholder="Type your message" [(ngModel)]="message">
       </ion-textarea>
