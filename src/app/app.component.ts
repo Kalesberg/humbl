@@ -48,22 +48,14 @@ export class AppComponent {
 
     this.initializeApp();
     this.isDeepLink = false;
-    console.log("call component");
     if (this.platform.is("capacitor")) {
-      this.authCheck().then(async (userStatus) => {
-        if (SplashScreen) {
-          SplashScreen.hide();
-        }
+      this.authCheck().then(async (userStatus) => {        
         if (!this.isDeepLink) {
-          console.log(userStatus, this.uid);
-          if (userStatus && this.uid) {
-            this.router.navigateByUrl('/grid');
-          } else {
-            this.router.navigateByUrl('/home');
-          }
+          this.authService.authCheckAndRedirect();
         }
       });
-    } else {
+    } 
+    else {
       this.authCheck();
     }
 
@@ -177,30 +169,6 @@ export class AppComponent {
     return await alert1.present();
   }
 
-  logOut(): void {
-    this.authService.logoutUser().then( () => {
-      this.user = false;
-      // this.username = "";
-      this.uid = "";
-      this.toggleMenu();
-      this.router.navigateByUrl('/login');
-    });
-  }
-
-  logIn(): void {
-    this.toggleMenu();
-    this.router.navigateByUrl('/login');
-  }
-
-  toProfile(){
-    this.toggleMenu();
-    this.router.navigateByUrl('/merchant/qr');
-  }
-
-  toggleMenu() {
-    this.menuCtrl.toggle();
-  }
-
   authCheck(){
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged((user: firebase.User) => {
@@ -221,16 +189,5 @@ export class AppComponent {
         }
       });
     });
-  }
-
-  async posRedirect() {
-    let qrLocalData= await this.storage.get('barcodestandee');
-    let isQrExist = false;
-    if(qrLocalData){
-      if(qrLocalData.qrData){
-        isQrExist =true;
-      }
-    }
-    this.nav.navigateRoot(isQrExist? '/merchant/qr-standee': '/merchant/qr-dashboard');
   }
 }

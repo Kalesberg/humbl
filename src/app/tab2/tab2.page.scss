@@ -1,40 +1,57 @@
-.item-total{
-    text-align: right;
-    color: var(--ion-color-medium);
-    font-weight: bold;
-    font-size: 1.8em;
-    margin-top: 0px;
-}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 
-ion-icon {
-    padding-top: 4px;
-    padding-bottom: 4px;
 }
-
-.item-desc {
-    color: var(--ion-color-medium);
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-right: 12px;
+.card-title {
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
-
-.item-desc-desc {
-    font-size: 1.2em;
-    text-transform: capitalize;
-    color: #333333;
+.pinput-item {
+    max-width: 600px;
+    --placeholder-font-weight: 700;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 20px 0px 30px;
+    border-bottom: 2px solid #ffffff;
+    --min-height: 100px;
+    ion-label {
+        font-size: 32px;
+        font-weight: 500;
+        color: #ffffff;
+    }    
 }
-ion-button {
-    text-transform: inherit;
-    font-size: 1.2em;
+.pcard-item-notes {
+    height: 100%;
 }
-
-.current-coin {
-    text-align: right;
-    text-transform: capitalize;
-    margin: 0px;
-    color: #333333;
+.footer-btn {
+    text-transform: uppercase;
+    box-shadow: none;
+    --box-shadow: none;
+    min-height: 45px;
 }
-
-.total {
-     --box-shadow:none;
+.footer-grid {
+    width: 100%;
+    max-width: 600px;
+}
+@media screen and (max-width: 420px) { 
+    .card-title {
+        font-size: 18px;
+    }    
+    .pinput-item{
+        font-size: 18px;
+        margin: 20px 0px 30px;
+        --min-height: 80px;
+        ion-label {
+            font-size: 18px;
+        }
+    }
+    .card-title2 {
+        margin-bottom: 10px;
+    }
 }

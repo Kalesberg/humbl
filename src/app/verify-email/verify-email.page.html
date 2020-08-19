@@ -1,22 +1,23 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar color="medium">
-    <!-- <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tab1"></ion-back-button>
-    </ion-buttons> -->
-    <!-- <ion-title>Sign Up</ion-title> -->
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
+<ion-content color="medium">
+  <div class="login-content">
   <img class="logo" src='../../assets/humbl-white.png'>
-  <div class="content">
-    <p translate>verify.check</p>
-    <p (click)="authService.sendEmailVerificationLink(userData.email, false)">
-    <!-- <p (click)="authService.SendVerificationMail()"> -->
-      <b translate>verify.resend</b>
-    </p>
-    <p routerLink="/login">
-      <b translate>verify.login</b>
-    </p>
+  <!-- <div class="content"> -->
+    <ion-icon color="light" class="success-icon" name="checkmark-circle-outline"></ion-icon>
+    <p class="msg-text" translate>verify.check</p>
+    <!-- <p (click)="authService.sendEmailVerificationLink(userData.email, false)">
+      <b>verify.resend</b>
+    </p> -->
+    <div class="btn-content">
+      <ion-button class="form-submit-btn" routerLink="/login" translate>
+        verify.login
+      </ion-button>
+      <ion-button class="form-submit-btn resend-btn"
+      (click)="authService.sendEmailVerificationLink(userData.email, false)" translate>
+        verify.resend
+      </ion-button>
+    </div>    
+    <!-- <p routerLink="/login">
+      <b>verify.login</b>
+    </p> -->
   </div>
 </ion-content>

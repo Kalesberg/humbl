@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Transaction Details</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>{{this.userProfile?.businessName}}</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img *ngIf="this.userProfile?.logoUrl" [src]="this.userProfile?.logoUrl" />
+          <img *ngIf="!this.userProfile?.logoUrl" src="../../assets/avatar.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <div class="wrapper">
+    <div class="content">
+    <ion-item color="medium" lines="none" class="detail-list-item">
+      <ion-thumbnail slot="start" class="detail-thumbnail">
+        <img src="../../assets/gallery/james-resly-_H5Tnj7e1hc-unsplash-1@2x.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="detail-item-title">SHAWNA C.</h3>
+        <p class="detail-item-text">Transaction ID: 443eff66</p>
+        <p class="detail-item-text">August 4, 2020</p>
+      </ion-label>
+      <ion-note slot="end" class="detail-item-notes">
+        <ion-button color="primary" class="detail-item-forward-btn" (click)="gotoTransactionSummary()">
+          <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-note>
+    </ion-item>
+    <ion-item color="medium" lines="none" class="detail-list-item">
+      <ion-thumbnail slot="start" class="detail-thumbnail">
+        <img src="../../assets/gallery/james-resly-_H5Tnj7e1hc-unsplash-1@2x.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="detail-item-title">Marina S.</h3>
+        <p class="detail-item-text">Transaction ID: 546iee56</p>
+        <p class="detail-item-text">August 4, 2020</p>
+      </ion-label>
+      <ion-note slot="end" class="detail-item-notes">
+        <ion-button color="primary" class="detail-item-forward-btn" (click)="gotoTransactionSummary()">
+          <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-note>
+    </ion-item>
+    <ion-item color="medium" lines="none" class="detail-list-item">
+      <ion-thumbnail slot="start" class="detail-thumbnail">
+        <img src="../../assets/gallery/james-resly-_H5Tnj7e1hc-unsplash-1@2x.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3 class="detail-item-title">Ravi C.</h3>
+        <p class="detail-item-text">Transaction ID: 092dld98</p>
+        <p class="detail-item-text">August 4, 2020</p>
+      </ion-label>
+      <ion-note slot="end" class="detail-item-notes">
+        <ion-button color="primary" class="detail-item-forward-btn" (click)="gotoTransactionSummary()">
+          <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-note>
+    </ion-item>
+  </div>
+</div>
+</ion-content>

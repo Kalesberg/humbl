@@ -82,7 +82,19 @@ export class SettingsService {
   }
 
   updateSignupemail(userId, email){
-    return firebase.firestore().doc(`/businessProfile/${userId}`).set({ email: email },{merge: true});
+    return firebase.firestore().doc(`/businessProfile/${userId}`).set({ email: email }, { merge: true });
+  }
+
+  addBusinessProfile(userId: string , email: string ) {
+    return firebase.firestore().collection('businessProfile').doc(userId).set({ email: email }, { merge: true });
+  }
+
+  addUserProfile(userId, email, isAgent){
+    return firebase.firestore().collection('userProfile').doc(userId).set({ email: email, isAgent: isAgent }, { merge: true });
+  }
+
+  updateBusinessProfile(businessData: any ): Promise<any> {
+    return this.businessProfile.update(businessData);
   }
 
   updatePassword(newPassword: string, oldPassword: string): Promise<any> {

@@ -44,6 +44,7 @@ export class Tab2Page {
         .get()
         .then( userProfileSnapshot => {
           this.userProfile = userProfileSnapshot.data();
+          console.log(this.userProfile)
           if(this.userProfile){
             this.businessEmail = this.userProfile.businessEmail;
             this.currency = this.userProfile.currency;

@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="profile-toolbar" color="medium">
     <ion-buttons slot="start">
-      <ion-back-button  defaultHref="/grid"></ion-back-button>
+      <ion-back-button  defaultHref="/agents"></ion-back-button>
     </ion-buttons>
     <ion-title class="">Loan Products</ion-title>
     <ion-buttons slot="end">
@@ -39,7 +39,7 @@
         <ion-checkbox mode="md" slot="start"></ion-checkbox>
         I Agree
       </ion-item>
-      <ion-button color="silver" class="reply-btn">Go to application</ion-button>
+      <ion-button color="silver" class="reply-btn" (click)="signLoanForn()">Go to application</ion-button>
     </ion-col>
   </ion-row>
 </ion-grid>

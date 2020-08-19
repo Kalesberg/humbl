@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="profile-toolbar" color="medium">
     <ion-buttons slot="start">
-      <ion-back-button  defaultHref="/grid"></ion-back-button>
+      <ion-back-button  defaultHref="agent/receive-money"></ion-back-button>
     </ion-buttons>
     <ion-title class="">Pending pickups</ion-title>
     <ion-buttons slot="end">
@@ -54,7 +54,7 @@
             </ion-row>
           </div>
           <div class="summary-btn">
-            <ion-button color="silver" class="detail-item-forward-btn">
+            <ion-button color="silver" (click)="reciveMoney()" class="detail-item-forward-btn">
               <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
             </ion-button>
           </div>
@@ -86,7 +86,7 @@
             </ion-row>
           </div>
           <div class="summary-btn">
-            <ion-button color="silver" class="detail-item-forward-btn">
+            <ion-button color="silver" (click)="reciveMoney()" class="detail-item-forward-btn">
               <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
             </ion-button>
           </div>

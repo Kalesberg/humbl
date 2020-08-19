@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { SettingsService } from '../services/settings.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-text-order',
@@ -7,12 +9,25 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./text-order.page.scss'],
 })
 export class TextOrderPage implements OnInit {
+  
+  public userProfile: any;
 
-  constructor(private navController: NavController) { }
+  constructor(private navController: NavController, public settingsService: SettingsService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.settingsService
+        .getBusinessProfile()
+        .get()
+        .then( userProfileSnapshot => {
+          this.userProfile = userProfileSnapshot.data();
+        });
+      }
+    });
+  }
 
   sendLink() {
-    this.navController.navigateForward('merchant/chat')
+    this.navController.navigateForward('merchant/order-chat')
   }
 }

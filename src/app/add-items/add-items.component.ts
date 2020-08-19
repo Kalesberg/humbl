@@ -125,7 +125,7 @@ export class AddItemsComponent implements OnInit {
     const toast = await this.toast.create({
       message: this.translate.instant("items.saved"),
       position: 'middle',
-      color: 'dark',
+      color: 'light',
       duration: 1500
     });
     toast.present();

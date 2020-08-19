@@ -2,20 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { SettingsService } from '../services/settings.service';
 import { TranslateService } from '@ngx-translate/core';
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
   styleUrls: ['./account.page.scss'],
 })
-export class AccountPage implements OnInit {
 
+export class AccountPage implements OnInit {
+  public userProfile: any;
   constructor( public toast: ToastController, private alertCtrl: AlertController,
     public settingsService: SettingsService,
     private translate : TranslateService) { }
 
   ngOnInit() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.settingsService
+        .getBusinessProfile()
+        .get()
+        .then( userProfileSnapshot => {
+          this.userProfile = userProfileSnapshot.data();
+        });
+      }
+    });
   }
-
+  
   async updateEmail(): Promise<void> {
     const alert = await this.alertCtrl.create({
       subHeader: this.translate.instant("account.change"),

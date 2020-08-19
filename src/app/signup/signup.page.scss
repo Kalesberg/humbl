@@ -13,13 +13,63 @@
 .form-submit-btn {
     margin: 40px 0px;
 }
-
+.segment-wrapper {
+    border: 3px solid #FFFFFF;
+    border-radius: 14px;
+    // height: 63px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.segment-btn {
+    font-size: 18px;
+    --indicator-color: var(--ion-color-primary);
+    margin: 0px;
+    --color: #ffffff;
+    --background-checked: var(--ion-color-primary);
+    --color-checked: #ffffff;
+    --indicator-height: 0px;
+    min-height: 65px;
+    ion-label {
+        margin: 0px;
+        padding: 0px;
+        font-size: 22px;
+        white-space: normal;
+        font-weight: 700;
+    }
+    p {
+        margin: 0px;
+        padding: 0px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+}
+.sagment-active {
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+}
 @media screen and (max-width: 420px) {
     .logo {
         width: 80%;
     }
     .form-submit-btn {
         margin: 20px 0px;
+    }
+    .segment-wrapper {
+        border: 1px solid #FFFFFF;
+        border-radius: 14px;
+        margin-bottom: 10px;
+    }
+    .segment-btn {
+        font-size: 12px;
+        --indicator-color: var(--ion-color-primary);
+        margin: 0px;    
+        min-height: 45px;
+        ion-label {
+            font-size: 14px;
+        }
+    }
+    .sagment-active {
+        border: 1px solid #ffffff;
     }
 }
 .error-message {    

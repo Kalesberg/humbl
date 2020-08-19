@@ -1,4 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import * as firebase from 'firebase/app';
+import { SettingsService } from '../services/settings.service';
 
 @Component({
   selector: 'app-chat',
@@ -9,6 +12,7 @@ export class ChatPage implements OnInit {
 
   @ViewChild("scrollDiv") scrollDiv: any;
   @ViewChild("messageInput") messageInput: any;
+  public userProfile: any;
 
   public chatMessages: any[]=[{
     fromUserId:"1",
@@ -50,8 +54,23 @@ export class ChatPage implements OnInit {
   public chatUsers: any[];
   public message = '';
   
-  constructor() {}
+  constructor(private navController: NavController,public settingsService: SettingsService) {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.settingsService
+        .getBusinessProfile()
+        .get()
+        .then( userProfileSnapshot => {
+          this.userProfile = userProfileSnapshot.data();
+        });
+      }
+    });
+   }
 
+  textOrder(){
+    this.navController.navigateForward('merchant/text-order')
+  }
+  sendChatMessage(){}
 }

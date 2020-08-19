@@ -1,86 +1,162 @@
-.review-content {
+// ======= Start of iamges review screen design css ======== ///// 
+
+// .review-content {
+//     width: 100%;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-start;
+//     align-items: center;
+// }
+// .user-profile{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     color: #ffffff;
+//     margin-right: 20px;
+// }
+// .user-image {
+//     width: 120px;
+//     height: 122px;
+//     --border-radius: 18px;
+// }
+// .profile-name{
+//     font-size: 1.5em;
+//     font-weight: 700;
+// }
+// .profile-date {
+//     font-size: 1em;
+//     font-weight: 400;
+// }
+// .review-card {
+//     padding: 20px 30px;
+//     width: 100%;
+//     border-radius: 18px;
+//     box-shadow: none;
+// }
+// .review-card-top-content{
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     width: 100%;
+//     img {
+//         width: 30%;
+//     }
+// }
+// .review-star {
+//     padding: 0px;
+//     margin: 0px;
+//     font-size: 30px;
+//     ion-icon {
+//       background: #8E949F;
+//       border-radius: 12px;
+//       padding: 5px;
+//       margin: 3px;
+//     }
+//   }
+// .review-text {
+//     font-size: 18px;
+//     font-weight: 700;
+// }
+// .review-img-wrapper{
+//     width: 100%;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-start;
+//     align-items: center;
+//     flex-wrap: wrap;
+// }
+// .review-item-img{
+//     width: 120px;
+//     height: 122px;
+//     margin: 10px;
+//     border-radius: 18px;
+//     background-repeat: no-repeat !important;
+//     background-position: center !important;
+//     background-size: cover !important;
+// }
+// .reply-btn {
+//     height: 55px;
+//     width: 120px;
+//     --border-radius: 18px;
+//     --box-shadow: none;
+//     margin-top: 30px;
+//     font-size: 16px;
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     letter-spacing: 0.54px;
+// }
+
+// ======= End of iamges review screen design css ======== ///// 
+
+.wrapper {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
-.user-profile{
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
-    margin-right: 20px;
 }
-.user-image {
-    width: 120px;
-    height: 122px;
-    --border-radius: 18px;
-}
-.profile-name{
-    font-size: 1.5em;
-    font-weight: 700;
-}
-.profile-date {
-    font-size: 1em;
-    font-weight: 400;
-}
-.review-card {
-    padding: 20px 30px;
+.content {
     width: 100%;
-    border-radius: 18px;
+    max-width: 700px;
+}
+.card-title {
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.detail-item-forward-btn {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
     box-shadow: none;
 }
-.review-card-top-content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    img {
-        width: 30%;
-    }
+.detail-item-text {
+    white-space: normal;
+}
+.detail-list-item:first-of-type {
+    margin-top: 10px;
 }
 .review-star {
     padding: 0px;
     margin: 0px;
-    font-size: 30px;
+    font-size: 14px;
     ion-icon {
       background: #8E949F;
-      border-radius: 12px;
-      padding: 5px;
-      margin: 3px;
+      border-radius: 5px;
+      padding: 3px;
+      margin: 2px 4px;
     }
   }
-.review-text {
-    font-size: 18px;
-    font-weight: 700;
-}
-.review-img-wrapper{
-    width: 100%;
+.detail-item-notes {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    height: 100%;
 }
-.review-item-img{
-    width: 120px;
-    height: 122px;
-    margin: 10px;
-    border-radius: 18px;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: cover !important;
+.detail-item-title {
+    text-transform: capitalize;
 }
-.reply-btn {
-    height: 55px;
-    width: 120px;
-    --border-radius: 18px;
-    --box-shadow: none;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.54px;
+@media screen and (max-width: 450px) { 
+    .card-title {
+        font-size: 18px;
+    }
+    .detail-item-forward-btn {
+        font-size: 10px;
+    }
+    .detail-item-text {
+        font-size: 12px !important;
+    }
+    .review-star {
+        font-size: 12px;
+        ion-icon {
+            padding: 3px;
+            margin: 2px;
+        }
+      }
+    .detail-thumbnail {
+        height: 75px;
+        width: 75px;
+    }
 }

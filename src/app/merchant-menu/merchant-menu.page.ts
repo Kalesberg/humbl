@@ -40,17 +40,6 @@ export class MerchantMenuPage implements OnInit {
       icon: 'file-tray-full-outline'
     },
     {
-      title: 'reviews',
-      url: '/merchant/reviews',
-      icon: 'star'
-    },
-    {
-      title: 'offers',
-      url: '/merchant/offers',
-      icon: 'pricetag',
-      iconcss:"offertag"
-    },
-    {
       title: 'qr',
       url: '/merchant/qr-dashboard',
       icon: 'qr-code',
@@ -62,55 +51,36 @@ export class MerchantMenuPage implements OnInit {
       icon: 'cog'
     },
     {
+      title: 'merchantprofile',
+      url: '/merchant/merchant-profile',
+      icon: 'card-outline'
+    },
+    {
       title: 'payments',
       url: '/merchant/payment-detail',
       icon: 'card-outline'
     },
     {
       title: 'textorder',
-      url: '/merchant/text-order',
+      url: '/merchant/text-order-details',
       icon: 'chatbubble'
     },
     {
       title: 'transaction',
-      url: '/merchant/transaction-summary',
+      url: '/merchant/transaction-details',
       icon: 'logo-usd'
     },
     {
-      title: 'sendmoney',
-      url: '/merchant/send-money',
-      icon: 'phone-portrait-outline'
+      title: 'reviews',
+      url: '/merchant/reviews',
+      icon: 'star'
     },
     {
-      title: 'receivemoney',
-      url: '/merchant/receive-money',
-      icon: 'mail-outline'
-    },
-    {
-      title: 'exchangemoney',
-      url: '/merchant/exchange-money',
-      icon: 'mail-outline'
-    },
-    {
-      title: 'paybills',
-      url: '/merchant/pay-bills',
-      icon: 'cash-outline'
-    },
-    {
-      title: 'loanproduct',
-      url: '/merchant/loan-products',
-      icon: 'document-text-outline'
-    },
-    {
-      title: 'agentsettings',
-      url: '/merchant/agent-settings',
-      icon: 'settings-outline'
-    },
-    // {
-    //   title: 'agents',
-    //   url: 'http://localhost:8101/home',
-    //   icon: 'person'
-    // }
+      title: 'offers',
+      url: '/merchant/offers',
+      icon: 'pricetag',
+      iconcss:"offertag"
+    }
   ];
   constructor(
     private settingsService: SettingsService,
@@ -156,6 +126,8 @@ export class MerchantMenuPage implements OnInit {
       this.user = false;
       // this.username = "";
       this.uid = "";
+      this.appHelperService.currentUser$.next(null);
+      this.storage.remove('humble_user');
       this.toggleMenu();
       this.router.navigateByUrl('/login');
     });

@@ -5,6 +5,14 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import { HttpClient } from "@angular/common/http";
 import { environment} from "../../environments/environment";
+import { UiService } from './ui-service';
+import { TranslateService } from '@ngx-translate/core';
+import { SettingsService } from './settings.service';
+import { NavController } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+import { AppHelperService } from './app-helper.service';
+import { Storage } from '@ionic/storage';
+const { SplashScreen } = Plugins;
 
 // export interface callback{
 //   uri: string
@@ -23,6 +31,12 @@ export class AuthService {
   constructor(    
     private router: Router,
     private http: HttpClient,
+    private uiService: UiService,
+    private translate : TranslateService,
+    private settingsService: SettingsService, 
+    private navController: NavController,
+    private appHelperService: AppHelperService,
+    private storage: Storage
   ) { }
 
   loginUser(email: string, password: string): Promise<firebase.auth.UserCredential> {
@@ -63,14 +77,22 @@ export class AuthService {
     return firebase.auth().signOut();
   }
 
-  sendEmailVerificationLink(email, isNavigate) {
+  sendEmailVerificationLink(email: string, isNavigate: boolean, isAlert: boolean=false) {
     let observable = this.http
                 .post(environment.apiUrl + 'sendEmailVerificationLink/',
                     {email: email,appType: "merchant" },
-                    { headers: { "Content-Type": "application/json" } });
-    observable.toPromise().then(() => {
-    if(isNavigate)
-      this.router.navigateByUrl('/verify_email');
+                    { headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } });
+    observable.toPromise().then(async () => {
+      this.uiService.dismissLoader();
+      if(isNavigate){
+        this.router.navigateByUrl('/verify_email');
+      }
+      else if(isAlert) {
+        this.uiService.displayAlertMsg(this.translate.instant("login.sent"));
+      }
+    }).catch((err)=>{
+      this.uiService.dismissLoader();
+      console.error(err);
     });
   }
 
@@ -81,6 +103,37 @@ export class AuthService {
         { headers: { "Content-Type": "application/json" } });
 
     return observable.toPromise();
+  }
+
+  authCheckAndRedirect(isLogin: boolean = false){
+    let url = "/home";
+      firebase.auth().onAuthStateChanged(async (user: firebase.User) => {
+        if (user && user.uid && user.emailVerified) {
+          let userData = await this.settingsService.getUserProfile(user.uid).get();
+          if(userData && userData.data()){
+            if(userData.data().isAgent){
+              if(isLogin)
+                url= "/agent-terms";
+              else
+                url= "/agents";
+            }
+            else {
+              url= "/grid";
+            }
+            this.appHelperService.currentUser$.next(userData.data());
+            await this.storage.set('humble_user', userData.data());
+          }
+        }
+        else if(user && !user.emailVerified){
+          await firebase.auth().signOut();
+        }
+        if (SplashScreen) {
+          SplashScreen.hide();
+        }
+        this.uiService.dismissLoader();
+        this.appHelperService.activeUrl = url;
+        this.navController.navigateRoot(url);
+    });
   }
 
 }  

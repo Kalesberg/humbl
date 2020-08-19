@@ -21,7 +21,8 @@
         "exchangemoney": "Exchange Money",
         "paybills": "Pay Bills",
         "loanproduct": "Loan Products",
-        "agentsettings": "Agent Settings"
+        "agentsettings": "Agent Settings",
+        "merchantprofile": "Merchant Profile"
     },
 
     "home": {
@@ -236,7 +237,11 @@
         "reset": "Reset your Password",
         "check_email" : "Check your email for a password reset link"
     },
-
+    "verify" : {
+      "check" : "Please check your email to verify your email address.",
+      "resend" : "Resend Email",
+      "login" : "Log In"
+    },
     "register": {
         "title": "Sign Up",
         "heading": "Create Your Account",

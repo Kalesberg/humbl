@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingsService } from '../services/settings.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-offers',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OffersPage implements OnInit {
 
-  constructor() { }
+  public userProfile: any;
+  constructor(public settingsService: SettingsService) { }
 
   ngOnInit() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.settingsService
+        .getBusinessProfile()
+        .get()
+        .then( userProfileSnapshot => {
+          this.userProfile = userProfileSnapshot.data();
+        });
+      }
+    });
   }
 
 }

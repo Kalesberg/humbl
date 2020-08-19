@@ -25,23 +25,24 @@ export class VerifyEmailPage implements OnInit {
   ionViewWillEnter(){
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        let firstname, lastname, username;
+        // let firstname, lastname, username;
         this.userData = user;
-        this.storage.forEach((value, key) => {
-          if(key === 'firstname'){
-            firstname = value;
-          } else if (key === 'lastname'){
-            lastname = value;
-          } else if (key === 'username'){
-            username = value;
-          }
-        }).then(() => {
-          firebase.firestore().doc(`/userProfile/${user.uid}`).set({firstname, lastname, username, email: user.email}).then(() => {
-            this.storage.remove('firstname');
-            this.storage.remove('lastname');
-            this.storage.remove('username');
-          });
-        })
+        console.log(this.userData)
+        // this.storage.forEach((value, key) => {
+        //   if(key === 'firstname'){
+        //     firstname = value;
+        //   } else if (key === 'lastname'){
+        //     lastname = value;
+        //   } else if (key === 'username'){
+        //     username = value;
+        //   }
+        // }).then(() => {
+        //   firebase.firestore().doc(`/userProfile/${this.userData.uid}`).set({firstname, lastname, username, email: user.email}).then(() => {
+        //     this.storage.remove('firstname');
+        //     this.storage.remove('lastname');
+        //     this.storage.remove('username');
+        //   });
+        // })
       }
     });
   }

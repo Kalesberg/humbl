@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { LoadingController, AlertController, IonSegment } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { AppHelperService } from '../services/app-helper.service';
+import { UiService } from '../services/ui-service';
 
 @Component({
   selector: 'app-login',
@@ -15,17 +14,14 @@ export class LoginPage implements OnInit {
 
   //public jwt: string = null;
   public loginForm: FormGroup;
-  public loading: HTMLIonLoadingElement;
   public emailPass: boolean = false;
   @ViewChild('typesegment') typesegment:any;
 
   constructor(private authService: AuthService, 
-    public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    private router: Router,
     private formBuilder: FormBuilder,
     private translate : TranslateService,
-    private appHelperService: AppHelperService) { 
+    private uiService: UiService) { 
     //this.jwt = this.authService.digiQR().toString();
     this.loginForm = this.formBuilder.group({
       email: ['',
@@ -37,52 +33,35 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-    // this.appHelperService.hideMenu();
-  }
+  ngOnInit() { }
 
-  ionViewWillEnter() {    
-    // this.appHelperService.hideMenu();
+  ionViewWillEnter() {
     if(this.typesegment)
       this.typesegment.value = "merchant";
   }
 
-  ionViewWillLeave() {
-    // this.appHelperService.showMenu();
-  } 
-
   async loginUser(loginForm: FormGroup): Promise<void> {
     if (!loginForm.valid) {
       console.log('Form is not valid yet, current value:', loginForm.value);
-    } else {
-      this.loading = await this.loadingCtrl.create({});
-      await this.loading.present();
+    } else {;
+      await this.uiService.displayLoader("");
   
       const email = loginForm.value.email;
       const password = loginForm.value.password;
   
       this.authService.loginUser(email, password).then(
-        (user) => {
-          console.log(user);
-          this.loading.dismiss().then(async () => {
+        async (user) => {
             if(user.user.emailVerified) {
-              this.appHelperService.activeUrl = '/grid';
-              this.router.navigateByUrl('/grid');
+              this.authService.authCheckAndRedirect(true);
             } else {
+              this.uiService.dismissLoader();
               const alert = await this.alertCtrl.create({
                 message: this.translate.instant("login.verify"),
                 buttons: 
                   [
                     { text: this.translate.instant("login.resend"), handler: () => {
-                      user.user.sendEmailVerification().then(async () => {
-                        const alert1 = await this.alertCtrl.create({
-                          message: this.translate.instant("login.sent"),
-                          buttons: [{ text: this.translate.instant("login.ok"), handler: () => {
-                            alert1.dismiss();
-                          }}]
-                        });
-                        await alert1.present();
-                      });
+                      this.uiService.displayLoader("")
+                      this.authService.sendEmailVerificationLink(email, false, true);
                     }},
                     { text: this.translate.instant("login.ok"), handler: () => {
                       alert.dismiss();                      
@@ -91,18 +70,14 @@ export class LoginPage implements OnInit {
               });
               await alert.present();
             }
-          });
-        },
-        error => {
-          this.loading.dismiss().then(async () => {
+        }, async (error) => {
+          this.uiService.dismissLoader();
             const alert = await this.alertCtrl.create({
               message: error.message,
               buttons: [{ text: this.translate.instant("register.ok"), role: 'cancel' }],
             });
             await alert.present();
-          });
-        }
-      );
+        });
     }
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-agent-terms',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgentTermsPage implements OnInit {
 
-  constructor() { }
+  isTermAccepted: boolean = false;
+
+  constructor(private navController: NavController) { }
 
   ngOnInit() {
+  }
+
+  gotoHome() {
+    if(this.isTermAccepted)
+      this.navController.navigateForward('/agents')
   }
 
 }

@@ -27,7 +27,6 @@
           *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">
           <ion-label translate>login.validemail</ion-label>
         </ion-row>
-
         <ion-row>
           <ion-item color="medium" class="form-item" lines="none">
             <ion-label position="stacked">{{'common.password' | translate}}</ion-label>
@@ -38,13 +37,9 @@
           *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
           <ion-label color="light" translate>login.validpassword</ion-label>
         </ion-row>
-  
-        <!-- <p class="ion-padding-top"> -->
-          <ion-button class="form-submit-btn" [disabled]="!loginForm.valid" (click)="loginUser(loginForm)" translate>
-            common.signin
-          </ion-button>
-          <!-- <ion-button color="light" shape="round" size="large" [disabled]="!loginForm.valid" (click)="loginUser(loginForm)">Sign In</ion-button> -->
-        <!-- </p> -->
+        <ion-button class="form-submit-btn" [disabled]="!loginForm.valid" (click)="loginUser(loginForm)" translate>
+          common.signin
+        </ion-button>
       </div>
       <p class="sigup-text" routerLink="/signup" translate>
         <b translate>login.signupnew</b>
@@ -53,19 +48,9 @@
         login.forgotpassword
       </p>
       <div class="social_buttons">
-        <!-- <ion-button color="light" shape="round" (click)="chooseEmail()" expand="block" ><div class="icon_container"><ion-icon name="mail" style="color:#22ade4;"></ion-icon></div><span>Sign In With Email</span></ion-button>
-        <p class="or">
-          <b>OR</b>
-        </p> -->
-        <!-- <ion-button fill="clear" (click)="googleUserSignin()" > -->
           <ion-icon class="google-icon" src="../../assets/googlelogo.svg" (click)="googleUserSignin()"></ion-icon>
-        <!-- </ion-button>
-        <ion-button fill="clear" (click)="facebookUserSignin()" > -->
           <ion-icon class="facebook-icon" src="../../assets/facebooklogo.svg" (click)="facebookUserSignin()"></ion-icon>
-        <!-- </ion-button>
-        <ion-button fill="clear" (click)="appleUserSignin()"> -->
           <ion-icon class="apple-icon" name="logo-apple" (click)="appleUserSignin()"></ion-icon>
-        <!-- </ion-button> -->
       </div>      
     </form>
   </div>  

@@ -1,0 +1,109 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/grid"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="">Profile</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>{{this.businessName}}</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img src="{{this.imageURL}}" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="medium" class="ion-padding">
+  <p class="notes-msg" *ngIf="!this.stripeId">Notes : Stripe connection is rquired for save/update merchant profiles </p>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Business name</ion-label>
+          <ion-input [(ngModel)]="this.businessName" placeholder="Enter Business Name"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Username</ion-label>
+          <ion-input [(ngModel)]="this.username" readonly="true" placeholder="Enter Username"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Currency selection</ion-label>
+          <ion-input [(ngModel)]="this.currencyName" readonly="true" placeholder="Enter Currency"></ion-input>
+          <ion-note class="usd-notes" slot="end" (click)="selectCurrency()">
+            <span>{{this.currency}}</span>
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </ion-note>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Business Email</ion-label>
+          <ion-input [(ngModel)]="this.businessEmail" placeholder="Enter email"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Business Address</ion-label>
+          <ion-input [(ngModel)]="this.businessAddress" placeholder="Enter Address"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none" (click)="this.toggleStripe()" >
+          <ion-label position="stacked">Stripe connection</ion-label>
+          <ion-input [(ngModel)]="this.stripe" readonly="true" placeholder="Stripe"></ion-input>
+          <ion-note class="usd-notes" slot="end">
+            <ion-icon class="checkmark-icon" *ngIf="this.stripeId" name="checkmark-circle-outline"></ion-icon>
+            <ion-icon class="checkmark-icon" *ngIf="!this.stripeId" name="close-circle-outline"></ion-icon>
+          </ion-note>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label position="stacked">Optional tax rate</ion-label>
+          <ion-input [(ngModel)]="this.taxRate" (ionChange)="editTaxRate()" placeholder="Enter Decimal"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-md="4" size-sm="6">
+        <ion-item class="page-form-item" color="primary" lines="none">
+          <ion-label class="agent-qr-label">Business QR</ion-label>
+          <ion-note slot="end" class="qr-notes">
+            <ion-card class="card" color="medium" *ngIf="this.qrData">     
+              <qrcode [qrdata]="this.qrData" [size]="45" [level]="'M'"
+              [colordark]="selectedColor"></qrcode>
+              <!-- <img class="logo-img" src="../../assets/humbl-white.png"> -->
+            </ion-card>
+          </ion-note>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="this.stripeId">
+      <ion-col class="last-content" size="12">
+        <input class="input2" type="file" (change)="upload($event)" accept=".png,.jpg,.jpeg" #file>
+        <div class="img-content" (click)="file.click()">
+          <img src="{{this.imageURL}}">
+          <ion-icon class="taco-frw-icon" name="chevron-forward-circle"></ion-icon>
+        </div>
+        <p>{{this.businessAddress}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-item color="medium" class="account-item" [routerLink]="['/merchant/account']" routerDirection="forward" detail="true">  
+    <ion-label>
+      <p class="input" translate>settings.account</p>
+      <ion-text translate>settings.change</ion-text>
+    </ion-label>
+  </ion-item>
+  <div class="pcard-btn-wrapper">
+    <ion-button color="silver" [disabled]="checkFormValid()" class="share-btn" (click)="saveProfile()" >
+      Save
+    </ion-button>
+  </div>
+</ion-content>

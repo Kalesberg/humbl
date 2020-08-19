@@ -25,16 +25,16 @@ export class AgentMenuPage implements OnInit {
   public user: boolean = false;
   public uid: string;
   public appPages = [
-    {
-      title: 'terminal',
-      url: '/agent/pos',
-      icon: 'calculator'
-    },
-    {
-      title: 'reports',
-      url: '/agent/reports',
-      icon: 'file-tray-full-outline'
-    },
+    // {
+    //   title: 'terminal',
+    //   url: '/agent/pos',
+    //   icon: 'calculator'
+    // },
+    // {
+    //   title: 'reports',
+    //   url: '/agent/reports',
+    //   icon: 'file-tray-full-outline'
+    // },
     {
       title: 'sendmoney',
       url: '/agent/send-money',
@@ -115,6 +115,8 @@ export class AgentMenuPage implements OnInit {
       this.user = false;
       // this.username = "";
       this.uid = "";
+      this.appHelperService.currentUser$.next(null);
+      this.storage.remove('humble_user');
       this.toggleMenu();
       this.router.navigateByUrl('/login');
     });

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppHelperService } from '../services/app-helper.service';
+import { SettingsService } from '../services/settings.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-grid',
@@ -8,8 +10,21 @@ import { AppHelperService } from '../services/app-helper.service';
 })
 export class GridPage implements OnInit {
 
-  constructor(private appHelperService: AppHelperService) { }
+  public userProfile: any;
+  
+  constructor(private appHelperService: AppHelperService,public settingsService: SettingsService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.settingsService
+        .getBusinessProfile()
+        .get()
+        .then( userProfileSnapshot => {
+          this.userProfile = userProfileSnapshot.data();
+        });
+      }
+    });
+  }
 
 }
