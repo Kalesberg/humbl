@@ -27,6 +27,6 @@ export class TextOrderDetailsPage implements OnInit {
     });
   }
   orderChat(){
-    this.navController.navigateForward('merchant/order-chat')
+    this.navController.navigateForward('merchant/text-order')
   }
 }

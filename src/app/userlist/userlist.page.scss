@@ -6,7 +6,7 @@
 }
 .content {
     width: 100%;
-    // max-width: 600px;
+    max-width: 600px;
 }
 ion-list {
     background: var(--ion-color-medium);
@@ -18,15 +18,17 @@ ion-radio-group{
     width: calc(100% - 16px);
     margin: 0 auto;
     h5{
-        margin: 5px 0 0;
+        margin: 5px 0px;
         color: var(--ion-color-primary);
         font-size: 16px;
         color: #ffffff;
+        line-height: 30px;
     }
     ion-row{
         ion-col{
             display: flex;
             align-items: center;
+            padding-left: 0px;
         }
         ion-label{
             font-size: 14px;
@@ -49,5 +51,11 @@ ion-radio-group{
     }
     .detail-item-text {
         font-size: 12px !important;
+    }
+    ion-radio-group{
+        ion-label{
+            font-size: 12px !important;
+            margin-left: 5px !important;
+        }
     }
 }

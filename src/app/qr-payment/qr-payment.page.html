@@ -1,23 +1,44 @@
-<ion-header class="ion-no-border">
+<!-- <ion-header class="ion-no-border">
   <ion-toolbar color="medium">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/merchant/pos"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
+</ion-header> -->
+<ion-header class="ion-no-border">
+  <ion-toolbar class="profile-toolbar" color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/merchant/pos"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title class="">Scan to Pay</ion-title> -->
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>{{this.userProfile?.businessName}}</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img *ngIf="this.userProfile?.logoUrl" [src]="this.userProfile?.logoUrl" />
+          <img *ngIf="!this.userProfile?.logoUrl" src="../../assets/avatar.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content color="medium" class="ion-padding">
   <div class="content-wrapper">
     <h3 class="title">Scan to make payment.</h3>
-    <img class="businessLogo" src="{{this.userProfile?.logoUrl}}">
   <div class="barcode-wrapper">
     <div class="barcode-content" #barcode3>
       <div class="barcode-data data3">
         <div class="logo-div2" *ngIf="logoImageURL">
           <img class="logo2" [src]="logoImageURL">
         </div>
-        <ion-card class="card" color="light" *ngIf="this.qrData">
-              <qrcode [qrdata]="this.qrData" [width]="150" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
-              [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode>
+        <ion-card class="card" color="primary" *ngIf="this.qrData">
+              <!-- <qrcode [qrdata]="this.qrData" [width]="150" [errorCorrectionLevel]="'M'" [elementType]="'svg'"
+              [colorLight]="lightcolor" [colorDark]="selectedColor"></qrcode> -->
+              <qrcode [qrdata]="this.qrData" [size]="150" [level]="'M'"
+              [colordark]="selectedColor"></qrcode>
         </ion-card>
         <div class="logo-div2">
           <img class="logo2" src="../../assets/humbl-blue.png">

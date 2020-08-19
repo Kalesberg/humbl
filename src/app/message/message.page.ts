@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as firebase from 'firebase';
-import { ActionSheetController, AlertController, LoadingController, ModalController, IonContent } from '@ionic/angular';
+import { ActionSheetController, AlertController, LoadingController, ModalController, IonContent, NavController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { SettingsService } from '../services/settings.service';
 import { ImageService } from '../services/image.service';
@@ -40,11 +40,12 @@ export class MessagePage implements OnInit {
   loggedInUserName: any;
   userAvatar: any;
   userName: any;
-
+  userProfile: any;
+  toUserProfile: any;
   // MessagePage
   // This is the page where the user can chat with a friend.
   constructor(
-    // public navCtrl: NavController,
+    public navController: NavController,
     // public navParams: NavParams,
     private router: Router,
     private route: ActivatedRoute,
@@ -67,6 +68,7 @@ export class MessagePage implements OnInit {
           .getUserProfile(this.userId)
           .get()
           .then( userProfileSnapshot => {
+            this.toUserProfile = userProfileSnapshot.data();
             this.userAvatar = userProfileSnapshot.data().profileUrl;
             this.userName = userProfileSnapshot.data().businessName || ((userProfileSnapshot.data().firstname || "") + " " + (userProfileSnapshot.data().lastname || ""));
           });
@@ -110,13 +112,14 @@ export class MessagePage implements OnInit {
   ionViewDidEnter() {
 
     this.loggedInUserId = firebase.auth().currentUser.uid;
-    console.log(this.userId);
+    console.log(this.loggedInUserId);
 
     this.settings
       .getBusinessProfile()
       .get()
       .then( userProfileSnapshot => {
-        this.loggedInUserAvatar = userProfileSnapshot.data().profileUrl;
+        this.userProfile = userProfileSnapshot.data();
+        this.loggedInUserAvatar = userProfileSnapshot.data().logoUrl;
         this.loggedInUserName = userProfileSnapshot.data().businessName || ((userProfileSnapshot.data().firstname || "") + " " + (userProfileSnapshot.data().lastname || ""));
       });
     console.log(this.userId);
@@ -132,6 +135,7 @@ export class MessagePage implements OnInit {
         firebase.firestore().doc('/conversations/' + this.conversationId).get().then(doc => {
           this.messagesToShow = doc.data().messages;
           this.messages = doc.data().messages;
+          console.log(this.messagesToShow)
         })
       }
     });
@@ -438,9 +442,8 @@ export class MessagePage implements OnInit {
     // imageModal.present();
   }
 
-  back() {
-    this.router.navigateByUrl('/merchant/messages');
+  textOrder(){
+    // this.navController.navigateForward('merchant/text-order');
   }
-
 
 }

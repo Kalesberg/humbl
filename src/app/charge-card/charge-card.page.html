@@ -1,17 +1,26 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="medium">
+  <ion-toolbar class="profile-toolbar" color="medium">
     <ion-buttons slot="start">
-      <!-- <ion-menu-button></ion-menu-button> -->
-    </ion-buttons>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/merchant/pos"></ion-back-button>
+      <ion-back-button  defaultHref="/merchant/pos"></ion-back-button>
     </ion-buttons>
     <ion-title translate>chargecard.title</ion-title>
+    <ion-buttons slot="end">
+      <div class="profile-info">
+        <div class="profile-text">
+          <h3>{{this.userProfile?.businessName}}</h3>
+          <p>HUBS AGENT #4567</p>
+        </div>
+        <ion-thumbnail class="thumb-image">
+          <img *ngIf="this.userProfile?.logoUrl" [src]="this.userProfile?.logoUrl" />
+          <img *ngIf="!this.userProfile?.logoUrl" src="../../assets/avatar.png" />
+        </ion-thumbnail>
+      </div>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div *ngIf="this.businessEmail != null">
+<ion-content color="medium" class="ion-padding">
+  <!-- <div *ngIf="this.businessEmail != null">
     <img class="business-logo" src={{this.logo}}/>
   </div>
   <div class="line"></div>
@@ -40,27 +49,63 @@
         </tr>
       </table>
     </div>
+  </div> -->
+  <div class="review-content">
+    <ion-card color="primary" class="transaction-card">
+      <h3 class="transaction-card-title" >Transaction Summary</h3>
+      <div class="summary-wrapper">
+        <div class="transation-summary">
+          <ion-row class="summary-data">
+            <ion-col size="8" translate>transact.subtotal </ion-col>
+            <ion-col size="4"> {{this.symbol}} {{this.subtotal | number : '1.2-2'}} </ion-col>
+          </ion-row>
+          <ion-row class="summary-data">
+            <ion-col size="8" translate>chargecard.fee </ion-col>
+            <ion-col size="4"> {{this.symbol}} {{this.fee / 100 | number : '1.2-2'}} </ion-col>
+          </ion-row>
+          <ion-row class="summary-data">
+            <ion-col size="8" translate>transact.tax </ion-col>
+            <ion-col size="4"> {{this.symbol}} {{this.tax / 100 | number : '1.2-2'}} </ion-col>
+          </ion-row>
+          <ion-row class="summary-data">
+            <ion-col size="8" translate>reports.tip </ion-col>
+            <ion-col size="4"> {{this.symbol}} {{this.tipDisplay | number : '1.2-2'}} </ion-col>
+          </ion-row>
+          <ion-row class="summary-total">
+            <ion-col size="8" translate>transact.total </ion-col>
+            <ion-col size="4" class="total-amt"> {{this.symbol}} {{this.total | number : '1.2-2'}} </ion-col>
+          </ion-row>
+        </div>
+        <div class="transation-barcode" *ngIf="this.businessEmail != null">
+          <ion-card class="card" color="medium">   
+            <img class="logo-img" *ngIf="this.logo" src="{{this.logo}}">
+          </ion-card>
+        </div>
+      </div>      
+    </ion-card>
   </div>
-  <div *ngIf="this.subtotal">
+  <div class="gratitude-content" *ngIf="this.subtotal">
     <!-- Tip Selection -->
-    <p class="gratuity" translate>chargecard.gratuity</p>
+    <p class="receive-text" translate>chargecard.gratuity</p>
     <div class="tips">
-      <ion-chip (click)="selectTip('.10')">
+      <ion-chip class="tip-chip" color="primary" (click)="selectTip('.10')">
         <ion-label value=".10">10%</ion-label>
       </ion-chip>
-      <ion-chip (click)="selectTip('.15')">
+      <ion-chip class="tip-chip" color="primary" (click)="selectTip('.15')">
         <ion-label value=".15">15%</ion-label>
       </ion-chip>
-      <ion-chip (click)="selectTip('.20')">
+      <ion-chip class="tip-chip" color="primary" (click)="selectTip('.20')">
         <ion-label>20%</ion-label>
       </ion-chip>
-      <ion-chip (click)="customTip()">
+      <ion-chip class="tip-chip" color="primary" (click)="customTip()">
         <ion-label translate>chargecard.custom</ion-label>
       </ion-chip>
     </div>
   </div>
-  <div>
+  <div class="footer-btn">
     <!-- <ion-button expand="block" shape="round" color="medium" (click)="scanQR()">Scan Customer's Card QR<ion-icon slot="start" color="light" name="qr-code"></ion-icon></ion-button> -->
-    <ion-button expand="block" shape="round" color="medium" (click)="paymentQr()">QR code for payment<ion-icon slot="start" color="light" name="qr-code"></ion-icon></ion-button>
+    <ion-button class="addbtn" shape="round" expand="block" color="primary" (click)="paymentQr()">
+      QR code for payment<ion-icon slot="start" color="light" name="qr-code"></ion-icon>
+    </ion-button>
   </div>  
 </ion-content>

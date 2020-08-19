@@ -62,7 +62,7 @@
         </div>
       </ion-item> -->
       <ion-item color="medium" lines="none" class="detail-list-item" 
-        *ngFor="let user of users" (click)="chatUser(user)">
+        *ngFor="let user of users" (click)="chatUser(user)" detail="true" >
         <ion-thumbnail slot="start" class="detail-thumbnail">
           <img *ngIf="user?.profileUrl" src="{{user?.profileUrl }}"/>
           <img *ngIf="!user?.profileUrl" src="../../assets/avatar.png"/>

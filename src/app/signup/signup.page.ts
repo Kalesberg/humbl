@@ -60,7 +60,7 @@ export class SignupPage implements OnInit {
   
       this.authService.signupUser(email, password).then(
         async (res) => {
-            let isAgent = (this.typesegment.value === "agent");
+            let isAgent = false; // (this.typesegment.value === "agent");
             await this.settingsService.addBusinessProfile(res.user.uid, email);
             await this.settingsService.addUserProfile(res.user.uid, email, isAgent);
             this.authService.sendEmailVerificationLink(email, true, false);

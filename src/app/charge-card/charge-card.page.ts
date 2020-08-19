@@ -74,23 +74,27 @@ export class ChargeCardPage {
     public emailComposer: EmailComposer,
     private translate : TranslateService,
     public appHelperService: AppHelperService) { 
-      if(this.dataPass.passedItems.usd !== null || 
-        this.dataPass.passedItems.usd !== undefined){
-        this.subtotal = parseFloat(this.dataPass.passedItems.usd);
-        console.log(this.subtotal)
+      if(this.dataPass.passedItems) {
+        if(this.dataPass.passedItems.usd !== null || 
+          this.dataPass.passedItems.usd !== undefined){
+          this.subtotal = parseFloat(this.dataPass.passedItems.usd);
+          console.log(this.subtotal)
+        }
+        if(this.dataPass.passedItems.list !== null || 
+          this.dataPass.passedItems.list !== undefined){
+          this.items = this.dataPass.passedItems.list;
+          this.output = this.items.map((i: any) => {
+            return `${i.description}` || '';
+          });
+        }
+        if(this.dataPass.passedItems.coin !== null || 
+          this.dataPass.passedItems.coin !== undefined){
+          this.coin = this.dataPass.passedItems.coin;
+        }
+      } else {
+        this.appHelperService.activeUrl = '/merchant/pos';
+        this.navCtrl.navigateBack('/merchant/pos');
       }
-      if(this.dataPass.passedItems.list !== null || 
-        this.dataPass.passedItems.list !== undefined){
-        this.items = this.dataPass.passedItems.list;
-        this.output = this.items.map((i: any) => {
-          return `${i.description}` || '';
-        });
-      }
-      if(this.dataPass.passedItems.coin !== null || 
-        this.dataPass.passedItems.coin !== undefined){
-        this.coin = this.dataPass.passedItems.coin;
-      }
-        
       this.storage.get('myOptionalTax').then((data) => {
           this.optionalTax = !data ? false : data;
         });   
