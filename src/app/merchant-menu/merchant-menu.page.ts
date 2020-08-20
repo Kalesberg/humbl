@@ -25,6 +25,11 @@ export class MerchantMenuPage implements OnInit {
   public uid: string;
   public appPages = [
     {
+      title: 'home',
+      url: '/grid',
+      icon: 'home'
+    },
+    {
       title: 'terminal',
       url: '/merchant/pos',
       icon: 'calculator'

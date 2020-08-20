@@ -22,7 +22,8 @@
         "paybills": "Pay Bills",
         "loanproduct": "Loan Products",
         "agentsettings": "Agent Settings",
-        "merchantprofile": "Merchant Profile"
+        "merchantprofile": "Merchant Profile",
+        "home": "Home"
     },
 
     "home": {
