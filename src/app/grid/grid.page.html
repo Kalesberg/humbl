@@ -4,7 +4,7 @@
     <div class="profile-info">
       <div class="profile-text">
         <h3>{{this.userProfile?.businessName}}</h3>
-        <p>HUBS AGENT #4567</p>
+        <!-- <p>HUBS AGENT #4567</p> -->
       </div>
       <ion-thumbnail class="thumb-image">
         <img *ngIf="this.userProfile?.logoUrl" [src]="this.userProfile?.logoUrl" />
@@ -35,7 +35,7 @@
       <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/messages'" 
       [routerLink]="'/merchant/messages'">
         <ion-item color="primary">
-          <ion-label>Messages/Chat</ion-label>
+          <ion-label>Text Orders</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
         </ion-item>
         <div class="welcome-card-icon">
@@ -44,7 +44,7 @@
       </ion-card>
       <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/pos'" [routerLink]="'/merchant/pos'">
         <ion-item color="primary">
-          <ion-label>POS Terminal</ion-label>
+          <ion-label>Payments</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
         </ion-item>
         <div class="welcome-card-icon">
@@ -54,7 +54,7 @@
       <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/reviews'" 
       [routerLink]="'/merchant/reviews'">
         <ion-item color="primary">
-          <ion-label>Ratings & Reviews</ion-label>
+          <ion-label>Reviews</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
         </ion-item>
         <div class="review-wrapper">
@@ -87,7 +87,25 @@
           <ion-icon name="repeat"></ion-icon>
         </div>
       </ion-card>
-      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/offers'">
+      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/transaction-details'">
+        <ion-item color="primary">
+          <ion-label>Refunds</ion-label>
+          <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+        <div class="welcome-card-icon">
+          <ion-icon name="repeat"></ion-icon>
+        </div>
+      </ion-card>
+      <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/transaction-details'">
+        <ion-item color="primary">
+          <ion-label>Offers</ion-label>
+          <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
+        </ion-item>
+        <div class="welcome-card-icon">
+          <ion-icon name="repeat"></ion-icon>
+        </div>
+      </ion-card>
+      <!-- <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/offers'">
         <ion-item color="primary">
           <ion-label>Special Offers & Deals</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
@@ -104,9 +122,9 @@
             </ion-labl>
           </ion-item>    
         </div>
-      </ion-card>
+      </ion-card> -->
   </div>
-  <div class="agent-banner">
+  <!-- <div class="agent-banner">
     <ion-row>
       <ion-col size="6">
         <h2>Become an Agent</h2>
@@ -115,9 +133,9 @@
         <ion-button class="agent-button" color="light" shape="round" [routerLink]="'/merchant/agent-inquiry'">Sign Up</ion-button>
       </ion-col>
     </ion-row>
-  </div>
+  </div> -->
 
-  <h1 class="resource-text">Resources</h1>
+  <!-- <h1 class="resource-text">Resources</h1>
     <div class="welcome-card-wrapper resource-wrapper ion-padding-start">
         <ion-card class="welcome-card" color="medium" href="https://humbl.io">
           <ion-item color="primary">
@@ -128,4 +146,4 @@
             <ion-icon name="pulse"></ion-icon>
           </div>
         </ion-card>
-    </div>
+    </div> -->

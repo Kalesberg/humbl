@@ -25,62 +25,67 @@ export class MerchantMenuPage implements OnInit {
   public uid: string;
   public appPages = [
     {
-      title: 'terminal',
+      title: 'payments',
       url: '/merchant/pos',
-      icon: 'calculator'
+      icon: 'card-outline'
     },
     {
-      title: 'messages',
+      title: 'textorder',
       url: '/merchant/messages',
-      icon: 'document-text-outline'
+      icon: 'chatbubble'
     },
     {
-      title: 'reports',
+      title: 'transaction',
       url: '/merchant/reports',
-      icon: 'file-tray-full-outline'
+      icon: 'logo-usd'
     },
+    // {
+    //   title: 'reports',
+    //   url: '/merchant/reports',
+    //   icon: 'file-tray-full-outline'
+    // },
     {
       title: 'qr',
       url: '/merchant/qr-dashboard',
       icon: 'qr-code',
       isQrMenu: true
     },
-    {
-      title: 'settings',
-      url: '/merchant/settings',
-      icon: 'cog'
-    },
+    // {
+    //   title: 'settings',
+    //   url: '/merchant/settings',
+    //   icon: 'cog'
+    // },
     {
       title: 'merchantprofile',
       url: '/merchant/merchant-profile',
       icon: 'card-outline'
     },
-    {
-      title: 'payments',
-      url: '/merchant/payment-detail',
-      icon: 'card-outline'
-    },
-    {
-      title: 'textorder',
-      url: '/merchant/text-order-details',
-      icon: 'chatbubble'
-    },
-    {
-      title: 'transaction',
-      url: '/merchant/transaction-details',
-      icon: 'logo-usd'
-    },
+    // {
+    //   title: 'payments',
+    //   url: '/merchant/payment-detail',
+    //   icon: 'card-outline'
+    // },
+    // {
+    //   title: 'textorder',
+    //   url: '/merchant/text-order-details',
+    //   icon: 'chatbubble'
+    // },
+    // {
+    //   title: 'transaction',
+    //   url: '/merchant/reports',
+    //   icon: 'logo-usd'
+    // },
     {
       title: 'reviews',
       url: '/merchant/reviews',
       icon: 'star'
     },
-    {
-      title: 'offers',
-      url: '/merchant/offers',
-      icon: 'pricetag',
-      iconcss:"offertag"
-    }
+    // {
+    //   title: 'offers',
+    //   url: '/merchant/offers',
+    //   icon: 'pricetag',
+    //   iconcss:"offertag"
+    // }
   ];
   constructor(
     private settingsService: SettingsService,
