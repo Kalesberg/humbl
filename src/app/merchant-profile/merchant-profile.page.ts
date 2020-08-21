@@ -82,7 +82,7 @@ export class MerchantProfilePage implements OnInit {
         }
         this.imageURL = this.userProfile.logoUrl;
         if(!this.imageURL){
-          this.imageURL = `../../assets/avatar.png`;
+          this.imageURL = '';
         }
         this.qrData = "merchant:" + CryptoJs.enc.Base64.stringify(CryptoJs.enc.Utf8.parse(this.username));
         this.businessName = this.userProfile.businessName;
