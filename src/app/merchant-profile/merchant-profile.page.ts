@@ -10,6 +10,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { UiService } from '../services/ui-service';
 import { TranslateService } from '@ngx-translate/core';
 import {environment} from '../../environments/environment';
+import { CryptoService } from '../services/crypto.service';
 
 @Component({
   selector: 'app-merchant-profile',
@@ -45,7 +46,8 @@ export class MerchantProfilePage implements OnInit {
     public storage: Storage, private modalCtrl: ModalController,
     public appHelperService: AppHelperService, public navCtrl: NavController,
     private afStorage: AngularFireStorage, private uiService: UiService,
-    private translate : TranslateService, public alertCtrl: AlertController,) { 
+    private translate : TranslateService, public alertCtrl: AlertController,
+    public crypto: CryptoService,) { 
     this.storage.get('myTax').then((data) => {
       this.taxRate = data;
     });
@@ -147,16 +149,22 @@ export class MerchantProfilePage implements OnInit {
       return this.uiService.displayAlertMsg("Enter Business Name");
     if(!this.businessEmail)
       return this.uiService.displayAlertMsg("Enter Business Email");
+    if(this.businessAddress && this.businessAddress.includes('#')){
+      return this.addressAlert();
+    }
 
     try {
+
       this.uiService.displayLoader("");
+      let locResp: any = this.businessAddress? await this.crypto.getCoordinates(this.businessAddress): "";
       let businessData= {
         businessName: this.businessName,
         businessEmail: this.businessEmail,
         businessAddress: this.businessAddress,
-        currency: this.currency
+        currency: this.currency,
+        coordinates: locResp.results[0].geometry? locResp.results[0].geometry.location : null
       }
-      // await this.settingsService.updateBusinessProfile(businessData);
+      await this.settingsService.updateBusinessProfile(businessData);
       this.uiService.dismissLoader();
       this.uiService.displayAlertMsg("Profile saved successfully");
     } catch (error) {
@@ -167,6 +175,19 @@ export class MerchantProfilePage implements OnInit {
     }
   }
 
+  async addressAlert(): Promise<void> {
+    const alert = await this.alertCtrl.create({
+      subHeader: this.translate.instant("settings.special"),
+      message: this.translate.instant("settings.special_message"),
+      buttons: [
+        {
+          text: this.translate.instant("settings.dismiss"),
+          role: 'cancel'
+        }
+      ],
+    });
+    await alert.present();
+  }
   checkFormValid() {
     if(this.stripeId && this.businessName && this.businessEmail)
       return false;

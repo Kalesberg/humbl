@@ -8,6 +8,9 @@
         font-size: 28px;
         --icon-margin-end: 5px;
     }
+    ion-menu-button {
+        font-size: 50px;
+    }
 }
 .profile-toolbar {
     --min-height: 100px;
@@ -19,6 +22,9 @@
         --icon-font-size: 42px;
         font-size: 28px;
         --icon-margin-end: 5px;
+    }
+    ion-menu-button {
+        font-size: 50px;
     }
 }
 .form-wrapper {
@@ -361,6 +367,9 @@
             font-size: 22px;
             --icon-margin-end: 1px;
         }
+        ion-menu-button {
+            font-size: 30px;
+        }
     }
     
     .profile-hubs-logo {
@@ -403,6 +412,9 @@
             --icon-font-size: 30px;
             font-size: 18px;
             --icon-margin-end: 1px;
+        }
+        ion-menu-button {
+            font-size: 30px;
         }
     }
     .ios ion-title {
