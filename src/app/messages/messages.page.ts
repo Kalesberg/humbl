@@ -51,7 +51,7 @@ export class MessagesPage {
         this.currentUser = user.uid;
       }
       this.settingsService
-        .getBusinessProfile()
+        .getBusinessProfile(user.uid)
         .get()
         .then( userProfileSnapshot => {
           this.userProfile = userProfileSnapshot.data();
@@ -182,7 +182,7 @@ export class MessagesPage {
 
   getList(){
     this.settingsService
-      .getBusinessProfile()
+      .getBusinessProfile(this.currentUser)
       .get()
       .then( userProfileSnapshot => {
         this.userProfile = userProfileSnapshot.data();

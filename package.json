@@ -20,7 +20,6 @@
         "@angular/core": "^9.0.7",
         "@angular/fire": "^6.0.0-rc.2",
         "@angular/forms": "^9.0.7",
-        "@ctrl/ngx-emoji-mart": "^3.1.0",
         "@angular/platform-browser": "^9.0.7",
         "@angular/platform-browser-dynamic": "^9.0.7",
         "@angular/router": "^9.0.7",
@@ -29,6 +28,7 @@
         "@capacitor/cli": "^2.2.0",
         "@capacitor/core": "^2.1.2",
         "@capacitor/ios": "^2.2.0",
+        "@ctrl/ngx-emoji-mart": "^3.1.0",
         "@ionic-native/barcode-scanner": "^5.27.0",
         "@ionic-native/contacts": "^5.27.0",
         "@ionic-native/core": "^5.23.0",
@@ -43,6 +43,7 @@
         "@ionic-native/stripe": "^5.22.0",
         "@ionic/angular": "5.0.5",
         "@ionic/storage": "^2.2.0",
+        "@mobiscroll/angular": "file:./src/lib/mobiscroll-package/mobiscroll-angular-4.10.4.tgz",
         "@ngx-translate/core": "^10.0.0",
         "@ngx-translate/http-loader": "^6.0.0",
         "@zxing/ngx-scanner": "^3.0.0",
@@ -62,7 +63,7 @@
         "cordova-sqlite-storage": "^4.0.0",
         "core-js": "^3.6.5",
         "crypto-js": "^4.0.0",
-        "firebase": "^7.15.0",
+        "firebase": "^7.14.2",
         "ionic-plugin-deeplinks": "^1.0.20",
         "jwt-simple": "^0.5.6",
         "md5-typescript": "^1.0.5",
@@ -73,8 +74,7 @@
         "phonegap-plugin-barcodescanner": "^8.1.0",
         "rxjs": "~6.5.1",
         "utf-8-validate": "^5.0.2",
-        "zone.js": "^0.10.3",
-        "@mobiscroll/angular": "file:./src/lib/mobiscroll-package/mobiscroll-angular-4.10.4.tgz"
+        "zone.js": "^0.10.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^0.901.8",

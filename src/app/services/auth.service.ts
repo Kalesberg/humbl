@@ -107,32 +107,33 @@ export class AuthService {
 
   authCheckAndRedirect(isLogin: boolean = false){
     let url = "/home";
-      firebase.auth().onAuthStateChanged(async (user: firebase.User) => {
-        if (user && user.uid && user.emailVerified) {
-          let userData = await this.settingsService.getUserProfile(user.uid).get();
-          if(userData && userData.data()){
-            // if(userData.data().isAgent){
-            //   if(isLogin)
-            //     url= "/agent-terms";
-            //   else
-            //     url= "/agents";
-            // }
-            // else {
-              url= "/grid";
-            // }
-            this.appHelperService.currentUser$.next(userData.data());
-            await this.storage.set('humble_user', userData.data());
-          }
+    firebase.auth().onAuthStateChanged(async (user: firebase.User) => {
+      if (user && user.uid && user.emailVerified) {
+        console.log('data ', user.uid);
+        let userData = await this.settingsService.getBusinessProfile(user.uid).get();
+        if(userData && userData.data()){
+          // if(userData.data().isAgent){
+          //   if(isLogin)
+          //     url= "/agent-terms";
+          //   else
+          //     url= "/agents";
+          // }
+          // else {
+            url= "/grid";
+          // }
+          this.appHelperService.currentUser$.next(userData.data());
+          await this.storage.set('humble_user', userData.data());
         }
-        else if(user && !user.emailVerified){
-          await firebase.auth().signOut();
-        }
-        if (SplashScreen) {
-          SplashScreen.hide();
-        }
-        this.uiService.dismissLoader();
-        this.appHelperService.activeUrl = url;
-        this.navController.navigateRoot(url);
+      }
+      else if(user && !user.emailVerified){
+        await firebase.auth().signOut();
+      }
+      if (SplashScreen) {
+        SplashScreen.hide();
+      }
+      this.uiService.dismissLoader();
+      this.appHelperService.activeUrl = url;
+      this.navController.navigateRoot(url);
     });
   }
 

@@ -40,7 +40,7 @@ export class Tab2Page {
       if (user) {
         this.currentUser = user.uid;
         this.settingsService
-        .getBusinessProfile()
+        .getBusinessProfile(user.uid)
         .get()
         .then( userProfileSnapshot => {
           this.userProfile = userProfileSnapshot.data();

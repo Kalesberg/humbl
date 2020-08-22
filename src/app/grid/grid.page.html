@@ -28,8 +28,8 @@
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
         </ion-item>
         <div class="welcome-card-text">
-          <h3>$1,750.00</h3>
-          <span>August 15, 2020</span>
+          <h3>${{ extSum | number : '1.2-2' }}</h3>
+          <span>{{ currentDate | date: 'MMMM dd, yyyy' }}</span>
         </div>
       </ion-card>
       <ion-card class="welcome-card" color="medium" (click)="this.appHelperService.activeUrl = '/merchant/messages'" 
@@ -38,7 +38,11 @@
           <ion-label>Text Orders</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
         </ion-item>
-        <div class="welcome-card-icon">
+        <div class="welcome-card-text" *ngIf="this.pending_message_count !== ''">
+          <h3>{{ pending_message_count }}</h3>
+          <span>Pending</span>
+        </div>
+        <div class="welcome-card-icon" *ngIf="this.pending_message_count === ''">
           <ion-icon name="chatbox"></ion-icon>
         </div>
       </ion-card>
@@ -57,25 +61,24 @@
           <ion-label>Reviews</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
         </ion-item>
-        <div class="review-wrapper">
+        <div class="review-wrapper" *ngIf="this.recent_review && this.recent_review!==false">
           <ion-item class="review-item" color="medium" lines="none">
             <ion-thumbnail class="review-image" slot="start">
-              <img src="../../assets/gallery/les-anderson-ixb3sh0thWI-unsplash@2x.png" />
+              <img src="{{ this.recent_review.user_image || '../../assets/avatar.png' }}" />
             </ion-thumbnail>
             <ion-label>
-              <h3 class="review-title">SHAWNA C.</h3>
-              <p class="review-subtitle">Bogota, Colombia</p>
+              <h3 class="review-title">{{ this.recent_review.user_name }}</h3>
+              <p class="review-subtitle">{{ this.recent_review.user_location || "" }}</p>
               <p class="review-star">
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star" *ngFor="let index of counter(this.recent_review.rating)"></ion-icon>
               </p>
-              <p class="review-time">3:30 PM | July 20, 2020</p>
+              <p class="review-time">{{ this.recent_review.date.toDate() | date: 'HH:mm a | MMMM dd, yyyy' }}</p>
             </ion-label>
           </ion-item>         
-          <span class="review-note">“Tacos were great, thank you!”</span>
+          <span class="review-note">“{{ this.recent_review.message }}”</span>
+        </div>
+        <div class="welcome-card-icon" *ngIf="this.recent_review===false">
+          <ion-icon name="repeat"></ion-icon>
         </div>
       </ion-card>
       <ion-card class="welcome-card" color="medium" [routerLink]="'/merchant/transaction-details'">
@@ -83,7 +86,11 @@
           <ion-label>Transactions</ion-label>
           <ion-icon class="welcome-card-arrow" name="chevron-forward" slot="end"></ion-icon>
         </ion-item>
-        <div class="welcome-card-icon">
+        <div class="welcome-card-text" *ngIf="this.recent_transaction && this.recent_transaction!==false">
+          <h3>${{ this.recent_transaction.usdTotal }}</h3>
+          <span>Last Transaction</span>
+        </div>
+        <div class="welcome-card-icon" *ngIf="this.recent_transaction===false">
           <ion-icon name="repeat"></ion-icon>
         </div>
       </ion-card>

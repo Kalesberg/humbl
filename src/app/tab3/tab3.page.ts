@@ -72,7 +72,7 @@ export class Tab3Page {
         this.currentUser = user.uid;
       }
       this.settingsService
-      .getBusinessProfile()
+      .getBusinessProfile(user.uid)
       .get()
       .then(userProfileSnapshot => {
         this.userProfile = userProfileSnapshot.data();
