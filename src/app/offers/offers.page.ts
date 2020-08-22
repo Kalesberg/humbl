@@ -16,7 +16,7 @@ export class OffersPage implements OnInit {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.settingsService
-        .getBusinessProfile()
+        .getBusinessProfile(user.uid)
         .get()
         .then( userProfileSnapshot => {
           this.userProfile = userProfileSnapshot.data();

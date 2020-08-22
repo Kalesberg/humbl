@@ -62,8 +62,8 @@ export class SignupPage implements OnInit {
         async (res) => {
             let isAgent = false; // (this.typesegment.value === "agent");
             await this.settingsService.addBusinessProfile(res.user.uid, email);
-            await this.settingsService.addUserProfile(res.user.uid, email, isAgent);
-            this.authService.sendEmailVerificationLink(email, true, false);
+            // await this.settingsService.addUserProfile(res.user.uid, email, isAgent);
+            await this.authService.sendEmailVerificationLink(email, true, false);
         }, async (error) => {
             const alert = await this.alertCtrl.create({
               message: error.message,

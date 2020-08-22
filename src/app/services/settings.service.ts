@@ -26,7 +26,8 @@ export class SettingsService {
     return this.userProfile;
   }
 
-  getBusinessProfile(): firebase.firestore.DocumentReference {
+  getBusinessProfile(uid): firebase.firestore.DocumentReference {
+    this.userProfile = firebase.firestore().doc(`/businessProfile/${uid}`);
     return this.businessProfile;
   }
 

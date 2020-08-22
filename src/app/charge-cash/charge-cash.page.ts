@@ -120,7 +120,7 @@ export class ChargeCashPage implements OnInit {
         this.uid = user.uid;
       }
       this.settingsService
-        .getBusinessProfile()
+        .getBusinessProfile(user.uid)
         .get()
         .then( async userProfileSnapshot => {
           this.userProfile = userProfileSnapshot.data();

@@ -75,7 +75,7 @@ export class ReviewsPage {
         this.currentUser = user.uid;
       }
       this.settingsService
-        .getBusinessProfile()
+        .getBusinessProfile(this.currentUser)
         .get()
         .then( userProfileSnapshot => {
           this.userProfile = userProfileSnapshot.data();
@@ -125,7 +125,7 @@ export class ReviewsPage {
         this.currentUser = user.uid;
       }
       this.settingsService
-        .getBusinessProfile()
+        .getBusinessProfile(this.currentUser)
         .get()
         .then( userProfileSnapshot => {
           this.userProfile = userProfileSnapshot.data();

@@ -115,7 +115,7 @@ export class MessagePage implements OnInit {
     console.log(this.loggedInUserId);
 
     this.settings
-      .getBusinessProfile()
+      .getBusinessProfile(this.loggedInUserId)
       .get()
       .then( userProfileSnapshot => {
         this.userProfile = userProfileSnapshot.data();

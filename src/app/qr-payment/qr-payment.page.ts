@@ -36,7 +36,7 @@ export class QrPaymentPage implements OnInit {
       firebase.auth().onAuthStateChanged((user: firebase.User) => {
         if (user) {
           this.user = true;
-          this.getProfile();
+          this.getProfile(user);
           resolve(this.user);
         } else {
           this.user = false;
@@ -46,9 +46,9 @@ export class QrPaymentPage implements OnInit {
     });
   }
 
-  getProfile(){
+  getProfile(user: any){
     this.settingsService
-    .getBusinessProfile()
+    .getBusinessProfile(user.uid)
     .get()
     .then( userProfileSnapshot => {
       this.userProfile = userProfileSnapshot.data();      

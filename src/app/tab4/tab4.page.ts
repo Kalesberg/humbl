@@ -94,7 +94,7 @@ export class Tab4Page {
         this.currentUser = user.uid;
       }
       this.settingsService
-        .getBusinessProfile()
+        .getBusinessProfile(user.uid)
         .get()
         .then( userProfileSnapshot => {
           this.userProfile = userProfileSnapshot.data();
@@ -411,7 +411,7 @@ export class Tab4Page {
 
   getList(){
     this.settingsService
-      .getBusinessProfile()
+      .getBusinessProfile(this.currentUser)
       .get()
       .then( userProfileSnapshot => {
         this.userProfile = userProfileSnapshot.data();

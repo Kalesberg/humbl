@@ -59,7 +59,7 @@ export class UserlistPage {
       if (user.uid) {
         this.uid = user.uid;
         this.settings
-        .getBusinessProfile().get()
+        .getBusinessProfile(user.uid).get()
         .then(async (userProfileSnapshot) => {
           this.userProfile = userProfileSnapshot.data();
           if(this.userProfile){

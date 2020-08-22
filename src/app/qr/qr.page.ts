@@ -64,7 +64,7 @@ export class QrPage {
         if (user) {
           this.user = true;
           console.log(this.user);
-          this.getProfile();
+          this.getProfile(user);
           resolve(this.user);
 
         } else {
@@ -76,9 +76,9 @@ export class QrPage {
     });
   }
 
-  getProfile(){
+  getProfile(user: any){
     this.settingsService
-    .getBusinessProfile()
+    .getBusinessProfile(user.uid)
     .get()
     .then( userProfileSnapshot => {
       this.userProfile = userProfileSnapshot.data();

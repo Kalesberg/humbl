@@ -111,7 +111,7 @@ export class MerchantMenuPage implements OnInit {
         this.uid = user.uid;
         this.user = true;
         this.settingsService
-        .getBusinessProfile()
+        .getBusinessProfile(user.uid)
         .get()
         .then(userProfileSnapshot => {
           this.userProfile = userProfileSnapshot.data();
